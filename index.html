@@ -107,8 +107,28 @@
             <article>
                 <a href="contact.html">Contact</a>
             </article>
+      
             <article>
-                <a href="services.html">Services</a> 
+             <h4>Contact </h4>
+            <form action="contact.php" method="post">  <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="project_type">Project Type:</label>
+                <select name="project_type" id="project_type">
+                    <option value="website">Website</option>
+                    <option value="logo">Logo Design</option>
+                    <option value="branding">Branding</option>
+                    <option value="other">Other</option>
+                </select>
+                <br>
+                <label for="project_description">Project Description:</label>
+                <textarea name="project_description" id="project_description" rows="5" required></textarea>
+                <br>
+                <button type="submit">Submit Request</button>
+            </form>
             </article>
         </section>
     </footer>
