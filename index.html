@@ -68,69 +68,56 @@
                 </article>
             </section>
         </div>
-            
-        <div class="featured_work">
-            <h2>Featured Work</h2>
-            <section class="Work">
-                <article>
-                    <img src="./Images/Littlelemon/Homepage.png" height="262px" width="600px" alt="littlelemon" class="project"/>
-                    <br>
-                    <a href="https://www.behance.net/gallery/195811121/Little-Lemon-restaurant" class="project_link"> Know more </a>
-                </article>
-                <article>
-                    <img src="./Images/Luckyhrub/Luckyshrub work.gif" height="262px" width="600px" alt="luckyshrub" class="project"/>
-                    <br>
-                    <a href="hhttps://www.behance.net/gallery/193664439/Lucky-Shrub-Project" class="project_link"> Know more </a>
-                </article>
-            </section>
-            <section class="Work">
-                <article>
-                    <img src="./Images/Trektide/Behance Trek Tide.gif" height="262px" width="600px" alt="trek_tide" class="project"/>
-                    <br>
-                    <a href="https://www.behance.net/gallery/195928051/Trek-Tide" class="project_link"> Know more </a>
-                </article>
-                <article>
-                    <img src="./Images/cuddly/Cuddly Homepage.gif" height="262px" width="600px" alt="cuddly" class="project"/>
-                    <br>
-                    <a href="https://www.behance.net/gallery/196603465/Cuddly" class="project_link"> Know more </a>
-                </article>
-            </section>
+         <section id="portfolio" class="py-20 bg-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold">Portfolio</h2>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-4 bg-gray-100 shadow-md">
+          <img src="path/to/project1-image.jpg" alt="Project One" class="h-48 w-full object-cover">
+          <h3 class="mt-4 text-xl font-semibold">Project One</h3>
+          <p class="mt-2">Description of project one</p>
+          <a href="#project-one" class="text-blue-500 hover:underline">Read More</a>
         </div>
+        <div class="p-4 bg-gray-100 shadow-md">
+          <img src="path/to/project2-image.jpg" alt="Project Two" class="h-48 w-full object-cover">
+          <h3 class="mt-4 text-xl font-semibold">Project Two</h3>
+          <p class="mt-2">Description of project two</p>
+          <a href="#project-two" class="text-blue-500 hover:underline">Read More</a>
+        </div>
+        <!-- Add more projects as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-100">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold">Contact</h2>
+      <form class="mt-8 max-w-lg mx-auto">
+        <div class="mb-4">
+          <input type="text" placeholder="Name" class="w-full p-2 border border-gray-300 rounded">
+        </div>
+        <div class="mb-4">
+          <input type="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded">
+        </div>
+        <div class="mb-4">
+          <textarea placeholder="Message" class="w-full p-2 border border-gray-300 rounded"></textarea>
+        </div>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+      <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+          <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+          <div class="mt-2">
+            <a href="#" class="text-blue-400 hover:text-blue-600">Twitter</a> |
+            <a href="#" class="text-blue-400 hover:text-blue-600">LinkedIn</a> |
+            <a href="#" class="text-blue-400 hover:text-blue-600">GitHub</a>
+          </div>
+        </div>
+      </footer>   
     </body>
-    <br>
-    <br>
-    
-    <footer>
-        <section>
-            <article>
-                <a href="index.html">Home</a>
-            </article>
-            <article>
-                <a href="contact.html">Contact</a>
-            </article>
-      
-            <article>
-             <h4>Contact </h4>
-            <form action="contact.php" method="post">  <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <br>
-                <label for="project_type">Project Type:</label>
-                <select name="project_type" id="project_type">
-                    <option value="website">Website</option>
-                    <option value="logo">Logo Design</option>
-                    <option value="branding">Branding</option>
-                    <option value="other">Other</option>
-                </select>
-                <br>
-                <label for="project_description">Project Description:</label>
-                <textarea name="project_description" id="project_description" rows="5" required></textarea>
-                <br>
-                <button type="submit">Submit Request</button>
-            </form>
-            </article>
-        </section>
-    </footer>
 </html>
