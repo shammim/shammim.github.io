@@ -13,7 +13,6 @@
   } */
   body, html {
     height: 100%;
-    
 }
   h1
   {
@@ -110,6 +109,9 @@ button {
     background-color: #FF4E73;
     transform: scale(1.05);
   }
+.buttonCTA{
+    background-color : #8435de;
+}
   /* button a{
     color: #fff;
   } */
