@@ -1,65 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shammim - Frontend Developer</title>
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body>
-  <nav class="bg-gradient-to-r from-blue-500 to-indigo-600 shadow-md py-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="#" class="text-white font-bold">Shammim</a>
+ <head>
+     <meta lang="charset-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> Shammim </title>
+      <meta property="og:title" content="Shammim">
+      <meta property="og:type" content="website">
+      <meta property="og:image" content="Logo.png">
+       <meta property="og.url" content="https://shammim.github.io">
+       <meta property="og:description" content="Shammim is a passionate frontend developer with a keen eye for crafting beautiful and functional user interfaces.  Her enthusiasm lies in utilizing Vue.js and Tailwind CSS to bring websites and applications to life.">
+       <meta property="og:locale" content="en_US">
+       <meta property="og:site_name" content="Shammim">
+       <link rel="icon" href="./Images/Logo.png" type="image" height="10px" width="4px" class="Menulogo">
+       <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+<body class="bg-blue-200">
+
+  <!-- Header -->
+  <header class="bg-gray-800 text-white py-4">
+    <nav class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold">Shammim</div>
       <ul class="flex space-x-4">
-        <li><a href="#" class="text-white hover:text-gray-300">Home</a></li>
-        <li><a href="#" class="text-white hover:text-gray-300">Projects</a></li>
-        <li><a href="#" class="text-white hover:text-gray-300">About</a></li>
-        <li><a href="#" class="text-white hover:text-gray-300">Contact</a></li>
+        <li><a href="index.html" class="hover:text-gray-400">Home</a></li>
+        <li><a href="about.html" class="hover:text-gray-400">About</a></li>
+        <li><a href="index.html#skills" class="hover:text-gray-400">Skills</a></li>
+        <li><a href="index.html#portfolio" class="hover:text-gray-400">Portfolio</a></li>
+        <li><a href="index.html#contact" class="hover:text-gray-400">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <section class="hero min-h-screen bg-gradient-to-r from-blue-200 to-white-200">
-    <div class="container mx-auto flex flex-col items-center justify-center h-full">
-      <h1 class="text-4xl font-bold text-white mb-4">Shammim</h1>
-      <h2 class="text-2xl text-white opacity-75">Vue.js & Tailwind CSS Enthusiast</h2>
-      <a href="#" class="btn btn-primary mt-8">Explore Projects</a>
-    </div>
-    <div class="about">
-      <p class="text-2xl font-regular"> She is  </p>
-
-    </div>
-  </section>
-
-  <section class="skills py-12">
-    <div class="container mx-auto grid grid-cols-3 gap-4">
-      <div class="skill bg-gray-100 rounded-lg shadow-md p-4">
-        <i class="fa fa-code text-primary text-3xl mb-2"></i>
-        <h3 class="text-xl font-bold mb-2">HTML</h3>
-        <p class="text-gray-500">Solid foundation in HTML structure and semantics.</p>
-      </div>
-      <div class="skill bg-gray-100 rounded-lg shadow-md p-4">
-        <i class="fa fa-css3 text-primary text-3xl mb-2"></i>
-        <h3 class="text-xl font-bold mb-2">CSS</h3>
-        <p class="text-gray-500">Proficiency in CSS styling and responsive design.</p>
-      </div>
-      <div class="skill bg-gray-100 rounded-lg shadow-md p-4">
-        <i class="fa fa-javascript text-primary text-3xl mb-2"></i>
-        <h3 class="text-xl font-bold mb-2">JavaScript</h3>
-        <p class="text-gray-500">Understanding of JavaScript fundamentals and DOM manipulation.</p>
-      </div>
-      <div class="skill bg-gray-100 rounded-lg shadow-md p-4">
-        <i class="fa fa-vuejs text-primary text-3xl mb-2"></i>
-        <h3 class="text-xl font-bold mb-2">Vue.js</h3>
-        <p class="text-gray-500">Building dynamic and interactive interfaces with Vue.js.</p>
-      </div>
-      <div class="skill bg-gray-100 rounded-lg shadow-md p-4">
-        <i class="fa fa-tailwindcss text-primary text-3xl mb-2"></i>
-        <h3 class="text-xl font-bold mb-2">Tailwind CSS</h3>
-        <p class="text-gray-500">Rapid and efficient styling using Tailwind CSS utility classes.</p>
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold">About Me</h2>
+      <div class="mt-8 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 md:pr-8">
+          <img src="Shammim.jpg" alt="Profile Image" class="rounded-full mx-auto md:mx-0 w-48 h-48 object-cover">
+        </div>
+        <div class="md:w-1/2 mt-8 md:mt-0">
+          <p class="text-lg">I am a frontend developer with a passion for art and design. Over the past few years, I have honed my skills in various design tools including Figma, Canva, Adobe XD, and Sketch. My expertise extends to implementing UX and UI principles to create intuitive and beautiful web interfaces.</p>
+          <p class="text-lg mt-4">I believe in the power of design to solve problems and create meaningful user experiences. My approach to design is user-centered, ensuring that every project I work on meets the needs of its users while also achieving business goals.</p>
+          <p class="text-lg mt-4">When I am not designing or coding, you can find me exploring art galleries, trying out new design tools, or sketching out new ideas for future projects.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="about py-12">
-    <div class="container mx-auto flex flex-col items-center gap-8
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Shammim. All rights reserved.</p>
+      <div class="mt-2">
+        <a href="https://www.behance.net/shammimbegum" class="text-blue-400 hover:text-blue-600">Behance</a> |
+        <a href="https://www.linkedin.com/in/shammimshaik/" class="text-blue-400 hover:text-blue-600">LinkedIn</a> |
+        <a href="https://github.com/shammim" class="text-blue-400 hover:text-blue-600">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
