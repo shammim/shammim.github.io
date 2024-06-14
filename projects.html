@@ -15,16 +15,17 @@
      <link rel="icon" href="Logo.png" type="image" height="10px" width="4px" class="Menulogo">
 
     </head>
-    <header>
-        <img src="Logo.png" class="Menulogo" alt="SiteHeaderLogo" width="80px" height="80px" max-width="100%" padding-top="10px" padding-right="20px"  border-radius="20px" aria-label="logo">
-        <nav>
-            <ul class="menu">
-                <li><a class="active" href="index.html" class="nav_item">Home</a></li>
-                <li><a href="projects.html" class="nav_item">Projects</a></li>                
-                <li><a href="contact.html" class="nav_item">Contact</a></li>
-                <li><a href="tweet.html" class="nav_item">Tweets</a></li>
-                <li> <a href="" class="nav_item"></a> Resume</li>
-            </ul>
+    <header class="bg-gray-800 text-white py-5">
+        <nav class="container mx-auto flex justify-between items-center">
+          <div class="text-2xl font-bold">Shammim</div>
+          <link rel="icon" href="./Images/Logo.png" type="image" height="10px" width="4px" class="Menulogo">
+          <ul class="flex space-x-4">
+             <li><a href="index.html" class="hover:text-gray-400">Home</a></li>
+             <li><a href="about.html" class="hover:text-gray-400">About</a></li>
+             <li><a href="Skills.html" class="hover:text-gray-400">Skills</a></li>
+             <li><a href="Portfolio.html" class="hover:text-gray-400">Portfolio</a></li>
+             <li><a href="contact.html" class="hover:text-gray-400">Contact</a></li>
+          </ul>
         </nav>
     </header>
     <main>
@@ -33,4 +34,98 @@
             <li><a href="projects.html"> Projects</a></li>
         </ul>    
     </main>
+    <body class="bg-scroll">
+        <section id="skills" class="py-20 bg-gray-100">
+            <div class="container mx-auto text-center">
+              <h2 class="text-3xl font-bold">Skills</h2>
+              <div class="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="p-4 bg-white shadow-md">
+                  <img src="Icons/figma.png" alt="Figma" class="h-12 mx-auto">
+                  <h3 class="mt-4 text-xl font-semibold">Figma Casestudy</h3>
+                </div>
+                <div class="p-4 bg-white shadow-md">
+                  <img src="Icons/tool.png" alt="Canva" class="h-12 mx-auto">
+                  <h3 class="mt-4 text-xl font-semibold">Canva Casestudy</h3>
+                </div>
+                <div class="p-4 bg-white shadow-md">
+                  <img src="Icons/xd.png" alt="Adobe XD" class="h-12 mx-auto">
+                  <h3 class="mt-4 text-xl font-semibold">Adobe XD Casestudy</h3>
+                </div>
+                <div class="p-4 bg-white shadow-md">
+                  <img src="Icons/sketch.png" alt="Sketch" class="h-12 mx-auto">
+                  <h3 class="mt-4 text-xl font-semibold">Sketch Casestudy</h3>
+                </div>
+                <div class="p-4 bg-white shadow-md">
+                  <img src="Icons/ux-design.png" alt="UX" class="h-12 mx-auto">
+                  <h3 class="mt-4 text-xl font-semibold">UX Casestudy</h3>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="portfolio" class="py-20 bg-white">
+            <div class="container mx-auto text-center">
+              <h2 class="text-3xl font-montserrat">Case Studies</h2>
+              <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Example project card -->
+                <div class="relative group overflow-hidden">
+                  <img src="Images/Littlelemon/Homepage.png" alt="Little-Lemon " class="w-full h-50 object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="text-center text-white">
+                      <h3 class="text-xl font-montserrat">Little Lemon Restaurant</h3>
+                      <p class="mt-2 font-Lato">UI/UX Design, Figma</p>
+                      <br>
+                      <a href="https://www.behance.net/gallery/195811121/Little-Lemon-restaurant" ><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Read more</button></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                  <img src="Images/Luckyhrub/Luckyshrub work.gif" alt="Lucky-shrub" class="w-full h-50 object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="text-center text-white">
+                      <h3 class="text-xl font-montserrat">Lucky Shrub</h3>
+                      <p class="mt-2 font-Lato">UI/UX Design, Figma</p>
+                      <br>
+                      <a href="https://www.behance.net/gallery/193664439/Lucky-Shrub-Project"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Read more</button></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                  <img src="Images/Trektide/Behance Trek Tide.gif" alt="Trek-Tide" class="w-full h-50 object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="text-center text-white">
+                      <h3 class="text-xl font-montserrat">Trek Tide</h3>
+                      <p class="mt-2 font-Lato">UI/UX Design, Figma</p>
+                      <br>
+                      <a href="https://www.behance.net/gallery/195928051/Trek-Tide"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Read more</button></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                  <img src="Images/cuddly/Cuddly Homepage.gif" alt="Cuddly" class="w-full h-50 object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="text-center text-white">
+                      <h3 class="text-xl font-montserrat">Cuddly</h3>
+                      <p class="mt-2 font-Lato">UI/UX Design, Figma</p>
+                      <br>
+                      <a href="https://www.behance.net/gallery/196603465/Cuddly"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Read more</button></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                  <img src="Images/Rameezlawfirm.png" alt="Rameez Law Services" class="w-full h-50 object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="text-center text-white">
+                      <h3 class="text-xl font-montserrat">Rameez Law Services</h3>
+                      <p class="mt-2 font-Lato">UI/UX Design, Figma, TailwindCSS, SPA </p>
+                      <br>
+                      <a href="https://www.behance.net/gallery/196603465/Cuddly"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Read more</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </body>
     
+
+</html>    
