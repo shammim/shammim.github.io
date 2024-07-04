@@ -148,13 +148,13 @@
       <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Example Area card -->
         <div class="relative group overflow-hidden">
-          <img src="Images/HTML.jpg" alt="Frontend" class="w-full h-60 object-cover">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <img src="Images/Littlelemon/Homepage.png" alt="Frontend" class="w-full h-auto object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
             <div class="text-center text-white">
-              <h3 class="text-xl font-montserrat">HTML & CSS Projects</h3>
-              <p class="mt-2 font-Lato">Description</p>
+              <h3 class="text-xl font-montserrat">Little Lemon- An Italian Restaurant</h3>
+              <p class="mt-2 font-Lato">Little Lemon, a family-owned Mediterranean restaurant, sought to revamp their online presence by developing a user-friendly and visually appealing website. My role as a front-end developer was to translate design mockups into a functional and responsive website that would showcase their menu, ambiance, and unique selling points.</p>
               <br>
-              <a href="htmlprojects.html" ><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">View Project</button></a>
+              <a href="littlelemon.html"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">View Project</button></a>
             </div>
           </div>
         </div>
@@ -196,5 +196,16 @@
       </div>
     </div>
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        themeToggle.textContent = body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+      });
+    });
+  </script>
 </body>
 </html>

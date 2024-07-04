@@ -1,61 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta lang="charset-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Shammim </title>
-        <meta property="og:title" content="Shammim">
-        <meta property="og:type" content="website">
-        <meta property="og:image" content="Logo.png">
-        <meta property="og.url" content="https://www.shammim.com">
-        <meta property="og:description" content="Shammim is a passionate frontend developer with a keen eye for crafting beautiful and functional user interfaces.  Her enthusiasm lies in utilizing Vue.js and Tailwind CSS to bring websites and applications to life.">
-        <meta property="og:locale" content="en_US">
-        <meta property="og:site_name" content="Shammim">
-        <link rel="icon" href="./Images/Logo.png" type="image" height="10px" width="4px" class="Menulogo">
-        <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
-      </head>
-      <body class="bg-scroll">
-      
-        <!-- Header -->
-       <header class="bg-gray-800 text-white py-4">
+<head>
+    <meta lang="charset-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Shammim </title>
+    <meta property="og:title" content="Shammim">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Logo.png">
+    <meta property="og.url" content="https://www.shammim.com">
+    <meta property="og:description" content="Shammim is a passionate frontend developer with a keen eye for crafting beautiful and functional user interfaces.  Her enthusiasm lies in utilizing Vue.js and Tailwind CSS to bring websites and applications to life.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Shammim">
+    <link rel="icon" href="./Images/Logo.png" type="image" height="10px" width="4px" class="w-8 h-8 rounded-full mx-auto">
+    <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-scroll">
+    
+  <!-- Header -->
+  <header class="bg-gray-800 text-white py-5">
     <nav class="container mx-auto flex justify-between items-center">
       <div class="text-2xl font-bold">Shammim</div>
-      <link rel="icon" href="./Images/Logo.png" type="image" height="10px" width="4px" class="Menulogo">
+      <link rel="icon" href="./Images/Logo.png" type="image" height="4px" width="4px" class="rounded-full">
       <ul class="flex space-x-4">
-        <li><a href="index.html" class="hover:text-gray-400">Home</a></li>
-        <li><a href="About.html" class="hover:text-gray-400">About</a></li>
-        <li><a href="Skills.html" class="hover:text-gray-400">Skills</a></li>
-        <li><a href="Portfolio.html" class="hover:text-gray-400">Portfolio</a></li>
-        <li><a href="Contact.html" class="hover:text-gray-400">Contact</a></li>
+        <li><a href="index.html" role="navigation" class="hover:text-bold-blue-600-active">Home</a></li>
+        <li><a href="About.html" role="navigation" class="hover:text-blue-400">About</a></li>
+        <li><a href="Projects.html" role="navigation" class="hover:text-blue-400">Projects</a></li>
+        <li><a href="Portfolio.html" role="navigation" class="hover:text-blue-400">Portfolio</a></li>
+        <li><a href="SayHi.html" role="navigation" class="hover:text-blue-400">Say Hi</a></li>
+        <button id="theme-toggle" class="bg-gray-300 text-gray-800 px-2 py-1 rounded">Dark Mode</button>
       </ul>
     </nav>
-   <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
-  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-    <li class="inline-flex items-center">
-      <a href="index.html" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-        <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-        </svg>
-         Home
-      </a>
-     <li>
-      <div class="flex items-center">
-        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <a href="Portfolio.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Portfolio</a>
+  </header>
+  <!-- Header -->
+  <div class="container mx-auto flex justify-between items-center">
+     <div class="text-2xl font-bold">Little Lemon</div>
+      <ul class="flex space-x-4">
+        <li><a href="#summary" role="navigation" class="hover:text-blue-400">Summary</a></li>
+        <li><a href="#challenges" role="navigation" class="hover:text-blue-400">Challenges</a></li>
+        <li><a href="#goals" role="navigation" class="hover:text-blue-400">Goals</a></li>
+        <li><a href="#solutions" role="navigation" class="hover:text-blue-400">Solutions</a></li>
+        <li><a href="#design-phases" role="navigation" class="hover:text-blue-400">Design Phases</a></li>
+        <li><a href="#results" role="navigation" class="hover:text-blue-400">Results</a></li>
+      </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="h-1100 flex flex-col justify-center items-center bg-cover bg-center text-white" style="background-image: url('Images/Hero_bg.png');">
+    <h1 class="text-3xl font-bold pt-6">Little Lemon Restaurant Website Redesign</h1>
+    <p class="text-xl mt-4 pt-6">Revamping the online presence of Little Lemon Restaurant</p>
+    <a href="https://shammim.github.io/littlelemon"><button>Website</button></a>
+  </section>
+
+  <!-- Summary Section -->
+  <section id="summary" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Summary</h2>
+      <p class="text-lg">Little Lemon, a family-owned Mediterranean restaurant, sought to revamp their online presence by developing a user-friendly and visually appealing website. The existing website lacked a clear information hierarchy, making it difficult for users to navigate and find what they were looking for.</p>
+    </div>
+  </section>
+
+  <!-- Challenges Section -->
+  <section id="challenges" class="py-20 bg-gray-200">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Challenges</h2>
+      <ul class="list-disc list-inside text-lg">
+        <li class="text-bold">Outdated design: The existing website had a dated design that didn't reflect the restaurant's warm and inviting atmosphere.</li>
+        <li>Poor navigation: The website's navigation was confusing, making it difficult for users to find essential information like the menu, location, and contact details.</li>
+        <li>Lack of mobile responsiveness: The website wasn't optimized for mobile devices, hindering user experience on smartphones and tablets.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Goals Section -->
+  <section id="goals" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Goals</h2>
+      <ul class="list-disc list-inside text-lg">
+        <li>Develop a user-friendly and visually appealing website that reflects Little Lemon's brand identity.</li>
+        <li>Improve website navigation to ensure users can easily find the information they need.</li>
+        <li>Create a mobile-responsive website that provides a seamless experience across all devices.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section id="solutions" class="py-20 bg-gray-200">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Solutions Implemented</h2>
+      <ul class="list-disc list-inside text-lg">
+        <li>Modern and User-Friendly Design: Employed a clean and modern design aesthetic that aligns with Little Lemon's brand identity.</li>
+        <li>Enhanced Navigation: Implemented a clear and intuitive navigation menu, allowing users to easily access important information like the menu, location, contact details, and reservation options.</li>
+        <li>Mobile Responsiveness: Utilized responsive design principles to ensure the website adapts flawlessly to different screen sizes and devices.</li>
+        <li>High-Quality Visuals: Integrated high-quality photos and videos showcasing the restaurant's ambiance, delicious dishes, and happy customers.</li>
+        <li>Compelling Content: Developed engaging content highlighting Little Lemon's unique offerings, including their menu, story, and commitment to fresh, high-quality ingredients.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Design Phases Section -->
+  <section id="design-phases" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Design Phases</h2>
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold mb-4">Research</h3>
+        <p class="text-lg mb-2">User Interviews: Conducted interviews with target users to understand their needs, expectations, and pain points when searching for restaurant websites.</p>
+        <p class="text-lg">Competitor Analysis: Analyzed competitor websites to identify best practices and areas for differentiation.</p>
       </div>
-        <div class="flex items-center">
-        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <a href="littlelemon.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Little Lemon Casestudy</a>
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold mb-4">Key Insights</h3>
+        <ul class="list-disc list-inside text-lg">
+          <li>Users prioritized finding the menu, location, and reservation options quickly and easily.</li>
+          <li>Clean and modern design aesthetics were preferred.</li>
+          <li>High-quality visuals played a significant role in influencing user perception.</li>
+        </ul>
       </div>
-    </li>
-    </li>
-  </ol>
-</nav>
-</header>
-    
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold mb-4">UX Design</h3>
+        <ul class="list-disc list-inside text-lg">
+          <li>Created sitemaps to define the website's information architecture and user flow.</li>
+          <li>Developed wireframes to illustrate the layout and functionality of key pages.</li>
+          <li>Conducted user testing to identify potential usability issues and refine the design based on user feedback.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold mb-4">UI Design</h3>
+        <ul class="list-disc list-inside text-lg">
+          <li>Created mockups for key website pages, showcasing the visual design elements like color palette, typography, and layout.</li>
+          <li>Developed a style guide outlining the website's overall design language, ensuring consistency across all pages.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section id="results" class="py-20 bg-gray-200">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Results</h2>
+      <p class="text-lg">Since launching the new website, Little Lemon has seen a 20% increase in online reservation requests and a 15% boost in online menu views.</p>
+      <p class="text-lg mt-4">Customer testimonial - "The new website is so user-friendly! Now I can easily browse the menu and make reservations online."</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-blue-900 text-white py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Say Hi</h2>
+      <form class="max-w-lg mx-auto" action="https://formspree.io/f/{your-form-id}" method="POST">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-bold mb-2">Name</label>
+          <input type="text" id="name" name="name" class="w-full p-2 rounded bg-white text-gray-800" required>
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-bold mb-2">Email</label>
+          <input type="email" id="email" name="email" class="w-full p-2 rounded bg-white text-gray-800" required>
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-sm font-bold mb-2">Message</label>
+          <textarea id="message" name="message" class="w-full p-2 rounded bg-white text-gray-800" rows="4" required></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="bg-yellow-400 text-blue-900 px-4 py-2 rounded">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto px-4 text-center">
+      <div class="mb-2">
+        <a href="#home" class="text-gray-400 hover:text-white mx-2">Home</a>
+        <a href="#about" class="text-gray-400 hover:text-white mx-2">About</a>
+        <a href="#projects" class="text-gray-400 hover:text-white mx-2">Projects</a>
+        <a href="#illustrations" class="text-gray-400 hover:text-white mx-2">Illustrations</a>
+        <a href="#contact" class="text-gray-400 hover:text-white mx-2">Say Hi</a>
+      </div>
+      <p class="text-gray-500">© 2024 Shammim. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        themeToggle.textContent = body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+      });
+    });
+  </script>
 </body>
 </html>
+
