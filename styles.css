@@ -14,44 +14,49 @@
   body, html {
     height: 100%;
 }
-  h1
-  {
-    background-size: contain;
-    text-align: center;
-    font-family: 'Euphoria script', cursive;;
-    font-size: 60px;
-    color: #0B3C3D;
-    font-weight: bold;
-    text-transform: capitalize;
-  }
-  h2 {
-    color: #AA7338;
-    font-size: 34px;
-    font-family: 'Lora', sans-serif;
-    text-align: center;
-    font-weight: 400;
-  }
-  h3 {
-    color: #0077A2;
-    text-align: center;
-    font-family: 'Lora',sans-serif;
-  }
-  h4{
-    font-family: 'Lora', sans-serif;
-    font-size:20px;
-    font-weight: bold;
-    text-align: center;
-  }
-  p{
-    color: #fff;
-    font-size: 16px;
-    font-weight: regular;
-    text-align: center;
-    font-family: "Hind Madurai", sans-serif;
-  }
-  a{
-    font-family: "Hind Madurai", sans-serif;
-  }
+h1 {
+  background-size: contain;
+  text-align: center;
+  font-family: Lato;
+  font-size: 60px;
+  color: #0B3C3D;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+h2 {
+  color: #AA7338;
+  font-size: 34px;
+  font-family: 'Lora', sans-serif;
+  text-align: center;
+  font-weight: 400;
+}
+
+h3 {
+  color: #0077A2;
+  text-align: center;
+  font-family: 'Lora', sans-serif;
+}
+
+h4 {
+  font-family: 'Lora', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+p {
+  color: #fff;
+  font-size: 16px;
+  font-weight: regular;
+  text-align: center;
+  font-family: 'Hind Madurai', sans-serif;
+}
+
+a {
+  font-family: 'Hind Madurai', sans-serif;
+  font-size: 16px;
+}
   ul.breadcrumb {
     font-family: "Hind Madurai", sans-serif;
     padding: 8px 20px;
@@ -91,7 +96,6 @@
     padding-left: 120px;
   }
 button {
-  background-color: #83d7f3;
   color: #fff;
   padding: 10px;
   border-radius: 20px;
@@ -106,7 +110,7 @@ button {
   box-shadow: #0077A2;
  }
   button :hover{
-    background-color: #FF4E73;
+    background-color: #ededed;
     transform: scale(1.05);
   }
 .buttonCTA{
@@ -166,7 +170,7 @@ button {
      width: 100%;
  }
  nav ul a {
-   color:#4CAF50;
+  color: #333;
    font-family: 'Roboto', sans-serif;
    text-decoration: none;
    padding-inline: 20px;
@@ -250,35 +254,7 @@ button {
     transform: translate(-50%, -50%);
     color: white;
   }
-.Hero_title{
-    font-family:'Dancing script', serif ;
-    align-items: center;
-    color: #fff;
-  }
-  .Hero_subtitle {
-    margin-top: -30pt;
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
-  }
-  .hero-image{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("blog3.jpg");
-    height: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
-    position: relative;
-    padding: 9rem;
-  }
-  .Heropara{
-    color: #fff;
-    font-size: 20px;
-    font-weight:normal;
-    line-height: 1.5;
-    max-block-size: 30;
-    font-family: 'Roboto', sans-serif;
-    align-items: center;
-    margin-top: -30px;
-  }
+
   .Hero_button{
    font-family: 'Quicksand', sans-serif;
    padding-top: 50px;
