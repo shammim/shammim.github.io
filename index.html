@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="ssLogo.png" type="image">
     <title>Shammim</title>
     <meta property="og:title" content="Shammim">
     <meta property="og:type" content="website">
@@ -16,19 +17,19 @@
     <link rel="stylesheet" href="styles.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-gray-100 ">
+  <body class=" ">
    <!-- Header -->
    <div class="flex items-center justify-center h-100">
      <a href="index.html"><img src="Icons/Logo.png" class="h-20 justify-between items-center"  alt="Logo" class="Sitelogo"/></a> 
    </div>
-   <header class="header" id="header">
-      <nav class="text-gray-800 py-2">
+   <header class="bg-gray-400" id="header">
+      <nav class="text-gray-400 py-2">
         <ul class="flex justify-between items-center">
           <li><a href="#home" role="navigation" class="active text-gray-700 ">Home</a></li>
-          <li><a href="#about" role="navigation" class="text-gray-700 ">About</a></li>
-          <li><a href="#work" role="navigation" class="text-gray-700 ">Work</a></li>
-          <li><a href="#illustrations" role="navigation" class="text-gray-700">Portfolio</a></li>
-          <li><a href="#contact" role="navigation" class="text-gray-700 ">Say Hi</a></li>
+          <li><a href="About.html" role="navigation" class="text-gray-700 ">About</a></li>
+          <li><a href="Work.html" role="navigation" class="text-gray-700 ">Work</a></li>
+          <li><a href="Portfolio.html" role="navigation" class="text-gray-700">Portfolio</a></li>
+          <li><a href="SayHi.html" role="navigation" class="text-gray-700 ">Say Hi</a></li>
           <li><a href="https://www.linkedin.com/in/shammimshaik/"><img src="Icons/linkedin.png" width="20px" height="20px"/></a></li>
           <li><a href="https://www.facebook.com/shammim.s"><img src="Icons/facebook.png" width="20px" height="20px"/></a></li>
           <li><a href="https://www.instagram.com/shammim1234/?hl=en"><img src="Icons/instagram.png" width="20px" height="20px"/></a></li>
@@ -58,144 +59,147 @@
     <br>
     <br>
     <!-- Hero Section -->
-   <section id ="Hero" class=" mx-4 bg-[#0f8b8d] p-8 mt-2 hero-section">
-      <article class="hero-section">
-        <h1 class="text-6xl mt-4 ml-4 font-Lato text-white">A Frontend Developer</h1>
-        <p class="text-xl mt-4 font-roboto text-gray-200">Where Design Meets Code: UX/UI Designer, Artist, Front-end Developer</p>
-        <p class="text-gray-200 font-normal ml-4">Crafting beautiful and functional user experiences.</p>
-        <a href="About.html" class="bg-[#ec9a29] text-white font-bold py-2 px-4 mt-4 rounded"><button>About Me</button></a>
+    <section id="Hero" class="mx-4 bg-[#F2F2F2] p-8 mt-2 hero-section flex justify-center items-center">
+      <article class="text-center">
+        <h1 class="text-6xl mt-4 font-Lato text-gary-800">A Frontend Developer</h1>
+        <p class="text-xl mt-4 font-roboto text-gray-800">Where Design Meets Code: UX/UI Designer, Artist, Front-end Developer</p>
+        <p class="text-gray-800 font-normal mt-4">Crafting beautiful and functional user experiences.</p>
+        <div class="mt-4">
+          <a href="About.html" class="bg-[#38B2AC] text-white font-bold py-2 px-4 rounded"><button>About Me</button></a>
+        </div>
       </article>
-   </section>
+    </section>
 
     <!-- About Section -->
-     <div>
-        <section class="flex justify-center items-center mb-8">
-          <h3 class="font-Roboto text-4xl text-[#143642] text-center pt-8">About </h3>
-       </section>
-     </div>
-     <section id="about" class="flex container mx-auto mt-16">
-       <section class="flex flex-col md:flex-row items-center gap-12">
-         <article class="shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100">
-           <img src="/Images/Shammim.jpg" alt="Shammim" class="w-64 h-64 rounded-full mx-auto mb-8 md:mb-0 md:mr-8">
-         </article>  
-         <br>
-         <br>
-          <article>
-            <p class="text-lg text-gray-500">I am a frontend developer with a passion for art and design. Over the past few years, I have honed my skills in various design tools including Figma, Canva, Adobe XD, and Sketch. My expertise extends to implementing UX and UI principles to create intuitive and beautiful web interfaces.</p>
-            <p class="text-lg text-gray-500 mt-4">I believe in the power of design to solve problems and create meaningful user experiences. My approach to design is user-centered, ensuring that every project I work on meets the needs of its users while also achieving business goals.</p>
-            <p class="text-lg text-gray-500 mt-4">When I am not designing or coding, you can find me exploring art galleries, trying out new design tools, or sketching out new ideas for future projects.</p>
-          </article>
-        </section>
+    <div class="">
+      <section class="flex justify-center items-center mb-8 mt-2">
+        <h3 class="font-Roboto text-4xl text-[#143642] text-center pt-8 font-bold">About</h3>
+      </section>
+    </div>
+    <section id="about" class="container mx-auto mt-16 mb-8">
+      <section class="flex justify-between items-center gap-24">
+        <article class="">
+          <img src="/Images/Shammim.jpg" alt="Shammim" class="w-64 h-64 rounded-full mx-auto mb-8 md:mb-0 md:mr-8">
+        </article>
+        <article>
+          <p class="text-lg text-gray-800">I am a frontend developer with a passion for art and design. Over the past few years, I have honed my skills in various design tools including Figma, Canva, Adobe XD, and Sketch. My expertise extends to implementing UX and UI principles to create intuitive and beautiful web interfaces.</p>
+          <p class="text-lg text-gray-800 mt-4">I believe in the power of design to solve problems and create meaningful user experiences. My approach to design is user-centered, ensuring that every project I work on meets the needs of its users while also achieving business goals.</p>
+          <p class="text-lg text-gray-800 mt-4">When I am not designing or coding, you can find me exploring art galleries, trying out new design tools, or sketching out new ideas for future projects.</p>
+        </article>
+      </section>
     </section>
 
     <!-- Projects Section -->
-    <div id="work" class="work">
-       <section class="flex justify-center items-center mb-8">
-          <h3 class="font-Roboto text-4xl text-[#143642] text-center pt-8">Projects </h3>
-       </section>
-        <!-- Example Project Items -->
-        <section class="grid md:grid-cols-3 gap-8"> 
-          <article class=" bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100">
+    <div id="work" class="bg-gray-200 mb-16">
+      <section class="flex justify-center items-center mb-8 mt-2">
+        <h3 class="font-Roboto text-4xl text-[#143642] text-center pt-8 font-bold">Projects </h3>
+      </section>
+      <!-- Example Project Items -->
+      <section class="grid md:grid-cols-3 gap-8 "> 
+        <article class=" bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100 bg-gray-200">
           <img src="./Images/Littlelemon/Homepage.png" alt="Little_Lemon" class="w-fit rounded-lg">
           <div class="mt-4">
-              <div class="justify-between items-center">
-                <h3 class="text-xl font-bold mb-2 text-teal-500">Little Lemon Restaurant</h3>
-               <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Little Lemon, a family-owned Mediterranean restaurant, sought to revamp their online presence by developing a user-friendly and visually appealing website. My role as a front-end developer was to translate design mockups into a functional and responsive website that would showcase their menu, ambiance, and unique selling points.</p>
-               <a href="https://shammim.github.io/littlelemon"><button  class="bg-[#ec9a29] text-white font-bold py-2 px-4 mt-4 rounded">Read more</button></a> 
+            <div class="justify-between items-center">
+              <h3 class="text-xl font-bold mb-2 text-teal-500">Little Lemon Restaurant</h3>
+              <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Little Lemon, a family-owned Mediterranean restaurant, sought to revamp their online presence by developing a user-friendly and visually appealing website. My role as a front-end developer was to translate design mockups into a functional and responsive website that would showcase their menu, ambiance, and unique selling points.</p>
+              <div class="mt-4 flex justify-center" >
+                <a href="https://shammim.github.io/littlelemon"><button class="bg-[#38B2AC] text-white font-bold py-2 px-4 rounded">Read more</button></a> 
               </div>
             </div>
-          </article>
-          <article class=" bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100">
-            <img src="./Images/Luckyhrub/Luckyshrub work.gif" alt="Little_Lemon" class="w-fit rounded-lg">
-            <div class="mt-4">
-              <div class="justify-between items-center shadow-md">
-                <h3 class="text-xl font-bold mb-2 mt-4 text-teal-500">Lucky Shurb</h3> 
-                <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Lucky Shrub was started by Jason and Maria, who share a long-time love for plants. Jason is the garden architect. He creates and oversees all designs while managing his team of landscapers. Maria manages all the marketing and communications. She is the go-to person for all things business-related. From product management and marketing to customer support and team management, Maria handles it all.</p>
-                <a href="https://shammim.github.io/luckyshrub"><button  class="bg-[#ec9a29] text-white font-bold py-2 px-4 mt-4 rounded" >Read more</button></a>
+          </div>
+        </article>
+        <article class=" bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100 bg-gray-200">
+          <img src="./Images/Luckyhrub/Luckyshrub work.gif" alt="Little_Lemon" class="w-fit rounded-lg">
+          <div class="mt-4">
+            <div class="justify-between items-center shadow-md">
+              <h3 class="text-xl font-bold mb-2 mt-4 text-teal-500">Lucky Shurb</h3> 
+              <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Lucky Shrub was started by Jason and Maria, who share a long-time love for plants. Jason is the garden architect. He creates and oversees all designs while managing his team of landscapers. Maria manages all the marketing and communications. She is the go-to person for all things business-related. From product management and marketing to customer support and team management, Maria handles it all.</p>
+              <div class="mt-4 flex justify-center mb-2">
+                <a href="https://shammim.github.io/luckyshrub"><button class="bg-[#38B2AC] text-white font-bold py-2 px-4 rounded" >Read more</button></a>
               </div>
             </div>
-          </article>
-         
-          <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100">
-            <img src="/Images/Trektide/Behance Trek Tide.gif" alt="Trek Tide" class="w-fit rounded-lg">
-            <div class="mt-4">
-              <div class=" justify-between items-center">              
-                <h3 class="text-xl font-bold mb-2 text-teal-500">Trek Tide</h3>
-                <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Trek Tide, a dynamic travel agency specializing in adventure tours, sought a website that reflected their energetic spirit and streamlined the booking process. My role as a front-end developer was to build a user-friendly and visually engaging website using Vue.js and Tailwind CSS. The goal was to showcase Trek Tide's unique travel packages, simplify navigation, and encourage online bookings.</p>
-                <a href="https://shammim.github.io/Trek-Tide" ><button  class="bg-[#ec9a29] text-white font-bold py-2 px-4 mt-4 rounded">Read more</button></a>
+          </div>
+        </article>  
+        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100 bg-gray-200">
+          <img src="/Images/Trektide/Behance Trek Tide.gif" alt="Trek Tide" class="w-fit rounded-lg">
+          <div class="mt-4">
+            <div class=" justify-between items-center">              
+              <h3 class="text-xl font-bold mb-2 text-teal-500">Trek Tide</h3>
+              <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Trek Tide, a dynamic travel agency specializing in adventure tours, sought a website that reflected their energetic spirit and streamlined the booking process. My role as a front-end developer was to build a user-friendly and visually engaging website using Vue.js and Tailwind CSS. The goal was to showcase Trek Tide's unique travel packages, simplify navigation, and encourage online bookings.</p>
+              <div class="mt-4 flex justify-center mb-2">
+                <a href="https://shammim.github.io/Trek-Tide"><button class="bg-[#38B2AC] text-white font-bold py-2 px-4 rounded mb-2">Read more</button></a>
               </div>
             </div>
-         </article>
-       </section>
-    </div>  
+          </div>
+       </article>  
+      </section>
+   </div>  
 
     <!-- Illustrations Section -->
-    <div class="Illustration" id="Illustration">
-      <section class="flex container mx-auto mt-16">
-        <h2 class="font-Roboto text-4xl text-[#143642] text-center pt-8">Illustrations</h2>
+    <div class="mb-12" id="Illustration">
+      <section class="flex flex-col items-center container mx-auto mt-10">
+        <h2 class="font-Roboto text-4xl text-[#143642] text-center pt-8 font-bold">Illustrations</h2>
       </section>
       <section class="grid md:grid-cols-3 gap-8">
-        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100">
+        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100 p-4">
           <img src="Images/I3.gif" alt="Illustration 1" class="w-64 h-100 mx-auto mt-4">
-          <div class="mt-4">
-             <div class="justify-between items-center">
-                <h3 class="text-xl font-bold mb-2">Work Fashion Illustration</h3>
-                <p class="text-gray-700 dark:text-gray-300">The "Work Fashion Illustration" project isn't your average office attire showcase. It's a creative exploration of how fashion empowers us to navigate the professional world.</p>
-
-              </div>
+          <div class="mt-4 flex flex-col items-center">
+            <h3 class="text-xl font-bold mb-2 text-center">Work Fashion Illustration</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-center">The "Work Fashion Illustration" project isn't your average office attire showcase. It's a creative exploration of how fashion empowers us to navigate the professional world.</p>
           </div>
         </article>
         <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100 p-4">
           <img src="/Images/I2.gif" alt="Illustration 2" class="w-64 h-100 mx-auto mt-4">
-          <div class="mt-4">
-            <div class="justify-between items-center">
-              <h3 class="text-xl font-bold mb-2">Work Mode Illustration</h3>
-              <p class="text-gray-700 dark:text-gray-300">The "Work Mode Illustration" project is a visual exploration of the diverse ways we achieve focus and productivity. This isn't your typical office illustration! It's about using creativity to capture the essence of being "in the zone."</p>
-            </div>
+          <div class="mt-4 flex flex-col items-center">
+            <h3 class="text-xl font-bold mb-2 text-center">Work Mode Illustration</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-center">The "Work Mode Illustration" project is a visual exploration of the diverse ways we achieve focus and productivity. This isn't your typical office illustration! It's about using creativity to capture the essence of being "in the zone."</p>
           </div>
-       </article>
-       <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100 p-4">
+        </article>
+        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100 p-4">
           <img src="/Images/Menfashion.gif" alt="Illustration 3" class="w-64 h-100 mx-auto mt-4">
-          <div class="mt-4">
-            <div class="justify-between items-center">
-              <h3 class="text-xl font-bold mb-2">Men Fashion Illustration</h3>
-              <p class="text-gray-700 dark:text-gray-300">This project delves into the world of men's fashion through the lens of illustration. It's more than just capturing clothing; it's about expressing your unique vision and creativity in portraying the essence of modern menswear.</p>
-            </div>  
+          <div class="mt-4 flex flex-col items-center">
+            <h3 class="text-xl font-bold mb-2 text-center">Men Fashion Illustration</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-center">This project delves into the world of men's fashion through the lens of illustration. It's more than just capturing clothing; it's about expressing your unique vision and creativity in portraying the essence of modern menswear.</p>
           </div>
-       </article>
-    </section>
+        </article>
+      </section>
+    </div>
+    
     
     <!-- Contact Section -->
-    <section id="contact" class="bg-blue-900 text-white py-20">
-      <div class=" mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-8">Say Hi</h2>
-        <br>
-        <form class="max-w-lg mx-auto" action="https://formspree.io/f/{your-form-id}" method="POST">
-          <div class="mb-4">
-            <label for="name" class="block text-sm font-bold mb-2">Name</label>
-            <input type="text" id="name" name="name" class="w-full p-2 rounded bg-white text-gray-800" required>
+    <section id="contact" class="bg-gray-200 text-white py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-extrabold text-center mb-8">Say Hi!</h2>
+        <p class="text-center text-lg mb-8 text-gray-800">We'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible!</p>
+        <form class="max-w-lg mx-auto bg-white text-gray-800 p-8 rounded-lg shadow-lg" action="https://formspree.io/f/{your-form-id}" method="POST">
+          <div class="mb-6">
+            <label for="name" class="block text-lg font-semibold mb-2">Name</label>
+            <input type="text" id="name" name="name" class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#38B2AC] transition duration-300 ease-in-out" required>
           </div>
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-bold mb-2">Email</label>
-            <input type="email" id="email" name="email" class="w-full p-2 rounded bg-white text-gray-800" required>
+          <div class="mb-6">
+            <label for="email" class="block text-lg font-semibold mb-2">Email</label>
+            <input type="email" id="email" name="email" class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#38B2AC] transition duration-300 ease-in-out" required>
           </div>
-          <div class="mb-4">
-            <label for="message" class="block text-sm font-bold mb-2">Message</label>
-            <textarea id="message" name="message" class="w-full p-2 rounded bg-white text-gray-800" rows="4" required></textarea>
+          <div class="mb-6">
+            <label for="message" class="block text-lg font-semibold mb-2">Message</label>
+            <textarea id="message" name="message" class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#38B2AC] transition duration-300 ease-in-out" rows="6" required></textarea>
           </div>
           <div class="text-center">
-            <button type="submit" class="bg-teal-400 text-blue-900 px-4 py-2 rounded hover:bg-teal-700">Send Message</button>
+            <button type="submit" class="bg-[#38B2AC] text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-[#2c9d8a] transition duration-300 ease-in-out">Send Message</button>
           </div>
         </form>
       </div>
     </section>
+    
 
     <!-- Footer Section -->
-    <footer class="bg-gray-200 text-gray-900 py-4">
-      <div class=" mx-auto px-4 text-center">
-        <div class="mb:6 md:mb-0">
-          <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-gray-900 gap-10">
-            <li><a href="index.html"><img src="Icons/Logo.png" class="w-10 h-10 justify-between items-center mr-10 "  alt="Logo" class="Sitelogo"/></a> </li>
+    <footer class="bg-gray-400 text-gray-900 py-4">
+      <div class="container mx-auto px-4 text-center">
+        <div class="mb-6 md:mb-0">
+          <ul class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 text-gray-900 gap-4">
+            <li>
+              <a href="index.html"><img src="Icons/Logo.png" class="w-10 h-10 mx-auto" alt="Logo" class="Sitelogo" /></a>
+            </li>
             <li><a href="index.html" class="text-gray-900 hover:text-white mx-2">Home</a></li>
             <li><a href="About.html" class="text-gray-900 hover:text-white mx-2">About</a></li>
             <li><a href="Work.html" class="text-gray-900 hover:text-white mx-2">Work</a></li>
@@ -207,6 +211,7 @@
         </div>
       </div>
     </footer>
+ 
     <footer class="bg-gray-200 text-gray-800  py-4">
       <div class="mx-auto px-4 text-center">
         <p>&copy; 2024 Shammim. All rights reserved.</p>
