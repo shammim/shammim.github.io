@@ -57,30 +57,6 @@ a {
   font-family: 'Hind Madurai', sans-serif;
   font-size: 16px;
 }
-  ul.breadcrumb {
-    font-family: "Hind Madurai", sans-serif;
-    padding: 8px 20px;
-    list-style: none;
-    background-color: #eee;
-  }
-  ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
-  }
-  ul.breadcrumb li+li:before {
-    padding: 5px;
-    color: #fff;
-    content: "/\00a0";
-  }
-  ul.breadcrumb li a {
-    color: #4CAF50;
-    font-family: "Hind Madurai", sans-serif;
-    text-decoration: none;
-  }
-  ul.breadcrumb li a:hover {
-    color: #0077A2;
-    text-decoration: underline;
-  }
   div img{
     align-items: center;
   }
@@ -212,7 +188,7 @@ button {
     color: #22A0CD;
  }
  a.active{
-  color: #000;
+  color: rgb(30 64 175 / var(--tw-text-opacity));
  }
  section {
    display: flex;
