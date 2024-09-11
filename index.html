@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
     <head>
      <meta lang="charset-8">
@@ -13,35 +14,91 @@
      <meta property="og:site_name" content="Shammim">
      <link rel="stylesheet" href="styles.css" />
      <link rel="icon" href="./Images/Logo.png" type="image" height="10px" width="4px" class="Menulogo">
+=======
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="ssLogo.png" type="image">
+    <title>Shammim</title>
+    <meta property="og:title" content="Shammim">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Logo.png">
+    <meta property="og:url" content="https://shammim.github.io">
+    <meta property="og:description" content="Shammim is a passionate frontend developer with a keen eye for crafting beautiful and functional user interfaces. Her enthusiasm lies in utilizing Vue.js and Tailwind CSS to bring websites and applications to life.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Shammim">
+    <link rel="icon" href="./Images/Logo.png" type="image/" height="10px" width="4px" class="w-8 h-8 rounded-full mx-auto">
+    <link rel="stylesheet" href="styles.css"/>
+    <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+>>>>>>> 6eb12e65fe80cba6ce35326b316d96f279118295
 
-    </head>
-    <header>
-        <img src="./Images/Logo.png" class="Menulogo" alt="SiteHeaderLogo" width="80px" height="80px" max-width="100%" padding-top="10px" padding-right="20px"  border-radius="20px" aria-label="logo">
-        <nav>
-            <ul class="menu">
-                <li><a href="about.html" class="nav_item">About</a></li>
-                <li><a href="projects.html" class="nav_item">Projects</a></li>                
-                <li><a href="UXUI.html" class="nav_item">UX/UI</a></li>
-                <li><a href="contact.html" class="nav_item">Say Hi</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <ul class="breadcrumb">
-            <li><a href="index.html"> Home</a></li>
-        </ul>    
-    </main>
+  </head>
+
+  <body class="bg-scroll">
+   <!-- Header -->
+   <header class="bg-gray-800 text-white py-5">
+    <nav class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold">Shammim</div>
+      <link rel="icon" href="./Images/Logo.png" type="image" height="4px" width="4px" class="rounded-full">
+      <ul class="flex space-x-4">
+        <li><a href="index.html" role="navigation" class="text-white hover:text-bold-blue-600-active">Home</a></li>
+        <li><a href="About.html" role="navigation" class=" text-white hover:text-blue-400">About</a></li>
+        <li><a href="Work.html" role="navigation" class="text-white hover:text-blue-400">Projects</a></li>
+        <li><a href="Portfolio.html" role="navigation" class="text-white hover:text-blue-400">Portfolio</a></li>
+        <li><a href="SayHi.html" role="navigation" class="text-white hover:text-blue-400">Say Hi</a></li>
+        <li><a href="https://www.linkedin.com/in/shammimshaik/"><img src="Icons/linkedin.png" width="20px" height="20px"/></a></li>
+        <li><a href="https://www.facebook.com/shammim.s"><img src="Icons/facebook.png" width="20px" height="20px"/></a></li>
+        <li><a href="https://www.instagram.com/shammim1234/?hl=en"><img src="Icons/instagram.png" width="20px" height="20px"/></a></li>  
+      </ul>
+    </nav>
+  </header>
+  <br>
+  <button class="toggle-button text-gray-900 font-bold py-2 px-4 rounded" id="menuBtn"><img src="Icons/menu.png" class="w-8 h-8"/></button>
+    <div class="hidden" id="sidebar">
+      <nav>
+        <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-gray-400">
+          <li><a href="index.html" role="navigation" class="active text-gray-700 hover:underline">Home</a></li>
+          <li><a href="About.html" role="navigation" class="text-gray-700 hover:underline">About</a></li>
+          <li><a href="Work.html" role="navigation" class="text-gray-700 hover:underline">Work</a></li>
+          <li><a href="Portfolio.html" role="navigation" class="text-gray-700 hover:underline">Portfolio</a></li>
+          <li><a href="Contact.html" role="navigation" class="text-gray-700 hover:text-gray-900">Say Hi</a></li>
+       </ul>
+      </nav>
+    </div>
     
-    <body>
-        <div class="Hero">
-            <div class="hero_text">
-              <h1> Shammim </h1>
-              <h2> Where Design Meets code: UX/UI Designer, Artist, Front-end Developer</h2>  
-              <h3> Crafting beautiful and functional user experience.</h3>
-              <button><a href="about.html">Know more</a></button>
-            </div>
+    <!-- Hero Section -->
+    <section id="Hero" class="mx-4 bg-gray-200 p-8 mt-2 hero-section flex justify-center items-center">
+      <article class="text-center">
+        <h1 class="text-6xl mt-4 font-Lato text-blue-800">A Frontend Developer</h1>
+        <p class="text-xl mt-4 font-roboto text-gray-800">Where Design Meets Code: UX/UI Designer, Artist, Front-end Developer</p>
+        <p class="text-gray-800 font-normal mt-4">Crafting beautiful and functional user experiences.</p>
+        <div class="mt-4">
+          <a href="About.html" class="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-400"><button>About Me</button></a>
         </div>
+      </article>
+    </section>
+    
+    <!-- About Section -->
+    <div class="">
+      <section class="flex justify-center items-center mb-8 mt-2">
+        <h3 class="font-Roboto text-4xl text-blue-800 text-center pt-8 font-bold">About</h3>
+      </section>
+    </div>
+    <section id="about" class="container mx-auto mt-16 mb-8">
+      <section class="flex justify-between items-center gap-24">
+        <article class="">
+          <img src="/Images/Shammim.jpg" alt="Shammim" class="w-64 h-64 rounded-full mx-auto mb-8 md:mb-0 md:mr-8">
+        </article>
+        <article>
+          <p class="text-lg text-gray-800">I am a frontend developer with a passion for art and design. Over the past few years, I have honed my skills in various design tools including Figma, Canva, Adobe XD, and Sketch. My expertise extends to implementing UX and UI principles to create intuitive and beautiful web interfaces.</p>
+          <p class="text-lg text-gray-800 mt-4">I believe in the power of design to solve problems and create meaningful user experiences. My approach to design is user-centered, ensuring that every project I work on meets the needs of its users while also achieving business goals.</p>
+          <p class="text-lg text-gray-800 mt-4">When I am not designing or coding, you can find me exploring art galleries, trying out new design tools, or sketching out new ideas for future projects.</p>
+        </article>
+      </section>
+    </section>
 
+<<<<<<< HEAD
         <div class="art_work">
             <h2>Fashion Illustrations</h2>
             <section class="Fashion_Illustration">
@@ -99,4 +156,163 @@
             </article>
         </section>
     </footer>
+=======
+    <!-- Projects Section -->
+    <div id="work" class="bg-gray-200 mb-16">
+      <section class="flex justify-center items-center mb-8 mt-2">
+        <h3 class="font-Roboto text-4xl text-blue-800 text-center pt-8 font-bold">Projects </h3>
+      </section>
+      <!-- Example Project Items -->
+      <section class="grid md:grid-cols-3 gap-8 "> 
+        <article class=" bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100 bg-gray-200">
+          <img src="./Images/Littlelemon/Homepage.png" alt="Little_Lemon" class="w-fit rounded-lg">
+          <div class="mt-4">
+            <div class="justify-between items-center">
+              <h3 class="text-xl font-bold mb-2 text-teal-500">Little Lemon Restaurant</h3>
+              <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Little Lemon, a family-owned Mediterranean restaurant, sought to revamp their online presence by developing a user-friendly and visually appealing website. My role as a front-end developer was to translate design mockups into a functional and responsive website that would showcase their menu, ambiance, and unique selling points.</p>
+              <div class="mt-4 flex justify-center" >
+                <a href="https://shammim.github.io/littlelemon"><button class="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-400">Read more</button></a> 
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class=" bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100 bg-gray-200">
+          <img src="./Images/Luckyhrub/Luckyshrub work.gif" alt="Little_Lemon" class="w-fit rounded-lg">
+          <div class="mt-4">
+            <div class="justify-between items-center shadow-md">
+              <h3 class="text-xl font-bold mb-2 mt-4 text-teal-500">Lucky Shurb</h3> 
+              <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Lucky Shrub was started by Jason and Maria, who share a long-time love for plants. Jason is the garden architect. He creates and oversees all designs while managing his team of landscapers. Maria manages all the marketing and communications. She is the go-to person for all things business-related. From product management and marketing to customer support and team management, Maria handles it all.</p>
+              <div class="mt-4 flex justify-center mb-2">
+                <a href="https://shammim.github.io/luckyshrub"><button class="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-400 mb-2" >Read more</button></a>
+              </div>
+            </div>
+          </div>
+        </article>  
+        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 dark:text-gray-100 bg-gray-200">
+          <img src="/Images/Trektide/Behance Trek Tide.gif" alt="Trek Tide" class="w-fit rounded-lg">
+          <div class="mt-4">
+            <div class=" justify-between items-center">              
+              <h3 class="text-xl font-bold mb-2 text-teal-500">Trek Tide</h3>
+              <p class="text-gray-700 dark:text-gray-300 mt-4 p-4">Trek Tide, a dynamic travel agency specializing in adventure tours, sought a website that reflected their energetic spirit and streamlined the booking process. My role as a front-end developer was to build a user-friendly and visually engaging website using Vue.js and Tailwind CSS. The goal was to showcase Trek Tide's unique travel packages, simplify navigation, and encourage online bookings.</p>
+              <div class="mt-4 flex justify-center mb-2">
+                <a href="https://shammim.github.io/Trek-Tide"><button class="bg-blue-600 text-white font-bold py-2 px-4 rounded mb-2 hover:bg-blue-400">Read more</button></a>
+              </div>
+            </div>
+          </div>
+       </article>  
+      </section>
+   </div>  
+
+    <!-- Illustrations Section -->
+    <div class="mb-12" id="Illustration">
+      <section class="flex flex-col items-center container mx-auto mt-10">
+        <h2 class="font-Roboto text-4xl text-blue-800 text-center pt-8 font-bold">Illustrations</h2>
+      </section>
+      <section class="grid md:grid-cols-3 gap-8">
+        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100 p-4">
+          <img src="Images/I3.gif" alt="Illustration 1" class="w-64 h-100 mx-auto mt-4">
+          <div class="mt-4 flex flex-col items-center">
+            <h3 class="text-xl font-bold mb-2 text-center">Work Fashion Illustration</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-center">The "Work Fashion Illustration" project isn't your average office attire showcase. It's a creative exploration of how fashion empowers us to navigate the professional world.</p>
+          </div>
+        </article>
+        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100 p-4">
+          <img src="/Images/I2.gif" alt="Illustration 2" class="w-64 h-100 mx-auto mt-4">
+          <div class="mt-4 flex flex-col items-center">
+            <h3 class="text-xl font-bold mb-2 text-center">Work Mode Illustration</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-center">The "Work Mode Illustration" project is a visual exploration of the diverse ways we achieve focus and productivity. This isn't your typical office illustration! It's about using creativity to capture the essence of being "in the zone."</p>
+          </div>
+        </article>
+        <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-700 dark:text-gray-100 p-4">
+          <img src="/Images/Menfashion.gif" alt="Illustration 3" class="w-64 h-100 mx-auto mt-4">
+          <div class="mt-4 flex flex-col items-center">
+            <h3 class="text-xl font-bold mb-2 text-center">Men Fashion Illustration</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-center">This project delves into the world of men's fashion through the lens of illustration. It's more than just capturing clothing; it's about expressing your unique vision and creativity in portraying the essence of modern menswear.</p>
+          </div>
+        </article>
+      </section>
+    </div>
+    
+    
+    <!-- Contact Section -->
+    <div class="flex justify-center items-center min-h-screen bg-gray-100">
+      <div class="bg-white p-8 rounded shadow-md w-full max-w-lg">
+          <h2 class="text-2xl font-bold mb-4 text-blue-800">Say Hi!</h2>
+          <p class="text-center text-lg mb-8 text-gray-800">We'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible!</p>
+          <form id="contactForm" class="space-y-4">
+                 <div>
+                     <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                     <input type="text" id="name" name="name" required class="mt-1 block w-full p-2 border border-gray-300 rounded">
+                 </div>
+                 <div>
+                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                     <input type="email" id="email" name="email" required class="mt-1 block w-full p-2 border border-gray-300 rounded">
+                 </div>
+                 <div>
+                     <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                     <input type="tel" id="phone" name="phone" required class="mt-1 block w-full p-2 border border-gray-300 rounded">
+                 </div>
+                 <div>
+                     <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                     <textarea id="message" name="message" rows="4" required class="mt-1 block w-full p-2 border border-gray-300 rounded"></textarea>
+                 </div>
+                 <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-400">Send Message</button>
+           </form>
+          <div id="responseMessage" class="mt-4 hidden p-4 bg-blue-100 text-blue-800 rounded"></div>
+       </div>
+    </div>
+     
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div id="footer" class=" mx-auto flex flex-col md:flex-row justify-between items-center">
+           <div class="btmimg" class="mb-6 md:mb-0">
+              <img src="Icons/Logo.png" class="w-10 h-17" alt="Logo">
+           </div>
+           <br>
+           <div class="mb-6 md:mb-0">
+              <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-[#26877f]">
+                <li><a href="index.html" class="font-bold hover:text-white mx-2">Home</a></li>
+                <li><a href="About.html" class="hover:text-white mx-2">About</a></li>
+                <li><a href="Work.html" class=" hover:text-white mx-2">Work</a></li>
+                <li><a href="gallery.html" class=" hover:text-white mx-2">Gallery</a></li>
+                <li><a href="Contact.html" class=" hover:text-white mx-2">Say Hi</a></li>
+                <li><a href="tel:0430590800" class="  hover:text-white mx-2">Phone</a></li>
+                <li><a href="mailto:sshammim@gmail.com" class="  hover:text-white mx-2">Email</a></li>
+              </ul>
+           </div>
+      </div>
+   </footer>
+   <div class="text-center mt-6 text-gray-500">
+      <p class="text-gray-800">&copy; 2024 Shammim. All rights reserved.</p>
+      <p class="text-gray-800">All rights reserved</p>
+   </div>
+   <div class="mb:6 md:mb-0 text-center">
+      <a href="https://www.behance.net/shammimbegum" class="text-blue-400 hover:text-blue-600">Behance</a> |
+      <a href="https://www.linkedin.com/in/shammimshaik/" class="text-blue-400 hover:text-blue-600">LinkedIn</a> |
+      <a href="https://github.com/shammim" class="text-blue-400 hover:text-blue-600">GitHub</a>
+   </div>
+        
+    <script>
+      document.getElementById('menuBtn').addEventListener('click', function(){
+      const sidebar =document.getElementById('sidebar');
+      sidebar.classList.toggle('hidden');
+      });
+    </script>
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+         event.preventDefault();
+
+         const name = document.getElementById('name').value;
+         const email = document.getElementById('email').value;
+         const phone = document.getElementById('phone').value;
+         const message = document.getElementById('message').value;
+
+         document.getElementById('responseMessage').innerText = `
+             Thank you, ${name}! We have received your message. We email you at ${email} for further`;         
+         document.getElementById('responseMessage').classList.remove('hidden');
+     });
+ </script>
+    
+  </body>
+>>>>>>> 6eb12e65fe80cba6ce35326b316d96f279118295
 </html>
