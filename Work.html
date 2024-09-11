@@ -145,6 +145,54 @@
     </div>
   </section>
 <!-- Portfolio Section -->
+<div class="container mx-auto py-8">
+  <h1 class="text-4xl font-bold text-center mb-8">Our Projects</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <!-- Project 1 -->
+      <div class="relative group">
+          <img src="project1.jpg" alt="Project 1" class="w-full h-64 object-cover rounded-lg cursor-pointer"
+               onclick="openModal('modal1')">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center rounded-lg transition-opacity duration-300">
+              <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100">Project 1</p>
+          </div>
+      </div>
+      <!-- Repeat for other projects -->
+      <!-- Project 2 -->
+      <div class="relative group">
+          <img src="project2.jpg" alt="Project 2" class="w-full h-64 object-cover rounded-lg cursor-pointer"
+               onclick="openModal('modal2')">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center rounded-lg transition-opacity duration-300">
+              <p class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100">Project 2</p>
+          </div>
+      </div>
+      <!-- More projects... -->
+  </div>
+</div>
+
+<!-- The Modal for Project 1 -->
+<div id="modal1" class="modal">
+  <span class="close" onclick="closeModal('modal1')">&times;</span>
+  <img class="modal-content" id="img1" src="project1.jpg" alt="Project 1">
+</div>
+
+<!-- The Modal for Project 2 -->
+<div id="modal2" class="modal">
+  <span class="close" onclick="closeModal('modal2')">&times;</span>
+  <img class="modal-content" id="img2" src="project2.jpg" alt="Project 2">
+</div>
+
+<!-- More modals... -->
+
+<script>
+  function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+  }
+
+  function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+  }
+</script>
+
   <section id="portfolio" class="py-20 bg-white">
     <div class="container mx-auto text-center">
       <h2 class="text-3xl font-montserrat">Projects</h2>
