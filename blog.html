@@ -24,8 +24,9 @@
         <header class="header bg-blue-200" id="header">
         <nav class="text-gray-400 py-2">
             <ul class="flex justify-between items-center">
-                <li><a href="index.html" role="navigation" class=" font-normal text-blue-600">Home</a></li>
-                <li><a href="About.html" role="navigation" class="active" >About</a></li>
+                <li><a href="index.html" role="navigation" class="font-normal text-blue-600">Home</a></li>
+                <li><a href="About.html" role="navigation" class="font-normal text-blue-600">About</a></li>
+                <li><a href="#blog" role="navigation" class="active ">Blog</a></li>
                 <li><a href="Work.html" role="navigation" class="font-normal text-blue-600">Work</a></li>
                 <li><a href="SayHi.html" role="navigation" class="font-normal text-blue-600 ">Say Hi</a></li>
                 <li><a href="https://www.linkedin.com/in/shammimshaik/"><img src="Icons/linkedin.png" width="20px" height="20px"/></a></li>
@@ -49,48 +50,23 @@
         <br>
         <br>
     
-     <!-- About Section -->
-        <section id="about" class="container mx-auto mt-16 mb-8">
+     <!-- Topics Section -->
+        <section id="blog" class="container mx-auto mt-16 mb-8">
             <section class="flex justify-between items-center gap-24">
                     <article class="">
-                        <img src="/Images/Shammim.jpg" alt="Shammim" class="w-64 h-64 rounded-full mx-auto mb-8 md:mb-0 md:mr-8">
+                        <h1 class="text-2xl font-bold mb-4 text-blue-600" >Blog</h1>
+                        <h2 class="Blog_description">Topics you'll learn more about the projects</h2>
                     </article>
-                <article>
-                        <p class="text-lg text-gray-800">I am a frontend developer with a passion for art and design. Over the past few years, I have honed my skills in various design tools including Figma, Canva, Adobe XD, and Sketch. My expertise extends to implementing UX and UI principles to create intuitive and beautiful web interfaces.</p>
-                        <p class="text-lg text-gray-800 mt-4">I believe in the power of design to solve problems and create meaningful user experiences. My approach to design is user-centered, ensuring that every project I work on meets the needs of its users while also achieving business goals.</p>
-                        <p class="text-lg text-gray-800 mt-4">When I am not designing or coding, you can find me exploring art galleries, trying out new design tools, or sketching out new ideas for future projects.</p>
-                        <a href="projects.html" class="bg-blue-400 text-white rounded shadow-md w-full max-w-xl"> Projects</a>
-                </article>
             </section>
+            <section class="flex justify-between items-center gap-24">
+                <article class="blog_topic">
+                    <h1 class="Heading" >Topics</h1>
+                    <h2 class="Blog_names">Learning experience with Cuddly website</h2>
+                </article>
+        </section>
         </section>
     
-     <!-- Contact Section -->
-      <div class="flex justify-center items-center min-h-screen bg-gray-100">
-          <div class="bg-white p-8 rounded shadow-md w-full max-w-lg">
-                <h2 class="text-2xl font-bold mb-4 text-blue-600">Say Hi!</h2>
-                <p class="text-center text-lg mb-8 text-gray-800">We'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible!</p>
-             <form id="contactForm" class="space-y-4">
-                   <div>
-                       <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                       <input type="text" id="name" name="name" required class="mt-1 block w-full p-2 border border-gray-300 rounded">
-                   </div>
-                   <div>
-                       <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                       <input type="email" id="email" name="email" required class="mt-1 block w-full p-2 border border-gray-300 rounded">
-                   </div>
-                   <div>
-                       <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
-                       <input type="tel" id="phone" name="phone" required class="mt-1 block w-full p-2 border border-gray-300 rounded">
-                   </div>
-                   <div>
-                       <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                       <textarea id="message" name="message" rows="4" required class="mt-1 block w-full p-2 border border-gray-300 rounded"></textarea>
-                   </div>
-                   <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-400">Send Message</button>
-             </form>
-            <div id="responseMessage" class="mt-4 hidden p-4 bg-blue-100 text-blue-800 rounded"></div>
-         </div>
-      </div>
+     
       <!-- Footer Section -->
     <footer class="bg-blue-200 text-blue-600 py-8">
         <div id="footer" class=" mx-auto flex flex-col md:flex-row justify-between items-center">

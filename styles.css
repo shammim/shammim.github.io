@@ -215,6 +215,7 @@ button {
     margin-top: 1rem;
     margin-bottom: 1rem;
     align-items: center;
+    background-color: #2CAEDE;
 }
 .Hero a:hover {
     background-color: #4CAF50;
