@@ -2,113 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shammim's Art</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shammim's Art - Portfolio</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .glow:hover {
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+      transform: translateY(-5px);
+      transition: 0.3s ease;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-black text-white overflow-x-hidden">
 
-<!-- HERO SECTION -->
-<section class="text-center py-20 px-6 bg-gradient-to-r from-slate-900 to-gray-800 text-white">
-  <h1 class="text-4xl md:text-6xl font-bold">Shammim’s Art</h1>
-  <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-    Designing UX/UI interfaces enhanced with 3D visuals & interactive experiences that help brands stand out and convert better.
+<!-- HERO -->
+<section class="h-screen flex flex-col justify-center items-center text-center px-6 relative">
+
+  <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900 opacity-60"></div>
+
+  <h1 class="text-5xl md:text-7xl font-bold relative z-10 opacity-0" id="hero-title">
+    Shammim’s Art
+  </h1>
+
+  <p class="mt-6 max-w-2xl text-gray-300 text-lg relative z-10 opacity-0" id="hero-sub">
+    UX/UI Design + 3D Interactive Experiences that turn websites into high-conversion digital stories.
   </p>
-  <a href="#contact" class="mt-6 inline-block bg-white text-black px-6 py-3 rounded-full font-semibold">
-    Let’s Work Together
+
+  <a href="#work" class="mt-8 px-8 py-3 rounded-full bg-white text-black font-semibold relative z-10 hover:scale-105 transition">
+    Explore Work
   </a>
+
 </section>
 
 <!-- ABOUT / USP -->
-<section class="py-16 px-6 max-w-5xl mx-auto text-center">
-  <h2 class="text-3xl font-bold mb-4">What Makes Me Different</h2>
-  <p class="text-gray-700 text-lg">
-    I help startups and brands stand out by combining high-conversion UX design with custom 3D visuals and Blender-based interactive content.
-    The result is not just a website — but a digital experience that engages users and drives action.
+<section class="py-24 px-6 max-w-5xl mx-auto text-center">
+
+  <h2 class="text-4xl font-bold mb-6 opacity-0 section">What Makes Me Different</h2>
+
+  <p class="text-gray-400 text-lg opacity-0 section">
+    I combine UX strategy with Blender-powered 3D visuals to create immersive experiences that increase engagement, clarity, and conversions for modern brands and startups.
   </p>
+
 </section>
 
 <!-- SERVICES -->
-<section class="py-16 px-6 bg-white">
-  <h2 class="text-3xl font-bold text-center mb-10">Services</h2>
+<section class="py-20 px-6">
+
+  <h2 class="text-4xl text-center font-bold mb-12 opacity-0 section">Services</h2>
 
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
 
-    <div class="p-6 bg-gray-100 rounded-xl">
-      <h3 class="font-bold text-xl mb-2">UX/UI Design</h3>
-      <p>Clean, user-focused interfaces that improve engagement and conversions.</p>
+    <div class="glass p-6 rounded-2xl glow service">
+      <h3 class="text-xl font-bold">UX/UI Design</h3>
+      <p class="text-gray-400 mt-2">Conversion-focused interfaces and user flows.</p>
     </div>
 
-    <div class="p-6 bg-gray-100 rounded-xl">
-      <h3 class="font-bold text-xl mb-2">3D Web & Interactive Design</h3>
-      <p>Immersive 3D experiences using Blender + web technologies.</p>
+    <div class="glass p-6 rounded-2xl glow service">
+      <h3 class="text-xl font-bold">3D Web Design</h3>
+      <p class="text-gray-400 mt-2">Interactive Blender-based web experiences.</p>
     </div>
 
-    <div class="p-6 bg-gray-100 rounded-xl">
-      <h3 class="font-bold text-xl mb-2">Educational Content Design</h3>
-      <p>Visual learning materials and training content for better understanding.</p>
+    <div class="glass p-6 rounded-2xl glow service">
+      <h3 class="text-xl font-bold">Education Design</h3>
+      <p class="text-gray-400 mt-2">Training systems & learning visuals.</p>
     </div>
 
-    <div class="p-6 bg-gray-100 rounded-xl">
-      <h3 class="font-bold text-xl mb-2">UX + 3D Marketing Assets</h3>
-      <p>High-impact visuals that elevate brand storytelling and campaigns.</p>
+    <div class="glass p-6 rounded-2xl glow service">
+      <h3 class="text-xl font-bold">UX + Marketing Assets</h3>
+      <p class="text-gray-400 mt-2">High-impact brand storytelling visuals.</p>
     </div>
 
   </div>
 </section>
 
-<!-- WORK / PORTFOLIO -->
-<section class="py-16 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-10">Selected Work</h2>
+<!-- WORK -->
+<section id="work" class="py-24 px-6 max-w-6xl mx-auto">
+
+  <h2 class="text-4xl text-center font-bold mb-12 opacity-0 section">Selected Work</h2>
 
   <div class="grid md:grid-cols-3 gap-6">
 
-    <div class="bg-white shadow rounded-xl p-4">
-      <div class="h-40 bg-gray-200 rounded"></div>
-      <h3 class="mt-3 font-semibold">UX Case Study</h3>
-      <p class="text-sm text-gray-600">Improved conversion flow for a startup landing page.</p>
+    <div class="glass p-4 rounded-xl glow work">
+      <div class="h-40 bg-gradient-to-r from-purple-600 to-blue-600 rounded"></div>
+      <h3 class="mt-4 font-semibold">UX Case Study</h3>
+      <p class="text-gray-400 text-sm">Conversion optimization project.</p>
     </div>
 
-    <div class="bg-white shadow rounded-xl p-4">
-      <div class="h-40 bg-gray-200 rounded"></div>
-      <h3 class="mt-3 font-semibold">3D Product Visualization</h3>
-      <p class="text-sm text-gray-600">Blender-based interactive product showcase.</p>
+    <div class="glass p-4 rounded-xl glow work">
+      <div class="h-40 bg-gradient-to-r from-pink-600 to-purple-600 rounded"></div>
+      <h3 class="mt-4 font-semibold">3D Product Visualization</h3>
+      <p class="text-gray-400 text-sm">Blender interactive model experience.</p>
     </div>
 
-    <div class="bg-white shadow rounded-xl p-4">
-      <div class="h-40 bg-gray-200 rounded"></div>
-      <h3 class="mt-3 font-semibold">Educational UI Design</h3>
-      <p class="text-sm text-gray-600">Learning platform UI for student engagement.</p>
+    <div class="glass p-4 rounded-xl glow work">
+      <div class="h-40 bg-gradient-to-r from-blue-600 to-cyan-600 rounded"></div>
+      <h3 class="mt-4 font-semibold">Educational UI System</h3>
+      <p class="text-gray-400 text-sm">Learning platform design system.</p>
     </div>
 
   </div>
+
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-16 px-6 bg-gray-900 text-white">
-  <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-3xl font-bold mb-6">Let’s Build Something Powerful</h2>
-    <p class="mb-8 text-gray-300">
-      Tell me about your project and I’ll get back to you.
-    </p>
+<section class="py-24 px-6 bg-gradient-to-t from-black to-gray-900">
 
-    <form class="grid gap-4">
-      <input type="text" placeholder="Name" class="p-3 rounded text-black" />
-      <input type="email" placeholder="Email" class="p-3 rounded text-black" />
-      <input type="tel" placeholder="Phone" class="p-3 rounded text-black" />
-      <textarea placeholder="Your Message" rows="4" class="p-3 rounded text-black"></textarea>
-      <button class="bg-white text-black py-3 rounded font-bold hover:bg-gray-200">
+  <div class="max-w-3xl mx-auto text-center">
+
+    <h2 class="text-4xl font-bold mb-6 opacity-0 section">Let’s Work Together</h2>
+
+    <form class="grid gap-4 mt-10">
+
+      <input class="p-3 rounded bg-white text-black" placeholder="Name"/>
+      <input class="p-3 rounded bg-white text-black" placeholder="Email"/>
+      <input class="p-3 rounded bg-white text-black" placeholder="Phone"/>
+      <textarea class="p-3 rounded bg-white text-black" rows="4" placeholder="Tell me about your project"></textarea>
+
+      <button class="bg-white text-black py-3 rounded font-bold hover:scale-105 transition">
         Send Message
       </button>
+
     </form>
+
   </div>
+
 </section>
 
-<!-- FOOTER -->
-<footer class="text-center py-6 text-gray-500 text-sm">
-  © 2026 Shammim’s Art. All rights reserved.
-</footer>
+<!-- ANIMATIONS -->
+<script>
+  gsap.to("#hero-title", {opacity: 1, y: -10, duration: 1});
+  gsap.to("#hero-sub", {opacity: 1, y: -10, duration: 1, delay: 0.3});
+
+  gsap.utils.toArray(".section").forEach(el => {
+    gsap.fromTo(el,
+      {opacity: 0, y: 50},
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 80%"
+        }
+      }
+    );
+  });
+
+  gsap.utils.toArray(".service").forEach(el => {
+    gsap.fromTo(el,
+      {opacity: 0, scale: 0.9},
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%"
+        }
+      }
+    );
+  });
+
+  gsap.utils.toArray(".work").forEach(el => {
+    gsap.fromTo(el,
+      {opacity: 0, y: 40},
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%"
+        }
+      }
+    );
+  });
+</script>
 
 </body>
 </html>
