@@ -5,278 +5,276 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Shammim's Art | UX/UI + 3D Designer</title>
+  <title>Shammim's Art | UX/UI + 3D Interactive Designer</title>
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind CSS (Utility-first styling framework) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Font -->
+  <!-- Google Font: Modern premium typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Theme Variables -->
+  <!-- Custom Tailwind Theme Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          },
+          colors: {
+            primary: "#0B0F14",
+            secondary: "#151B23",
+            accent: "#22D3EE",
+            coral: "#FB7185",
+            mint: "#34D399",
+            text: "#F8FAFC",
+            muted: "#94A3B8"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Basic styling for smooth experience -->
   <style>
     html {
       scroll-behavior: smooth;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      transition: all 0.4s ease;
-    }
-
-    /* DEFAULT DARK THEME */
-    :root {
-      --bg: #0B0F14;
-      --card: rgba(255, 255, 255, 0.05);
-      --text: #F8FAFC;
-      --muted: #94A3B8;
-      --accent: #22D3EE;
-      --secondary: #151B23;
-    }
-
-    /* LIGHT THEME */
-    [data-theme="light"] {
-      --bg: #F8FAFC;
-      --card: rgba(0, 0, 0, 0.05);
-      --text: #0B0F14;
-      --muted: #475569;
-      --accent: #0ea5e9;
-      --secondary: #E2E8F0;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(10px);
+    /* Glass effect card */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: 0.3s ease;
     }
 
-    .card:hover {
+    /* Hover lift effect */
+    .lift {
+      transition: all 0.3s ease;
+    }
+
+    .lift:hover {
       transform: translateY(-6px);
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .accent {
-      color: var(--accent);
-    }
-
-    .btn {
-      background: var(--accent);
-      color: black;
-    }
-
-    .section {
-      padding: 100px 20px;
-    }
-
-    /* Toggle Switch */
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 26px;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #444;
-      transition: .4s;
-      border-radius: 34px;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-
-    input:checked + .slider {
-      background-color: var(--accent);
-    }
-
-    input:checked + .slider:before {
-      transform: translateX(24px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
   </style>
 </head>
 
-<body>
+<body class="bg-primary text-text font-sans overflow-x-hidden">
 
-<!-- ================= NAV ================= -->
-<header class="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 backdrop-blur bg-opacity-50"
-  style="background: var(--bg); border-bottom: 1px solid rgba(255,255,255,0.05);">
+<!-- =========================
+     NAVIGATION
+========================= -->
+<header class="fixed top-0 left-0 w-full z-50 bg-primary/70 backdrop-blur border-b border-white/10">
 
-  <h1 class="font-bold">Shammim’s Art</h1>
+  <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
-  <div class="flex items-center gap-4">
+    <!-- Logo -->
+    <div class="text-xl font-bold">
+      Shammim’s Art
+    </div>
 
-    <!-- Theme Toggle -->
-    <label class="switch">
-      <input type="checkbox" id="themeToggle">
-      <span class="slider"></span>
-    </label>
+    <!-- Navigation Links -->
+    <ul class="hidden md:flex gap-6 text-muted">
+      <li><a href="#work" class="hover:text-accent">Work</a></li>
+      <li><a href="#services" class="hover:text-accent">Services</a></li>
+      <li><a href="#process" class="hover:text-accent">Process</a></li>
+      <li><a href="#contact" class="hover:text-accent">Contact</a></li>
+    </ul>
 
-  </div>
+  </nav>
 </header>
 
 
-<!-- ================= HERO ================= -->
-<section class="section text-center">
+<!-- =========================
+     HERO SECTION
+========================= -->
+<section class="h-screen flex items-center justify-center text-center px-6 relative">
 
-  <h1 class="text-5xl font-bold mb-6">
-    Shammim’s Art
-  </h1>
+  <!-- Background Glow -->
+  <div class="absolute inset-0 bg-gradient-to-br from-black via-secondary to-black opacity-90"></div>
 
-  <p class="muted text-lg max-w-2xl mx-auto">
-    UX/UI Design + 3D Interactive Experiences that transform ideas into high-conversion digital products.
-  </p>
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-3xl">
 
-  <button class="btn px-6 py-3 mt-8 rounded-full font-semibold">
-    View Work
-  </button>
+    <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+      Shammim’s Art
+    </h1>
 
-</section>
+    <p class="mt-6 text-muted text-lg md:text-xl">
+      UX/UI Design + 3D Interactive Experiences that transform ideas into high-conversion digital products.
+    </p>
 
+    <!-- CTA Buttons -->
+    <div class="mt-8 flex gap-4 justify-center">
+      <a href="#work" class="bg-accent text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition">
+        View Work
+      </a>
 
-<!-- ================= USP ================= -->
-<section class="section text-center">
-
-  <h2 class="text-3xl font-bold mb-4">What Makes Me Different</h2>
-
-  <p class="muted max-w-3xl mx-auto">
-    I combine UX strategy with Blender-powered 3D visuals to create immersive digital experiences that increase engagement, improve usability, and boost conversions.
-  </p>
-
-</section>
-
-
-<!-- ================= SERVICES ================= -->
-<section class="section">
-
-  <h2 class="text-3xl font-bold text-center mb-10">Services</h2>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-
-    <div class="card p-6 rounded-xl">
-      <h3 class="accent font-semibold">UX/UI Design</h3>
-      <p class="muted mt-2">Conversion-focused interfaces and user flows.</p>
-    </div>
-
-    <div class="card p-6 rounded-xl">
-      <h3 class="accent font-semibold">3D Web Design</h3>
-      <p class="muted mt-2">Blender-powered interactive experiences.</p>
-    </div>
-
-    <div class="card p-6 rounded-xl">
-      <h3 class="accent font-semibold">Educational Design</h3>
-      <p class="muted mt-2">Training and learning content design.</p>
-    </div>
-
-    <div class="card p-6 rounded-xl">
-      <h3 class="accent font-semibold">UX + Marketing Assets</h3>
-      <p class="muted mt-2">High-impact visuals for brands and campaigns.</p>
+      <a href="#contact" class="border border-white/20 px-6 py-3 rounded-full hover:border-accent transition">
+        Contact Me
+      </a>
     </div>
 
   </div>
 </section>
 
 
-<!-- ================= WORK ================= -->
-<section class="section text-center">
+<!-- =========================
+     ABOUT / USP
+========================= -->
+<section class="py-24 px-6 max-w-5xl mx-auto text-center">
 
-  <h2 class="text-3xl font-bold mb-10">Selected Work</h2>
+  <h2 class="text-3xl md:text-4xl font-bold mb-6">
+    What Makes Me Different
+  </h2>
 
-  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+  <p class="text-muted text-lg leading-relaxed">
+    I help brands and startups stand out by designing high-conversion UX interfaces enhanced with custom 3D visuals and Blender-based interactive content,
+    turning standard websites into engaging digital experiences.
+  </p>
 
-    <div class="card p-4 rounded-xl">
-      <div class="h-40 bg-gray-300/20 rounded"></div>
-      <h3 class="mt-3 font-semibold">UX Case Study</h3>
-      <p class="muted text-sm">Startup conversion redesign</p>
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+<section id="services" class="py-24 px-6 max-w-6xl mx-auto">
+
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+    Services
+  </h2>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <!-- Service Card -->
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">UX/UI Design</h3>
+      <p class="text-muted mt-2">Conversion-focused interfaces & user experience design.</p>
     </div>
 
-    <div class="card p-4 rounded-xl">
-      <div class="h-40 bg-gray-300/20 rounded"></div>
-      <h3 class="mt-3 font-semibold">3D Experience</h3>
-      <p class="muted text-sm">Interactive Blender model</p>
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">3D Web Design</h3>
+      <p class="text-muted mt-2">Blender-powered interactive and immersive websites.</p>
     </div>
 
-    <div class="card p-4 rounded-xl">
-      <div class="h-40 bg-gray-300/20 rounded"></div>
-      <h3 class="mt-3 font-semibold">Education UI</h3>
-      <p class="muted text-sm">Learning platform design</p>
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">Educational Design</h3>
+      <p class="text-muted mt-2">Training content and learning experience design.</p>
+    </div>
+
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">UX + Marketing Assets</h3>
+      <p class="text-muted mt-2">High-impact visuals for campaigns and brands.</p>
     </div>
 
   </div>
-
 </section>
 
 
-<!-- ================= CONTACT ================= -->
-<section class="section">
+<!-- =========================
+     WORK / PORTFOLIO
+========================= -->
+<section id="work" class="py-24 px-6 max-w-6xl mx-auto">
 
-  <h2 class="text-3xl font-bold text-center mb-10">Let’s Work Together</h2>
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+    Selected Work
+  </h2>
 
-  <form class="max-w-xl mx-auto grid gap-4">
+  <div class="grid md:grid-cols-3 gap-6">
 
-    <input class="p-3 rounded bg-transparent border" placeholder="Name">
-    <input class="p-3 rounded bg-transparent border" placeholder="Email">
-    <textarea class="p-3 rounded bg-transparent border" rows="5" placeholder="Message"></textarea>
+    <!-- Project Card -->
+    <div class="glass rounded-xl overflow-hidden lift">
+      <div class="h-48 bg-secondary"></div>
+      <div class="p-4">
+        <h3 class="font-semibold">UX Case Study</h3>
+        <p class="text-muted text-sm">Conversion-focused redesign for a startup.</p>
+      </div>
+    </div>
 
-    <button class="btn py-3 rounded font-semibold">
-      Send Message
-    </button>
+    <div class="glass rounded-xl overflow-hidden lift">
+      <div class="h-48 bg-secondary"></div>
+      <div class="p-4">
+        <h3 class="font-semibold">3D Product Experience</h3>
+        <p class="text-muted text-sm">Interactive Blender visualization.</p>
+      </div>
+    </div>
 
-  </form>
+    <div class="glass rounded-xl overflow-hidden lift">
+      <div class="h-48 bg-secondary"></div>
+      <div class="p-4">
+        <h3 class="font-semibold">Educational Platform UI</h3>
+        <p class="text-muted text-sm">Learning system interface design.</p>
+      </div>
+    </div>
 
+  </div>
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-<footer class="text-center py-10 muted">
-  © 2026 Shammim’s Art
+<!-- =========================
+     PROCESS
+========================= -->
+<section id="process" class="py-24 px-6 max-w-4xl mx-auto text-center">
+
+  <h2 class="text-3xl md:text-4xl font-bold mb-12">
+    My Process
+  </h2>
+
+  <div class="space-y-6 text-muted">
+
+    <p>Research → Understanding the problem</p>
+    <p>UX Strategy → Structuring user flow</p>
+    <p>UI Design → Visual interface creation</p>
+    <p>3D Integration → Blender-based visuals</p>
+    <p>Development Support → Interactive experience</p>
+    <p>Launch → Optimized for conversion</p>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     CONTACT FORM
+========================= -->
+<section id="contact" class="py-24 px-6 bg-secondary">
+
+  <div class="max-w-3xl mx-auto text-center">
+
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+      Let’s Work Together
+    </h2>
+
+    <p class="text-muted mb-10">
+      Tell me about your project and I’ll help you turn it into a high-impact digital experience.
+    </p>
+
+    <!-- Contact Form -->
+    <form class="grid gap-4">
+
+      <input class="p-3 rounded bg-primary border border-white/10" placeholder="Name">
+      <input class="p-3 rounded bg-primary border border-white/10" placeholder="Email">
+      <textarea rows="5" class="p-3 rounded bg-primary border border-white/10" placeholder="Project Details"></textarea>
+
+      <button class="bg-accent text-black py-3 rounded font-semibold hover:scale-105 transition">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="py-10 text-center text-muted text-sm">
+  © 2026 Shammim’s Art. Designed to convert ideas into experiences.
 </footer>
-
-
-<!-- ================= THEME SCRIPT ================= -->
-<script>
-  const toggle = document.getElementById("themeToggle");
-  const root = document.documentElement;
-
-  toggle.addEventListener("change", () => {
-    if (toggle.checked) {
-      root.setAttribute("data-theme", "light");
-    } else {
-      root.removeAttribute("data-theme");
-    }
-  });
-</script>
 
 </body>
 </html>
