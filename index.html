@@ -1,159 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta lang="charset-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Shammim </title>
-    <meta property="og:title" content="Shammim">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="Logo.png">
-    <meta property="og.url" content="https://www.shammim.com">
-    <meta property="og:description" content="Shammim is a passionate frontend developer with a keen eye for crafting beautiful and functional user interfaces.  Her enthusiasm lies in utilizing Vue.js and Tailwind CSS to bring websites and applications to life.">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="Shammim">
-    <link rel="icon" href="./Images/Logo.png" type="image" height="10px" width="4px" class="w-8 h-8  mx-auto">
-    <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Shammim's Art | UX/UI + 3D Interactive Designer</title>
+
+  <!-- Tailwind CSS (Utility-first styling framework) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font: Modern premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Tailwind Theme Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          },
+          colors: {
+            primary: "#0B0F14",
+            secondary: "#151B23",
+            accent: "#22D3EE",
+            coral: "#FB7185",
+            mint: "#34D399",
+            text: "#F8FAFC",
+            muted: "#94A3B8"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Basic styling for smooth experience -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Glass effect card */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Hover lift effect */
+    .lift {
+      transition: all 0.3s ease;
+    }
+
+    .lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
 
-  <!-- Header -->
-  <header class="bg-indigo-700 text-white py-4">
-    <nav class="container mx-auto flex justify-between items-center">
-      <div class="text-2xl font-bold">Shammim Begum Shaik</div>
-      <ul class="flex space-x-4">
-        <li><a href="#home" class="hover:text-gray-400">Home</a></li>
-        <li><a href="#about" class="hover:text-gray-400">About</a></li>
-        <li><a href="#skills" class="hover:text-gray-400">Skills</a></li>
-        <li><a href="#portfolio" class="hover:text-gray-400">Portfolio</a></li>
-        <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<body class="bg-primary text-text font-sans overflow-x-hidden">
 
-  <!-- Hero Section -->
-  <section id="home" class="h-screen flex flex-col justify-center items-center bg-sky-400">
-    <h1 class="text-5xl font-bold text-indigo-700 ">Hello, I'm Shammim. </h1> 
-      <p class="text-xl mt-4 font-bold">A Frontend Developer</p>
-    <p class="text-xl mt-4 ">Expert in UX/UI design and development</p>
-    <br>
-    <a href="#contact" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Know more</a>
-  </section>
+<!-- =========================
+     NAVIGATION
+========================= -->
+<header class="fixed top-0 left-0 w-full z-50 bg-primary/70 backdrop-blur border-b border-white/10">
 
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-indigo-700">About Me</h2>
-      <p class="mt-4 text-lg">I am a frontend developer with a passion for art and design. My expertise extends to implementing UX and UI principles to create intuitive and beautiful web interfaces.
-        I believe in the power of design to solve problems and create meaningful user experiences. My approach to design is user-centered, ensuring that every project I work on meets the needs of its users while also achieving business goals.        
-        When I am not designing or coding, you can find me exploring art galleries, trying out new design tools, or sketching out new ideas for future projects.
-      </p>
-      <br>
-      <a href="#contact" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Say Hi</a>
+  <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+
+    <!-- Logo -->
+    <div class="text-xl font-bold">
+      Shammim’s Art
     </div>
-  </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-20 bg-gray-100">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-indigo-700">Skills</h2>
-      <div class="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <div class="p-4 bg-white shadow-md">
-          <img src="Icons/figma.png" alt="Figma" class="h-12 mx-auto">
-          <h3 class="mt-4 text-xl font-semibold">Figma</h3>
-        </div>
-        <div class="p-4 bg-white shadow-md">
-          <img src="Icons/" alt="Canva" class="h-12 mx-auto">
-          <h3 class="mt-4 text-xl font-semibold">Canva</h3>
-        </div>
-        <div class="p-4 bg-white shadow-md">
-          <img src="Icons/xd.png" alt="Adobe XD" class="h-12 mx-auto">
-          <h3 class="mt-4 text-xl font-semibold">Adobe XD</h3>
-        </div>
-        <div class="p-4 bg-white shadow-md">
-          <img src="Icons/sketch.png" alt="Sketch" class="h-12 mx-auto">
-          <h3 class="mt-4 text-xl font-semibold">Sketch</h3>
-        </div>
-        <div class="p-4 bg-white shadow-md">
-          <img src="Icons/ui-ux.png" alt="UX" class="h-12 mx-auto">
-          <h3 class="mt-4 text-xl font-semibold">UX</h3>
-        </div>
-        <div class="p-4 bg-white shadow-md">
-          <img src="Icons/ux-design.png" alt="UI" class="h-12 mx-auto">
-          <h3 class="mt-4 text-xl font-semibold">UI</h3>
-        </div>
+    <!-- Navigation Links -->
+    <ul class="hidden md:flex gap-6 text-muted">
+      <li><a href="#work" class="hover:text-accent">Work</a></li>
+      <li><a href="#services" class="hover:text-accent">Services</a></li>
+      <li><a href="#process" class="hover:text-accent">Process</a></li>
+      <li><a href="#contact" class="hover:text-accent">Contact</a></li>
+    </ul>
+
+  </nav>
+</header>
+
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+<section class="h-screen flex items-center justify-center text-center px-6 relative">
+
+  <!-- Background Glow -->
+  <div class="absolute inset-0 bg-gradient-to-br from-black via-secondary to-black opacity-90"></div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-3xl">
+
+    <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+      Shammim’s Art
+    </h1>
+
+    <p class="mt-6 text-muted text-lg md:text-xl">
+      UX/UI Design + 3D Interactive Experiences that transform ideas into high-conversion digital products.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="mt-8 flex gap-4 justify-center">
+      <a href="#work" class="bg-accent text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition">
+        View Work
+      </a>
+
+      <a href="#contact" class="border border-white/20 px-6 py-3 rounded-full hover:border-accent transition">
+        Contact Me
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     ABOUT / USP
+========================= -->
+<section class="py-24 px-6 max-w-5xl mx-auto text-center">
+
+  <h2 class="text-3xl md:text-4xl font-bold mb-6">
+    What Makes Me Different
+  </h2>
+
+  <p class="text-muted text-lg leading-relaxed">
+    I help brands and startups stand out by designing high-conversion UX interfaces enhanced with custom 3D visuals and Blender-based interactive content,
+    turning standard websites into engaging digital experiences.
+  </p>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+<section id="services" class="py-24 px-6 max-w-6xl mx-auto">
+
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+    Services
+  </h2>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <!-- Service Card -->
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">UX/UI Design</h3>
+      <p class="text-muted mt-2">Conversion-focused interfaces & user experience design.</p>
+    </div>
+
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">3D Web Design</h3>
+      <p class="text-muted mt-2">Blender-powered interactive and immersive websites.</p>
+    </div>
+
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">Educational Design</h3>
+      <p class="text-muted mt-2">Training content and learning experience design.</p>
+    </div>
+
+    <div class="glass p-6 rounded-xl lift">
+      <h3 class="font-semibold text-lg text-accent">UX + Marketing Assets</h3>
+      <p class="text-muted mt-2">High-impact visuals for campaigns and brands.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     WORK / PORTFOLIO
+========================= -->
+<section id="work" class="py-24 px-6 max-w-6xl mx-auto">
+
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+    Selected Work
+  </h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <!-- Project Card -->
+    <div class="glass rounded-xl overflow-hidden lift">
+      <div class="h-48 bg-secondary"></div>
+      <div class="p-4">
+        <h3 class="font-semibold">UX Case Study</h3>
+        <p class="text-muted text-sm">Conversion-focused redesign for a startup.</p>
       </div>
     </div>
-  </section>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="py-20 bg-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-indigo-700">Portfolio</h2>
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="p-4 bg-gray-100 shadow-md">
-          <img src="Images/Littlelemon/Homepage.png" alt="Little Lemon" class="h-54 w-full object-cover">
-          <h3 class="mt-4 text-xl font-semibold text-indigo-700">Little Lemon </h3>
-          <p class="mt-2">An Italian restaurant</p>
-          <br>
-          <a href="littlelemon.html" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Read More</a>
-        </div>
-        <div class="p-4 bg-gray-100 shadow-md">
-          <img src="Images/Luckyhrub/Luckyshrub work.gif" alt="Lucky Shrub" class="h-54 w-full object-cover">
-          <h3 class="mt-4 text-xl font-semibold text-indigo-700">Lucky Shrub</h3>
-          <p class="mt-2">A Landscaping Company</p>
-          <br>
-          <a href="luckyshrub.html" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Read More</a>
-        </div>
-        <div class="p-4 bg-gray-100 shadow-md">
-          <img src="Images/Trektide/Behance Trek Tide.gif" alt="Trek Tide" class="h-54 w-full object-cover">
-          <h3 class="mt-4 text-xl font-semibold text-indigo-700">Trek Tide</h3>
-          <p class="mt-2">A Travelling Agency</p>
-          <br>
-          <a href="trektide.html" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Read More</a>
-        </div>
-        
-      </div>
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="p-4 bg-gray-100 shadow-md">
-          <img src="Images/cuddly/Cuddly Homepage.gif" alt="Cuddly" class="h-54 w-full object-cover">
-          <h3 class="mt-4 text-xl font-semibold text-indigo-700">Cuddly</h3>
-          <p class="mt-2">A personalised baby cot company</p>
-          <br>
-          <a href="cuddly.html" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Read More</a>
-        </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-gray-100">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-indigo-700">Contact</h2>
-      <form class="mt-8 max-w-lg mx-auto">
-        <div class="mb-4">
-          <input type="text" placeholder="Name" class="w-full p-2 border border-gray-300 rounded">
-        </div>
-        <div class="mb-4">
-          <input type="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded">
-        </div>
-        <div class="mb-4">
-          <textarea placeholder="Message" class="w-full p-2 border border-gray-300 rounded"></textarea>
-        </div>
-        <a href="#contact" class="focus:outline-none text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">Send</a>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-indigo-700 text-white py-4">
-    <div class="container mx-auto text-center">
-      <p>&copy; 2023 Shammim Begum Shaik. All rights reserved.</p>
-      <div class="mt-2">
-        <a href="#" class="text-white hover:text-gray-100">Twitter</a> |
-        <a href="https://www.linkedin.com/in/shammimshaik/" class="text-white hover:text-gray-100">LinkedIn</a> |
-        <a href="https://github.com/shammim" class="text-white hover:text-gray-100">GitHub</a>
+    <div class="glass rounded-xl overflow-hidden lift">
+      <div class="h-48 bg-secondary"></div>
+      <div class="p-4">
+        <h3 class="font-semibold">3D Product Experience</h3>
+        <p class="text-muted text-sm">Interactive Blender visualization.</p>
       </div>
     </div>
-  </footer>
+
+    <div class="glass rounded-xl overflow-hidden lift">
+      <div class="h-48 bg-secondary"></div>
+      <div class="p-4">
+        <h3 class="font-semibold">Educational Platform UI</h3>
+        <p class="text-muted text-sm">Learning system interface design.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     PROCESS
+========================= -->
+<section id="process" class="py-24 px-6 max-w-4xl mx-auto text-center">
+
+  <h2 class="text-3xl md:text-4xl font-bold mb-12">
+    My Process
+  </h2>
+
+  <div class="space-y-6 text-muted">
+
+    <p>Research → Understanding the problem</p>
+    <p>UX Strategy → Structuring user flow</p>
+    <p>UI Design → Visual interface creation</p>
+    <p>3D Integration → Blender-based visuals</p>
+    <p>Development Support → Interactive experience</p>
+    <p>Launch → Optimized for conversion</p>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     CONTACT FORM
+========================= -->
+<section id="contact" class="py-24 px-6 bg-secondary">
+
+  <div class="max-w-3xl mx-auto text-center">
+
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+      Let’s Work Together
+    </h2>
+
+    <p class="text-muted mb-10">
+      Tell me about your project and I’ll help you turn it into a high-impact digital experience.
+    </p>
+
+    <!-- Contact Form -->
+    <form class="grid gap-4">
+
+      <input class="p-3 rounded bg-primary border border-white/10" placeholder="Name">
+      <input class="p-3 rounded bg-primary border border-white/10" placeholder="Email">
+      <textarea rows="5" class="p-3 rounded bg-primary border border-white/10" placeholder="Project Details"></textarea>
+
+      <button class="bg-accent text-black py-3 rounded font-semibold hover:scale-105 transition">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="py-10 text-center text-muted text-sm">
+  © 2026 Shammim’s Art. Designed to convert ideas into experiences.
+</footer>
 
 </body>
 </html>
