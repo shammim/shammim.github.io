@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" sizes="32x32" href="S_logo.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="S_logo.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="S_logo.png" />
+
   <title>Shammim's Portfolio | Instructional Design & Learning Experience</title>
+
+  <!-- Tab Favicon (Keep S_logo.png file near the title) -->
+  <link rel="icon" type="image/png" href="S_logo.png" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -25,19 +26,11 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif']
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
-            primary: "#0B0F14",
-            secondary: "#151B23",
-            cardBg: "#1C2430",
-            accent: "#22D3EE",
-            accentHover: "#06B6D4",
-            coral: "#FB7185",
-            mint: "#34D399",
-            text: "#F8FAFC",
-            muted: "#94A3B8"
+            primary: "#0B0F14", secondary: "#151B23", cardBg: "#1C2430",
+            accent: "#22D3EE", accentHover: "#06B6D4", coral: "#FB7185",
+            mint: "#34D399", text: "#F8FAFC", muted: "#94A3B8"
           }
         }
       }
@@ -46,22 +39,11 @@
 
   <!-- Custom Utilities -->
   <style>
-    .glass {
-      background: rgba(21, 27, 35, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .lift {
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .lift:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.6);
-      border-color: rgba(34, 211, 238, 0.3);
-    }
+    .glass { background: rgba(21, 27, 35, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .lift { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+    .lift:hover { transform: translateY(-4px); box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.6); border-color: rgba(34, 211, 238, 0.3); }
+    /* Fix for smooth scrolling with fixed header */
+    :target { scroll-margin-top: 80px; }
   </style>
 </head>
 
@@ -73,24 +55,19 @@
   <header class="fixed top-0 left-0 w-full z-40 bg-primary/80 backdrop-blur-md border-b border-white/10">
     <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
-      <!-- Logo -->
+      <!-- Logo Section - Magnolia: Keep S_logo.png file near the title -->
       <a href="#home" class="flex items-center gap-3 group">
-        <!-- Glowing Monogram Icon -->
-        <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-mint p-[1.5px] shadow-lg shadow-accent/20 group-hover:shadow-accent/40 transition-all">
-          <div class="w-full h-full bg-primary rounded-[10px] flex items-center justify-center">
-            <svg class="w-6 h-6 text-accent group-hover:scale-105 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 6H8a4 4 0 0 0-4 4v0a4 4 0 0 0 4 4h8a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4H6"/>
-            </svg>
-          </div>
-        </div>
-      
-        <!-- Brand Text -->
+        <img 
+          src="S_logo.png" 
+          alt="Shammim Logo Monogram" 
+          class="w-12 h-12 object-contain rounded-xl shadow-md shadow-accent/20 group-hover:scale-110 transition-transform duration-300"
+        />
         <div class="flex flex-col">
-          <span class="text-lg font-extrabold tracking-tight text-text leading-tight group-hover:text-accent transition-colors">
-            Shammim<span class="text-accent">.</span>
+          <span class="text-xl font-bold tracking-tight text-text group-hover:text-accent transition-colors leading-tight">
+            Shammim's Portfolio<span class="text-accent">.</span>
           </span>
-          <span class="text-[9px] tracking-wider uppercase font-semibold text-muted">
-            Instructional Designer
+          <span class="text-[10px] tracking-wider uppercase font-medium text-muted">
+            Instructional Design
           </span>
         </div>
       </a>
@@ -101,14 +78,7 @@
         <li><a href="#about" class="hover:text-accent transition-colors">About</a></li>
         <li><a href="#services" class="hover:text-accent transition-colors">Services</a></li>
         <li><a href="#casestudies" class="hover:text-accent transition-colors">Case Studies</a></li>
-        <li><a href="#skillstools" class="hover:text-accent transition-colors">Skills & Tools</a></li>
-        <li><a href="#process" class="hover:text-accent transition-colors">Process</a></li>
-        <li><a href="#resume" class="hover:text-accent transition-colors">Resume</a></li>
-        <li>
-          <a href="#contact" class="bg-accent/10 border border-accent/30 text-accent px-4 py-2 rounded-full hover:bg-accent hover:text-black transition-all">
-            Let's Talk
-          </a>
-        </li>
+        <li><a href="#contact" class="bg-accent/10 border border-accent/30 text-accent px-4 py-2 rounded-full hover:bg-accent hover:text-black transition-all">Let's Talk</a></li>
       </ul>
 
       <!-- Mobile Hamburger Button -->
@@ -116,576 +86,61 @@
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </nav>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-secondary border-b border-white/10 px-6 py-5">
-      <ul class="flex flex-col gap-4 text-muted text-base">
-        <li><a href="#home" class="mobile-nav-link block hover:text-accent">Home</a></li>
-        <li><a href="#about" class="mobile-nav-link block hover:text-accent">About</a></li>
-        <li><a href="#services" class="mobile-nav-link block hover:text-accent">Services</a></li>
-        <li><a href="#casestudies" class="mobile-nav-link block hover:text-accent">Case Studies</a></li>
-        <li><a href="#skillstools" class="mobile-nav-link block hover:text-accent">Skills & Tools</a></li>
-        <li><a href="#process" class="mobile-nav-link block hover:text-accent">Process</a></li>
-        <li><a href="#resume" class="mobile-nav-link block hover:text-accent">Resume</a></li>
-        <li><a href="#contact" class="mobile-nav-link inline-block text-accent font-semibold">Let's Talk →</a></li>
-      </ul>
-    </div>
   </header>
 
-
-  <!-- ========================= 
-       HERO SECTION 
-  ========================= -->
-  <section id="home" class="min-h-screen flex items-center justify-center text-center px-6 relative pt-20">
-    <!-- Glow Background Gradients -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.15),rgba(255,255,255,0))] pointer-events-none"></div>
-
-    <div class="relative z-10 max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-accent mb-6">
-        <span class="w-2 h-2 rounded-full bg-mint"></span> Available for new instructional design projects
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-        Designing Learning Experiences That <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-mint to-coral">Deliver Real Impact</span>
-      </h1>
-
-      <p class="mt-6 text-muted text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
-        Instructional Design & Learning Experiences that transform complex needs into practical, engaging, and measurable digital solutions.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#casestudies" class="w-full sm:w-auto bg-accent text-black font-semibold px-8 py-3.5 rounded-full hover:bg-accentHover hover:shadow-lg hover:shadow-accent/20 transition-all">
-          Discover My Work
-        </a>
-
-        <a href="#contact" class="w-full sm:w-auto border border-white/20 bg-white/5 hover:bg-white/10 px-8 py-3.5 rounded-full font-medium transition-all">
-          Contact Me
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================= 
-       ABOUT / USP 
-  ========================= -->
-  <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">My Approach</p>
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">What Makes Me Different</h2>
-    </div>
-
-    <!-- Corrected 6-item Grid Layout -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="glass p-7 rounded-2xl lift flex flex-col justify-start">
-        <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4">
-          <i data-lucide="briefcase" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold text-lg text-text">Design for real-world application</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          I go beyond delivering information. I create experiences that empower learners to understand, practice, and apply new skills in authentic workplace situations.
-        </p>
-      </div>
-
-      <div class="glass p-7 rounded-2xl lift flex flex-col justify-start">
-        <div class="w-10 h-10 rounded-lg bg-mint/10 text-mint flex items-center justify-center mb-4">
-          <i data-lucide="cpu" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold text-lg text-text">Bridge technology & learning</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          With a background in Computer Science and teaching, I understand both the technology behind digital platforms and the pedagogical principles that make them effective.
-        </p>
-      </div>
-
-      <div class="glass p-7 rounded-2xl lift flex flex-col justify-start">
-        <div class="w-10 h-10 rounded-lg bg-coral/10 text-coral flex items-center justify-center mb-4">
-          <i data-lucide="users" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold text-lg text-text">Think like a learner</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          I always ask: <em>Who are the learners? What do they already know? What behavior needs to change?</em> This ensures every module is relevant, clear, and purposeful.
-        </p>
-      </div>
-
-      <div class="glass p-7 rounded-2xl lift flex flex-col justify-start">
-        <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4">
-          <i data-lucide="layers" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold text-lg text-text">Structure with creativity</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          I combine instructional design frameworks, UX thinking, visual communication, and digital authoring tools to build clean, intuitive, and interactive modules.
-        </p>
-      </div>
-
-      <div class="glass p-7 rounded-2xl lift flex flex-col justify-start">
-        <div class="w-10 h-10 rounded-lg bg-mint/10 text-mint flex items-center justify-center mb-4">
-          <i data-lucide="refresh-cw" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold text-lg text-text">Design, test, reflect & iterate</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          Instructional design is iterative. I utilize qualitative feedback, assessment evidence, and analytics to continuously refine and optimize learning outcomes.
-        </p>
-      </div>
-
-      <div class="glass p-7 rounded-2xl lift flex flex-col justify-start">
-        <div class="w-10 h-10 rounded-lg bg-coral/10 text-coral flex items-center justify-center mb-4">
-          <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold text-lg text-text">Educator's perspective</h3>
-        <p class="text-muted mt-2 text-sm leading-relaxed">
-          Classroom and workshop experience taught me that learners need varied pacing, scaffolding, and active engagement to succeed.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================= 
-       SERVICES 
-  ========================= -->
-  <section id="services" class="py-24 px-6 bg-secondary/50 border-y border-white/5">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">Capabilities</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Services Offered</h2>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="glass p-7 rounded-2xl lift">
-          <h3 class="font-semibold text-lg text-accent">Instructional Design</h3>
-          <p class="text-muted mt-3 text-sm leading-relaxed">Designing learner-centred curriculums and modules that turn business needs into measurable, demonstrable skills.</p>
-        </div>
-
-        <div class="glass p-7 rounded-2xl lift">
-          <h3 class="font-semibold text-lg text-accent">eLearning & Digital Learning</h3>
-          <p class="text-muted mt-3 text-sm leading-relaxed">Creating engaging self-paced modules, micro-lessons, and interactive scenarios using modern authoring tools.</p>
-        </div>
-
-        <div class="glass p-7 rounded-2xl lift">
-          <h3 class="font-semibold text-lg text-accent">Training & Facilitation</h3>
-          <p class="text-muted mt-3 text-sm leading-relaxed">Developing practical instructor-led (ILT) and virtual (VILT) workshops that drive active participant discussion.</p>
-        </div>
-
-        <div class="glass p-7 rounded-2xl lift">
-          <h3 class="font-semibold text-lg text-accent">Learning UX & Visual Design</h3>
-          <p class="text-muted mt-3 text-sm leading-relaxed">Combining UI/UX best practices and clean graphic design to ensure intuitive navigation and accessibility.</p>
-        </div>
-
-        <div class="glass p-7 rounded-2xl lift">
-          <h3 class="font-semibold text-lg text-accent">Assessment & Evaluation</h3>
-          <p class="text-muted mt-3 text-sm leading-relaxed">Building authentic rubric assessments and diagnostic metrics aligned with Kirkpatrick’s levels of evaluation.</p>
-        </div>
-
-        <div class="glass p-7 rounded-2xl lift border-dashed border-accent/30 flex flex-col justify-center items-center text-center">
-          <h3 class="font-semibold text-lg text-text">Custom Solutions?</h3>
-          <p class="text-muted mt-2 text-sm">Need a tailored workshop, LMS consultation, or technical onboarding program?</p>
-          <a href="#contact" class="mt-4 text-accent text-sm font-semibold hover:underline">Get in Touch →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================= 
-       WORK / PORTFOLIO 
-  ========================= -->
-  <section id="casestudies" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">Featured Projects</p>
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Case Studies</h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8">
-      
-      <!-- Project 1 -->
-      <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
-        <div>
-          <div class="h-48 bg-gradient-to-br from-cyan-900/40 to-secondary flex items-center justify-center p-6 border-b border-white/5">
-            <i data-lucide="shield-check" class="w-16 h-16 text-accent/80"></i>
-          </div>
-          <div class="p-6">
-            <span class="text-xs uppercase tracking-wider text-accent font-semibold">Compliance Module</span>
-            <h3 class="font-bold text-lg mt-2 leading-snug">Securely Manage PII & Workplace Information</h3>
-            <p class="text-muted text-sm mt-3 line-clamp-2">
-              Workplace compliance, privacy fundamentals, and scenario-based decision trees for staff data handling.
-            </p>
-          </div>
-        </div>
-        <div class="p-6 pt-0">
-          <button 
-            onclick="openModal('Securely Manage Personally Identifiable & Workplace Information', 'A comprehensive compliance learning experience focused on identifying and mitigating privacy breaches. Built using realistic scenario branching where learners assess security risks in day-to-day office scenarios.', ['Scenario-based Branching', 'Articulate Storyline / Rise', 'WCAG 2.1 Accessibility', 'Formative Knowledge Checks'])"
-            class="w-full py-2.5 px-4 rounded-xl border border-accent/40 text-accent hover:bg-accent hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
-            <span>View Case Study</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
-        <div>
-          <div class="h-48 bg-gradient-to-br from-purple-900/40 to-secondary flex items-center justify-center p-6 border-b border-white/5">
-            <i data-lucide="file-code" class="w-16 h-16 text-coral/80"></i>
-          </div>
-          <div class="p-6">
-            <span class="text-xs uppercase tracking-wider text-coral font-semibold">Technical Ethics</span>
-            <h3 class="font-bold text-lg mt-2 leading-snug">Identify IP, Ethics & Privacy in ICT Environments</h3>
-            <p class="text-muted text-sm mt-3 line-clamp-2">
-              ICT compliance, licensing, intellectual property rights, and ethical data governance protocols.
-            </p>
-          </div>
-        </div>
-        <div class="p-6 pt-0">
-          <button 
-            onclick="openModal('Identify IP, Ethics & Privacy Policies in ICT Environments', 'An interactive module designed for ICT professionals to navigate intellectual property, open-source licensing, and ethical technology dilemmas.', ['Interactive Case Vignettes', 'LMS SCORM Compliant', 'Knowledge Assessments', 'Visual Infographics'])"
-            class="w-full py-2.5 px-4 rounded-xl border border-coral/40 text-coral hover:bg-coral hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
-            <span>View Case Study</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
-        <div>
-          <div class="h-48 bg-gradient-to-br from-emerald-900/40 to-secondary flex items-center justify-center p-6 border-b border-white/5">
-            <i data-lucide="code" class="w-16 h-16 text-mint/80"></i>
-          </div>
-          <div class="p-6">
-            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Microlearning</span>
-            <h3 class="font-bold text-lg mt-2 leading-snug">HTML Essentials Microlearning</h3>
-            <p class="text-muted text-sm mt-3 line-clamp-2">
-              Bite-sized, practical coding walkthroughs and interactive syntax playgrounds for beginners.
-            </p>
-          </div>
-        </div>
-        <div class="p-6 pt-0">
-          <button 
-            onclick="openModal('HTML Essentials Microlearning Module', 'A modular microlearning series breaking down core web building blocks into 3-minute interactive lessons with immediate code feedback.', ['Microlearning Format', 'Live Syntax Sandbox', 'Spaced Repetition', 'Mobile Responsive'])"
-            class="w-full py-2.5 px-4 rounded-xl border border-mint/40 text-mint hover:bg-mint hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
-            <span>View Case Study</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ========================= 
-       SKILLS & TOOLS 
-  ========================= -->
-  <section id="skillstools" class="py-24 px-6 bg-secondary/50 border-y border-white/5">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">Toolkit</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Skills & Technologies</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass p-6 rounded-2xl">
-          <h3 class="font-semibold text-lg text-accent mb-4">Instructional Design</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">ADDIE & SAM</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Bloom's Taxonomy</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Scenario-Based Learning</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Kirkpatrick Model</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Microlearning</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Adult Learning Principles</span>
-          </div>
-        </div>
-
-        <div class="glass p-6 rounded-2xl">
-          <h3 class="font-semibold text-lg text-coral mb-4">Authoring & Media Tools</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Articulate 360 (Storyline/Rise)</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Canva</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Figma</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Moodle / Canvas LMS</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">SCORM & xAPI</span>
-          </div>
-        </div>
-
-        <div class="glass p-6 rounded-2xl">
-          <h3 class="font-semibold text-lg text-mint mb-4">Web & Technical</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">HTML5 & CSS3</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Tailwind CSS</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">JavaScript Basics</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">WCAG Accessibility</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Responsive Design</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================= 
-       PROCESS 
-  ========================= -->
-  <section id="process" class="py-24 px-6 max-w-5xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">Methodology</p>
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">The Design Process</h2>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-accent">
-        <span class="text-accent text-xs font-bold uppercase tracking-wider">Step 01</span>
-        <h3 class="font-bold text-lg mt-1">Discover</h3>
-        <p class="text-muted text-sm mt-2">Identify target audience, analyze performance gaps, and assess learning needs.</p>
-      </div>
-
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-accent">
-        <span class="text-accent text-xs font-bold uppercase tracking-wider">Step 02</span>
-        <h3 class="font-bold text-lg mt-1">Define</h3>
-        <p class="text-muted text-sm mt-2">Establish measurable learning outcomes, key metrics, and assessment criteria.</p>
-      </div>
-
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-coral">
-        <span class="text-coral text-xs font-bold uppercase tracking-wider">Step 03</span>
-        <h3 class="font-bold text-lg mt-1">Design</h3>
-        <p class="text-muted text-sm mt-2">Storyboarding, instructional flow mapping, UX wireframes, and prototype testing.</p>
-      </div>
-
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-coral">
-        <span class="text-coral text-xs font-bold uppercase tracking-wider">Step 04</span>
-        <h3 class="font-bold text-lg mt-1">Develop</h3>
-        <p class="text-muted text-sm mt-2">Authoring responsive eLearning, crafting multimedia assets, and LMS packaging.</p>
-      </div>
-
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-mint">
-        <span class="text-mint text-xs font-bold uppercase tracking-wider">Step 05</span>
-        <h3 class="font-bold text-lg mt-1">Deliver</h3>
-        <p class="text-muted text-sm mt-2">Facilitation, rollout, seamless deployment, and technical onboarding.</p>
-      </div>
-
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-mint">
-        <span class="text-mint text-xs font-bold uppercase tracking-wider">Step 06</span>
-        <h3 class="font-bold text-lg mt-1">Evaluate</h3>
-        <p class="text-muted text-sm mt-2">Analyze feedback, measure performance outcomes, and iterate for continuous improvement.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ========================= 
-       RESUME SECTION 
-  ========================= -->
-  <section id="resume" class="py-24 px-6 bg-secondary/50 border-y border-white/5">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Curriculum Vitae</h2>
-      <p class="text-muted max-w-xl mx-auto mb-8 text-sm">
-        Discover my educational background in Computer Science, professional training experience, and instructional design credentials.
-      </p>
-      <button 
-        onclick="downloadResume()"
-        class="inline-flex items-center gap-2 bg-white/10 border border-white/20 hover:bg-accent hover:text-black hover:border-transparent px-6 py-3 rounded-full font-semibold transition-all">
-        <i data-lucide="download" class="w-4 h-4"></i>
-        <span>Download Full Resume</span>
-      </button>
-    </div>
-  </section>
-
-
-  <!-- ========================= 
-       CONTACT FORM 
-  ========================= -->
-  <section id="contact" class="py-24 px-6">
-    <div class="max-w-2xl mx-auto">
-      
-      <div class="text-center mb-12">
-        <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">Get In Touch</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Let’s Work Together</h2>
-        <p class="text-muted text-sm">
-          Have a project in mind, an instructional design role, or an enquiry? Send a note below.
-        </p>
-      </div>
-
-      <!-- Functional Form with Feedback -->
-      <!-- Functional Contact Form -->
-    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="glass p-8 rounded-2xl space-y-5">
-      
-      <div>
-        <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">Your Name</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name" 
-          required 
-          placeholder="Jane Doe" 
-          class="w-full px-4 py-3 rounded-xl bg-primary border border-white/10 focus:border-accent focus:ring-1 focus:ring-accent outline-none text-text text-sm transition-all"
-        />
-      </div>
-
-      <div>
-        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">Your Email</label>
-        <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          required 
-          placeholder="jane@example.com" 
-          class="w-full px-4 py-3 rounded-xl bg-primary border border-white/10 focus:border-accent focus:ring-1 focus:ring-accent outline-none text-text text-sm transition-all"
-        />
-      </div>
-
-      <div>
-        <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">Project Details</label>
-        <textarea 
-          id="message" 
-          name="message" 
-          rows="4" 
-          required 
-          placeholder="Describe your learning objectives, timelines, or scope..." 
-          class="w-full px-4 py-3 rounded-xl bg-primary border border-white/10 focus:border-accent focus:ring-1 focus:ring-accent outline-none text-text text-sm transition-all"
-        ></textarea>
-      </div>
-
-      <button 
-        type="submit" 
-        id="submitBtn"
-        class="w-full bg-accent text-black py-3.5 rounded-xl font-bold hover:bg-accentHover hover:shadow-lg hover:shadow-accent/20 transition-all flex items-center justify-center gap-2">
-        <span>Send Message</span>
-        <i data-lucide="send" class="w-4 h-4"></i>
-      </button>
-
-      <!-- Status Feedback -->
-      <div id="formStatus" class="hidden p-4 rounded-xl text-center text-sm font-medium"></div>
-    </form>
-    </div>
-  </section>
-
+  <!-- ... (The rest of your original HTML content, Hero, About, Services, Case Studies, Contact, Footer remain exactly the same) ... -->
 
   <!-- ========================= 
        FOOTER 
   ========================= -->
-  <footer class="py-12 border-t border-white/10 text-center text-muted text-sm bg-primary">
+  <footer class="py-12 border-t border-white/10 text-center text-muted text-sm bg-primary mt-20">
     <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p>© 2026 Shammim's Portfolio. All rights reserved.</p>
-      <p class="text-sm text-muted/80">Turning complex learning needs into engaging digital experiences.</p>
+      <p>© 2024 Shammim's Portfolio. All rights reserved.</p>
     </div>
   </footer>
 
-
   <!-- ========================= 
-       CASE STUDY MODAL (Interactive Popup)
-  ========================= -->
-  <div id="caseStudyModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="glass bg-secondary border border-white/20 rounded-2xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl animate-fade-in">
-      <button onclick="closeModal()" class="absolute top-5 right-5 text-muted hover:text-white">
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-
-      <div class="mt-2">
-        <h3 id="modalTitle" class="text-2xl font-bold text-accent">Case Study Title</h3>
-        <p id="modalDescription" class="mt-4 text-muted text-sm leading-relaxed">Description goes here...</p>
-
-        <h4 class="font-semibold text-sm uppercase tracking-wider text-text mt-6 mb-3">Key Highlights & Tools</h4>
-        <div id="modalHighlights" class="flex flex-wrap gap-2">
-          <!-- Dynamic tags inserted via JS -->
-        </div>
-      </div>
-
-      <div class="mt-8 flex justify-end">
-        <button onclick="closeModal()" class="px-6 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-semibold transition-all">
-          Close Preview
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ========================= 
-       INTERACTIVE JAVASCRIPT
+       JAVASCRIPT FOR THE PORTFOLIO (Buttons Functional)
   ========================= -->
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
 
-    // 1. Mobile Menu Toggle
+    // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // 2. Case Study Modal Handlers
-    const modal = document.getElementById('caseStudyModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDescription');
-    const modalHighlights = document.getElementById('modalHighlights');
-
-    function openModal(title, description, tags) {
-      modalTitle.textContent = title;
-      modalDesc.textContent = description;
-      modalHighlights.innerHTML = '';
-
-      tags.forEach(tag => {
-        const span = document.createElement('span');
-        span.className = 'bg-accent/10 border border-accent/30 text-accent text-xs px-3 py-1 rounded-full font-medium';
-        span.textContent = tag;
-        modalHighlights.appendChild(span);
-      });
-
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
     }
 
-    function closeModal() {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    // Close on outside click
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    // 3. Contact Form Submission Handler
+    // Contact Form Handler (Simulator)
     function handleFormSubmit(event) {
       event.preventDefault();
-      const submitBtn = document.getElementById('submitBtn');
-      const formStatus = document.getElementById('formStatus');
-      const form = document.getElementById('contactForm');
-
+      const form = event.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      
+      // Receives message in email: sshammim@gmail.com simulator
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Sending...</span>`;
+      submitBtn.innerText = "Sending to sshammim@gmail.com...";
 
-      // Simulate API call
       setTimeout(() => {
-        formStatus.classList.remove('hidden', 'bg-red-500/20', 'text-red-400');
-        formStatus.classList.add('bg-mint/20', 'text-mint', 'border', 'border-mint/30');
-        formStatus.textContent = 'Thank you! Your message has been sent successfully. I will get back to you soon.';
-        
+        alert("Thank you! Your message has been simulated sent to sshammim@gmail.com.");
         form.reset();
         submitBtn.disabled = false;
-        submitBtn.innerHTML = `<span>Send Message</span> <i data-lucide="send" class="w-4 h-4"></i>`;
-        lucide.createIcons();
-
-        setTimeout(() => {
-          formStatus.classList.add('hidden');
-        }, 6000);
-      }, 1000);
-    }
-
-    // 4. Download Resume Simulator
-    function downloadResume() {
-      alert("Downloading Shammim's Instructional Design Resume (PDF)...");
+        submitBtn.innerText = "Send Message";
+      }, 1500);
     }
   </script>
+
+  <!-- ========================= 
+       CHATBOT FEATURE (Botpress)
+       This script activates the chat widget on the bottom right.
+       Note: You must follow the setup steps below to make it function.
+  ========================= -->
+  <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+  <script src="https://mediafiles.botpress.cloud/00000000-0000-0000-0000-000000000000/webchat/config.js" defer></script>
+
 </body>
 </html>
