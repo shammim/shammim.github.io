@@ -72,9 +72,25 @@
     <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
       <!-- Logo -->
-      <a href="#home" class="text-xl font-bold tracking-tight hover:text-accent transition-colors flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-accent animate-pulse"></span>
-        Shammim's Portfolio
+      <a href="#home" class="flex items-center gap-3 group">
+        <!-- Glowing Monogram Icon -->
+        <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-mint p-[1.5px] shadow-lg shadow-accent/20 group-hover:shadow-accent/40 transition-all">
+          <div class="w-full h-full bg-primary rounded-[10px] flex items-center justify-center">
+            <svg class="w-6 h-6 text-accent group-hover:scale-105 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6H8a4 4 0 0 0-4 4v0a4 4 0 0 0 4 4h8a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4H6"/>
+            </svg>
+          </div>
+        </div>
+      
+        <!-- Brand Text -->
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold tracking-tight text-text leading-tight group-hover:text-accent transition-colors">
+            Shammim<span class="text-accent">.</span>
+          </span>
+          <span class="text-[9px] tracking-wider uppercase font-semibold text-muted">
+            Instructional Design
+          </span>
+        </div>
       </a>
 
       <!-- Desktop Navigation Links -->
