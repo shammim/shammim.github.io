@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="S_logo.png" />
-  <title>Shammim's Portfolio | Instructional Design & Learning Experience</title>
+  <title>Shammim's Portfolio | Education & Training Advisor</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -88,7 +87,7 @@
             Shammim<span class="text-accent">.</span>
           </span>
           <span class="text-[9px] tracking-wider uppercase font-semibold text-muted">
-            Instructional Design
+            Education & Training Advisor
           </span>
         </div>
       </a>
@@ -96,7 +95,8 @@
       <!-- Desktop Navigation Links -->
       <ul class="hidden md:flex items-center gap-7 text-sm font-medium text-muted">
         <li><a href="#home" class="hover:text-accent transition-colors">Home</a></li>
-        <li><a href="#about" class="hover:text-accent transition-colors">About</a></li>        <li><a href="#services" class="hover:text-accent transition-colors">Services</a></li>
+        <li><a href="#about" class="hover:text-accent transition-colors">About</a></li>
+        <li><a href="#services" class="hover:text-accent transition-colors">Services</a></li>
         <li><a href="#casestudies" class="hover:text-accent transition-colors">Case Studies</a></li>
         <li><a href="#skillstools" class="hover:text-accent transition-colors">Skills & Tools</a></li>
         <li><a href="#process" class="hover:text-accent transition-colors">Process</a></li>
@@ -139,7 +139,7 @@
 
     <div class="relative z-10 max-w-3xl mx-auto">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-medium text-accent mb-6">
-        <span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span> Instructional Design & Learning Experiences
+        <span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span> Education & Training Advisor
       </div>
 
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
@@ -293,27 +293,31 @@
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">
-      
+       
       <!-- Project card 1 -->
-      <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
+       <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
         <div>
-          <div class="h-48 bg-gradient-to-br from-secondary to-cardBg flex items-center justify-center p-6 border-b border-white/5">
-            <i data-lucide="file-code" class="w-16 h-16 text-mint/80"></i>
+          <div class="h-48 bg-gradient-to-br from-emerald-950/60 to-secondary flex items-center justify-center p-6 border-b border-white/5">
+            <i data-lucide="trees" class="w-16 h-16 text-mint/80"></i>
           </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg leading-snug">HTML Essentials – Interactive Microlearning Module</h3>
-            <p class="text-muted text-sm mt-3 line-clamp-2">Instructional & UX Designer • Applied ADDIE and cognitive chunking for beginner technical learners.</p>
+            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Onboarding & Safety Advisory</span>
+            <h3 class="font-bold text-lg mt-2 leading-snug">Introduction to Conservation & Land Management</h3>
+            <p class="text-muted text-sm mt-3 line-clamp-3">
+              Diagnosing compliance, risk mitigation, and biosecurity protocols to prepare entry-level trainees safely before field placement.
+           </p>
           </div>
         </div>
         <div class="p-6 pt-0">
-          <!-- MODAL TRIGGER 1 -->
-          <button onclick="openModal('modal1')" class="w-full py-2.5 px-4 rounded-xl bg-mint/10 text-mint hover:bg-mint hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
+          <button 
+            onclick="openModal('modal1')" 
+            class="w-full py-2.5 px-4 rounded-xl bg-mint/10 text-mint hover:bg-mint hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
             <span>View Case Study</span>
             <i data-lucide="eye" class="w-4 h-4"></i>
           </button>
         </div>
       </div>
-
+      
       <!-- Project card 2 -->
       <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
         <div>
@@ -321,8 +325,9 @@
             <i data-lucide="scale" class="w-16 h-16 text-coral/80"></i>
           </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg leading-snug">Identifying IP, Ethics & Privacy in ICT Environments</h3>
-            <p class="text-muted text-sm mt-3 line-clamp-2">Instructional Designer & Curriculum Developer • Compliance training featuring scenario-based branching case studies.</p>
+            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Retention &amp; VET Pathway Design</span>
+            <h3 class="font-bold text-lg mt-2 leading-snug">Vocational Training: First 30 Days</h3>
+            <p class="text-muted text-sm mt-3 line-clamp-3">Structuring a scaffolded transition model that reduces early attrition and aligns induction directly with VET/TAE standards.</p>
           </div>
         </div>
         <div class="p-6 pt-0">
@@ -338,24 +343,25 @@
       <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
         <div>
           <div class="h-48 bg-gradient-to-br from-secondary to-cardBg flex items-center justify-center p-6 border-b border-white/5">
-            <i data-lucide="lock" class="w-16 h-16 text-accent/80"></i>
+            <i data-lucide="file-code" class="w-16 h-16 text-mint/80"></i>
           </div>
           <div class="p-6">
-            <h3 class="font-bold text-lg leading-snug">Securely Manage PII & Workplace Information</h3>
-            <p class="text-muted text-sm mt-3 line-clamp-2">Instructional Designer & Security Specialist • Mitigated data breaches using authentic cybersecurity scenarios.</p>
+            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Capability Architecture</span>
+            <h3 class="font-bold text-lg mt-2 leading-snug">Microsoft Word Workplace Pathway</h3>
+            <p class="text-muted text-sm mt-3 line-clamp-2">eLearning • Scenario-based learning • Gamification • Articulate Rise 360</p>
+            <p class="text-muted text-sm mt-3 line-clamp-3">Designing a multi-tiered skills framework (Beginner to Advanced) accommodating mixed employee baselines without redundant training.</p>
           </div>
         </div>
         <div class="p-6 pt-0">
           <!-- MODAL TRIGGER 3 -->
-          <button onclick="openModal('modal3')" class="w-full py-2.5 px-4 rounded-xl bg-accent/10 text-accent hover:bg-accent hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
+          <button onclick="openModal('modal3')" class="w-full py-2.5 px-4 rounded-xl bg-mint/10 text-mint hover:bg-mint hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
             <span>View Case Study</span>
             <i data-lucide="eye" class="w-4 h-4"></i>
           </button>
         </div>
-      </div>
-
+      </div>  
     </div>
-  </section>
+ </section>
    <!-- ========================= 
        SKILLS & TOOLS 
   ========================= -->
@@ -367,37 +373,62 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass p-6 rounded-2xl">
-          <h3 class="font-semibold text-lg text-accent mb-4">Instructional Design</h3>
+        <div class="glass p-7 rounded-2xl lift flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4">
+            <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+          </div>
+            <h3 class="font-semibold text-lg text-accent mb-2">Advisory &amp; Learning Strategy</h3>
+            <p class="text-muted text-xs leading-relaxed mb-4">
+              Curriculum mapping, needs analysis, and adult learning principles that align organizational capability goals with measurable outcomes.
+            </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">ADDIE &amp; SAM Frameworks</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Adult Learning (Androgogy)</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Training Needs Analysis (TNA)</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Bloom's Revised Taxonomy</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Cognitive Chunking &amp; Scaffolding</span>
+          <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Capacbility Architecture</span>
+        </div>  
+      </div>
+
+        <div class="glass p-7 rounded-2xl lift flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-mint/10 text-mint flex items-center justify-center mb-4">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-semibold text-lg text-mint mb-2">Authoring, VET &amp; Assessment</h3>
+          <p class="text-muted text-xs leading-relaxed mb-4">
+            Developing engaging digital modules and compliant training packages without relying on generic, off-the-shelf templates.
+          </p>
+        </div>
           <div class="flex flex-wrap gap-2">
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">ADDIE & SAM</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Bloom's Taxonomy</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Scenario-Based Learning</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Kirkpatrick Model</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Microlearning</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Adult Learning Principles</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Articulate 360 (Rise &amp;Storyline)</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">TAE40122 / VET Standards</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Facilitator Guides &amp; Rubrics</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">LMS (Canvas, Moodle) /SCORM</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Situational Judgment Tests (SJTs)</span>
           </div>
         </div>
 
-        <div class="glass p-6 rounded-2xl">
-          <h3 class="font-semibold text-lg text-coral mb-4">Authoring & Media Tools</h3>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Articulate 360 (Storyline/Rise)</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Canva</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Figma</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Moodle / Canvas LMS</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">SCORM & xAPI</span>
+        <div class="glass p-7 rounded-2xl lift flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-coral/10 text-coral flex items-center justify-center mb-4">
+            <i data-lucide="code" class="w-5 h-5"></i>
           </div>
+          <h3 class="font-semibold text-lg text-coral mb-2">Technical Delivery &amp; UX</h3>
+          <p class="text-muted text-xs leading-relaxed mb-4">
+            Bridging technical subject matter expertise with accessible, responsive user experiences for software and digital systems.
+          </p>
         </div>
-
-        <div class="glass p-6 rounded-2xl">
-          <h3 class="font-semibold text-lg text-mint mb-4">Web & Technical</h3>
           <div class="flex flex-wrap gap-2">
             <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">HTML5 & CSS3</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Tailwind CSS</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">JavaScript Basics</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">WCAG Accessibility</span>
-            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Responsive Design</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">WCAG 2.1 Accessibility</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Software Simulation Design</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">MS Office &amp; Advanced Excel</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Cybersecurity &amp; IT Training</span>
+            <span class="bg-white/5 border border-white/10 px-3 py-1 rounded-lg text-xs">Learning UX &amp; Wireframing</span>
           </div>
         </div>
       </div>
@@ -563,109 +594,175 @@
       <button onclick="closeModal()" class="absolute top-6 right-6 text-muted hover:text-white transition-colors" aria-label="Close modal">
         <i data-lucide="x" class="w-7 h-7"></i>
       </button>
-
+      
       <!-- ================================
-           Modal Content: Case Study 1
+           Modal Content: Case Study 1: Conservation & Land Management
       ================================ -->
       <div id="content_modal1" class="hidden modal-section">
-        <span class="inline-block bg-mint/10 text-mint text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">Project Overview</span>
-        <h3 class="text-2xl font-extrabold text-text leading-snug">HTML Essentials – Interactive Microlearning Module | Instructional & UX Designer</h3>
-        <p class="text-muted mt-2 text-xs">Roles: Instructional & UX Designer</p>
+        <span class="inline-block bg-mint/10 text-mint text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">
+          Onboarding Experience
+        </span>
+        <h3 class="text-2xl font-extrabold text-text leading-snug">
+          Introduction to Conservation &amp; Land Management | Instructional &amp; Learning Designer
+        </h3>
+        <p class="text-muted mt-1 text-xs">
+          <strong>Role:</strong> Instructional Designer / Learning Designer &nbsp;|&nbsp; 
+          <strong>Tool:</strong> Articulate Rise 360 &nbsp;|&nbsp; 
+          <strong>Audience:</strong> New Conservation Trainees (15–20 Mins)
+        </p>
         
         <div class="h-px bg-white/10 my-6"></div>
         
         <div class="space-y-6 text-sm text-muted leading-relaxed">
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="target" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Challenge & Context:</strong> Addressed cognitive overload experienced by beginner technical learners when navigating web development syntax and semantic document structure.</p>
+            <p><strong class="text-text">Challenge & Context:</strong> Designed a concept onboarding eLearning module to orient new conservation and land management trainees to essential safety protocols, biosecurity considerations, and core workplace expectations before on-site placement.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="brain-circuit" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Instructional Strategy:</strong> Applied ADDIE and cognitive chunking principles to structure core HTML5 concepts into modular units (5–7 mins) with real-time interactive code sandboxes.</p>
+            <p><strong class="text-text">Instructional Strategy:</strong> Followed an end-to-end ID methodology (Need &rarr; Learner Analysis &rarr; Objectives &rarr; Design &rarr; Development &rarr; Evaluation). Structured concepts into bite-sized cognitive chunks paired with authentic scenario-based decision trees.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="users" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">UX & Accessibility:</strong> Designed user journeys, visual wireframes, and prototypes aligned with Google UX principles and WCAG accessibility standards for seamless engagement.</p>
+            <i data-lucide="layers" class="w-5 h-5 text-mint mt-0.5"></i>
+            <p><strong class="text-text">Architecture &amp; Delivery:</strong> Authored in Articulate Rise 360 using custom-sequenced modular lessons, interactive visual flashcards, and clear process workflows designed for intuitive navigation on desktop or mobile devices</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="trending-up" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Assessment & Impact:</strong> Integrated formative scenario-based knowledge checks and instant-feedback coding exercises, driving measurable knowledge retention and practical mastery.</p>
+            <p><strong class="text-text">Assessment & Impact:</strong> Integrated interactive formative knowledge checks with contextual feedback and guided self-reflection prompts, verifying understanding and encouraging reflective field practice.</p>
           </div>
         </div>
-      </div>
 
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href="https://youtu.be/rtH_vfHVoSI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 bg-accent text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition"
+          >
+            <i data-lucide="play-circle" class="w-5 h-5"></i>
+            View Interactive Module
+          </a>
+        </div>
+      </div>
       <!-- ================================
-           Modal Content: Case Study 2
+           Modal Content: Case Study 2: Introduction to Vocational Training & VET Pathway Design
       ================================ -->
       <div id="content_modal2" class="hidden modal-section">
-        <span class="inline-block bg-coral/10 text-coral text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">Project Overview</span>
-        <h3 class="text-2xl font-extrabold text-text leading-snug">Identifying IP, Ethics & Privacy in ICT Environments | Instructional Designer & Curriculum Developer</h3>
-        <p class="text-muted mt-2 text-xs">Roles: Instructional Designer & Curriculum Developer</p>
+        <span class="inline-block bg-mint/10 text-mint text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">
+          Vocational Induction
+        </span>
+        <h3 class="text-2xl font-extrabold text-text leading-snug">
+          Introduction to Vocational Training – First 30 Days | Instructional Designer
+        </h3>
+        <p class="text-muted mt-1 text-xs">
+          <strong>Role:</strong> Instructional Designer / Learning Designer &nbsp;|&nbsp; 
+          <strong>Audience:</strong> Newly Enrolled  Vocational Trainees &amp; Apprentices
+        </p>
+        
+        <div class="h-px bg-white/10 my-6"></div>
+        
+        <div class="space-y-6 text-sm text-muted leading-relaxed">
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="target" class="w-5 h-5 text-mint mt-0.5"></i>
+            <p><strong class="text-text">Challenge & Context:</strong> Addressed early disengagement and attrition during the initial vocational induction phase by transforming dense regulatory, WHS, and training framework requirements into an engaging, structured 30-day onboarding journey.</p>
+          </div>
+          
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="brain-circuit" class="w-5 h-5 text-mint mt-0.5"></i>
+            <p><strong class="text-text">Instructional Strategy:</strong> Applied adult learning principles (andragogy) and progressive scaffolding to map the first month into distinct phases: Day 1–7 (Orientation &amp; Safety), Day 8–15 (Core Competencies &amp; Systems), and Day 16–30 (Applied Workplace Practice).</p>
+          </div>
+          
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="layers" class="w-5 h-5 text-mint mt-0.5"></i>
+            <p><strong class="text-text">Resource Architecture:</strong> Authored self-guided interactive digital modules, downloadable visual job aids, mentor-guided check-in rubrics, and interactive situational judgment scenarios.</p>
+          </div>
+          
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="trending-up" class="w-5 h-5 text-mint mt-0.5"></i>
+            <p><strong class="text-text">Assessment &amp; Evaluation:</strong> Built milestone self-evaluations, supervisor feedback rubrics, and scenario-based compliance challenges to track progression and verify on-the-job competency.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href="https://www.youtube.com/watch?v=_6uknfvxuG4"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 bg-accent text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition"
+          >
+            <i data-lucide="play-circle" class="w-5 h-5"></i>
+            View Interactive Module
+          </a>
+        </div>
+      </div>
+      
+      
+
+      <!-- ================================
+           Modal Content: Case Study 3
+      ================================ -->
+      <div id="content_modal3" class="hidden modal-section">
+        <span class="inline-block bg-accent/10 text-accent text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">Software Skills Pathway</span>
+        <h3 class="text-2xl font-extrabold text-text leading-snug">Microsoft Word Workplace Skills Pathway | Instructional Designer &amp; eLearning Developer
+        </h3>
+        <p class="text-muted mt-1 text-xs">
+          <strong>Role:</strong> Instructional Designer &amp; eLearning Developer &nbsp;|&nbsp; 
+          <strong>Tool:</strong> Articulate Rise 360 &nbsp;|&nbsp; 
+          <strong>Structure:</strong> 3 Tiered Levels (Beginner, Intermediate, Advanced)
+        </p>
         
         <div class="h-px bg-white/10 my-6"></div>
         
         <div class="space-y-6 text-sm text-muted leading-relaxed">
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="target" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Challenge & Context:</strong> Designed a compliance-oriented instructional unit to help IT professionals navigate complex legal, intellectual property, copyright, and privacy obligations.</p>
+            <p><strong class="text-text">Challenge &amp; Context:</strong> Designed a scalable multi-level pathway to address disparate levels of software competency across corporate and administrative teams, improving productivity and workplace document consistency.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="brain-circuit" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Instructional Strategy:</strong> Developed authentic scenario-based branching case studies reflecting Australian Privacy Principles (APPs), digital copyright, and ethical data handling dilemmas.</p>
+            <div>
+              <p><strong class="text-text">Instructional Strategy &amp; Curriculum Tiers:</strong> Applied ADDIE, cognitive chunking, and progressive difficulty across three distinct modules:</p>
+              <ul class="list-disc list-inside mt-2 space-y-1 text-xs text-muted">
+                <li><strong class="text-text">Level 1 (Beginner):</strong> Document creation, text formatting essentials, lists, and basic page layout hygiene.</li>
+                <li><strong class="text-text">Level 2 (Intermediate):</strong> Custom styles, document hierarchy, tables, headers/footers, and automated table of contents.</li>
+                <li><strong class="text-text">Level 3 (Advanced):</strong> Track changes, review pane collaboration, document protection, and template standardization.</li>
+              </ul>
+            </div>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="folder-kanban" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Resource Architecture:</strong> Authored comprehensive facilitator guides, learner workbooks, interactive decision trees, and digital job aids for workplace application.</p>
+            <i data-lucide="trophy" class="w-5 h-5 text-coral mt-0.5"></i>
+            <p><strong class="text-text">Engagement &amp; Gamification:</strong> Incorporated micro-challenges, interactive click-to-reveal guides, and achievement-based milestones where learners earn stars and badges by completing realistic workplace tasks.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="trending-up" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Assessment & Evaluation:</strong> Designed rubric-aligned workplace simulations and formative situational judgment tests (SJTs), ensuring verifiable compliance and critical thinking.</p>
+            <p><strong class="text-text">Assessment &amp; Application:</strong> Structured formative software knowledge checks culminating in a comprehensive capstone challenge, where learners audit, format, and prepare an executive workplace report from raw unformatted text.</p>
+          </div>
+
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="layout" class="w-5 h-5 text-coral mt-0.5"></i>
+            <p><strong class="text-text">Accessibility &amp; eLearning:</strong> Engineered in Articulate Rise 360 using custom-sequenced modular blocks, accessible contrast ratios, clean navigational signposts, and responsive mobile-ready layouts[cite: 1].</p>
+          </div>
+        </div>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a
+              href="https://youtu.be/fgyWUEmUCrg"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-accent text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition"
+            >
+              <i data-lucide="play-circle" class="w-5 h-5"></i>
+              View Interactive Module
+            </a>
           </div>
         </div>
       </div>
-
-      <!-- ================================
-           Modal Content: Case Study 3
-      ================================ -->
-      <div id="content_modal3" class="hidden modal-section">
-        <span class="inline-block bg-accent/10 text-accent text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">Project Overview</span>
-        <h3 class="text-2xl font-extrabold text-text leading-snug">Securely Manage PII & Workplace Information | Instructional Designer & Security Specialist</h3>
-        <p class="text-muted mt-2 text-xs">Roles: Instructional Designer & Security Specialist</p>
-        
-        <div class="h-px bg-white/10 my-6"></div>
-        
-        <div class="space-y-6 text-sm text-muted leading-relaxed">
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="target" class="w-5 h-5 text-accent mt-0.5"></i>
-            <p><strong class="text-text">Challenge & Context:</strong> Mitigated enterprise data breaches and improper handling of Personally Identifiable Information (PII) across hybrid workplace operations.</p>
-          </div>
-          
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="brain-circuit" class="w-5 h-5 text-accent mt-0.5"></i>
-            <p><strong class="text-text">Instructional Strategy:</strong> Designed an interactive cybersecurity & information security module utilizing authentic breach scenarios, data classification exercises, and lifecycle management workflows.</p>
-          </div>
-          
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="folder-kanban" class="w-5 h-5 text-accent mt-0.5"></i>
-            <p><strong class="text-text">Resource Architecture:</strong> Developed clear information-handling matrices, standard operating procedure (SOP) quick-reference guides, and simulated phishing/data breach decision modules.</p>
-          </div>
-          
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="trending-up" class="w-5 h-5 text-accent mt-0.5"></i>
-            <p><strong class="text-text">Assessment & Impact:</strong> Implemented performance-based scenario assessments evaluating risk identification, secure storage protocols, and incident escalation procedures.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
 
   <!-- ========================= 
        JAVASCRIPT FOR BUTTONS & MODALS
