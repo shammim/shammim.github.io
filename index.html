@@ -300,6 +300,22 @@
           <div class="h-48 bg-gradient-to-br from-emerald-950/60 to-secondary flex items-center justify-center p-6 border-b border-white/5">
             <i data-lucide="trees" class="w-16 h-16 text-mint/80"></i>
           </div>
+           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+          <div>
+             <div class="grid grid-cols-2 gap-x-3 mt-3">
+              <img 
+                src="ECWelcome.jpg" 
+                alt="Mockup of Environment compliance Module" 
+                class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
+              />
+              <img 
+                src="ECModule 1.jpg" 
+                alt="Mockup of Environment compliance Module" 
+                class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
+              />
+            </div>
+          </div>
+        </div>
           <div class="p-6">
             <span class="text-xs uppercase tracking-wider text-mint font-semibold">Field Trainee Blended Onboarding</span>
             <h3 class="font-bold text-lg mt-2 leading-snug">Environmental Compliance &amp; Land Management</h3>
@@ -324,6 +340,22 @@
           <div class="h-48 bg-gradient-to-br from-secondary to-cardBg flex items-center justify-center p-6 border-b border-white/5">
             <i data-lucide="scale" class="w-16 h-16 text-coral/80"></i>
           </div>
+           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+          <div>
+             <div class="grid grid-cols-2 gap-x-3 mt-3">
+              <img 
+                src="VET welcome.jpg" 
+                alt="Mockup of Environment compliance Module" 
+                class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
+              />
+              <img 
+                src="VETModule 1.png" 
+                alt="Mockup of Environment compliance Module" 
+                class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
+              />
+            </div>
+          </div>
+        </div>
           <div class="p-6">
             <span class="text-xs uppercase tracking-wider text-mint font-semibold">Retention &amp; VET Pathway Design</span>
             <h3 class="font-bold text-lg mt-2 leading-snug">VET Learner Onboarding & Induction </h3>
@@ -345,6 +377,22 @@
           <div class="h-48 bg-gradient-to-br from-secondary to-cardBg flex items-center justify-center p-6 border-b border-white/5">
             <i data-lucide="file-code" class="w-16 h-16 text-mint/80"></i>
           </div>
+           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+          <div>
+             <div class="grid grid-cols-2 gap-x-3 mt-3">
+              <img 
+                src="Msword advanced.png" 
+                alt="Mockup of Environment compliance Module" 
+                class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
+              />
+              <img 
+                src="Mockup 30.png" 
+                alt="Mockup of Environment compliance Module" 
+                class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
+              />
+            </div>
+          </div>
+        </div>
           <div class="p-6">
             <span class="text-xs uppercase tracking-wider text-mint font-semibold">Capability Architecture</span>
             <h3 class="font-bold text-lg mt-2 leading-snug">Microsoft Word Workplace Pathway</h3>
@@ -635,18 +683,7 @@
           </div>
         </div>
         <br>
-        <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-          <i data-lucide="eye" class="w-5 h-5 text-coral mt-0.5"></i>
-          <div>
-             <div class="mt-4">
-              <img 
-                src="Msword advanced.png" 
-                alt="Mockup of MS Word Advanced Module" 
-                class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
-              />
-            </div>
-          </div>
-        </div>
+       
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
           <a
             href="https://youtu.be/rtH_vfHVoSI"
@@ -664,7 +701,7 @@
       ================================ -->
       <div id="content_modal2" class="hidden modal-section">
         <span class="inline-block bg-mint/10 text-mint text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">
-          Vocational Induction
+          Vocational Induction & Onboarding
         </span>
         <h3 class="text-2xl font-extrabold text-text leading-snug">
           VET Learner Onboarding & Induction | Instructional Designer
@@ -703,8 +740,8 @@
             <p><strong class="text-text">Short Glimpse of Work</strong></p>
             <div class="mt-4">
               <img 
-                src="Msword advanced.png" 
-                alt="Mockup of MS Word Advanced Module" 
+                src="VET welcome.jpg" 
+                alt="Mockup of VET Welcome Module" 
                 class="w-full max-w-md rounded-xl shadow-lg border border-white/10"
               />
             </div>
@@ -907,7 +944,74 @@
             closeModal();
         }
     });
-    
+     // ==========================================
+    // CHATBOT LOGIC
+    // ==========================================
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const chatInput = document.getElementById('chatInput');
+    const sendChat = document.getElementById('sendChat');
+    const chatMessages = document.getElementById('chatMessages');
+
+    function toggleChat() {
+      if (chatWindow.classList.contains('hidden')) {
+        chatWindow.classList.remove('hidden');
+        chatWindow.classList.add('flex');
+        chatInput.focus();
+      } else {
+        chatWindow.classList.add('hidden');
+        chatWindow.classList.remove('flex');
+      }
+    }
+    chatToggle.addEventListener('click', toggleChat);
+    closeChat.addEventListener('click', toggleChat);
+
+    function appendMessage(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('p-3', 'rounded-2xl', 'text-text', 'max-w-[85%]', 'shadow-sm', 'text-sm');
+      
+      if (sender === 'User') {
+        msgDiv.classList.add('bg-accent', 'text-white', 'self-end', 'rounded-tr-sm');
+      } else {
+        msgDiv.classList.add('bg-white', 'border', 'border-gray-100', 'self-start', 'rounded-tl-sm');
+      }
+      
+      msgDiv.textContent = text;
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleChatQuery() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      
+      appendMessage('User', text);
+      chatInput.value = '';
+
+      setTimeout(() => {
+        const lowerText = text.toLowerCase();
+        let reply = "Thanks for reaching out! Please use the contact form on this page so we can discuss your learning design needs in detail.";
+
+        if (lowerText.includes("tool") || lowerText.includes("software") || lowerText.includes("tech")) {
+          reply = "For eLearning development, I frequently work with Articulate Rise 360, Storyline 360, Camtasia, Canva, and Figma. I also build web apps using HTML, CSS, React, and Python!";
+        } else if (lowerText.includes("location") || lowerText.includes("where") || lowerText.includes("based")) {
+          reply = "I am based in Donnybrook, Victoria, Australia, but I am comfortable working and collaborating on digital learning projects globally.";
+        } else if (lowerText.includes("education") || lowerText.includes("degree") || lowerText.includes("background")) {
+          reply = "I hold a Master of Technology in Computer Science, and I've also pursued certifications in Training & Assessment and Early Childhood Education, giving me a unique blend of tech and pedagogy.";
+        } else if (lowerText.includes("design") || lowerText.includes("process")) {
+          reply = "I use frameworks like ADDIE, Merrill's Principles, and Mayer's Multimedia Principles to ensure all digital learning is structurally sound and highly engaging.";
+        }
+
+        appendMessage('Bot', reply);
+      }, 700);
+    }
+
+    sendChat.addEventListener('click', handleChatQuery);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleChatQuery();
+    });
+
   </script>
 
 </body>
