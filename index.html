@@ -80,7 +80,7 @@
             </svg>
           </div>
         </div>
-      
+        
         <!-- Brand Text -->
         <div class="flex flex-col">
           <span class="text-lg font-extrabold tracking-tight text-text leading-tight group-hover:text-accent transition-colors">
@@ -97,7 +97,7 @@
         <li><a href="#home" class="hover:text-accent transition-colors">Home</a></li>
         <li><a href="#about" class="hover:text-accent transition-colors">About</a></li>
         <li><a href="#services" class="hover:text-accent transition-colors">Services</a></li>
-        <li><a href="#casestudies" class="hover:text-accent transition-colors">Case Studies</a></li>
+        <li><a href="#portfolio" class="hover:text-accent transition-colors">Portfolio</a></li>
         <li><a href="#skillstools" class="hover:text-accent transition-colors">Skills & Tools</a></li>
         <li><a href="#process" class="hover:text-accent transition-colors">Process</a></li>
         <li><a href="#resume" class="hover:text-accent transition-colors">Resume</a></li>
@@ -120,7 +120,7 @@
         <li><a href="#home" class="mobile-nav-link block hover:text-accent">Home</a></li>
         <li><a href="#about" class="mobile-nav-link block hover:text-accent">About</a></li>
         <li><a href="#services" class="mobile-nav-link block hover:text-accent">Services</a></li>
-        <li><a href="#casestudies" class="mobile-nav-link block hover:text-accent">Case Studies</a></li>
+        <li><a href="#portfolio" class="mobile-nav-link block hover:text-accent">Portfolio</a></li>
         <li><a href="#skillstools" class="mobile-nav-link block hover:text-accent">Skills & Tools</a></li>
         <li><a href="#process" class="mobile-nav-link block hover:text-accent">Process</a></li>
         <li><a href="#resume" class="mobile-nav-link block hover:text-accent">Resume</a></li>
@@ -128,7 +128,6 @@
       </ul>
     </div>
   </header>
-
 
   <!-- ========================= 
        HERO SECTION 
@@ -152,7 +151,7 @@
 
       <!-- CTA Buttons -->
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#casestudies" class="w-full sm:w-auto bg-accent text-black font-semibold px-8 py-3.5 rounded-full hover:bg-accentHover hover:shadow-lg hover:shadow-accent/20 transition-all">
+        <a href="#portfolio" class="w-full sm:w-auto bg-accent text-black font-semibold px-8 py-3.5 rounded-full hover:bg-accentHover hover:shadow-lg hover:shadow-accent/20 transition-all">
           Discover My Work
         </a>
 
@@ -163,7 +162,6 @@
     </div>
   </section>
 
-
    <!-- ========================= 
        ABOUT / USP 
   ========================= -->
@@ -173,7 +171,7 @@
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight">What Makes Me Different</h2>
     </div>
 
-    <!-- Corrected 6-item Grid Layout -->
+    <!-- 6-item Grid Layout -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="glass p-7 rounded-2xl lift flex flex-col justify-start">
         <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4">
@@ -237,8 +235,6 @@
     </div>
   </section>
 
-
-
   <!-- ========================= 
        SERVICES 
   ========================= -->
@@ -283,24 +279,29 @@
       </div>
     </div>
   </section>
+
   <!-- ========================= 
        WORK / PORTFOLIO with MODAL TRIGGERS
   ========================= -->
-  <section id="casestudies" class="py-24 px-6 max-w-6xl mx-auto">
+  <section id="portfolio" class="py-24 px-6 max-w-6xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-16">
       <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">Featured Projects</p>
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Case Studies</h2>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Portfolio</h2>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">
        
       <!-- Project card 1 -->
        <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
+        <div>
+          <div class="h-48 bg-gradient-to-br from-emerald-950/60 to-secondary flex items-center justify-center p-6 border-b border-white/5">
+            <i data-lucide="heart-handshake" class="w-16 h-16 text-mint/80"></i>
+          </div>
           <div class="p-6">
-            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Field Trainee Blended Onboarding</span>
-            <h3 class="font-bold text-lg mt-2 leading-snug">Environmental Compliance &amp; Land Management</h3>
+            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Care That Counts</span>
+            <h3 class="font-bold text-lg mt-2 leading-snug">Aged &amp; Dementia Care Onboarding</h3>
             <p class="text-muted text-sm mt-3 line-clamp-3">
-              Diagnosing compliance, risk mitigation, and biosecurity protocols to prepare entry-level trainees safely before field placement.
+              30-day phased onboarding for new aged care workers featuring AI video scenarios, branching conversations, and on-shift practice alongside a buddy.
            </p>
           </div>
         </div>
@@ -316,14 +317,17 @@
       
       <!-- Project card 2 -->
       <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
+        <div>
+          <div class="h-48 bg-gradient-to-br from-secondary to-cardBg flex items-center justify-center p-6 border-b border-white/5">
+            <i data-lucide="stethoscope" class="w-16 h-16 text-coral/80"></i>
+          </div>
           <div class="p-6">
-            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Complex Care: Inpatient Asthma Management</span>
-            <h3 class="font-bold text-lg mt-2 leading-snug"> Inpatient Asthma Management Onboarding Course </h3>
-            <p class="text-muted text-sm mt-3 line-clamp-3">Inpatient Nursing Staff & Clinical Care Teams (15–20 Mins)</p>
+            <span class="text-xs uppercase tracking-wider text-coral font-semibold">Asthma Management</span>
+            <h3 class="font-bold text-lg mt-2 leading-snug">Complex Care Workplace Scenarios</h3>
+            <p class="text-muted text-sm mt-3 line-clamp-3">Five scenario-based lessons set in hospital and residential care, plus real-time NDIS in-home support featuring branching decisions and consequences.</p>
           </div>
         </div>
         <div class="p-6 pt-0">
-          <!-- MODAL TRIGGER 2 -->
           <button onclick="openModal('modal2')" class="w-full py-2.5 px-4 rounded-xl bg-coral/10 text-coral hover:bg-coral hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
             <span>View Case Study</span>
             <i data-lucide="eye" class="w-4 h-4"></i>
@@ -333,16 +337,18 @@
 
       <!-- Project card 3 -->
       <div class="glass rounded-2xl overflow-hidden lift flex flex-col justify-between">
-         <div class="p-6">
-            <span class="text-xs uppercase tracking-wider text-mint font-semibold">Capability Architecture</span>
-            <h3 class="font-bold text-lg mt-2 leading-snug">Microsoft Word Workplace Pathway</h3>
-            <p class="text-muted text-sm mt-3 line-clamp-2">eLearning • Scenario-based learning • Gamification • Articulate Rise 360</p>
-            <p class="text-muted text-sm mt-3 line-clamp-3">Designing a multi-tiered skills framework (Beginner to Advanced) accommodating mixed employee baselines without redundant training.</p>
+        <div>
+          <div class="h-48 bg-gradient-to-br from-secondary to-cardBg flex items-center justify-center p-6 border-b border-white/5">
+            <i data-lucide="bar-chart-2" class="w-16 h-16 text-accent/80"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs uppercase tracking-wider text-accent font-semibold">Microsoft Excel Refresher</span>
+            <h3 class="font-bold text-lg mt-2 leading-snug">Work Smarter</h3>
+            <p class="text-muted text-sm mt-3 line-clamp-3">90-minute self-paced course where learners clean, count, look up and summarise real staff data in a live practice grid with an AI tutor.</p>
           </div>
         </div>
         <div class="p-6 pt-0">
-          <!-- MODAL TRIGGER 3 -->
-          <button onclick="openModal('modal3')" class="w-full py-2.5 px-4 rounded-xl bg-mint/10 text-mint hover:bg-mint hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
+          <button onclick="openModal('modal3')" class="w-full py-2.5 px-4 rounded-xl bg-accent/10 text-accent hover:bg-accent hover:text-black font-medium text-sm transition-all flex items-center justify-center gap-2">
             <span>View Case Study</span>
             <i data-lucide="eye" class="w-4 h-4"></i>
           </button>
@@ -350,6 +356,7 @@
       </div>  
     </div>
  </section>
+
    <!-- ========================= 
        SKILLS & TOOLS 
   ========================= -->
@@ -423,53 +430,59 @@
     </div>
   </section>
 
-   <!-- ========================= 
+  <!-- ========================= 
        PROCESS 
   ========================= -->
-  <section id="process" class="py-24 px-6 max-w-5xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16">
+  <section id="process" class="py-24 px-6 max-w-6xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-16">
       <p class="text-accent text-sm font-semibold tracking-wider uppercase mb-2">Methodology</p>
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">The Design Process</h2>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Design Process</h2>
+      <p class="text-muted text-sm sm:text-base leading-relaxed">
+        My approach to designing learning solutions is iterative and collaborative, moving through multiple stages with frequent client touchpoints to ensure alignment throughout the process.<br><br>
+        This is how I solve learning problems and create engaging training that helps people do their jobs better.
+      </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-accent">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div class="glass p-6 rounded-2xl border-l-4 border-l-accent lift">
         <span class="text-accent text-xs font-bold uppercase tracking-wider">Step 01</span>
-        <h3 class="font-bold text-lg mt-1">Discover</h3>
-        <p class="text-muted text-sm mt-2">Identify target audience, analyze performance gaps, and assess learning needs.</p>
+        <h3 class="font-bold text-lg mt-1">Understand the challenge</h3>
+        <p class="text-muted text-sm mt-2">I ask what's standing in the way and work with stakeholders to uncover the real performance issue so we solve the right problem.</p>
       </div>
 
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-accent">
+      <div class="glass p-6 rounded-2xl border-l-4 border-l-accent lift">
         <span class="text-accent text-xs font-bold uppercase tracking-wider">Step 02</span>
-        <h3 class="font-bold text-lg mt-1">Define</h3>
-        <p class="text-muted text-sm mt-2">Establish measurable learning outcomes, key metrics, and assessment criteria.</p>
+        <h3 class="font-bold text-lg mt-1">Map what success looks like</h3>
+        <p class="text-muted text-sm mt-2">I define what success looks like on the job by focusing on actions, not just answers, so people can make the right call when it counts.</p>
       </div>
 
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-coral">
+      <div class="glass p-6 rounded-2xl border-l-4 border-l-coral lift">
         <span class="text-coral text-xs font-bold uppercase tracking-wider">Step 03</span>
-        <h3 class="font-bold text-lg mt-1">Design</h3>
-        <p class="text-muted text-sm mt-2">Storyboarding, instructional flow mapping, UX wireframes, and prototype testing.</p>
+        <h3 class="font-bold text-lg mt-1">Build with intention</h3>
+        <p class="text-muted text-sm mt-2">I storyboard, prototype, and test early to make sure everything feels useful and aligned with the business goals.</p>
       </div>
 
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-coral">
+      <div class="glass p-6 rounded-2xl border-l-4 border-l-coral lift">
         <span class="text-coral text-xs font-bold uppercase tracking-wider">Step 04</span>
-        <h3 class="font-bold text-lg mt-1">Develop</h3>
-        <p class="text-muted text-sm mt-2">Authoring responsive eLearning, crafting multimedia assets, and LMS packaging.</p>
+        <h3 class="font-bold text-lg mt-1">Layer in feedback</h3>
+        <p class="text-muted text-sm mt-2">I add coaching and reflection so learners can practice safely—and build confidence before going live.</p>
       </div>
 
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-mint">
+      <div class="glass p-6 rounded-2xl border-l-4 border-l-mint lift">
         <span class="text-mint text-xs font-bold uppercase tracking-wider">Step 05</span>
-        <h3 class="font-bold text-lg mt-1">Deliver</h3>
-        <p class="text-muted text-sm mt-2">Facilitation, rollout, seamless deployment, and technical onboarding.</p>
+        <h3 class="font-bold text-lg mt-1">Refine and deliver</h3>
+        <p class="text-muted text-sm mt-2">I smooth the flow, check accessibility, and make sure the course supports the people and the performance it was meant to serve.</p>
       </div>
-
-      <div class="glass p-6 rounded-2xl border-l-4 border-l-mint">
-        <span class="text-mint text-xs font-bold uppercase tracking-wider">Step 06</span>
-        <h3 class="font-bold text-lg mt-1">Evaluate</h3>
-        <p class="text-muted text-sm mt-2">Analyze feedback, measure performance outcomes, and iterate for continuous improvement.</p>
-      </div>
+    </div>
+    
+    <div class="text-center">
+       <p class="text-muted text-sm mb-6">Click the button below to see how I bring those values to life in real client-ready projects.</p>
+       <a href="#portfolio" class="inline-flex items-center justify-center gap-2 bg-accent text-black px-8 py-3.5 rounded-full font-bold hover:bg-accentHover hover:shadow-lg hover:shadow-accent/20 transition-all">
+         View Portfolio
+       </a>
     </div>
   </section>
+
   <!-- ========================= 
        RESUME SECTION 
   ========================= -->
@@ -503,7 +516,6 @@
       </div>
 
       <!-- Functional Form with Feedback -->
-      <!-- Functional Contact Form -->
     <form id="contactForm" onsubmit="handleFormSubmit(event)" class="glass p-8 rounded-2xl space-y-5">
       
       <div>
@@ -562,7 +574,7 @@
   ========================= -->
   <footer class="py-12 border-t border-white/10 text-center text-muted text-sm bg-primary">
     <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p>© 2026 Shammim | Melbourne. All rights reserved.</p>
+      <p>© 2026 Shammim's Portfolio. All rights reserved.</p>
       <p class="text-sm text-muted/80">Turning complex learning needs into engaging digital experiences.</p>
     </div>
   </footer>
@@ -584,173 +596,150 @@
       </button>
       
       <!-- ================================
-           Modal Content: Case Study 1: Conservation & Land Management
+           Modal Content: Case Study 1: Care That Counts
       ================================ -->
       <div id="content_modal1" class="hidden modal-section">
         <span class="inline-block bg-mint/10 text-mint text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">
           Onboarding Experience
         </span>
         <h3 class="text-2xl font-extrabold text-text leading-snug">
-          Environmental Compliance &amp; Land Management | Instructional &amp; Learning Designer
+          Care That Counts: Aged &amp; Dementia Care Onboarding
         </h3>
-        <p class="text-muted mt-1 text-xs">
-          <strong>Role:</strong> Instructional Designer / Learning Designer &nbsp;|&nbsp; 
-          <strong>Tool:</strong> Articulate Rise 360 &nbsp;|&nbsp; 
-          <strong>Audience:</strong> New Conservation Trainees (15–20 Mins)
-        </p>
         
         <div class="h-px bg-white/10 my-6"></div>
         
         <div class="space-y-6 text-sm text-muted leading-relaxed">
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="target" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Challenge & Context:</strong> Designed a concept onboarding eLearning module to orient new conservation and land management trainees to essential safety protocols, biosecurity considerations, and core workplace expectations before on-site placement.</p>
+            <p><strong class="text-text">Challenge & Context:</strong> Designed a structured 30-day phased onboarding program to orient new aged care workers to critical compliance and empathy-driven care standards.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="brain-circuit" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Instructional Strategy:</strong> Followed an end-to-end ID methodology (Need &rarr; Learner Analysis &rarr; Objectives &rarr; Design &rarr; Development &rarr; Evaluation). Structured concepts into bite-sized cognitive chunks paired with authentic scenario-based decision trees.</p>
+            <p><strong class="text-text">Instructional Strategy:</strong> Blended learning approach combining 20 short online screens paired directly with on-shift practice alongside a buddy, structured with supervisor check-ins at days 7, 15, and 30.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="layers" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Architecture &amp; Delivery:</strong> Authored in Articulate Rise 360 using custom-sequenced modular lessons, interactive visual flashcards, and clear process workflows designed for intuitive navigation on desktop or mobile devices</p>
+            <p><strong class="text-text">Content & Compliance:</strong> Built firmly around the Aged Care Act 2024, the Statement of Rights, and the Code of Conduct to ensure verifiable workplace compliance and ethical standards.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="trending-up" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Assessment & Impact:</strong> Integrated interactive formative knowledge checks with contextual feedback and guided self-reflection prompts, verifying understanding and encouraging reflective field practice.</p>
+            <p><strong class="text-text">Interactive Features:</strong> Incorporated branching dementia-care conversations (e.g., responding to sundowning/distress at 4 pm), immersive AI video scenarios, sorting tasks, and deep learner reflections.</p>
           </div>
         </div>
         <br>
        
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
           <a
-            href="https://youtu.be/YPBcxIE5qoc"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
             class="inline-flex items-center justify-center gap-2 bg-accent text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition"
           >
             <i data-lucide="play-circle" class="w-5 h-5"></i>
-            View Interactive Module
+            View on Portfolio
           </a>
         </div>
       </div>
+      
       <!-- ================================
-           Modal Content: Case Study 2: Complex Care: Inpatient Asthma Management
+           Modal Content: Case Study 2: Asthma Management
       ================================ -->
       <div id="content_modal2" class="hidden modal-section">
-        <span class="inline-block bg-mint/10 text-mint text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">
-          Inpatient Nursing Staff & Clinical Care Teams
+        <span class="inline-block bg-coral/10 text-coral text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">
+          Clinical Scenario Training
         </span>
         <h3 class="text-2xl font-extrabold text-text leading-snug">
-          Complex Care: Inpatient Asthma Management | Instructional & Learning Designer
+          Asthma Management: Complex Care Workplace Scenarios
         </h3>
-        <p class="text-muted mt-1 text-xs">
-          <strong>Role:</strong> Instructional Designer / Learning Designer &nbsp;|&nbsp; 
-          <strong>Audience:</strong>Inpatient Nursing Staff & Clinical Care Teams
-        </p>
-        
-        <div class="h-px bg-white/10 my-6"></div>
-        
-        <div class="space-y-6 text-sm text-muted leading-relaxed">
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="target" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Challenge & Context:</strong> Designed an acute clinical scenario module addressing nocturnal respiratory distress, focusing on rapid escalation, airway assessment, and effective communication between shift nurses and clinical leadership during overnight episodes.</p>
-          </div>
-          
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="brain-circuit" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Instructional Strategy:</strong> Grounded the learning experience in authentic workplace dialogue (a 2:00 AM wheezing exacerbation) to transition foundational pathophysiology into decisive bedside triage, structured communication, and leadership-backed interventions.</p>
-          </div>
-          
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="layers" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Resource Architecture:</strong> Authored in Articulate Rise 360 using branching conversational scenarios, interactive timeline blocks for vital sign monitoring, and expandable clinical reference tabs for symptom identification and escalation protocols.</p>
-          </div>
-          
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="trending-up" class="w-5 h-5 text-mint mt-0.5"></i>
-            <p><strong class="text-text">Assessment &amp; Evaluation:</strong> Embedded scenario-driven decision points with immediate feedback on triage choices, reinforcing early recognition of respiratory fatigue and adherence to hospital clinical pathways.</p>
-          </div>
-        </div>
-        
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a
-            href="https://youtu.be/Cj1pKZKfp4k"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 bg-accent text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition"
-          >
-            <i data-lucide="play-circle" class="w-5 h-5"></i>
-            View Interactive Module
-          </a>
-        </div>
-      </div>
-      
-      
-
-      <!-- ================================
-           Modal Content: Case Study 3
-      ================================ -->
-      <div id="content_modal3" class="hidden modal-section">
-        <span class="inline-block bg-accent/10 text-accent text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">Software Skills Pathway</span>
-        <h3 class="text-2xl font-extrabold text-text leading-snug">Microsoft Word Workplace Skills Pathway | Instructional Designer &amp; eLearning Developer
-        </h3>
-        <p class="text-muted mt-1 text-xs">
-          <strong>Role:</strong> Instructional Designer &amp; eLearning Developer &nbsp;|&nbsp; 
-          <strong>Tool:</strong> Articulate Rise 360 &nbsp;|&nbsp; 
-          <strong>Structure:</strong> 3 Tiered Levels (Beginner, Intermediate, Advanced)
-        </p>
         
         <div class="h-px bg-white/10 my-6"></div>
         
         <div class="space-y-6 text-sm text-muted leading-relaxed">
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="target" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Challenge &amp; Context:</strong> Designed a scalable multi-level pathway to address disparate levels of software competency across corporate and administrative teams, improving productivity and workplace document consistency.</p>
+            <p><strong class="text-text">Challenge & Context:</strong> Created comprehensive scenario-based lessons to equip healthcare and support workers with critical asthma management and emergency response skills across varied care settings.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="brain-circuit" class="w-5 h-5 text-coral mt-0.5"></i>
-            <div>
-              <p><strong class="text-text">Instructional Strategy &amp; Curriculum Tiers:</strong> Applied ADDIE, cognitive chunking, and progressive difficulty across three distinct modules:</p>
-              <ul class="list-disc list-inside mt-2 space-y-1 text-xs text-muted">
-                <li><strong class="text-text">Level 1 (Beginner):</strong> Document creation, text formatting essentials, lists, and basic page layout hygiene.</li>
-                <li><strong class="text-text">Level 2 (Intermediate):</strong> Custom styles, document hierarchy, tables, headers/footers, and automated table of contents.</li>
-                <li><strong class="text-text">Level 3 (Advanced):</strong> Track changes, review pane collaboration, document protection, and template standardization.</li>
-              </ul>
-            </div>
+            <p><strong class="text-text">Instructional Strategy:</strong> Five scenario-based lessons contextualized in hospital environments, residential care facilities, and real-time NDIS in-home support settings.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="trophy" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Engagement &amp; Gamification:</strong> Incorporated micro-challenges, interactive click-to-reveal guides, and achievement-based milestones where learners earn stars and badges by completing realistic workplace tasks.</p>
+            <i data-lucide="layers" class="w-5 h-5 text-coral mt-0.5"></i>
+            <p><strong class="text-text">Content & Compliance:</strong> Integrated strict first aid protocols and medication administration content fully aligned to the National Asthma Council Australia guidance.</p>
           </div>
           
           <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
             <i data-lucide="trending-up" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Assessment &amp; Application:</strong> Structured formative software knowledge checks culminating in a comprehensive capstone challenge, where learners audit, format, and prepare an executive workplace report from raw unformatted text.</p>
-          </div>
-
-          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
-            <i data-lucide="layout" class="w-5 h-5 text-coral mt-0.5"></i>
-            <p><strong class="text-text">Accessibility &amp; eLearning:</strong> Engineered in Articulate Rise 360 using custom-sequenced modular blocks, accessible contrast ratios, clean navigational signposts, and responsive mobile-ready layouts.</p>
+            <p><strong class="text-text">Interactive Features:</strong> Engaged learners through fully voiced characters, critical A/B/C branching decisions with realistic consequences, and structured debriefs for continuous learning.</p>
           </div>
         </div>
-          <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a
-              href="https://www.youtube.com/watch?v=XZqy1XJzARU"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 bg-accent text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition"
-            >
-              <i data-lucide="play-circle" class="w-5 h-5"></i>
-              View Interactive Module
-            </a>
-          </div>
+        
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#" class="inline-flex items-center justify-center gap-2 bg-coral text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition">
+            <i data-lucide="stethoscope" class="w-5 h-5"></i>
+            Workplace Scenario 1
+          </a>
+          <a href="#" class="inline-flex items-center justify-center gap-2 bg-secondary border border-white/20 text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition">
+            Scenario 2
+          </a>
+          <a href="#" class="inline-flex items-center justify-center gap-2 bg-secondary border border-white/20 text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition">
+            NDIS in-home
+          </a>
         </div>
       </div>
+      
+      <!-- ================================
+           Modal Content: Case Study 3: Microsoft Excel Refresher
+      ================================ -->
+      <div id="content_modal3" class="hidden modal-section">
+        <span class="inline-block bg-accent/10 text-accent text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-3">
+          Software Upskilling
+        </span>
+        <h3 class="text-2xl font-extrabold text-text leading-snug">
+          Microsoft Excel Refresher: Work Smarter
+        </h3>
+        
+        <div class="h-px bg-white/10 my-6"></div>
+        
+        <div class="space-y-6 text-sm text-muted leading-relaxed">
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="target" class="w-5 h-5 text-accent mt-0.5"></i>
+            <p><strong class="text-text">Challenge &amp; Context:</strong> Designed a targeted refresher course to address productivity bottlenecks, helping workplace learners update legacy habits and execute modern data manipulation with speed and confidence.</p>
+          </div>
+          
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="brain-circuit" class="w-5 h-5 text-accent mt-0.5"></i>
+            <p><strong class="text-text">Instructional Strategy:</strong> A 90-minute self-paced course structured into 6 parts across 16 screens. Completely rebuilt from an existing Rise 360 module for enhanced interactivity and practical application.</p>
+          </div>
+          
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="trophy" class="w-5 h-5 text-accent mt-0.5"></i>
+            <p><strong class="text-text">Interactive Execution:</strong> Learners are challenged to clean, count, look up, and summarise real staff data inside a live practice grid, bridging the gap between theory and immediate workplace tasks.</p>
+          </div>
+          
+          <div class="grid grid-cols-[auto,1fr] gap-x-4 items-start">
+            <i data-lucide="layout" class="w-5 h-5 text-accent mt-0.5"></i>
+            <p><strong class="text-text">Advanced Elements & Assessment:</strong> Supported by an AI presenter video, integrated AI voice-overs, and a built-in AI tutor to assist learners on-demand, culminating in a rigorous 80% pass-mark quiz.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href="#"
+            class="inline-flex items-center justify-center gap-2 bg-accent text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition"
+          >
+            <i data-lucide="play-circle" class="w-5 h-5"></i>
+            View on Portfolio
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 
   <!-- ========================= 
        JAVASCRIPT FOR BUTTONS & MODALS
@@ -768,7 +757,7 @@
         });
     }
 
-   // 3. Contact Form Submission Handler
+   // Contact Form Submission Handler
    function handleFormSubmit(event) {
       event.preventDefault();
       const submitBtn = document.getElementById('submitBtn');
@@ -794,12 +783,12 @@
         }, 6000);
       }, 1000);
     }
-    // 4. Download Resume Simulator
+    // Download Resume Simulator
     function downloadResume() {
       alert("Downloading Shammim's Instructional Design Resume (PDF)...");
     }
     /* ====================================
-       MODAL LOGIC (New Code)
+       MODAL LOGIC 
     ==================================== */
     const overlay = document.getElementById('modalOverlay');
     const modalContent = document.getElementById('modalContent');
@@ -858,73 +847,6 @@
         if (event.key === "Escape" && !overlay.classList.contains('hidden')) {
             closeModal();
         }
-    });
-     // ==========================================
-    // CHATBOT LOGIC
-    // ==========================================
-    const chatToggle = document.getElementById('chatToggle');
-    const chatWindow = document.getElementById('chatWindow');
-    const closeChat = document.getElementById('closeChat');
-    const chatInput = document.getElementById('chatInput');
-    const sendChat = document.getElementById('sendChat');
-    const chatMessages = document.getElementById('chatMessages');
-
-    function toggleChat() {
-      if (chatWindow.classList.contains('hidden')) {
-        chatWindow.classList.remove('hidden');
-        chatWindow.classList.add('flex');
-        chatInput.focus();
-      } else {
-        chatWindow.classList.add('hidden');
-        chatWindow.classList.remove('flex');
-      }
-    }
-    chatToggle.addEventListener('click', toggleChat);
-    closeChat.addEventListener('click', toggleChat);
-
-    function appendMessage(sender, text) {
-      const msgDiv = document.createElement('div');
-      msgDiv.classList.add('p-3', 'rounded-2xl', 'text-text', 'max-w-[85%]', 'shadow-sm', 'text-sm');
-      
-      if (sender === 'User') {
-        msgDiv.classList.add('bg-accent', 'text-white', 'self-end', 'rounded-tr-sm');
-      } else {
-        msgDiv.classList.add('bg-white', 'border', 'border-gray-100', 'self-start', 'rounded-tl-sm');
-      }
-      
-      msgDiv.textContent = text;
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function handleChatQuery() {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      
-      appendMessage('User', text);
-      chatInput.value = '';
-
-      setTimeout(() => {
-        const lowerText = text.toLowerCase();
-        let reply = "Thanks for reaching out! Please use the contact form on this page so we can discuss your learning design needs in detail.";
-
-        if (lowerText.includes("tool") || lowerText.includes("software") || lowerText.includes("tech")) {
-          reply = "For eLearning development, I frequently work with Articulate Rise 360, Storyline 360, Camtasia, Canva, and Figma. I also build web apps using HTML, CSS, React, and Python!";
-        } else if (lowerText.includes("location") || lowerText.includes("where") || lowerText.includes("based")) {
-          reply = "I am based in Donnybrook, Victoria, Australia, but I am comfortable working and collaborating on digital learning projects globally.";
-        } else if (lowerText.includes("education") || lowerText.includes("degree") || lowerText.includes("background")) {
-          reply = "I hold a Master of Technology in Computer Science, and I've also pursued certifications in Training & Assessment and Early Childhood Education, giving me a unique blend of tech and pedagogy.";
-        } else if (lowerText.includes("design") || lowerText.includes("process")) {
-          reply = "I use frameworks like ADDIE, Merrill's Principles, and Mayer's Multimedia Principles to ensure all digital learning is structurally sound and highly engaging.";
-        }
-
-        appendMessage('Bot', reply);
-      }, 700);
-    }
-
-    sendChat.addEventListener('click', handleChatQuery);
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleChatQuery();
     });
 
   </script>
