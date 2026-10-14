@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clinical Handover with ISBAR</title>
+<style>
+/* Layout: sticky header with progress, pull-out left course menu, single reading column of modular blocks, sticky prev/next bar. */
+:root{
+  --bg:#F2F6F9; --surface:#FFFFFF; --surface-2:#E9F1F6; --ink:#13222E; --muted:#475A69; --line:#D2DEE7;
+  --primary:#0A5A8C; --primary-ink:#FFFFFF; --teal:#0B7473; --teal-soft:#E1F2F1; --focus:#1468D1;
+  --ok:#1C7343; --ok-soft:#E3F3EA; --bad:#B02A20; --bad-soft:#FBE9E7; --warn:#8A5300; --warn-soft:#FFF3DF;
+  --l-i:#0A5A8C; --l-s:#B02A20; --l-b:#5B3F8C; --l-a:#0B7473; --l-r:#8A5300; --on-l:#FFFFFF;
+  --shadow:0 1px 2px rgba(19,34,46,.06),0 4px 14px rgba(19,34,46,.06);
+  --font:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:12px; --header:64px; --drawer:300px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1820; --surface:#15232E; --surface-2:#1B2D3A; --ink:#E5EEF4; --muted:#A6B8C5; --line:#2A3F4E;
+  --primary:#6DB7E8; --primary-ink:#08131B; --teal:#56C4BF; --teal-soft:#16332F; --focus:#8CC8FF;
+  --ok:#6FD39A; --ok-soft:#14321F; --bad:#FF8F84; --bad-soft:#3A1A17; --warn:#F2B866; --warn-soft:#33260F;
+  --l-i:#6DB7E8; --l-s:#FF8F84; --l-b:#B9A2E8; --l-a:#56C4BF; --l-r:#F2B866; --on-l:#08131B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1820; --surface:#15232E; --surface-2:#1B2D3A; --ink:#E5EEF4; --muted:#A6B8C5; --line:#2A3F4E;
+  --primary:#6DB7E8; --primary-ink:#08131B; --teal:#56C4BF; --teal-soft:#16332F; --focus:#8CC8FF;
+  --ok:#6FD39A; --ok-soft:#14321F; --bad:#FF8F84; --bad-soft:#3A1A17; --warn:#F2B866; --warn-soft:#33260F;
+  --l-i:#6DB7E8; --l-s:#FF8F84; --l-b:#B9A2E8; --l-a:#56C4BF; --l-r:#F2B866; --on-l:#08131B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25); color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--primary)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--primary);color:var(--primary-ink);padding:.5rem .9rem;border-radius:8px}
+.skip:focus{left:12px}
+
+/* header */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;height:var(--header);background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.75rem;padding-inline:1rem}
+.iconbtn{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:.5rem .7rem;cursor:pointer;min-height:44px}
+.iconbtn:hover{background:var(--surface-2)}
+.iconbtn svg{width:20px;height:20px;flex:none}
+.brand{display:flex;flex-direction:column;min-width:0;flex:1}
+.brand small{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.brand strong{font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;min-width:120px}
+.prog span{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.progbar{width:min(220px,30vw);height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.progbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--teal));transition:width .4s ease}
+@media (max-width:560px){.menu-label{display:none}.prog{min-width:70px}.progbar{width:70px}}
+
+/* shell */
+.shell{display:flex;min-height:calc(100% - var(--header))}
+.drawer{position:fixed;z-index:40;top:calc(var(--header) + env(safe-area-inset-top,0px));bottom:0;left:0;width:min(var(--drawer),86vw);background:var(--surface);border-right:1px solid var(--line);transform:translateX(-102%);transition:transform .28s ease;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.drawer.open{transform:none}
+.scrim{position:fixed;inset:0;top:calc(var(--header) + env(safe-area-inset-top,0px));background:rgba(8,19,27,.45);z-index:35;opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.show{opacity:1;pointer-events:auto}
+@media (min-width:1100px){
+  .drawer{position:sticky;top:calc(var(--header) + env(safe-area-inset-top,0px));height:calc(100vh - var(--header));flex:none;box-shadow:none;transform:none;width:var(--drawer);margin-left:calc(-1 * var(--drawer));transition:margin .28s ease}
+  .drawer.open{margin-left:0}
+  .scrim{display:none}
+}
+.drawer-head{padding:1rem 1.1rem .75rem;border-bottom:1px solid var(--line)}
+.drawer-head h2{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.drawer-head p{font-size:.9rem;margin-top:.3rem}
+.toc{overflow-y:auto;padding:.5rem .6rem 1.2rem;flex:1}
+.toc-sec{margin-top:.6rem}
+.toc-sec>h3{font-size:.75rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:.4rem .6rem}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc button{width:100%;display:flex;align-items:center;gap:.6rem;text-align:left;border:0;background:transparent;border-radius:8px;padding:.55rem .6rem;cursor:pointer;font-size:.93rem;min-height:40px}
+.toc button:hover{background:var(--surface-2)}
+.toc button[aria-current="page"]{background:var(--teal-soft);font-weight:600}
+.dot{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center}
+.done .dot{background:var(--ok);border-color:var(--ok)}
+.done .dot::after{content:"";width:8px;height:4px;border-left:2px solid var(--surface);border-bottom:2px solid var(--surface);transform:rotate(-45deg) translate(1px,-1px)}
+
+main{flex:1;min-width:0;padding-inline:1rem;padding-block:1.5rem 7rem}
+.page{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:1.25rem}
+.page.enter{animation:fadein .35s ease}
+@keyframes fadein{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* bottom nav */
+.navbar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--surface);border-top:1px solid var(--line);padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom,0px))}
+.navbar .in{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:.75rem}
+.navbar .count{flex:1;text-align:center;font-size:.88rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (min-width:1100px){.navbar.pushed{left:var(--drawer)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border-radius:10px;padding:.65rem 1.1rem;min-height:44px;font-weight:600;cursor:pointer;border:1px solid var(--primary);background:var(--primary);color:var(--primary-ink)}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--primary)}
+.btn.quiet{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.btn svg{width:18px;height:18px}
+
+/* blocks */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.25rem 1.35rem;box-shadow:var(--shadow)}
+.eyebrow{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--teal)}
+.hero{padding:1.6rem 1.5rem;border-radius:16px;background:linear-gradient(135deg,var(--surface) 55%,var(--teal-soft));border:1px solid var(--line)}
+.hero h1{font-size:clamp(1.65rem,4.2vw,2.35rem);font-weight:750;letter-spacing:-.01em;margin:.35rem 0 .6rem}
+.hero p{color:var(--muted);font-size:1.07rem;max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.chip{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;padding:.25rem .65rem;border-radius:99px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink)}
+.prose h2{font-size:1.3rem;margin-bottom:.55rem}
+.prose h3{font-size:1.05rem;margin:.9rem 0 .35rem}
+.prose p+p{margin-top:.7rem}
+.prose p,.prose li{max-width:68ch}
+.prose ul,.prose ol{padding-left:1.25rem;margin:.5rem 0 0}
+.prose li+li{margin-top:.3rem}
+.prose .objectives{padding:0}
+.objectives{counter-reset:o;list-style:none;padding:0;margin:.8rem 0 0;display:grid;gap:.6rem}
+.objectives li{counter-increment:o;display:flex;gap:.8rem;align-items:flex-start;max-width:none}
+.objectives li::before{content:counter(o);flex:none;width:30px;height:30px;border-radius:8px;background:var(--primary);color:var(--primary-ink);font-weight:700;display:grid;place-items:center;font-size:.9rem}
+.callout{display:flex;gap:.9rem;border-radius:var(--r);padding:1rem 1.1rem;border:1px solid var(--line);background:var(--surface-2)}
+.callout svg{flex:none;width:24px;height:24px;margin-top:.1rem}
+.callout.safety{background:var(--bad-soft);border-color:color-mix(in srgb,var(--bad) 35%,transparent)}
+.callout.safety svg{color:var(--bad)}
+.callout.tip{background:var(--teal-soft);border-color:color-mix(in srgb,var(--teal) 35%,transparent)}
+.callout.tip svg{color:var(--teal)}
+.callout strong{display:block;margin-bottom:.15rem}
+.ti{display:grid;grid-template-columns:1.1fr .9fr;gap:1.25rem;align-items:center}
+.ti.flip{grid-template-columns:.9fr 1.1fr}
+.ti.flip .ti-media{order:-1}
+.ti>*{min-width:0}
+.ti-media{border-radius:var(--r);background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.ti-media svg{display:block;width:100%;height:auto}
+.ti-media figcaption{font-size:.82rem;color:var(--muted);padding:.5rem .8rem;border-top:1px solid var(--line);background:var(--surface)}
+@media (max-width:720px){.ti,.ti.flip{grid-template-columns:1fr}.ti.flip .ti-media{order:0}}
+
+/* accordion */
+.acc{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.acc-item+.acc-item{border-top:1px solid var(--line)}
+.acc-item h3{margin:0}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;text-align:left;background:transparent;border:0;padding:1rem 1.2rem;font-weight:650;font-size:1rem;cursor:pointer;min-height:52px}
+.acc-btn:hover{background:var(--surface-2)}
+.acc-btn svg{width:20px;height:20px;flex:none;transition:transform .25s}
+.acc-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.acc-panel{padding:0 1.2rem 1.1rem;color:var(--ink)}
+.acc-panel p{max-width:68ch;color:var(--muted)}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.flip{perspective:1000px;min-height:190px;border:0;padding:0;background:transparent;cursor:pointer;text-align:left}
+.flip-in{position:relative;width:100%;height:100%;min-height:190px;transition:transform .55s;transform-style:preserve-3d}
+.flip[aria-pressed="true"] .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:var(--r);padding:1.1rem;backface-visibility:hidden;border:1px solid var(--line);display:flex;flex-direction:column;gap:.5rem;box-shadow:var(--shadow)}
+.face.front{background:var(--surface)}
+.face.back{background:var(--teal-soft);transform:rotateY(180deg)}
+.face .tag{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.face h3{font-size:1.06rem}
+.face p{font-size:.93rem}
+.face .hint{margin-top:auto;font-size:.8rem;color:var(--muted)}
+
+/* ISBAR anatomy tabs */
+.isbar-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
+.ltab{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:.6rem .3rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:.25rem;min-height:84px}
+.ltab .L{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:1.35rem;color:var(--on-l)}
+.ltab span{font-size:.78rem;font-weight:600}
+.ltab[aria-selected="true"]{border-color:currentColor;background:var(--surface-2)}
+.ltab .seen{font-size:.68rem;color:var(--ok);font-weight:700;min-height:1em}
+.c-i{color:var(--l-i)}.c-s{color:var(--l-s)}.c-b{color:var(--l-b)}.c-a{color:var(--l-a)}.c-r{color:var(--l-r)}
+.bg-i{background:var(--l-i)}.bg-s{background:var(--l-s)}.bg-b{background:var(--l-b)}.bg-a{background:var(--l-a)}.bg-r{background:var(--l-r)}
+.ltab span,.ltab .seen{color:var(--ink)}
+.tabpanel{margin-top:1rem;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.tp-head{display:flex;gap:1rem;align-items:center;padding:1.1rem 1.2rem;border-bottom:1px solid var(--line)}
+.tp-head .L{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:1.7rem;color:var(--on-l);flex:none}
+.tp-head h3{font-size:1.25rem}
+.tp-head p{color:var(--muted);font-size:.95rem}
+.tp-body{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;padding:1.1rem 1.2rem}
+.tp-body>*{min-width:0}
+.tp-body h4{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .45rem}
+.tp-body ul{margin:0;padding-left:1.1rem}
+.tp-body li+li{margin-top:.25rem}
+.example{grid-column:1/-1;border-left:4px solid currentColor;background:var(--surface-2);border-radius:0 10px 10px 0;padding:.8rem 1rem}
+.example p{color:var(--ink);font-style:italic}
+.example h4{color:inherit}
+@media (max-width:640px){.isbar-tabs{gap:.3rem}.ltab span{font-size:.68rem}.ltab .L{width:36px;height:36px;font-size:1.15rem}.tp-body{grid-template-columns:1fr}}
+
+/* obs chart */
+.obs-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table.obs{border-collapse:collapse;width:100%;min-width:520px;font-variant-numeric:tabular-nums;font-size:.93rem}
+.obs th,.obs td{padding:.6rem .8rem;text-align:left;border-bottom:1px solid var(--line)}
+.obs thead th{font-size:.75rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
+.obs tfoot td{font-weight:700;background:var(--surface-2)}
+.score{display:inline-grid;place-items:center;min-width:28px;height:24px;border-radius:6px;font-weight:700;font-size:.85rem}
+.s0{background:var(--surface-2)}.s1{background:var(--warn-soft);color:var(--warn)}.s2{background:#F6D6A8;color:#5A3700}.s3{background:var(--bad-soft);color:var(--bad)}
+:root[data-theme="dark"] .s2{background:#4A3410;color:#F8D9A6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .s2{background:#4A3410;color:#F8D9A6}}
+
+/* scenario patient card */
+.patient{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.patient .avatar{width:56px;height:56px;border-radius:14px;background:var(--surface-2);display:grid;place-items:center;border:1px solid var(--line)}
+.patient .avatar svg{width:32px;height:32px;color:var(--primary)}
+.idband{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.idband span{font-family:var(--mono);font-size:.8rem;background:var(--surface-2);border:1px solid var(--line);padding:.15rem .5rem;border-radius:6px}
+
+/* sorter */
+.sorter{display:grid;gap:1rem}
+.pool{display:flex;flex-wrap:wrap;gap:.5rem;min-height:56px;padding:.75rem;border:2px dashed var(--line);border-radius:var(--r);background:var(--surface)}
+.pool:empty::after{content:"All observations placed. Select Check answers.";color:var(--muted);font-size:.9rem;align-self:center}
+.obsitem{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:.5rem .7rem;font-size:.9rem;cursor:grab;text-align:left;max-width:100%;box-shadow:var(--shadow);line-height:1.4}
+.obsitem[aria-pressed="true"]{outline:3px solid var(--focus);outline-offset:1px}
+.obsitem.ok{border-color:var(--ok);background:var(--ok-soft)}
+.obsitem.bad{border-color:var(--bad);background:var(--bad-soft)}
+.obsitem .why{display:block;font-size:.82rem;color:var(--ink);margin-top:.35rem;font-style:italic}
+.buckets{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.bucket{border:2px solid var(--line);border-radius:var(--r);background:var(--surface);display:flex;flex-direction:column;min-height:170px;min-width:0}
+.bucket.over{border-color:var(--focus);background:var(--surface-2)}
+.bucket-head{display:flex;align-items:center;gap:.5rem;padding:.5rem .6rem;border:0;background:transparent;cursor:pointer;text-align:left;border-bottom:1px solid var(--line);min-height:48px;width:100%}
+.bucket-head .L{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-weight:800;color:var(--on-l);flex:none}
+.bucket-head span{font-size:.8rem;font-weight:650;min-width:0;overflow-wrap:anywhere}
+.bucket-items{display:flex;flex-direction:column;gap:.4rem;padding:.5rem;flex:1}
+@media (max-width:900px){.buckets{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.buckets{grid-template-columns:1fr}.bucket{min-height:96px}}
+.howto{font-size:.88rem;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+
+/* quick check & quiz */
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{font-weight:650;font-size:1.05rem;padding:0;margin-bottom:.8rem;max-width:68ch}
+.opts{display:grid;gap:.55rem}
+.opt{display:flex;gap:.75rem;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:.75rem .9rem;cursor:pointer;background:var(--surface);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--primary)}
+.opt input{margin-top:.25rem;width:18px;height:18px;accent-color:var(--primary);flex:none}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.fb{margin-top:.9rem;border-radius:10px;padding:.85rem 1rem;border:1px solid var(--line);background:var(--surface-2)}
+.fb.good{border-color:var(--ok);background:var(--ok-soft)}
+.fb.poor{border-color:var(--bad);background:var(--bad-soft)}
+.fb strong{display:block;margin-bottom:.2rem}
+.fb.good strong{color:var(--ok)}.fb.poor strong{color:var(--bad)}
+.qhead{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:.9rem;flex-wrap:wrap}
+.steps{display:flex;gap:.35rem}
+.steps i{width:28px;height:6px;border-radius:99px;background:var(--line)}
+.steps i.on{background:var(--primary)}
+.steps i.ok{background:var(--ok)}.steps i.no{background:var(--bad)}
+.result{text-align:center;padding:1.2rem .5rem}
+.result .big{font-size:2.6rem;font-weight:800;font-variant-numeric:tabular-nums}
+.result p{color:var(--muted);margin:.3rem auto 1rem;max-width:52ch}
+
+/* media placeholders */
+.video{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.vframe{position:relative;aspect-ratio:16/9;max-width:100%;background:linear-gradient(135deg,#0D3A55,#0B5C5B);display:grid;place-items:center;color:#fff}
+.vframe .play{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.7);display:grid;place-items:center}
+.vframe .play svg{width:30px;height:30px;margin-left:4px}
+.vframe .badge{position:absolute;left:12px;top:12px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;background:rgba(0,0,0,.35);padding:.25rem .55rem;border-radius:6px}
+.vframe .dur{position:absolute;right:12px;bottom:12px;font-size:.8rem;background:rgba(0,0,0,.45);padding:.15rem .5rem;border-radius:6px;font-variant-numeric:tabular-nums}
+.vmeta{padding:.9rem 1.1rem}
+.vmeta h3{font-size:1.02rem}
+.vmeta p{color:var(--muted);font-size:.92rem;margin-top:.2rem}
+details.tx{margin-top:.6rem}
+details.tx summary{cursor:pointer;color:var(--primary);font-weight:600;font-size:.92rem;min-height:32px;display:flex;align-items:center}
+details.tx p{font-size:.92rem;margin-top:.4rem;color:var(--ink)}
+.ai{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.ai-head{display:flex;gap:.9rem;align-items:center;padding:1rem 1.2rem;background:linear-gradient(90deg,var(--surface-2),var(--surface));border-bottom:1px solid var(--line)}
+.ai-head .ic{width:44px;height:44px;border-radius:12px;background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;flex:none}
+.ai-head .ic svg{width:24px;height:24px}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1rem 1.2rem}
+.ai-grid>div{min-width:0}
+.ai-grid h4{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .35rem}
+.ai-grid ul{margin:0;padding-left:1.1rem;font-size:.93rem}
+.ai-foot{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;border-top:1px solid var(--line);background:var(--surface-2)}
+.ai-foot p{font-size:.85rem;color:var(--muted)}
+.ph{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:6px;padding:.2rem .5rem}
+@media (max-width:720px){.ai-grid{grid-template-columns:1fr}}
+
+/* job aid */
+.jobaid{border:2px solid var(--primary);border-radius:16px;background:var(--surface);overflow:hidden}
+.ja-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 1.2rem;background:var(--primary);color:var(--primary-ink)}
+.ja-head h2{font-size:1.2rem}
+.ja-head p{font-size:.85rem;opacity:.9}
+.ja-rows{display:grid}
+.ja-row{display:grid;grid-template-columns:64px 1fr 1fr;gap:1rem;padding:.9rem 1.2rem;border-top:1px solid var(--line);align-items:start}
+.ja-row>*{min-width:0}
+.ja-row .L{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:1.5rem;color:var(--on-l)}
+.ja-row h3{font-size:1rem}
+.ja-row p{font-size:.9rem;color:var(--muted)}
+.ja-row ul{margin:0;padding-left:1.1rem;font-size:.9rem}
+.ja-foot{padding:.9rem 1.2rem;border-top:1px solid var(--line);background:var(--surface-2);font-size:.88rem}
+@media (max-width:640px){.ja-row{grid-template-columns:52px 1fr}.ja-row ul{grid-column:2}}
+.status{font-size:.88rem;color:var(--ok);min-height:1.2em}
+
+/* builder reference */
+.ref{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem}
+.ref div{border:1px solid var(--line);border-radius:10px;padding:.8rem .9rem;background:var(--surface)}
+.ref code{font-family:var(--mono);font-size:.83rem;color:var(--teal);font-weight:600}
+.ref p{font-size:.88rem;color:var(--muted);margin-top:.25rem}
+pre.code{overflow-x:auto;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;font-family:var(--mono);font-size:.82rem;line-height:1.5;margin:0}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media print{
+  .topbar,.drawer,.scrim,.navbar,.noprint{display:none!important}
+  body{background:#fff}
+  main{padding:0}
+  .page>*:not(.printable){display:none!important}
+  .jobaid{border-color:#000}
+}
+</style>
+</head>
+<body>
+
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-controls="drawer" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="brand">
+    <small id="seriesName"></small>
+    <strong id="courseName"></strong>
+  </div>
+  <div class="prog" aria-live="polite">
+    <span id="progText">0% complete</span>
+    <div class="progbar" role="progressbar" aria-label="Module completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progBar"><i id="progFill"></i></div>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="drawer" id="drawer" aria-label="Course menu">
+    <div class="drawer-head">
+      <h2>Course menu</h2>
+      <p id="drawerSub"></p>
+    </div>
+    <div class="toc" id="toc"></div>
+  </nav>
+  <div class="scrim" id="scrim"></div>
+  <main id="main" tabindex="-1">
+    <div class="page" id="page"></div>
+  </main>
+</div>
+
+<nav class="navbar" id="navbar" aria-label="Page navigation">
+  <div class="in">
+    <button class="btn quiet" id="prevBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Previous</button>
+    <span class="count" id="pageCount"></span>
+    <button class="btn" id="nextBtn">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+  </div>
+</nav>
+
+<script>
+/* =====================================================================
+   COURSE CONTENT
+   To build a new course in this series, replace the COURSE object only.
+   Each page has a section, a title and an array of blocks. Block types:
+   hero, text, objectives, callout, textImage, accordion, flipcards,
+   isbarTabs (tabbed interaction), obsChart, patient, sort, quickCheck,
+   quiz, video, aiScenario, jobAid, blockRef.
+   ===================================================================== */
+const COURSE = {
+  id: "isbar-handover-v1",
+  series: "Complex Care Compliance · RN / EN",
+  title: "Clinical Handover with ISBAR",
+  duration: "35 minutes",
+  pages: [
+  { id:"welcome", section:"Welcome", title:"Welcome", blocks:[
+    {type:"hero", eyebrow:"Module 1 · Clinical communication", title:"Clinical Handover with ISBAR",
+     lead:"Handover is one of the riskiest moments in a patient's care. Information gets lost, assumptions fill the gaps, and a deteriorating patient can slip through. This module shows you how a structured ISBAR handover keeps the right information moving between clinicians.",
+     chips:["35 minutes","Registered and enrolled nurses","Aligned to NSQHS Standard 6: Communicating for Safety"]},
+    {type:"callout", tone:"safety", title:"Why this matters", html:"Communication failures are consistently identified as a contributing factor in serious adverse events in hospitals. Many happen at handover: at shift change, during transfers between wards, and when escalating a deteriorating patient to a medical officer."},
+    {type:"objectives", title:"By the end of this module you will be able to", items:[
+      "Deliver a clinical handover using all five ISBAR components in the correct order.",
+      "Identify a patient using three approved identifiers before sharing clinical information.",
+      "Organise assessment findings, including observations and early warning scores, to show clinical risk clearly.",
+      "Make a specific recommendation and confirm the plan using closed-loop communication."]},
+    {type:"text", html:"<h2>How this module works</h2><p>Work through each page in order using <strong>Next</strong> and <strong>Previous</strong>, or jump to any section from the menu. Your progress is saved in this browser. The practice scenario and knowledge check give instant feedback, so you can try again as often as you need.</p>"}
+  ]},
+  { id:"why", section:"Why ISBAR matters", title:"The risks at handover", blocks:[
+    {type:"textImage", html:"<span class='eyebrow'>Why ISBAR matters</span><h2 style='margin-top:.35rem'>Shift change is a busy, noisy, high-risk moment</h2><p>At change of shift you may be handing over six or more patients while call bells ring, relatives ask questions and the incoming team is still settling in. Under this cognitive load, memory becomes selective. Clinicians tend to share what is easy to recall, not what matters most.</p><p>A structured format reduces that load. Both people know what is coming next, what has been missed and when to ask questions.</p>",
+     svg:"handover", caption:"Bedside handover between outgoing and incoming nurses.", alt:"Illustration of two nurses handing over at a patient's bedside with an observation chart."},
+    {type:"accordion", title:"Common handover risks", items:[
+      {title:"Omitted information", html:"<p>Allergies, recent changes in observations, pending results and outstanding tasks are the items most often left out of unstructured handovers.</p>"},
+      {title:"Cognitive overload", html:"<p>Holding several patients' details in working memory while being interrupted increases errors. A predictable structure frees attention for clinical judgement.</p>"},
+      {title:"Interruptions and distractions", html:"<p>Each interruption risks losing your place. ISBAR acts as a checklist you can return to: 'We were up to Assessment.'</p>"},
+      {title:"Ambiguous recommendations", html:"<p>'Keep an eye on him' gives the receiver nothing specific to do. Clear recommendations state what, who and by when.</p>"},
+      {title:"No confirmation of understanding", html:"<p>Without a read-back, neither person knows whether the message was received as intended.</p>"}]},
+    {type:"flipcards", title:"Unstructured versus structured: select a card to flip it", cards:[
+      {tag:"Unstructured", front:"'She's a bit off, not really herself.'", back:"<strong>With ISBAR:</strong> 'Her respiratory rate has gone from 18 to 24 in two hours and she is newly confused. NEWS2 is now 7.'"},
+      {tag:"Unstructured", front:"'Just keep an eye on him overnight.'", back:"<strong>With ISBAR:</strong> 'Please repeat his observations hourly and call the registrar if his systolic drops below 100.'"},
+      {tag:"Unstructured", front:"'Bed 4 is the gentleman with the hip.'", back:"<strong>With ISBAR:</strong> 'Robert Lim, date of birth 2 June 1948, URN 557201, bed 4, day 2 after a right hip replacement.'"}]},
+    {type:"quickCheck", title:"Quick check", question:"You are interrupted twice while handing over a patient. What is the main benefit of using ISBAR in this situation?",
+     options:[
+      {text:"It makes handover faster, so interruptions matter less.", correct:false, feedback:"Speed can improve, but it isn't the main benefit. Rushing through handover increases the risk of omissions."},
+      {text:"It gives both nurses a shared structure, so you can pick up where you left off and spot missing sections.", correct:true, feedback:"Correct. A predictable structure reduces cognitive load and makes gaps visible to both people."},
+      {text:"It removes the need for the receiving nurse to ask questions.", correct:false, feedback:"Questions are still essential. ISBAR creates a natural point to ask them during the Recommendation step."}]}
+  ]},
+  { id:"anatomy", section:"ISBAR anatomy", title:"The five components", blocks:[
+    {type:"text", html:"<span class='eyebrow'>Interactive</span><h2 style='margin-top:.35rem'>Explore each part of ISBAR</h2><p>Select each letter to see its clinical definition, the questions it answers and a nursing example. All five examples follow the same patient, so you can hear the full handover build up.</p>"},
+    {type:"isbarTabs", items:[
+      {k:"i", letter:"I", name:"Introduction", definition:"Identify yourself, your role and location, then identify the patient using three approved identifiers.",
+       questions:["Who am I, and what is my role?","Where am I calling from (ward and bed)?","Who is the patient? Full name, date of birth and URN or MRN."],
+       tips:["Use three identifiers every time, never bed number alone.","Check identifiers against the wristband or chart.","State who you are speaking to, if handing over by phone."],
+       example:"'Hi, I'm Sam Patel, the registered nurse on Ward 6B. I'm calling about Margaret Hollis, date of birth 14 March 1954, URN 448219, in bed 12.'"},
+      {k:"s", letter:"S", name:"Situation", definition:"State the immediate clinical issue: why you are handing over or calling, and the patient's current status.",
+       questions:["What is happening right now?","Why am I calling or handing over?","How worried am I?"],
+       tips:["Keep it to one or two sentences.","Say your level of concern early: 'I'm worried'.","Lead with the problem, not the history."],
+       example:"'I'm worried she's deteriorating. Over the last hour she has become increasingly short of breath and she now has a temperature.'"},
+      {k:"b", letter:"B", name:"Background", definition:"Give the relevant context: admission diagnosis, procedure, significant history, allergies and the patient's baseline.",
+       questions:["Why was the patient admitted?","What relevant history or treatment is there?","Any allergies or alerts?","What is normal for this patient?"],
+       tips:["Share what is relevant to the current issue, not everything.","Always include allergies and alerts.","Baseline helps the receiver judge change."],
+       example:"'She's day 1 after a laparoscopic right hemicolectomy for bowel cancer. She has COPD and is allergic to penicillin, which causes a rash. Her baseline SpO2 on room air is 94%.'"},
+      {k:"a", letter:"A", name:"Assessment", definition:"Report your findings: vital signs, early warning score, physical assessment and recent trends, plus your clinical impression.",
+       questions:["What are the latest observations and early warning score?","What has changed, and over what time?","What did I find on assessment?","What do I think is going on?"],
+       tips:["Give numbers, not adjectives.","Describe trends over time.","Use your local tool, such as NEWS2, ADDS or Between the Flags.","It's fine to say 'I'm not sure what's happening, but I'm concerned'."],
+       example:"'Respiratory rate 24, SpO2 93% on 2 litres, heart rate 112, blood pressure 102 over 68, temperature 38.3. Her NEWS2 is 10. She has crackles at the right base and her urine output has been 20 mL an hour for 2 hours. I think she may have a chest infection or early sepsis.'"},
+      {k:"r", letter:"R", name:"Recommendation", definition:"Say clearly what you need: escalation, review timeframe, tests, urgent actions and outstanding tasks. Then confirm the plan.",
+       questions:["What do I want to happen, and by when?","What should I do in the meantime?","What is pending or outstanding?","Have we both understood the plan?"],
+       tips:["Be specific: what, who and by when.","Follow your escalation policy, such as a MET call, if criteria are met.","Close the loop: ask for a read-back, or read back the plan yourself."],
+       example:"'I need you to review her within 15 minutes. Should I take blood cultures and a lactate and request a chest X-ray? Can you repeat the plan back so we're both clear?'"}]},
+    {type:"video", title:"Watch: a bedside ISBAR handover", duration:"3:20", desc:"A video demonstration of an ISBAR handover at change of shift, including a read-back.", transcript:"Video placeholder. Add the video file or embed details in the course content. The transcript for the final video should appear here for learners who prefer to read or who are using assistive technology."}
+  ]},
+  { id:"scenario", section:"Practice scenario", title:"Scenario: post-operative deterioration", blocks:[
+    {type:"patient", name:"Margaret Hollis, 72", ids:["DOB 14/03/1954","URN 448219","Ward 6B · Bed 12"],
+     html:"It's 0215. Margaret is day 1 after a laparoscopic right hemicolectomy. At 0100 she was comfortable. She has just pressed her call bell, saying she can't catch her breath. You assess her and decide to call the surgical registrar."},
+    {type:"obsChart", title:"0210 observations with NEWS2 scoring", rows:[
+      ["Respiratory rate","24 /min",2],["SpO2 (scale 1)","93%",2],["Air or oxygen","Oxygen 2 L/min",2],
+      ["Systolic blood pressure","102 mmHg",1],["Pulse","112 /min",2],["Consciousness","Alert",0],["Temperature","38.3 °C",1]],
+     total:"10 · High clinical risk: urgent or emergency response"},
+    {type:"sort", title:"Build the handover", intro:"Place each piece of information into the correct ISBAR component. Drag an item into a column, or select an item and then select a column. Select Check answers when every item is placed.",
+     items:[
+      {text:"Sam Patel, RN on Ward 6B, calling about Margaret Hollis, DOB 14/03/1954, URN 448219, bed 12.", a:"i", why:"Identifying yourself and the patient with three identifiers is the Introduction."},
+      {text:"I'm worried she's deteriorating. She's become short of breath over the last hour.", a:"s", why:"The immediate problem and your level of concern belong in Situation."},
+      {text:"Day 1 after laparoscopic right hemicolectomy for bowel cancer.", a:"b", why:"The procedure and reason for admission are Background."},
+      {text:"Penicillin allergy (rash). History of COPD.", a:"b", why:"Allergies and relevant history are Background."},
+      {text:"RR 24, SpO2 93% on 2 L, HR 112, BP 102/68, T 38.3. NEWS2 is 10.", a:"a", why:"Current vital signs and the early warning score are Assessment."},
+      {text:"Crackles at the right base. Urine output 20 mL/hr for 2 hours.", a:"a", why:"Physical findings and trends are Assessment."},
+      {text:"Please review her within 15 minutes. Should I take blood cultures and a lactate?", a:"r", why:"A specific request with a timeframe is the Recommendation."},
+      {text:"Can you read the plan back to me so we're both clear?", a:"r", why:"Closed-loop confirmation completes the Recommendation."}]},
+    {type:"quickCheck", title:"Choose the most effective recommendation", question:"The registrar answers. Which recommendation gives Margaret the safest outcome?",
+     options:[
+      {text:"'Could you have a look at her when you get a chance?'", correct:false, feedback:"This is polite but vague. There's no timeframe, so a busy registrar may reasonably prioritise other patients ahead of her."},
+      {text:"'Her NEWS2 is 10. I need you to review her within 15 minutes. In the meantime, should I start blood cultures and a lactate? Can you confirm the plan back to me?'", correct:true, feedback:"Correct. This states the risk, a clear timeframe, interim actions and asks for closed-loop confirmation. A NEWS2 of 10 also meets most rapid response criteria, so check your local escalation policy for a MET call."},
+      {text:"'I think she needs antibiotics. Can I give her some amoxicillin?'", correct:false, feedback:"Margaret is allergic to penicillin, and amoxicillin is a penicillin. Recommending a treatment without checking Background puts her at risk, and prescribing is the medical officer's decision."}]},
+    {type:"aiScenario", title:"Live practice: escalating by phone", setting:"Ward 6B at 0215. You call the surgical registrar about Margaret Hollis.",
+     roles:["You: the ward RN","AI: a busy surgical registrar who is in theatre recovery","AI may push back on timeframes"],
+     task:["Deliver an ISBAR handover by voice or text","Make a specific, time-bound request","Confirm the plan with a read-back"],
+     criteria:["Three patient identifiers used","NEWS2 and trend reported","Clear timeframe agreed","Plan read back"]}
+  ]},
+  { id:"check", section:"Knowledge check", title:"Knowledge check", blocks:[
+    {type:"text", html:"<span class='eyebrow'>Assessment</span><h2 style='margin-top:.35rem'>Check your understanding</h2><p>Three scenario-based questions. You'll see the rationale after each answer. You need 2 out of 3 to complete this section, and you can retry as many times as you like.</p>"},
+    {type:"quiz", pass:2, questions:[
+      {q:"You are handing over a patient to the incoming nurse. Which set of details correctly identifies the patient?", options:[
+        {t:"Bed 7, Mr Chen, the man with pneumonia", ok:false},
+        {t:"Full name, date of birth and URN, checked against the wristband", ok:true},
+        {t:"Surname, bed number and admitting consultant", ok:false},
+        {t:"Full name and diagnosis", ok:false}],
+       why:"Three approved patient identifiers are full name, date of birth and a unique identifier such as the URN or MRN. Bed numbers and diagnoses are not identifiers, because patients move and diagnoses are shared."},
+      {q:"A patient's NEWS2 has risen from 3 to 6 over four hours. Where does this information belong, and how should you describe it?", options:[
+        {t:"Situation: 'He's not quite right.'", ok:false},
+        {t:"Background: 'His scores have been up and down.'", ok:false},
+        {t:"Assessment: 'His NEWS2 has risen from 3 at 1400 to 6 at 1800, driven by a respiratory rate of 23 and new oxygen requirement.'", ok:true},
+        {t:"Recommendation: 'Please check his scores.'", ok:false}],
+       why:"Observations, early warning scores and trends belong in Assessment. Precise numbers with times show the receiver the direction and speed of change, which vague descriptions can't."},
+      {q:"After your ISBAR call, the medical officer says, 'I'll come when I can.' Your patient meets your local criteria for urgent review. What should you do?", options:[
+        {t:"Accept the response and recheck the patient in an hour.", ok:false},
+        {t:"Restate your concern, ask for a specific timeframe, and escalate through your local policy (such as a MET call) if criteria are met or the review doesn't happen.", ok:true},
+        {t:"Start treatment yourself to save time.", ok:false},
+        {t:"Document the call and wait for the next shift to follow up.", ok:false}],
+       why:"If a response doesn't match the level of risk, repeat your concern clearly and request a specific timeframe. If escalation criteria are met, follow your local escalation policy. Every nurse is entitled to escalate without fear of reprisal."}]}
+  ]},
+  { id:"summary", section:"Summary & job aid", title:"Summary and job aid", blocks:[
+    {type:"text", html:"<span class='eyebrow'>Summary</span><h2 style='margin-top:.35rem'>Key points</h2><ul><li>Handover is a high-risk transition. Structure reduces omissions and cognitive load.</li><li>Always identify the patient with three approved identifiers before sharing clinical information.</li><li>Give numbers and trends in Assessment, including your early warning score.</li><li>Make specific, time-bound recommendations, and close the loop with a read-back.</li><li>If the response doesn't match the risk, escalate using your local policy.</li></ul>"},
+    {type:"jobAid"},
+    {type:"callout", tone:"tip", title:"Next steps", html:"Use the job aid at your next handover. Ask a colleague to listen to one of your handovers and give feedback against each letter of ISBAR."}
+  ]},
+  { id:"builder", section:"For course builders", title:"Template block reference", blocks:[
+    {type:"text", html:"<span class='eyebrow'>Template</span><h2 style='margin-top:.35rem'>Reusing this template</h2><p>This page is for course builders. Remove it from the <code>pages</code> array before publishing to learners. Every course in the series uses the same interface: only the <code>COURSE</code> object at the top of the script changes.</p>"},
+    {type:"blockRef"}
+  ]}
+  ]
+};
+
+/* ===================================================================== ENGINE */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY = "course-progress-" + COURSE.id;
+let state = {page:0, done:{}, quiz:{}, tabs:{}};
+try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if(s) state = Object.assign(state, s); }catch(e){}
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} };
+const LETTERS = {i:"Introduction", s:"Situation", b:"Background", a:"Assessment", r:"Recommendation"};
+const ICON = {
+  chevron:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+  alert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5v.01"/></svg>',
+  tip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>',
+  person:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+  ai:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>'
+};
+const ART = {
+  handover:'<svg viewBox="0 0 400 260" role="img" aria-labelledby="hvT"><title id="hvT">Two nurses handing over at a bedside</title>'+
+   '<rect width="400" height="260" fill="var(--surface-2)"/><rect x="0" y="200" width="400" height="60" fill="var(--line)"/>'+
+   '<rect x="150" y="150" width="190" height="34" rx="8" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/><rect x="150" y="128" width="54" height="30" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/><rect x="200" y="140" width="140" height="18" rx="6" fill="var(--teal-soft)"/>'+
+   '<rect x="160" y="184" width="8" height="32" fill="var(--muted)"/><rect x="322" y="184" width="8" height="32" fill="var(--muted)"/>'+
+   '<rect x="300" y="40" width="70" height="88" rx="6" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/><polyline points="308,100 322,92 336,96 350,72 362,60" fill="none" stroke="var(--l-s)" stroke-width="3"/><path d="M308 112h54" stroke="var(--line)" stroke-width="2"/>'+
+   '<circle cx="70" cy="86" r="18" fill="#E9B98F"/><path d="M52 82a18 18 0 0 1 36 0c-6-6-30-6-36 0z" fill="#5A3A22"/><rect x="48" y="106" width="44" height="80" rx="16" fill="var(--l-i)"/><rect x="52" y="184" width="14" height="40" rx="6" fill="var(--ink)"/><rect x="74" y="184" width="14" height="40" rx="6" fill="var(--ink)"/>'+
+   '<rect x="86" y="122" width="38" height="10" rx="5" fill="var(--l-i)" transform="rotate(-18 86 122)"/><rect x="112" y="104" width="26" height="34" rx="3" fill="var(--surface)" stroke="var(--muted)" stroke-width="2"/>'+
+   '<circle cx="250" cy="84" r="17" fill="#8C5A3C"/><path d="M233 80a17 17 0 0 1 34 0c-5-6-29-6-34 0z" fill="#1E1410"/><rect x="229" y="102" width="42" height="80" rx="16" fill="var(--l-a)"/><rect x="233" y="180" width="13" height="44" rx="6" fill="var(--ink)"/><rect x="254" y="180" width="13" height="44" rx="6" fill="var(--ink)"/>'+
+   '<path d="M110 40h70a10 10 0 0 1 10 10v18a10 10 0 0 1-10 10h-44l-12 10v-10h-14a10 10 0 0 1-10-10V50a10 10 0 0 1 10-10z" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>'+
+   '<text x="145" y="64" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="16" fill="var(--primary)">I·S·B·A·R</text></svg>'
+};
+
+/* ---------- block renderers: return HTML; optional init(el) wires behaviour ---------- */
+const R = {};
+R.hero = b => `<section class="hero" aria-labelledby="pt"><span class="eyebrow">${esc(b.eyebrow)}</span><h1 id="pt" tabindex="-1">${esc(b.title)}</h1><p>${esc(b.lead)}</p><div class="meta">${(b.chips||[]).map(c=>`<span class="chip">${esc(c)}</span>`).join("")}</div></section>`;
+R.text = b => `<section class="card prose">${b.html}</section>`;
+R.objectives = b => `<section class="card prose" aria-labelledby="obj"><h2 id="obj">${esc(b.title)}</h2><ol class="objectives">${b.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ol></section>`;
+R.callout = b => `<aside class="callout ${b.tone||""}">${b.tone==="safety"?ICON.alert:ICON.tip}<div><strong>${esc(b.title)}</strong><p>${b.html}</p></div></aside>`;
+R.textImage = b => `<section class="card"><div class="ti ${b.flip?"flip":""}"><div class="prose">${b.html}</div><figure class="ti-media" style="margin:0">${ART[b.svg]||""}<figcaption>${esc(b.caption||"")}</figcaption></figure></div></section>`;
+R.accordion = (b, uid) => `<section aria-label="${esc(b.title)}"><h2 style="font-size:1.15rem;margin-bottom:.6rem">${esc(b.title)}</h2><div class="acc">${b.items.map((it,i)=>`<div class="acc-item"><h3><button class="acc-btn" aria-expanded="false" aria-controls="${uid}-p${i}" id="${uid}-b${i}">${esc(it.title)}${ICON.chevron}</button></h3><div class="acc-panel" id="${uid}-p${i}" role="region" aria-labelledby="${uid}-b${i}" hidden>${it.html}</div></div>`).join("")}</div></section>`;
+R.accordion.init = el => el.querySelectorAll(".acc-btn").forEach(btn=>btn.addEventListener("click",()=>{const open=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!open));document.getElementById(btn.getAttribute("aria-controls")).hidden=open;}));
+R.flipcards = b => `<section><h2 style="font-size:1.15rem;margin-bottom:.6rem">${esc(b.title)}</h2><div class="flips">${b.cards.map(c=>`<button class="flip" aria-pressed="false"><span class="flip-in"><span class="face front"><span class="tag">${esc(c.tag)}</span><h3>${esc(c.front)}</h3><span class="hint">Select to see the ISBAR version</span></span><span class="face back" aria-hidden="true"><span class="tag">Structured</span><p>${c.back}</p><span class="hint">Select to flip back</span></span></span></button>`).join("")}</div></section>`;
+R.flipcards.init = el => el.querySelectorAll(".flip").forEach(f=>f.addEventListener("click",()=>{const on=f.getAttribute("aria-pressed")!=="true";f.setAttribute("aria-pressed",String(on));f.querySelector(".front").setAttribute("aria-hidden",String(on));f.querySelector(".back").setAttribute("aria-hidden",String(!on));}));
+
+R.isbarTabs = (b, uid) => `<section aria-label="ISBAR components"><div class="isbar-tabs" role="tablist" aria-label="ISBAR components">${b.items.map((it,i)=>`<button class="ltab c-${it.k}" role="tab" id="${uid}-t${i}" aria-controls="${uid}-panel" aria-selected="${i===0}" tabindex="${i===0?0:-1}" data-i="${i}"><span class="L bg-${it.k}" aria-hidden="true">${it.letter}</span><span>${esc(it.name)}</span><span class="seen" data-seen></span></button>`).join("")}</div><div class="tabpanel" role="tabpanel" id="${uid}-panel" tabindex="0"></div></section>`;
+R.isbarTabs.init = (el, b, uid) => {
+  const tabs=[...el.querySelectorAll('[role="tab"]')], panel=el.querySelector('[role="tabpanel"]');
+  const seen = state.tabs[uid] || (state.tabs[uid] = []);
+  function show(i, focus){
+    const it=b.items[i];
+    tabs.forEach((t,j)=>{t.setAttribute("aria-selected",String(j===i));t.tabIndex=j===i?0:-1;});
+    if(!seen.includes(i)){seen.push(i);save();}
+    tabs.forEach((t,j)=>t.querySelector("[data-seen]").textContent=seen.includes(j)?"Viewed":"");
+    panel.setAttribute("aria-labelledby",tabs[i].id);
+    panel.className="tabpanel c-"+it.k;
+    panel.innerHTML=`<div class="tp-head"><span class="L bg-${it.k}" aria-hidden="true">${it.letter}</span><div><h3 style="color:var(--ink)">${esc(it.name)}</h3><p>${esc(it.definition)}</p></div></div><div class="tp-body" style="color:var(--ink)"><div><h4>Questions to answer</h4><ul>${it.questions.map(q=>`<li>${esc(q)}</li>`).join("")}</ul></div><div><h4>Good practice</h4><ul>${it.tips.map(q=>`<li>${esc(q)}</li>`).join("")}</ul></div><div class="example c-${it.k}"><h4>Nursing example</h4><p>${esc(it.example)}</p></div></div>`;
+    if(focus) tabs[i].focus();
+  }
+  tabs.forEach((t,i)=>{t.addEventListener("click",()=>show(i));t.addEventListener("keydown",e=>{let n=null;if(e.key==="ArrowRight")n=(i+1)%tabs.length;if(e.key==="ArrowLeft")n=(i-1+tabs.length)%tabs.length;if(e.key==="Home")n=0;if(e.key==="End")n=tabs.length-1;if(n!==null){e.preventDefault();show(n,true);}});});
+  show(0);
+};
+
+R.obsChart = b => `<section aria-labelledby="obsT"><h2 id="obsT" style="font-size:1.15rem;margin-bottom:.6rem">${esc(b.title)}</h2><div class="obs-wrap"><table class="obs"><caption class="sr-only">${esc(b.title)}</caption><thead><tr><th scope="col">Parameter</th><th scope="col">Observation</th><th scope="col">NEWS2 points</th></tr></thead><tbody>${b.rows.map(r=>`<tr><th scope="row" style="font-weight:500">${esc(r[0])}</th><td>${esc(r[1])}</td><td><span class="score s${r[2]}">${r[2]}</span></td></tr>`).join("")}</tbody><tfoot><tr><td colspan="2">Total NEWS2</td><td>${esc(b.total)}</td></tr></tfoot></table></div><p class="howto" style="margin-top:.5rem">Use the early warning tool your health service has adopted, such as NEWS2, ADDS or Between the Flags.</p></section>`;
+R.patient = b => `<section class="card"><div class="patient"><span class="avatar">${ICON.person}</span><div><span class="eyebrow">Practice scenario</span><h2 style="font-size:1.3rem;margin-top:.2rem">${esc(b.name)}</h2><div class="idband" aria-label="Patient identifiers">${b.ids.map(i=>`<span>${esc(i)}</span>`).join("")}</div><p style="margin-top:.8rem;max-width:68ch">${esc(b.html)}</p></div></div></section>`;
+
+R.sort = (b, uid) => `<section class="card sorter" aria-labelledby="${uid}-h"><div><span class="eyebrow">Drag and drop</span><h2 id="${uid}-h" style="font-size:1.25rem;margin-top:.25rem">${esc(b.title)}</h2><p class="howto" style="margin-top:.4rem">${esc(b.intro)}</p></div>
+  <div class="pool" data-pool aria-label="Unplaced items"></div>
+  <div class="buckets">${Object.keys(LETTERS).map(k=>`<div class="bucket" data-k="${k}"><button class="bucket-head" data-place="${k}" aria-label="Place selected item in ${LETTERS[k]}"><span class="L bg-${k}" aria-hidden="true">${k.toUpperCase()}</span><span>${LETTERS[k]}</span></button><div class="bucket-items" data-items></div></div>`).join("")}</div>
+  <div class="row"><button class="btn" data-check>Check answers</button><button class="btn quiet" data-reset>Reset</button><span class="status" data-live aria-live="polite"></span></div></section>`;
+R.sort.init = (el, b, uid) => {
+  const pool=el.querySelector("[data-pool]"), live=el.querySelector("[data-live]");
+  let selected=null;
+  const items=b.items.map((it,i)=>{const n=document.createElement("button");n.type="button";n.className="obsitem";n.draggable=true;n.dataset.i=i;n.setAttribute("aria-pressed","false");n.innerHTML=`<span>${esc(it.text)}</span>`;return n;});
+  function shuffleIntoPool(){ items.slice().sort(()=>Math.random()-.5).forEach(n=>{n.className="obsitem";n.setAttribute("aria-pressed","false");n.querySelector(".why")?.remove();pool.appendChild(n);}); }
+  shuffleIntoPool();
+  function select(n){ if(selected) selected.setAttribute("aria-pressed","false"); selected = selected===n?null:n; if(selected){selected.setAttribute("aria-pressed","true"); live.textContent="Item selected. Now choose an ISBAR column.";} }
+  function place(n,k){ const bucket=el.querySelector(`.bucket[data-k="${k}"] [data-items]`); n.className="obsitem"; n.querySelector(".why")?.remove(); bucket.appendChild(n); n.setAttribute("aria-pressed","false"); selected=null; live.textContent=`Placed in ${LETTERS[k]}.`; }
+  items.forEach(n=>{
+    n.addEventListener("click",()=>{ if(n.parentElement!==pool && !selected){ pool.appendChild(n); n.className="obsitem"; n.querySelector(".why")?.remove(); live.textContent="Moved back to unplaced items."; return; } select(n); });
+    n.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",n.dataset.i);e.dataTransfer.effectAllowed="move";});
+  });
+  el.querySelectorAll("[data-place]").forEach(h=>h.addEventListener("click",()=>{ if(selected) place(selected,h.dataset.place); else live.textContent="Select an item first, then choose a column."; }));
+  el.querySelectorAll(".bucket").forEach(bk=>{
+    bk.addEventListener("dragover",e=>{e.preventDefault();bk.classList.add("over");});
+    bk.addEventListener("dragleave",()=>bk.classList.remove("over"));
+    bk.addEventListener("drop",e=>{e.preventDefault();bk.classList.remove("over");const n=items[+e.dataTransfer.getData("text/plain")];if(n)place(n,bk.dataset.k);});
+  });
+  pool.addEventListener("dragover",e=>e.preventDefault());
+  pool.addEventListener("drop",e=>{e.preventDefault();const n=items[+e.dataTransfer.getData("text/plain")];if(n){pool.appendChild(n);n.className="obsitem";}});
+  el.querySelector("[data-check]").addEventListener("click",()=>{
+    if(pool.children.length){ live.textContent=`Place all items first. ${pool.children.length} still to go.`; live.style.color="var(--bad)"; return; }
+    let right=0;
+    items.forEach(n=>{ const it=b.items[n.dataset.i]; const k=n.closest(".bucket").dataset.k; const ok=k===it.a; if(ok) right++;
+      n.className="obsitem "+(ok?"ok":"bad"); n.querySelector(".why")?.remove();
+      const w=document.createElement("span"); w.className="why"; w.textContent=(ok?"Correct. ":"Belongs in "+LETTERS[it.a]+". ")+it.why; n.appendChild(w); });
+    live.style.color= right===items.length?"var(--ok)":"var(--bad)";
+    live.textContent = right===items.length?`All ${right} correct. You've built a complete ISBAR handover.`:`${right} of ${items.length} correct. Read the feedback on each item, then select an incorrect item to move it.`;
+  });
+  el.querySelector("[data-reset]").addEventListener("click",()=>{shuffleIntoPool();live.textContent="Reset.";live.style.color="";});
+};
+
+R.quickCheck = (b, uid) => `<section class="card" aria-labelledby="${uid}-l"><form data-qc novalidate><span class="eyebrow" style="display:block;margin-bottom:.35rem">${esc(b.title)}</span><fieldset><legend id="${uid}-l">${esc(b.question)}</legend><div class="opts">${b.options.map((o,i)=>`<label class="opt"><input type="radio" name="${uid}" value="${i}" id="${uid}-o${i}"><span>${esc(o.text)}</span></label>`).join("")}</div></fieldset><div class="row" style="margin-top:.9rem"><button class="btn" type="submit">Submit</button></div><div data-fb aria-live="polite"></div></form></section>`;
+R.quickCheck.init = (el, b, uid) => { const f=el.querySelector("form"), fb=el.querySelector("[data-fb]");
+  f.addEventListener("submit",e=>{e.preventDefault();const v=f.querySelector("input:checked");
+    if(!v){fb.innerHTML=`<div class="fb poor"><strong>Choose an answer first</strong>Select one option, then select Submit.</div>`;return;}
+    const o=b.options[+v.value]; f.querySelectorAll(".opt").forEach((l,i)=>{l.classList.remove("correct","wrong"); if(b.options[i].correct) l.classList.add("correct"); else if(i===+v.value) l.classList.add("wrong");});
+    fb.innerHTML=`<div class="fb ${o.correct?"good":"poor"}"><strong>${o.correct?"Correct":"Not quite"}</strong>${esc(o.feedback.replace(/^Correct\. /,""))}</div>`;});
+};
+
+R.quiz = (b, uid) => `<section class="card" data-quiz aria-live="polite"></section>`;
+R.quiz.init = (el, b, uid) => {
+  const box=el.querySelector("[data-quiz]");
+  const qs = state.quiz[uid] || (state.quiz[uid] = {i:0, answers:[]});
+  function steps(){ return `<div class="steps" aria-hidden="true">${b.questions.map((_,j)=>`<i class="${j<qs.answers.length?(qs.answers[j]?"ok":"no"):(j===qs.i?"on":"")}"></i>`).join("")}</div>`; }
+  function render(){
+    if(qs.i>=b.questions.length){ const score=qs.answers.filter(Boolean).length, pass=score>=b.pass;
+      if(pass){ state.done.check=true; save(); updateProgress(); }
+      box.innerHTML=`<div class="result"><span class="eyebrow">Result</span><div class="big">${score} / ${b.questions.length}</div><p>${pass?"Well done. You've completed the knowledge check.":"You need "+b.pass+" correct answers to complete this section. Review the ISBAR anatomy page, then try again."}</p><div class="row" style="justify-content:center">${pass?`<button class="btn" data-go="next">Continue to summary</button>`:""}<button class="btn quiet" data-retry>Retry the knowledge check</button></div></div>`;
+      box.querySelector("[data-retry]").addEventListener("click",()=>{qs.i=0;qs.answers=[];save();render();box.querySelector("legend")?.focus();});
+      box.querySelector('[data-go="next"]')?.addEventListener("click",()=>go(state.page+1));
+      return; }
+    const q=b.questions[qs.i], name=uid+"-q"+qs.i;
+    box.innerHTML=`<div class="qhead"><span class="eyebrow">Question ${qs.i+1} of ${b.questions.length}</span>${steps()}</div><form novalidate><fieldset><legend tabindex="-1">${esc(q.q)}</legend><div class="opts">${q.options.map((o,j)=>`<label class="opt"><input type="radio" name="${name}" value="${j}"><span>${esc(o.t)}</span></label>`).join("")}</div></fieldset><div class="row" style="margin-top:.9rem"><button class="btn" type="submit">Submit answer</button></div><div data-fb></div></form>`;
+    const f=box.querySelector("form"), fb=box.querySelector("[data-fb]");
+    f.addEventListener("submit",e=>{e.preventDefault();
+      if(f.dataset.answered){ qs.i++; save(); render(); box.querySelector("legend,.result .big")?.focus?.(); return; }
+      const v=f.querySelector("input:checked"); if(!v){fb.innerHTML=`<div class="fb poor"><strong>Choose an answer first</strong>Select one option, then select Submit answer.</div>`;return;}
+      const ok=q.options[+v.value].ok; qs.answers.push(ok); save(); f.dataset.answered="1";
+      f.querySelectorAll("input").forEach(i=>i.disabled=true);
+      f.querySelectorAll(".opt").forEach((l,j)=>{ if(q.options[j].ok) l.classList.add("correct"); else if(j===+v.value) l.classList.add("wrong"); });
+      fb.innerHTML=`<div class="fb ${ok?"good":"poor"}"><strong>${ok?"Correct":"Not quite"}</strong>${esc(q.why)}</div>`;
+      const btn=f.querySelector('button[type="submit"]'); btn.textContent= qs.i===b.questions.length-1?"See your result":"Next question"; btn.focus();
+      box.querySelector(".qhead").innerHTML=`<span class="eyebrow">Question ${qs.i+1} of ${b.questions.length}</span>${steps()}`;
+    });
+  }
+  render();
+};
+
+R.video = b => `<section class="video"><div class="vframe"><span class="badge">Video placeholder</span><span class="play" aria-hidden="true">${ICON.play}</span><span class="dur">${esc(b.duration)}</span></div><div class="vmeta"><h3>${esc(b.title)}</h3><p>${esc(b.desc)}</p><details class="tx"><summary>Show transcript</summary><p>${esc(b.transcript)}</p></details></div></section>`;
+R.aiScenario = b => `<section class="ai" aria-labelledby="aiT"><div class="ai-head"><span class="ic">${ICON.ai}</span><div style="min-width:0"><div class="row" style="gap:.5rem"><span class="eyebrow">AI workplace scenario</span><span class="ph">Placeholder</span></div><h2 id="aiT" style="font-size:1.15rem;margin-top:.15rem">${esc(b.title)}</h2><p class="howto">${esc(b.setting)}</p></div></div><div class="ai-grid"><div><h4>Roles</h4><ul>${b.roles.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><h4>Your task</h4><ul>${b.task.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><h4>Success criteria</h4><ul>${b.criteria.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div><div class="ai-foot"><p>Connect a real-time AI role-play here. The learner's transcript can be scored against the success criteria.</p><button class="btn" disabled aria-disabled="true">Start scenario (not connected)</button></div></section>`;
+
+R.jobAid = () => { const t=COURSE.pages.find(p=>p.id==="anatomy").blocks.find(b=>b.type==="isbarTabs").items;
+  return `<section class="jobaid printable" aria-labelledby="jaT"><div class="ja-head"><div><h2 id="jaT">ISBAR handover job aid</h2><p>Clinical handover quick reference for RNs and ENs</p></div><button class="btn ghost noprint" data-copy style="background:var(--surface);color:var(--primary);border-color:var(--surface)">Copy as text</button></div><div class="ja-rows">${t.map(it=>`<div class="ja-row"><span class="L bg-${it.k}" aria-hidden="true">${it.letter}</span><div><h3>${esc(it.name)}</h3><p>${esc(it.definition)}</p></div><ul>${it.questions.map(q=>`<li>${esc(q)}</li>`).join("")}</ul></div>`).join("")}</div><div class="ja-foot"><strong>Close the loop:</strong> ask for a read-back of the plan. If the response doesn't match the risk, escalate using your local policy. <span class="status noprint" data-copied aria-live="polite"></span></div></section>`; };
+R.jobAid.init = el => { const btn=el.querySelector("[data-copy]"), msg=el.querySelector("[data-copied]");
+  btn.addEventListener("click",()=>{ const t=COURSE.pages.find(p=>p.id==="anatomy").blocks.find(b=>b.type==="isbarTabs").items;
+    const txt="ISBAR HANDOVER JOB AID\n\n"+t.map(it=>`${it.letter} - ${it.name.toUpperCase()}\n${it.definition}\n`+it.questions.map(q=>"  • "+q).join("\n")).join("\n\n")+"\n\nClose the loop: ask for a read-back. Escalate using your local policy if the response doesn't match the risk.";
+    const done=()=>{msg.textContent=" Copied to clipboard.";};
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done,()=>fallback(txt)); } else fallback(txt);
+    function fallback(s){ const ta=document.createElement("textarea"); ta.value=s; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); let ok=false; try{ok=document.execCommand("copy");}catch(e){} ta.remove(); msg.textContent= ok?" Copied to clipboard.":" Copy isn't available here. Select the job aid text instead."; }
+  }); };
+
+R.blockRef = () => { const ref=[["hero","Page opener with eyebrow, title, lead and chips."],["text","Free HTML prose: headings, paragraphs, lists."],["objectives","Numbered learning outcomes."],["callout","Safety or tip message. tone: safety | tip."],["textImage","Text beside an image or SVG; flip swaps sides."],["accordion","Expandable panels with ARIA states."],["flipcards","Front/back cards toggled by click or keyboard."],["isbarTabs","Tabbed interaction with arrow-key support."],["obsChart","Observation table with early warning scores."],["patient","Scenario patient card with identifiers."],["sort","Drag-and-drop categorisation with a keyboard alternative."],["quickCheck","Single question with per-option feedback."],["quiz","Multi-question assessment with pass mark and rationale."],["video","16:9 video placeholder with transcript."],["aiScenario","Placeholder for a real-time AI role-play."],["jobAid","Printable, copyable quick-reference summary."]];
+  return `<section class="ref">${ref.map(r=>`<div><code>${r[0]}</code><p>${esc(r[1])}</p></div>`).join("")}</section><section class="card prose"><h2>Example block</h2><pre class="code">{ type: "quickCheck", title: "Quick check",
+  question: "Which detail is a patient identifier?",
+  options: [
+    { text: "Bed number", correct: false, feedback: "Patients move beds." },
+    { text: "Date of birth", correct: true, feedback: "Correct." }
+  ] }</pre></section>`; };
+
+/* ---------- shell ---------- */
+const drawer=$("#drawer"), scrim=$("#scrim"), menuBtn=$("#menuBtn"), pageEl=$("#page");
+const wide = () => window.matchMedia("(min-width:1100px)").matches;
+function setDrawer(open){ drawer.classList.toggle("open",open); menuBtn.setAttribute("aria-expanded",String(open)); scrim.classList.toggle("show",open&&!wide()); $("#navbar").classList.toggle("pushed",open&&wide()); drawer.inert = !open; if(open&&!wide()) drawer.querySelector('[aria-current="page"]')?.focus(); }
+menuBtn.addEventListener("click",()=>setDrawer(!drawer.classList.contains("open")));
+scrim.addEventListener("click",()=>{setDrawer(false);menuBtn.focus();});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&drawer.classList.contains("open")&&!wide()){setDrawer(false);menuBtn.focus();} });
+
+function buildToc(){
+  const secs=[]; COURSE.pages.forEach((p,i)=>{ let s=secs.find(x=>x.name===p.section); if(!s){s={name:p.section,pages:[]};secs.push(s);} s.pages.push(i); });
+  $("#toc").innerHTML = secs.map(s=>`<div class="toc-sec"><h3>${esc(s.name)}</h3><ol>${s.pages.map(i=>`<li class="${isDone(i)?"done":""}"><button data-go="${i}" ${i===state.page?'aria-current="page"':""}><span class="dot" aria-hidden="true"></span><span>${esc(COURSE.pages[i].title)}</span><span class="sr-only">${isDone(i)?" (completed)":""}</span></button></li>`).join("")}</ol></div>`).join("");
+  $("#toc").querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{ go(+b.dataset.go); if(!wide()) setDrawer(false); }));
+}
+function isDone(i){ const p=COURSE.pages[i]; return p.id==="check" ? !!state.done.check : !!state.done[p.id]; }
+function updateProgress(){
+  const n=COURSE.pages.length, d=COURSE.pages.filter((_,i)=>isDone(i)).length, pct=Math.round(d/n*100);
+  $("#progFill").style.width=pct+"%"; $("#progBar").setAttribute("aria-valuenow",pct); $("#progText").textContent=pct+"% complete";
+  $("#drawerSub").textContent=`${d} of ${n} pages complete`;
+  buildToc();
+}
+let uidc=0;
+function go(i, first){
+  i=Math.max(0,Math.min(COURSE.pages.length-1,i));
+  const prev=COURSE.pages[state.page]; if(!first && prev && prev.id!=="check") state.done[prev.id]=true;
+  state.page=i; const p=COURSE.pages[i];
+  if(p.id==="summary"||p.id==="builder") state.done[p.id]=true;
+  save();
+  pageEl.innerHTML=""; pageEl.classList.remove("enter"); void pageEl.offsetWidth; pageEl.classList.add("enter");
+  const hasHero=p.blocks[0].type==="hero";
+  if(!hasHero){ const h=document.createElement("div"); h.innerHTML=`<span class="eyebrow">${esc(p.section)}</span><h1 id="pt" tabindex="-1" style="font-size:clamp(1.5rem,3.6vw,2rem);margin-top:.3rem">${esc(p.title)}</h1>`; pageEl.appendChild(h); }
+  p.blocks.forEach(b=>{ const r=R[b.type]; if(!r) return; const uid="b"+(++uidc); const w=document.createElement("div"); w.style.minWidth="0"; w.innerHTML=r(b,uid); pageEl.appendChild(w); if(r.init) r.init(w,b,uid); });
+  pageEl.querySelectorAll('[data-go="next"]').forEach(x=>x.addEventListener("click",()=>go(state.page+1)));
+  $("#prevBtn").disabled = i===0;
+  const last=i===COURSE.pages.length-1; $("#nextBtn").disabled=last;
+  $("#pageCount").textContent=`Page ${i+1} of ${COURSE.pages.length}`;
+  updateProgress();
+  if(!first){ window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); $("#pt")?.focus({preventScroll:true}); }
+}
+$("#prevBtn").addEventListener("click",()=>go(state.page-1));
+$("#nextBtn").addEventListener("click",()=>go(state.page+1));
+$("#seriesName").textContent=COURSE.series; $("#courseName").textContent=COURSE.title;
+setDrawer(wide());
+window.matchMedia("(min-width:1100px)").addEventListener("change",e=>setDrawer(e.matches));
+go(state.page||0, true);
+</script>
+
+</body>
+</html>
