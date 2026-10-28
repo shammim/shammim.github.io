@@ -1,0 +1,126 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+
+
+
+<title>Shammim · Learning Designer &amp; Developer</title>
+<meta name="description" content="Shammim, learning designer &amp; developer in Melbourne, VIC. Move left or right to open the portfolio.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%230B1522' stroke='%23479fe7' stroke-width='3.5'/%3E%3Cpath d='M26 13.5h-8.2a3.6 3.6 0 0 0 0 7.2h4.4a3.6 3.6 0 0 1 0 7.2H13.6' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='27.4' cy='27.9' r='1.9' fill='%23fb6c1d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lato:wght@900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/cover-portrait.webp">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Anton-400.woff2" crossorigin>
+<script>try{var d=document.documentElement,t=localStorage.getItem('shammim-theme');if(t)d.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+@font-face{font-family:"Anton";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/Anton-400.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/SpaceMono-400.woff2") format("woff2")}
+@font-face{font-family:"Space Mono";font-style:normal;font-weight:700;font-display:swap;src:url("assets/fonts/SpaceMono-700.woff2") format("woff2")}
+:root{--bg:#F9F7F8;--ink:#0D1B2A;--muted:#56677D;--accent:#B5470B;--accent-ink:#1A68AD;--chip:#FFFFFF;
+  --display:"Lato",Inter,system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--case:none;--track:.06em;
+  --shadow:0 24px 60px -24px rgba(13,27,42,.35);--radius:22px;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1522;--ink:#F9F7F8;--muted:#97A3B4;--accent:#FB6C1D;--accent-ink:#479FE7;--chip:#121F30;--shadow:0 24px 60px -20px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1522;--ink:#F9F7F8;--muted:#97A3B4;--accent:#FB6C1D;--accent-ink:#479FE7;--chip:#121F30;--shadow:0 24px 60px -20px rgba(0,0,0,.7);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink)}
+body{font:400 12px/1.4 var(--body);overflow:hidden}
+a{color:var(--ink);text-decoration:none}
+a:hover,a:focus-visible{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.stage{position:relative;width:100vw;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;cursor:crosshair;overflow:hidden}
+.top{position:absolute;top:max(24px,env(safe-area-inset-top));left:28px;right:28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+  font-size:12px;letter-spacing:var(--track);text-transform:uppercase;z-index:5}
+.who{display:flex;flex-direction:column;gap:4px;max-width:24ch}
+.who b{font:900 28px/1 var(--display);letter-spacing:-.01em;text-transform:var(--case)}
+.meta{display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right}
+.meta strong{font-weight:700}
+.meta .legal{font:400 10px/1.4 "Space Mono",ui-monospace,monospace;letter-spacing:.02em;color:var(--muted);max-width:200px}
+.poster-wrap{position:relative;height:min(calc(100dvh - 170px),118vw);aspect-ratio:736/977;max-width:88vw;perspective:1400px}
+.poster{position:absolute;inset:0;border-radius:calc(var(--radius) * .6);overflow:hidden;box-shadow:var(--shadow);transform:rotateY(calc(var(--cx,0) * -7deg)) rotateX(calc(var(--cy,0) * 3deg));transform-style:preserve-3d;will-change:transform}
+.poster img{width:100%;height:100%;object-fit:cover;display:block}
+.side{position:absolute;top:50%;transform:translateY(-50%);margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:18px;pointer-events:none}
+.side.l{right:calc(100% + 56px);align-items:flex-end;text-align:right}
+.side.r{left:calc(100% + 56px);align-items:flex-start}
+.side a{display:block;font:400 clamp(30px,3.6vw,66px)/.95 "Anton",Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;white-space:nowrap;
+  opacity:0;transition:opacity .45s,transform .7s cubic-bezier(.2,1.3,.3,1);transition-delay:calc((2 - var(--i)) * .03s)}
+.side.l a{transform:translate(40px,10px) scale(.92)}
+.side.r a{transform:translate(-40px,10px) scale(.92)}
+.stage[data-side="left"] .side.l,.stage[data-side="right"] .side.r{pointer-events:auto}
+.stage[data-side="left"] .side.l a,.stage[data-side="right"] .side.r a{opacity:1;transform:none;transition-delay:calc(var(--i) * .08s)}
+.bottom{font-family:"Space Mono",ui-monospace,monospace;position:absolute;bottom:max(22px,env(safe-area-inset-bottom));left:28px;right:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;z-index:5}
+.bottom button{all:unset;cursor:pointer;transition:opacity .4s}
+.bottom button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.bottom .hint{text-align:center;transition:opacity .4s}
+.stage[data-side="left"] .bottom .go-l,.stage[data-side="right"] .bottom .go-r{opacity:.25}
+.stage:not([data-side="center"]) .bottom .hint{opacity:0}
+.grid-nav{display:none}
+/* small screens and touch: menus stay visible under the poster */
+@media (max-width:899px){
+  body{overflow:auto}
+  .stage{height:auto;min-height:100dvh;flex-direction:column;justify-content:flex-start;padding:110px 20px 40px;gap:28px;cursor:auto}
+  .top{left:20px;right:20px}
+  .poster-wrap{height:auto;width:min(78vw,380px)}
+  .poster{position:relative;transform:none}
+  .side,.bottom{display:none}
+  .grid-nav{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;list-style:none;margin:0;padding:0;width:min(100%,420px)}
+  .grid-nav a{display:flex;gap:10px;align-items:baseline;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 25%,transparent);
+    font:400 min(26px,5.4vw)/1 "Anton",Impact,sans-serif;text-transform:uppercase;white-space:nowrap}
+  .grid-nav span{font:700 10px/1 "Space Mono",ui-monospace,monospace;letter-spacing:.1em;color:var(--muted)}
+}
+@media (prefers-reduced-motion:reduce){.poster{transform:none!important}.side a{transition:opacity .2s!important}}
+</style>
+
+
+<main class="stage" id="stage" data-side="center">
+  <h1 class="sr-only">Shammim, Learning Designer &amp; Developer: portfolio</h1>
+  <div class="top">
+    <div class="who"><b>Shammim</b><span>Learning Designer &amp; Developer</span></div>
+    <div class="meta"><strong>Portfolio ©2026</strong><small class="legal">© 2026 Shammim. All rights reserved.<br>Not for reuse without permission.</small><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="poster-wrap">
+    <div class="poster" id="poster"><img src="assets/img/cover-portrait.webp" alt="Illustration of a woman in a white sun hat and a blue striped shirt" width="736" height="977"></div>
+    <nav aria-label="Pages: home, about and capabilities"><ul class="side l"><li style="--i:0"><a href="home.html">Home</a></li><li style="--i:1"><a href="about.html">About</a></li><li style="--i:2"><a href="services.html">Capabilities</a></li></ul></nav>
+    <nav aria-label="Pages: portfolio, skills and process"><ul class="side r"><li style="--i:0"><a href="portfolio.html">Portfolio</a></li><li style="--i:1"><a href="skills.html">Skills &amp; Tools</a></li><li style="--i:2"><a href="process.html">Process</a></li></ul></nav>
+  </div>
+  <nav aria-label="All pages" class="grid-nav-wrap"><ul class="grid-nav"><li><a href="home.html"><span>01</span>Home</a></li><li><a href="about.html"><span>02</span>About</a></li><li><a href="services.html"><span>03</span>Capabilities</a></li><li><a href="portfolio.html"><span>04</span>Portfolio</a></li><li><a href="skills.html"><span>05</span>Skills &amp; Tools</a></li><li><a href="process.html"><span>06</span>Process</a></li></ul></nav>
+  <div class="bottom">
+    <button type="button" class="go-l" data-go="left">← Home · About · Capabilities</button>
+    <span class="hint" id="hint">Move your cursor left or right</span>
+    <button type="button" class="go-r" data-go="right">Portfolio · Skills &amp; Tools · Process →</button>
+  </div>
+</main>
+<script>
+(function(){
+  var root=document.documentElement, stage=document.getElementById('stage'), poster=document.getElementById('poster');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tx=0,ty=0,cx=0,cy=0,side='center',TH=0.4;
+  function setSide(s){ if(s===side) return; side=s; stage.setAttribute('data-side',s); }
+  function move(x,y){ tx=Math.max(-1,Math.min(1,x/window.innerWidth*2-1)); ty=Math.max(-1,Math.min(1,y/window.innerHeight*2-1)); }
+  window.addEventListener('mousemove',function(ev){ move(ev.clientX,ev.clientY); });
+  window.addEventListener('touchmove',function(ev){ var t=ev.touches[0]; if(t) move(t.clientX,t.clientY); },{passive:true});
+  window.addEventListener('keydown',function(ev){
+    if(ev.key==='ArrowLeft'){ tx=tx>0.3?0:-1; ty=0; } else if(ev.key==='ArrowRight'){ tx=tx<-0.3?0:1; ty=0; }
+    else if(ev.key==='Escape'){ tx=0; }
+  });
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ var l=b.getAttribute('data-go')==='left'; tx=(side===(l?'left':'right'))?0:(l?-1:1); cx=tx; }); });
+  // keyboard focus opens the side the link belongs to
+  document.querySelectorAll('.side a').forEach(function(a){ a.addEventListener('focus',function(){ var l=a.closest('.side').classList.contains('l'); tx=cx=l?-1:1; setSide(l?'left':'right'); }); });
+  function tick(){
+    cx+=(tx-cx)*0.07; cy+=(ty-cy)*0.07;
+    var s=side;
+    if(s==='center'){ if(cx>TH) s='right'; else if(cx<-TH) s='left'; }
+    else if(s==='right'&&cx<TH-0.15) s=cx<-TH?'left':'center';
+    else if(s==='left'&&cx>-TH+0.15) s=cx>TH?'right':'center';
+    setSide(s);
+    if(!reduce){ poster.style.setProperty('--cx',cx.toFixed(3)); poster.style.setProperty('--cy',cy.toFixed(3)); }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+
+
+</body></html>

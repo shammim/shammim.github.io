@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8"><meta name="copyright" content="© 2026 Shammim. All rights reserved.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Report season – a workplace scenario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;src:url(rs-fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:700;src:url(rs-fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-weight:500;src:url(rs-fonts/fraunces-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-weight:600;src:url(rs-fonts/fraunces-latin-600-normal.woff2) format("woff2")}
+</style>
+<style>
+:root{
+  --bg:#F3F5F1; --surface:#FFFFFF; --ink:#1C2733; --muted:#56636F; --rule:#D9DFE2;
+  --accent:#A9560B; --accent-ink:#FFFFFF;
+  --priya-bubble:#DCEFEC; --tom-bubble:#E2E6F6; --bubble-ink:#1C2733;
+  --note:#EEF0EA; --good:#2C6B45; --warn:#8A4B0B;
+  --sky-dusk:linear-gradient(100deg,#F6D3A6,#E9A86A 55%,#B9785A);
+  --sky-morning:linear-gradient(100deg,#E4EEF2,#C9DDE6 60%,#A9C4D2);
+  --sky-night:linear-gradient(100deg,#3A4A6B,#26314A 60%,#1A2236);
+  --sky-day:linear-gradient(100deg,#EEF1E4,#D8E2C9 60%,#BFCDB0);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17222E; --surface:#203041; --ink:#EEF1EC; --muted:#AAB7C3; --rule:#2F4256;
+    --accent:#F0A04B; --accent-ink:#17222E;
+    --priya-bubble:#24504D; --tom-bubble:#34406E; --bubble-ink:#F2F4F0;
+    --note:#1C2A38; --good:#7FCB9B; --warn:#F0B270;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17222E; --surface:#203041; --ink:#EEF1EC; --muted:#AAB7C3; --rule:#2F4256;
+  --accent:#F0A04B; --accent-ink:#17222E;
+  --priya-bubble:#24504D; --tom-bubble:#34406E; --bubble-ink:#F2F4F0;
+  --note:#1C2A38; --good:#7FCB9B; --warn:#F0B270;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.5}
+button,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:720px;margin:0 auto;padding:0 1rem}
+
+/* top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.9rem 0}
+.course{font-size:.9rem;color:var(--muted)}
+.toggles{display:flex;gap:.5rem}
+.pill{border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:.35rem .8rem;font-size:.875rem;cursor:pointer}
+.pill[aria-pressed="false"]{color:var(--muted)}
+
+/* scene header: the one bold element */
+.scene{position:relative;border-radius:18px;overflow:hidden;min-height:150px;padding:1.25rem 1.4rem;color:#1C2733;transition:background .8s ease}
+.scene[data-light="dusk"]{background:var(--sky-dusk)}
+.scene[data-light="morning"]{background:var(--sky-morning)}
+.scene[data-light="night"]{background:var(--sky-night);color:#EEF1EC}
+.scene[data-light="day"]{background:var(--sky-day)}
+.scene .where{font-size:.95rem;opacity:.85}
+.scene h1{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.1;margin:.25rem 0 .35rem}
+.scene .clock{font-family:var(--display);font-weight:500;font-size:1.15rem}
+.window{position:absolute;right:1.2rem;top:1rem;width:92px;height:118px;border-radius:46px 46px 6px 6px;background:rgba(255,255,255,.28);border:3px solid rgba(255,255,255,.55)}
+.window::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:rgba(255,255,255,.55)}
+@media (max-width:520px){.window{display:none}}
+
+/* intro */
+.intro{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:1.2rem 1.3rem;margin:1rem 0}
+.intro p{margin:.2rem 0 .9rem;max-width:60ch}
+.cast{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:1rem}
+.cast div{display:flex;align-items:center;gap:.55rem;font-size:.95rem}
+.btn{border:0;border-radius:10px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+
+/* thread */
+.thread{display:flex;flex-direction:column;gap:.7rem;padding:1rem 0 1.5rem}
+.row{display:flex;gap:.6rem;align-items:flex-end;max-width:88%}
+.row.tom{align-self:flex-end;flex-direction:row-reverse}
+.avatar{flex:0 0 44px;width:44px;height:44px}
+.bubble{background:var(--priya-bubble);color:var(--bubble-ink);padding:.6rem .85rem;border-radius:16px 16px 16px 4px}
+.row.tom .bubble{background:var(--tom-bubble);border-radius:16px 16px 4px 16px}
+.who{font-size:.8rem;font-weight:700;opacity:.8}
+.how{font-size:.8rem;font-style:italic;opacity:.8;margin-left:.3rem;font-weight:400}
+.bubble p{margin:.1rem 0 0}
+.direction{align-self:center;max-width:92%;text-align:center;font-style:italic;color:var(--muted);font-size:.93rem;background:var(--note);border-radius:10px;padding:.45rem .8rem}
+.card{align-self:stretch;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,4.5vw,1.6rem);line-height:1.25;padding:1rem .5rem;border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);margin:.4rem 0}
+.cut{display:flex;align-items:center;gap:.6rem;color:var(--muted);font-size:.85rem;margin:.5rem 0}
+.cut::before,.cut::after{content:"";flex:1;height:1px;background:var(--rule)}
+.phone{align-self:flex-start;margin-left:3.3rem;display:flex;gap:.6rem;align-items:center;background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:.5rem .75rem;font-size:.88rem;box-shadow:0 6px 18px rgba(20,30,40,.12)}
+.phone svg{flex:0 0 20px}
+.typing{display:flex;gap:4px;padding:.75rem .9rem}
+.typing span{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.4;animation:blink 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes blink{50%{opacity:1}}
+.enter{animation:rise .35s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* decision */
+.decision{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:1.1rem 1.2rem;margin:.5rem 0}
+.decision h2,.debrief h2{font-family:var(--display);font-weight:600;font-size:1.35rem;margin:0 0 .8rem}
+.option{display:flex;gap:.8rem;align-items:flex-start;width:100%;text-align:left;background:transparent;border:1px solid var(--rule);border-radius:12px;padding:.8rem .9rem;margin-bottom:.6rem;cursor:pointer}
+.option:hover{border-color:var(--accent)}
+.option[aria-current="true"]{border-color:var(--accent);border-width:2px;padding:calc(.8rem - 1px) calc(.9rem - 1px)}
+.option .letter{flex:0 0 2rem;height:2rem;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--note)}
+.option .seen{display:block;font-size:.8rem;color:var(--muted);margin-top:.2rem}
+.option[disabled]{cursor:default;opacity:.65}
+
+/* debrief */
+.debrief{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:1.2rem 1.3rem;margin:.5rem 0 1.5rem}
+.verdict{font-weight:700;margin:0 0 .6rem}
+.verdict.good{color:var(--good)}.verdict.warn{color:var(--warn)}
+.debrief ul{padding-left:1.1rem;margin:.6rem 0 1rem}
+.debrief li{margin-bottom:.45rem}
+.debrief li.mine{font-weight:700}
+label.reflect{display:block;font-weight:700;margin:.8rem 0 .4rem}
+textarea{width:100%;min-height:90px;border:1px solid var(--rule);border-radius:10px;background:var(--bg);padding:.6rem .7rem;resize:vertical}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.saved{font-size:.85rem;color:var(--muted);align-self:center}
+
+/* dock */
+.dock{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--rule);padding:.6rem 0 calc(.6rem + env(safe-area-inset-bottom,0px))}
+.dock .wrap{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.progress{flex:1;min-width:120px;font-size:.85rem;color:var(--muted)}
+.bar{height:4px;background:var(--rule);border-radius:2px;margin-top:.3rem;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.ctrl{border:1px solid var(--rule);background:var(--surface);border-radius:10px;padding:.45rem .8rem;cursor:pointer;font-size:.9rem}
+.ctrl[disabled]{opacity:.45;cursor:default}
+footer{font-size:.8rem;color:var(--muted);padding:1rem 0 1.5rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){
+  .enter,.typing span{animation:none}
+  .scene,.bar i{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <span class="course">Psychological Health and Safety at Work · Module 3</span>
+    <div class="toggles">
+      <button class="pill" id="voiceBtn" aria-pressed="true">Voices on</button>
+      <button class="pill" id="themeBtn" aria-label="Switch colour theme">Theme</button>
+    </div>
+  </div>
+
+  <header class="scene" id="scene" data-light="dusk">
+    <div class="window" aria-hidden="true"></div>
+    <div class="where" id="where">Primary school staffroom</div>
+    <h1>Report season</h1>
+    <div class="clock" id="clock">5:40 pm</div>
+  </header>
+
+  <section class="intro" id="intro">
+    <p>You're Tom. Watch the conversation in the staffroom, then decide what Tom does next. You can come back and try every option.</p>
+    <div class="cast">
+      <div><span class="avatar" data-av="priya"></span><span><strong>Priya Sharma</strong><br>Year 4 teacher</span></div>
+      <div><span class="avatar" data-av="tom"></span><span><strong>Tom Nguyen</strong><br>Year 4 teacher (you)</span></div>
+    </div>
+    <button class="btn" id="startBtn">Start the scene</button>
+  </section>
+
+  <main>
+    <div class="thread" id="situation" role="log" aria-live="polite" aria-label="Situation conversation"></div>
+    <div id="decisionSlot"></div>
+    <div class="thread" id="branch" role="log" aria-live="polite" aria-label="What happened next"></div>
+    <div id="debriefSlot"></div>
+  </main>
+
+  <footer>Fictional scenario. © 2026 Shammim. All rights reserved. Not affiliated with the Victorian Department of Education. Voices use your browser's built-in speech.</footer>
+</div>
+
+<div class="dock" id="dock" hidden>
+  <div class="wrap">
+    <div class="progress"><span id="progText">Ready</span><div class="bar"><i id="barFill"></i></div></div>
+    <button class="ctrl" id="pauseBtn">Pause</button>
+    <button class="ctrl" id="nextBtn">Next line</button>
+    <button class="ctrl" id="restartBtn">Restart</button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- avatars ---------- */
+var AV = {
+  priya:'<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#BFE0DB"/><circle cx="24" cy="9.5" r="5.5" fill="#2B1B17"/><path d="M12 27c0-9 5-15 12-15s12 6 12 15c0 4-1 7-2 9H14c-1-2-2-5-2-9z" fill="#2B1B17"/><circle cx="24" cy="26" r="9.5" fill="#8D5A3B"/><path d="M14.5 24c1-6 5-9 9.5-9s8.5 3 9.5 9c-3-3-6-4-9.5-4s-6.5 1-9.5 4z" fill="#2B1B17"/><circle cx="20.5" cy="27" r="1.1" fill="#2B1B17"/><circle cx="27.5" cy="27" r="1.1" fill="#2B1B17"/><path d="M21.5 31.2q2.5 1.2 5 0" stroke="#2B1B17" stroke-width="1.1" fill="none" stroke-linecap="round"/><path d="M8 48c2-8 8-12 16-12s14 4 16 12z" fill="#2E6E6A"/></svg>',
+  tom:'<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#CDD3EE"/><circle cx="24" cy="25" r="9.5" fill="#E2B98F"/><path d="M14.3 23c0-6 4-10 9.7-10s9.7 4 9.7 10c-2-2.5-4-3.5-6-3.5-2 1.5-5 2-8 1.5-2 0-4 .7-5.4 2z" fill="#1B1B1B"/><circle cx="20.5" cy="26" r="1.1" fill="#1B1B1B"/><circle cx="27.5" cy="26" r="1.1" fill="#1B1B1B"/><path d="M21.5 30.2q2.5 1.2 5 0" stroke="#1B1B1B" stroke-width="1.1" fill="none" stroke-linecap="round"/><path d="M8 48c2-8 8-12 16-12s14 4 16 12z" fill="#4E5F9E"/><path d="M19 37l5 5 5-5" stroke="#DDE2F4" stroke-width="1.5" fill="none"/></svg>'
+};
+document.querySelectorAll("[data-av]").forEach(function(el){el.innerHTML = AV[el.dataset.av];});
+
+/* ---------- script ---------- */
+var SITUATION = [
+  {t:"scene", where:"Primary school staffroom", clock:"5:40 pm", light:"dusk"},
+  {t:"dir", text:"Late afternoon light. Most chairs are empty. Priya sits alone with a laptop, a stack of student workbooks and a cold cup of tea. Tom comes in with his bag, heading home."},
+  {t:"card", text:"Week 8, Term 2. Reports due Friday."},
+  {t:"line", who:"tom", text:"Still here? I thought you'd beaten me out the door for once."},
+  {t:"line", who:"priya", how:"doesn't look up", text:"I've got eleven comments left. And I haven't started the maths assessments."},
+  {t:"line", who:"tom", text:"Eleven tonight?"},
+  {t:"line", who:"priya", text:"Tonight, and then the weekend. Same as last weekend."},
+  {t:"dir", text:"She rubs her eyes."},
+  {t:"line", who:"priya", text:"Sorry. I'm fine. It's just that time of year, isn't it?"},
+  {t:"line", who:"tom", text:"You said that a fortnight ago."},
+  {t:"line", who:"priya", how:"small laugh, flat", text:"Did I? I've been sleeping about five hours. I snapped at a student today over nothing. That's not me."},
+  {t:"phone", text:"New email from a parent"},
+  {t:"dir", text:"Priya glances at her phone and closes her eyes for a moment."},
+  {t:"line", who:"priya", text:"Honestly, I'll be okay once Friday's done. Don't worry about me."},
+  {t:"dir", text:"Tom stands at the door, bag on his shoulder."},
+  {t:"card", text:"What should Tom do?"}
+];
+
+var OPTIONS = {
+  A:{label:"\u201CHang in there, we all suffer through report season.\u201D Tom heads home.",
+     why:"Option A is common and well-meant, but it normalises the strain. Nothing changes, so the risk keeps building."},
+  B:{label:"Tom sits down, checks in properly and encourages Priya to raise the workload with their team leader.",
+     why:"Option B spots the warning signs, raises the issue with someone who can change the work, and offers support without taking over."},
+  C:{label:"Tom offers to write her remaining comments himself tonight and keep it between them.",
+     why:"Option C shows care, but it hides the problem from the people who can fix it, and it moves the hazard onto Tom."}
+};
+
+var BRANCHES = {
+  A:[
+    {t:"scene", where:"Same staffroom, the following Thursday", clock:"7:15 am", light:"morning"},
+    {t:"dir", text:"Priya is already at the table, looking more exhausted. Tom walks in."},
+    {t:"line", who:"tom", text:"Morning! Nearly there."},
+    {t:"line", who:"priya", how:"quietly", text:"I called in sick Tuesday. Couldn't get out of bed. Now I'm even further behind."},
+    {t:"dir", text:"Tom's smile fades."},
+    {t:"card", text:"Normalising the strain let the hazard grow."}
+  ],
+  B:[
+    {t:"dir", text:"Tom puts his bag down and pulls out a chair."},
+    {t:"line", who:"tom", text:"Five hours sleep and snapping at kids isn't \u201Cthat time of year\u201D. That's a lot. What's making it this heavy?"},
+    {t:"line", who:"priya", text:"Two new students with learning plans, the reading data, and now reports. It keeps stacking up."},
+    {t:"line", who:"tom", text:"Would you talk to Helen about it tomorrow? She's moved deadlines for people before. I'll come with you if you want."},
+    {t:"line", who:"priya", how:"exhales", text:"Yeah. Okay. Maybe."},
+    {t:"line", who:"tom", text:"And the employee support line's free, if you just want to talk to someone outside school."},
+    {t:"scene", where:"Team leader's desk, the next afternoon", clock:"3:30 pm", light:"day"},
+    {t:"dir", text:"Priya and her team leader, Helen, sit at a desk with a calendar open on screen. Priya nods. Her shoulders drop."},
+    {t:"card", text:"Spot it. Raise it. Support it."}
+  ],
+  C:[
+    {t:"scene", where:"Tom's kitchen table", clock:"10:30 pm", light:"night"},
+    {t:"dir", text:"Tom sits at his kitchen table, laptop open, rubbing his eyes."},
+    {t:"scene", where:"By the photocopier, Monday", clock:"8:20 am", light:"morning"},
+    {t:"line", who:"priya", text:"Thanks for Friday. You saved me. Same again next term?"},
+    {t:"dir", text:"Tom forces a smile."},
+    {t:"card", text:"Kind, but the workload problem is now hidden, and shared."}
+  ]
+};
+
+/* ---------- state ---------- */
+var $ = function(id){return document.getElementById(id);};
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var runId = 0, paused = false, skipper = null;
+var voiceOn = "speechSynthesis" in window;
+var voices = {priya:null, tom:null};
+var seen = {A:false,B:false,C:false};
+var current = null;
+
+/* ---------- theme ---------- */
+(function initTheme(){
+  var saved = null;
+  try{ saved = localStorage.getItem("rs-theme"); }catch(e){}
+  if(saved){ document.documentElement.setAttribute("data-theme", saved); }
+  $("themeBtn").addEventListener("click", function(){
+    var dark = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim().toLowerCase() === "#17222e";
+    var next = dark ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try{ localStorage.setItem("rs-theme", next); }catch(e){}
+  });
+})();
+
+/* ---------- voices ---------- */
+function pickVoices(){
+  if(!("speechSynthesis" in window)) return;
+  var all = speechSynthesis.getVoices();
+  var en = all.filter(function(v){return /^en/i.test(v.lang);});
+  var au = en.filter(function(v){return /AU/i.test(v.lang);});
+  var pool = au.length ? au : en;
+  var fem = /karen|catherine|female|samantha|zira|susan|serena|hazel|libby|natasha|sonia|aria|jenny|moira|tessa|kate/i;
+  var mal = /lee|gordon|\bmale|daniel|david|james|william|guy|ryan|oliver|thomas|arthur|george|alex/i;
+  voices.priya = pool.find(function(v){return fem.test(v.name);}) || en.find(function(v){return fem.test(v.name);}) || pool[0] || null;
+  voices.tom = pool.find(function(v){return mal.test(v.name) && v !== voices.priya;}) || en.find(function(v){return mal.test(v.name) && v !== voices.priya;}) || pool[1] || pool[0] || null;
+}
+if("speechSynthesis" in window){
+  pickVoices();
+  speechSynthesis.addEventListener && speechSynthesis.addEventListener("voiceschanged", pickVoices);
+}else{
+  $("voiceBtn").textContent = "Voices unavailable";
+  $("voiceBtn").setAttribute("aria-pressed","false");
+  $("voiceBtn").disabled = true;
+}
+$("voiceBtn").addEventListener("click", function(){
+  voiceOn = !voiceOn;
+  this.setAttribute("aria-pressed", String(voiceOn));
+  this.textContent = voiceOn ? "Voices on" : "Voices off";
+  if(!voiceOn && "speechSynthesis" in window) speechSynthesis.cancel();
+});
+
+/* ---------- timing helpers ---------- */
+function sleep(ms){
+  return new Promise(function(res){
+    var t = setTimeout(done, ms);
+    skipper = done;
+    function done(){ clearTimeout(t); if(skipper === done) skipper = null; res(); }
+  });
+}
+function waitIfPaused(id){
+  return new Promise(function(res){
+    (function check(){ if(id !== runId || !paused) return res(); setTimeout(check, 150); })();
+  });
+}
+function words(s){ return s.split(/\s+/).length; }
+function readTime(s){ return Math.max(1600, words(s) * 330); }
+
+function speak(text, who){
+  if(!voiceOn || !("speechSynthesis" in window)) return sleep(readTime(text));
+  return new Promise(function(res){
+    var finished = false;
+    var u = new SpeechSynthesisUtterance(text.replace(/[\u201C\u201D]/g, ""));
+    if(voices[who]) u.voice = voices[who];
+    u.lang = (voices[who] && voices[who].lang) || "en-AU";
+    u.rate = 1; u.pitch = who === "priya" ? 1.08 : 0.92;
+    var guard = setTimeout(function g(){ if(paused){ guard = setTimeout(g, 500); return; } end(); }, words(text) * 600 + 2500);
+    function end(){ if(finished) return; finished = true; clearTimeout(guard); if(skipper === end) skipper = null; res(); }
+    u.onend = end; u.onerror = end;
+    skipper = function(){ speechSynthesis.cancel(); end(); };
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  });
+}
+
+/* ---------- rendering ---------- */
+function el(tag, cls, html){ var n = document.createElement(tag); if(cls) n.className = cls; if(html != null) n.innerHTML = html; if(!reduce) n.classList.add("enter"); return n; }
+function esc(s){ return s.replace(/[&<>"]/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+function scrollTo(n){ n.scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"end"}); }
+var NAMES = {priya:"Priya", tom:"Tom (you)"};
+
+async function renderStep(s, box, id){
+  if(s.t === "scene"){
+    $("scene").dataset.light = s.light; $("where").textContent = s.where; $("clock").textContent = s.clock;
+    var c = el("div","cut", esc(s.where + ", " + s.clock)); box.appendChild(c); scrollTo(c);
+    return sleep(1200);
+  }
+  if(s.t === "dir"){
+    var d = el("div","direction", esc(s.text)); box.appendChild(d); scrollTo(d);
+    return sleep(readTime(s.text) * 0.8);
+  }
+  if(s.t === "card"){
+    var k = el("div","card", esc(s.text)); box.appendChild(k); scrollTo(k);
+    return sleep(readTime(s.text) + 600);
+  }
+  if(s.t === "phone"){
+    var p = el("div","phone",'<svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 5l7 6 7-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>' + esc(s.text) + '</span>');
+    box.appendChild(p); scrollTo(p);
+    return sleep(1500);
+  }
+  if(s.t === "line"){
+    var row = el("div","row " + s.who);
+    row.innerHTML = '<span class="avatar">' + AV[s.who] + '</span>';
+    var b = document.createElement("div"); b.className = "bubble";
+    b.innerHTML = '<div class="typing" aria-hidden="true"><span></span><span></span><span></span></div>';
+    row.appendChild(b); box.appendChild(row); scrollTo(row);
+    await sleep(reduce ? 200 : 650);
+    if(id !== runId) return;
+    b.innerHTML = '<span class="who">' + NAMES[s.who] + (s.how ? '<span class="how">(' + esc(s.how) + ')</span>' : '') + '</span><p>' + esc(s.text) + '</p>';
+    scrollTo(row);
+    return speak(s.text, s.who);
+  }
+}
+
+async function play(steps, box, label, onDone){
+  var id = ++runId; paused = false; setPauseLabel();
+  $("dock").hidden = false;
+  for(var i = 0; i < steps.length; i++){
+    if(id !== runId) return;
+    await waitIfPaused(id);
+    if(id !== runId) return;
+    setProgress(label, i + 1, steps.length);
+    await renderStep(steps[i], box, id);
+  }
+  if(id === runId) onDone();
+}
+
+function setProgress(label, n, total){
+  $("progText").textContent = label + ": step " + n + " of " + total;
+  $("barFill").style.width = Math.round(n / total * 100) + "%";
+}
+function setPauseLabel(){ $("pauseBtn").textContent = paused ? "Resume" : "Pause"; }
+function stopAll(){ runId++; paused = false; setPauseLabel(); if("speechSynthesis" in window) speechSynthesis.cancel(); if(skipper) skipper(); }
+
+/* ---------- decision + debrief ---------- */
+function showDecision(){
+  $("progText").textContent = "Your decision";
+  var wrap = el("section","decision");
+  wrap.setAttribute("aria-labelledby","decTitle");
+  var html = '<h2 id="decTitle">What should Tom do?</h2>';
+  ["A","B","C"].forEach(function(k){
+    html += '<button class="option" data-opt="' + k + '"' + (current === k ? ' aria-current="true"' : '') + '><span class="letter" aria-hidden="true">' + k + '</span><span><span class="sr">Option ' + k + ': </span>' + esc(OPTIONS[k].label) + (seen[k] ? '<span class="seen">You\u2019ve watched this one</span>' : '') + '</span></button>';
+  });
+  wrap.innerHTML = html;
+  $("decisionSlot").innerHTML = ""; $("decisionSlot").appendChild(wrap);
+  wrap.querySelectorAll(".option").forEach(function(btn){
+    btn.addEventListener("click", function(){ choose(btn.dataset.opt); });
+  });
+  scrollTo(wrap);
+  var first = wrap.querySelector(".option"); if(first) first.focus({preventScroll:true});
+}
+
+function choose(k){
+  stopAll();
+  current = k;
+  $("branch").innerHTML = ""; $("debriefSlot").innerHTML = "";
+  document.querySelectorAll(".option").forEach(function(b){
+    b.disabled = true;
+    if(b.dataset.opt === k) b.setAttribute("aria-current","true"); else b.removeAttribute("aria-current");
+  });
+  play(BRANCHES[k], $("branch"), "Option " + k, function(){ seen[k] = true; showDebrief(k); });
+}
+
+function showDebrief(k){
+  $("progText").textContent = "Debrief"; $("barFill").style.width = "100%";
+  var good = k === "B";
+  var box = el("section","debrief");
+  box.setAttribute("aria-labelledby","dbTitle");
+  var list = ["A","C","B"].map(function(o){ return '<li' + (o === k ? ' class="mine"' : '') + '>' + esc(OPTIONS[o].why) + '</li>'; }).join("");
+  var note = "";
+  try{ note = localStorage.getItem("rs-reflection") || ""; }catch(e){}
+  box.innerHTML =
+    '<h2 id="dbTitle">Debrief</h2>' +
+    '<p class="verdict ' + (good ? 'good' : 'warn') + '">' + (good ? 'You chose Option B, the stronger choice.' : 'You chose Option ' + k + '. Option B is the stronger choice.') + '</p>' +
+    '<p>Sustained high workload is a psychosocial hazard. It affects how people sleep, think and treat others.</p>' +
+    '<ul>' + list + '</ul>' +
+    '<label class="reflect" for="reflection">When have you told someone, or yourself, \u201Cit\u2019s just that time of year\u201D? What could you say instead?</label>' +
+    '<textarea id="reflection" placeholder="Write a few words for yourself. Only you can see this.">' + esc(note) + '</textarea>' +
+    '<div class="actions"><button class="btn" id="tryAnother">Try another option</button><button class="btn ghost" id="replay">Replay the situation</button><span class="saved" id="savedMsg" aria-live="polite"></span></div>';
+  $("debriefSlot").innerHTML = ""; $("debriefSlot").appendChild(box);
+  var t;
+  $("reflection").addEventListener("input", function(){
+    var v = this.value; clearTimeout(t);
+    t = setTimeout(function(){ try{ localStorage.setItem("rs-reflection", v); $("savedMsg").textContent = "Note saved on this device"; }catch(e){ $("savedMsg").textContent = "Note can't be saved in this browser"; } }, 500);
+  });
+  $("tryAnother").addEventListener("click", function(){
+    $("branch").innerHTML = ""; $("debriefSlot").innerHTML = "";
+    showDecision();
+  });
+  $("replay").addEventListener("click", startScene);
+  scrollTo(box);
+  document.querySelectorAll(".option").forEach(function(b){ b.disabled = false; });
+}
+
+/* ---------- start / controls ---------- */
+function startScene(){
+  stopAll();
+  current = null;
+  $("intro").hidden = true;
+  $("situation").innerHTML = ""; $("decisionSlot").innerHTML = ""; $("branch").innerHTML = ""; $("debriefSlot").innerHTML = "";
+  window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"});
+  play(SITUATION, $("situation"), "Situation", showDecision);
+}
+$("startBtn").addEventListener("click", startScene);
+$("restartBtn").addEventListener("click", startScene);
+$("pauseBtn").addEventListener("click", function(){
+  paused = !paused; setPauseLabel();
+  if("speechSynthesis" in window){ if(paused) speechSynthesis.pause(); else speechSynthesis.resume(); }
+});
+$("nextBtn").addEventListener("click", function(){
+  if(paused){ paused = false; setPauseLabel(); }
+  if(skipper) skipper();
+});
+})();
+</script>
+</body>
+</html>
