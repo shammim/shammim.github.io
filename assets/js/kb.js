@@ -14,10 +14,10 @@ window.SHAMMIM_KB = {
    "blurb": "Clinical communication and asthma care for nurses, aged care and NDIS support workers."
   },
   "workplace": {
-   "label": "Workplace technology",
+   "label": "Digital skills & technology",
    "hue": "sky",
    "icon": "table",
-   "blurb": "Software skills taught through live practice on real workplace data."
+   "blurb": "Software, web and everyday digital skills, taught through live, hands-on practice."
   },
   "emergency": {
    "label": "Emergency services",
@@ -30,6 +30,18 @@ window.SHAMMIM_KB = {
    "hue": "lime",
    "icon": "leaf",
    "blurb": "Onboarding that gets new staff safe and compliant before day one."
+  },
+  "vet": {
+   "label": "Education & training",
+   "hue": "violet",
+   "icon": "grad",
+   "blurb": "Onboarding that helps new VET students settle in, find support and keep going."
+  },
+  "community": {
+   "label": "Community",
+   "hue": "teal",
+   "icon": "users",
+   "blurb": "Digital inclusion courses that help older Australians get online with confidence."
   }
  },
  "home": "home.html",
@@ -38,7 +50,7 @@ window.SHAMMIM_KB = {
   "full_name": "",
   "title": "Learning Designer & Developer",
   "location": "Melbourne, VIC",
-  "availability": "Open to full-time roles in Melbourne",
+  "availability": "Available for freelance projects, and open to full-time roles in Melbourne",
   "linkedin": "",
   "email": ""
  },
@@ -675,6 +687,215 @@ window.SHAMMIM_KB = {
    },
    "strategy": "An end-to-end process: need, learner analysis, objectives, design, development and evaluation. Bite-sized chunks paired with authentic field scenarios.",
    "interactions": "Image hotspot, flip cards, an AI workplace scenario with a team leader, contextual feedback against every aim, and a five-question knowledge check."
+  },
+  {
+   "slug": "vet-onboarding",
+   "code": "CS-15",
+   "title": "VET Onboarding: Your First 30 Days",
+   "short": "Shows new VET students what their first 30 days look like, from enrolment to their first assessment, who to go to when something goes wrong, and what is expected of them.",
+   "sector": "VET learner onboarding",
+   "sectors": [
+    "vet"
+   ],
+   "facts": {
+    "Audience": "People starting a Certificate or Diploma with an RTO or TAFE, including first-time and returning learners",
+    "Format": "Self-paced onboarding module on the series course template, SCORM 1.2 and 2004",
+    "Structure": "3 modules, a practical scenario and a five-question final quiz, about 25 minutes",
+    "Resources": "Day 1 to Day 30 timeline, 30-day checklist, glossary of VET terms, study habits and wellbeing",
+    "Accessibility": "Voice-over, captions and transcript on every section; keyboard ordering with no dragging; shortcuts"
+   },
+   "keywords": [
+    "vet",
+    "vocational",
+    "rto",
+    "tafe",
+    "student",
+    "students",
+    "learner",
+    "onboarding",
+    "induction",
+    "first 30 days",
+    "30 days",
+    "moodle",
+    "certificate",
+    "diploma",
+    "education",
+    "training"
+   ],
+   "impact": [
+    [
+     "30",
+     "days mapped, Day 1 to Day 30"
+    ],
+    [
+     "8",
+     "journey stages, Enrol to Progress"
+    ],
+    [
+     "4",
+     "support teams, and when to go to each"
+    ]
+   ],
+   "frames": 0,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/vet-onboarding/index.html"
+    }
+   ],
+   "videos": [
+    "VET Onboarding: Your First 30 Days"
+   ],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Learning designer & developer",
+    "What I did": "Learner analysis, outcomes for three modules, the Day 1 to Day 30 timeline and 30-day checklist, support roles, the journey sequencing activity, Sam’s first-fortnight scenario, knowledge checks and final quiz, voice-over scripts, glossary, illustrations and the build on the series course template",
+    "Tools": "HTML, CSS and JavaScript (series course template) · SCORM 1.2 and 2004 · AI voice-over",
+    "Team": "Solo, end to end.",
+    "Timeline": ""
+   },
+   "strategy": "The course is built around the first 30 days: a Day 1 to Day 30 timeline, the eight-stage journey from Enrol to Progress, and the four people and teams who can help. Each module ends with the learner applying it.",
+   "interactions": "A clickable 30-day timeline, support role cards, a put-the-journey-in-order activity using move buttons, two knowledge checks, Sam’s first-fortnight scenario with three moments, a final quiz (80% to pass), a checklist that saves ticks and a “first step” reflection."
+  },
+  {
+   "slug": "html-essentials",
+   "code": "CS-16",
+   "title": "HTML Essentials: Interactive Microlearning",
+   "short": "Teaches content editors, marketers and new developers the core of HTML5, with a live code sandbox and a graded coding task in every unit.",
+   "sector": "Web skills for content teams",
+   "sectors": [
+    "workplace"
+   ],
+   "facts": {
+    "Audience": "Staff who need to read, write or fix web pages at work: content editors, marketers, designers and new developers. No experience needed",
+    "Format": "Rise-style interactive microlearning on a custom course template, SCORM 1.2 and 2004",
+    "Structure": "5 units of 5 to 7 minutes and a final quiz (80% to pass), about 37 minutes",
+    "Resources": "Practice files with starter pages and solutions, a two-page HTML5 quick reference and five job aids",
+    "Accessibility": "Built to WCAG 2.1 AA; unit voice-over with captions and transcript; a code editor where Tab moves on, so keyboard users never get trapped"
+   },
+   "keywords": [
+    "html",
+    "html5",
+    "web",
+    "website",
+    "web page",
+    "coding",
+    "code",
+    "developer",
+    "content editor",
+    "accessibility",
+    "wcag",
+    "alt text",
+    "forms",
+    "tables",
+    "microlearning",
+    "technology",
+    "digital"
+   ],
+   "impact": [
+    [
+     "5",
+     "graded coding tasks with instant feedback"
+    ],
+    [
+     "5",
+     "live code sandboxes"
+    ],
+    [
+     "5",
+     "one-page job aids, plus practice files"
+    ]
+   ],
+   "frames": 0,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/html-essentials/index.html"
+    }
+   ],
+   "videos": [
+    "HTML Essentials"
+   ],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Learning designer & developer",
+    "What I did": "Audience analysis, outcomes for five units, worked examples, live code sandboxes, five graded coding tasks with instant checks, scenario-based checks, Mei’s launch-review scenario, a 10-question final quiz, voice-over scripts, the quick reference guide, five job aids and the practice files, built on a Rise-style course template",
+    "Tools": "HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · PDF job aids",
+    "Team": "Solo, end to end.",
+    "Timeline": ""
+   },
+   "strategy": "Learning HTML is a new alphabet and grammar at once, so each unit teaches one idea: see a worked example, try it in a live sandbox, check your thinking with a workplace scenario, then complete a short coding task.",
+   "interactions": "Live code sandboxes with a preview and a heading outline, five coding tasks that check the learner’s code instantly and say exactly what to fix, flashcards, a sorting activity, Mei’s launch-review branching scenario and a final quiz."
+  },
+  {
+   "slug": "digital-skills-seniors",
+   "code": "CS-17",
+   "title": "Digital Skills for Seniors",
+   "short": "Helps older Australians use a computer, video-call their family and spot scams, with support that fades from guided steps to free practice.",
+   "sector": "Digital inclusion for older Australians",
+   "sectors": [
+    "workplace",
+    "community"
+   ],
+   "facts": {
+    "Audience": "Older Australians who are new to computers or not yet confident online, learning at home or with a community program",
+    "Format": "Self-paced course in a custom player that also runs offline from a single file",
+    "Structure": "A welcome, 4 lessons and a wrap-up, 23 short screens, about 45 minutes",
+    "Resources": "A printable summary card, plus where to get help in Australia: Scamwatch and Be Connected",
+    "Accessibility": "Large text from the start with three text sizes, narration at about 130 words a minute with 0.75× speed, transcript on every screen, no timers and no tests to fail"
+   },
+   "keywords": [
+    "seniors",
+    "older",
+    "older australians",
+    "elderly",
+    "community",
+    "digital inclusion",
+    "digital literacy",
+    "computer",
+    "video call",
+    "scam",
+    "scams",
+    "online safety",
+    "passwords",
+    "retirees",
+    "library",
+    "community centre"
+   ],
+   "impact": [
+    [
+     "4",
+     "lessons, from guided to free choice"
+    ],
+    [
+     "23",
+     "short screens, each with narration"
+    ],
+    [
+     "3",
+     "text sizes, and no timers anywhere"
+    ]
+   ],
+   "frames": 0,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/digital-skills-seniors/index.html"
+    }
+   ],
+   "videos": [
+    "Digital Skills for Seniors"
+   ],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Learning designer & developer",
+    "What I did": "Learner analysis for older adults, outcomes for four lessons, a fading-support sequence from guided to self-directed, practice screens for the computer, video calls and scam spotting, confidence check-ins, narration scripts paced for older learners, the summary card and the build",
+    "Tools": "HTML, CSS and JavaScript (custom course player) · AI voice-over · offline single-file build",
+    "Team": "Solo, end to end.",
+    "Timeline": ""
+   },
+   "strategy": "Support fades as confidence grows. Lessons 1 and 2 are guided, step by step. In Lesson 3 learners choose the order, and Lesson 4 lets them pick their own practice. Every practice screen is safe: no real calls or messages are sent.",
+   "interactions": "A practice desktop, a click target, a simulated video call from start to finish, safe-or-suspicious message sorting, a scam phone call scenario, a keyboard practice, before-and-after confidence check-ins and a personal summary card."
   },
   {
    "slug": "triage-under-pressure",
