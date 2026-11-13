@@ -42,15 +42,21 @@ window.SHAMMIM_KB = {
    "hue": "teal",
    "icon": "users",
    "blurb": "Digital inclusion courses that help older Australians get online with confidence."
+  },
+  "frontline": {
+   "label": "Customer service",
+   "hue": "teal",
+   "icon": "users",
+   "blurb": "De-escalation and communication skills for frontline, public-facing staff."
   }
  },
  "home": "home.html",
  "profile": {
   "name": "Shammim",
   "full_name": "",
-  "title": "Learning Designer & Developer",
+  "title": "Freelance Instructional Designer & Developer",
   "location": "Melbourne, VIC",
-  "availability": "Available for freelance projects, and open to full-time roles in Melbourne",
+  "availability": "Based in Melbourne, working remotely, and available for the right opportunity",
   "linkedin": "",
   "email": ""
  },
@@ -99,7 +105,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Analysis of the supervision risk, learning objectives, scenario writing, room floor plan and branching logic, course build, job aid design, accessibility and functional testing",
     "Tools": "HTML, CSS and JavaScript course template · SCORM 2004 / xAPI",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -152,7 +158,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Mapping the ASCIA response to decisions, objectives, timed simulation design and variables, course build, quick response card, accessibility and functional testing",
     "Tools": "HTML, CSS and JavaScript course template · xAPI",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -205,7 +211,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Objectives, the flawed draft and its three problems, software simulation design (RoomJournal), validation rules, course build, cheat sheet, testing",
     "Tools": "HTML, CSS and JavaScript course template · xAPI",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -266,7 +272,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Performance problem and audience analysis, objectives mapped to the updated VEYLDF and the NQS, scenario and dialogue writing, three branching scenarios, three animated AI scenarios with captions and audio description, voice-over script for every screen, interactions, course build on a Rise-style player, two job aids, keyboard and accessibility testing",
     "Tools": "HTML, CSS and JavaScript Rise-style player · SCORM 1.2 and 2004 · AI neural voice-over · animated vector scenes",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -328,7 +334,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Analysis, objectives mapped to decisions, five branching scenarios per version, full production storyboards, character voice settings, microlearning video scripts, ten job aids, course build",
     "Tools": "HTML, CSS and JavaScript · browser speech for character voices · Word (storyboards, scripts, job aids)",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -382,7 +388,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Objectives, one-patient narrative, ISBAR explorer, NEWS2 scenario, drag-and-drop handover builder with keyboard alternative, knowledge check, job aid, course build",
     "Tools": "HTML, CSS and JavaScript course template · Word (job aid)",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -451,7 +457,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Onboarding plan across 30 days, 20 screens in four stages, objectives, scenarios and dialogue (including dignity and choice in personal care), two image hotspots, sorting, flip cards, branching conversations, rubrics for buddy and supervisor check-ins, quiz and 30-day record, in-course job aids, the Dignity and Choice Card, illustrations and course build on the series template",
     "Tools": "HTML, CSS and JavaScript course template · browser voice-over with captions and transcripts",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -505,7 +511,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Rebuilt an existing Rise 360 module as the Excel Refresher, then designed and built this Intermediate to Advanced follow-on: objectives, live practice grid, step tabs, knowledge checks, final assessment, quick reference job aid",
     "Tools": "HTML, CSS and JavaScript course template · Rise 360 (source module) · AI voice-over",
     "Team": "Solo. Course built for the organisation’s internal staff.",
@@ -561,7 +567,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Objectives, six lessons and a final quiz, a practice report with real formatting faults, labelled graphic, sorting, process steps, flashcards, the Sam Rivera deadline scenario, knowledge checks, voice-over scripts, five job aids, SCORM packaging for the LXP",
     "Tools": "HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · Word and PDF job aids",
     "Team": "Solo. Course built for the organisation’s internal staff.",
@@ -616,7 +622,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Scenario and dialogue writing, a 16-step illustrated conversation, three choices with consequences, the debrief and private reflection prompt, optional character voices, and the build on a shared scenario engine as one page that runs offline",
     "Tools": "HTML, CSS and JavaScript (shared scenario engine) · browser speech for optional voices",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -679,7 +685,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs and learner analysis, six outcomes, image hotspot, flip cards, Jordan role-play and feedback, knowledge check, reusable course template with 18 content blocks, voice-over scripts, SCORM player, case study carousel",
     "Tools": "HTML, CSS and JavaScript · SCORM 1.2 and 2004 · AI voice-over",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
@@ -748,7 +754,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Learner analysis, outcomes for three modules, the Day 1 to Day 30 timeline and 30-day checklist, support roles, the journey sequencing activity, Sam’s first-fortnight scenario, knowledge checks and final quiz, voice-over scripts, glossary, illustrations and the build on the series course template",
     "Tools": "HTML, CSS and JavaScript (series course template) · SCORM 1.2 and 2004 · AI voice-over",
     "Team": "Solo, end to end.",
@@ -818,7 +824,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Audience analysis, outcomes for five units, worked examples, live code sandboxes, five graded coding tasks with instant checks, scenario-based checks, Mei’s launch-review scenario, a 10-question final quiz, voice-over scripts, the quick reference guide, five job aids and the practice files, built on a Rise-style course template",
     "Tools": "HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · PDF job aids",
     "Team": "Solo, end to end.",
@@ -888,7 +894,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Learner analysis for older adults, outcomes for four lessons, a fading-support sequence from guided to self-directed, practice screens for the computer, video calls and scam spotting, confidence check-ins, narration scripts paced for older learners, the summary card and the build",
     "Tools": "HTML, CSS and JavaScript (custom course player) · AI voice-over · offline single-file build",
     "Team": "Solo, end to end.",
@@ -944,7 +950,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs analysis and behaviour target, action-mapped objectives, the five-move question sequence, flip cards and sorting, the Kestrel Bay call script and branching logic with a time cost for every choice, caller audio with captions, debrief, final check, quick card, SCORM packaging",
     "Tools": "HTML, CSS and JavaScript (Rise-style course template) · audio-driven call simulation · SCORM 1.2 and 2004",
     "Team": "Solo, end to end. The plan includes SME review with dispatch operations leads and QA auditors.",
@@ -1001,7 +1007,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs analysis, the six-section Open LMS (Moodle) course blueprint, activity completion and access restrictions, the pre/post assessment model, the Level 3 supervisor checklist, the interactive explainer module and the one-page blueprint PDF",
     "Tools": "Open LMS (Moodle) blueprint · HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004",
     "Team": "Solo, end to end. The plan includes SME review with operations, QA and L&D leads.",
@@ -1056,7 +1062,7 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs analysis across three agencies, the four-stage job aid and its layout, colour-blindness testing of the agency colours, METHANE practice, the Highway 9 scenario and four-frame storyboard, evaluation plan, module build and print-ready PDF",
     "Tools": "HTML, CSS and JavaScript (Rise-style course template) · job aid designed for A4 print and tablet PDF · SCORM 1.2 and 2004",
     "Team": "Solo, end to end. The plan includes SME review with police, fire and ambulance dispatch leads and QA.",
@@ -1064,6 +1070,67 @@ window.SHAMMIM_KB = {
    },
    "strategy": "Performance support for the moment of apply: a one-page job aid in four stages, explored stage by stage, practised with trigger sorting, then used live on a highway collision with the aid one click away.",
    "interactions": "An interactive job aid, METHANE step-through, trigger sorting, a CAD scenario with trigger selection, agency toggles, a METHANE form and a timed talkgroup patch, and a colour-blindness preview of the agency marks."
+  },
+  {
+   "slug": "frontline-conflict-de-escalation",
+   "code": "CS-18",
+   "title": "Frontline Workplace Conflict De-Escalation & Resolution Simulation",
+   "short": "A branching simulation that builds practical de-escalation skills for frontline staff. Learners use the CALM model at a council counter, a shop returns desk and a clinic reception, and every choice changes how the customer reacts.",
+   "sector": "Frontline customer service · branching simulation",
+   "sectors": [
+    "frontline"
+   ],
+   "facts": {
+    "Audience": "Frontline staff in local government, retail, and health and community services (Part 1); L&D, WHS and operations leads (Part 2)",
+    "Format": "Rise-style course with three branching scenarios, illustrated scenes and AI voice-over · SCORM 1.2 and 2004",
+    "Structure": "10 lessons and a final check, about 32 minutes · 3 scenarios, 5 decisions each, 10 endings",
+    "Assessment": "Confidence check before and after, scenario endings, 8-question final check (80% to pass), day-30 observation checklist",
+    "Accessibility": "WCAG 2.1 AA and UDL: voice-over with transcript, keys 1–3 to choose, no timers, tension shown in words and icons as well as colour"
+   },
+   "keywords": [
+    "de-escalation",
+    "deescalation",
+    "de-escalate",
+    "conflict",
+    "conflict resolution",
+    "aggression",
+    "aggressive customer",
+    "angry customer",
+    "customer service",
+    "frontline",
+    "front line",
+    "counter",
+    "reception",
+    "council",
+    "retail",
+    "clinic",
+    "calm model",
+    "occupational violence",
+    "duress",
+    "vyond",
+    "articulate",
+    "udl",
+    "branching",
+    "sme"
+   ],
+   "impact": [],
+   "frames": 6,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/frontline-conflict-de-escalation.html"
+    }
+   ],
+   "videos": [],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Instructional designer & developer",
+    "What I did": "Learning needs and behaviour targets, the CALM model, three branching scripts with 5 decisions and 3–4 endings each, plain-English rewrites of SME procedures, illustrated scenes, AI voice-over with transcripts, final check, evaluation plan and observation checklist, pocket guide, SCORM packaging",
+    "Tools": "HTML, CSS and JavaScript (Rise-style course template) · AI voice-over · SCORM 1.2 and 2004 · production plan for Articulate 360 and Vyond",
+    "Team": "Solo, end to end. The plan includes SME review with a council customer service team leader, a retail store manager and a WHS adviser."
+   },
+   "strategy": "Practice before policy: the escalation curve and a four-step CALM model (Control yourself, Acknowledge the feeling, Look for options, Move forward or move away), then three multi-path scenarios where every choice shows the customer’s reaction first and the coaching second.",
+   "interactions": "A tension meter that rises and falls with each choice, rewind to any decision, a results card across all scenarios, an interactive branching map, a CALM pocket guide and a working observation checklist."
   }
  ]
 };
