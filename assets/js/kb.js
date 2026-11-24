@@ -14,10 +14,10 @@ window.SHAMMIM_KB = {
    "blurb": "Clinical communication and asthma care for nurses, aged care and NDIS support workers."
   },
   "workplace": {
-   "label": "Workplace technology",
+   "label": "Digital skills & technology",
    "hue": "sky",
    "icon": "table",
-   "blurb": "Software skills taught through live practice on real workplace data."
+   "blurb": "Software, web and everyday digital skills, taught through live, hands-on practice."
   },
   "emergency": {
    "label": "Emergency services",
@@ -30,6 +30,18 @@ window.SHAMMIM_KB = {
    "hue": "lime",
    "icon": "leaf",
    "blurb": "Onboarding that gets new staff safe and compliant before day one."
+  },
+  "vet": {
+   "label": "Education & training",
+   "hue": "violet",
+   "icon": "grad",
+   "blurb": "Onboarding that helps new VET students settle in, find support and keep going."
+  },
+  "community": {
+   "label": "Community",
+   "hue": "teal",
+   "icon": "users",
+   "blurb": "Digital inclusion courses that help older Australians get online with confidence."
   }
  },
  "home": "home.html",
@@ -38,7 +50,7 @@ window.SHAMMIM_KB = {
   "full_name": "",
   "title": "Learning Designer & Developer",
   "location": "Melbourne, VIC",
-  "availability": "Open to full-time roles in Melbourne",
+  "availability": "Available for freelance projects, and open to full-time roles in Melbourne",
   "linkedin": "",
   "email": ""
  },
@@ -75,12 +87,16 @@ window.SHAMMIM_KB = {
     "graduate"
    ],
    "impact": [],
-   "jobaids": [
-    "Active Supervision Transition Job Aid"
-   ],
-   "screens": 4,
    "frames": 7,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/safeguarding-the-start.html"
+    }
+   ],
+   "videos": [
+    "Safeguarding the Start"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -124,12 +140,16 @@ window.SHAMMIM_KB = {
     "simulation"
    ],
    "impact": [],
-   "jobaids": [
-    "Anaphylaxis & Asthma Quick Response Card"
-   ],
-   "screens": 4,
    "frames": 6,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/anaphylaxis-asthma-response.html"
+    }
+   ],
+   "videos": [
+    "Acute Anaphylaxis and Asthma Emergency Response"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -173,12 +193,16 @@ window.SHAMMIM_KB = {
     "software simulation"
    ],
    "impact": [],
-   "jobaids": [
-    "Pedagogical Documentation Cheat Sheet"
-   ],
-   "screens": 4,
    "frames": 5,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/eylf-digital-learning-stories.html"
+    }
+   ],
+   "videos": [
+    "EYLF 2.0 Digital Learning Stories"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -191,10 +215,71 @@ window.SHAMMIM_KB = {
    "interactions": "Text validation against six learning indicators, redaction tools for a background child, EYLF tagging and a privacy breach layer with the steps to take."
   },
   {
+   "slug": "behind-the-behaviour",
+   "code": "CS-14",
+   "title": "Behind the Behaviour",
+   "short": "A Rise-style course that teaches new educators and graduate teachers to read behaviour as communication, find the need underneath it and partner with families without blame, with three animated AI scenarios and a capstone that follows one child for a month.",
+   "sector": "ECEC behaviour guidance and family partnerships",
+   "sectors": [
+    "ecec"
+   ],
+   "facts": {
+    "Audience": "Cert III and Diploma educators and graduate early childhood teachers in long day care and kindergarten, Victoria",
+    "Format": "Rise-style HTML course with role pathways, SCORM 1.2 and SCORM 2004 reporting",
+    "Structure": "Welcome, six modules, a capstone and a 10-question final check (80% pass), about 2.5 hours",
+    "Standards": "Updated VEYLDF · EYLF V2.0 · NQS QA1, QA2, QA5, QA6 · Child Safe Standards",
+    "Accessibility": "WCAG 2.2 AA: voice-over and transcript on every screen, nothing autoplays, full keyboard operation, captions and audio description"
+   },
+   "keywords": [
+    "behind the behaviour",
+    "behaviour",
+    "behavior",
+    "behaviour guidance",
+    "biting",
+    "toddler",
+    "kinder",
+    "kindergarten",
+    "long day care",
+    "families",
+    "family",
+    "parent",
+    "open framework",
+    "abc observation",
+    "iceberg",
+    "unmet needs",
+    "co-regulation",
+    "mandatory reporting",
+    "veyldf",
+    "graduate teacher",
+    "educator"
+   ],
+   "impact": [],
+   "frames": 7,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/behind-the-behaviour.html"
+    }
+   ],
+   "videos": [
+    "Behind the Behaviour"
+   ],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Learning designer & developer",
+    "What I did": "Performance problem and audience analysis, objectives mapped to the updated VEYLDF and the NQS, scenario and dialogue writing, three branching scenarios, three animated AI scenarios with captions and audio description, voice-over script for every screen, interactions, course build on a Rise-style player, two job aids, keyboard and accessibility testing",
+    "Tools": "HTML, CSS and JavaScript Rise-style player · SCORM 1.2 and 2004 · AI neural voice-over · animated vector scenes",
+    "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
+    "Timeline": ""
+   },
+   "strategy": "Every module starts from a real moment in a toddler or kinder room, not from theory. Learners pick a role: educators focus on the in-the-moment response, and graduate teachers also get a “Leading the response” panel in every module. A capstone follows one child, Arjun, from first observation to a family conversation and a two-week review.",
+   "interactions": "An iceberg hotspot graphic, flip cards, two sorting activities (expected or worth a closer look; sort the ABC), a needs detective, step-by-step processes, three branching scenarios including a parent conversation with a trust meter, three animated AI scenarios with a voice per character, and a reflective journal and action plan learners can print."
+  },
+  {
    "slug": "asthma-management",
    "code": "CS-04",
    "title": "Asthma Management: Workplace Scenarios",
-   "short": "Scenario-based asthma courses for hospital nurses, aged care staff and NDIS support workers, with ten job aids and two narrated walkthroughs.",
+   "short": "Scenario-based asthma courses for hospital nurses, aged care staff and NDIS support workers, built around voiced conversations learners can play line by line.",
    "sector": "Complex care · hospital, aged care & NDIS",
    "sectors": [
     "health"
@@ -227,15 +312,19 @@ window.SHAMMIM_KB = {
     "health"
    ],
    "impact": [],
-   "jobaids": [
-    "Five job aids: aged care",
-    "Five job aids: NDIS"
-   ],
-   "screens": 14,
    "frames": 6,
+   "courses": [
+    {
+     "l": "Course: hospital",
+     "h": "courses/asthma-on-the-ward.html"
+    },
+    {
+     "l": "Course: aged care",
+     "h": "courses/asthma-management-workplace-scenarios.html"
+    }
+   ],
    "videos": [
-    "Asthma on the Ward (hospital)",
-    "Asthma management: NDIS in-home support"
+    "Asthma Management"
    ],
    "ptype": "Workplace project",
    "role": {
@@ -281,11 +370,13 @@ window.SHAMMIM_KB = {
     "health"
    ],
    "impact": [],
-   "jobaids": [
-    "ISBAR Clinical Handover Quick Reference"
-   ],
-   "screens": 6,
    "frames": 7,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/clinical-handover-isbar.html"
+    }
+   ],
    "videos": [
     "Clinical Handover with ISBAR"
    ],
@@ -348,14 +439,16 @@ window.SHAMMIM_KB = {
     "aged care act"
    ],
    "impact": [],
-   "jobaids": [
-    "Dignity and Choice Card",
-    "ISBAR pocket card",
-    "Mealtime check"
-   ],
-   "screens": 10,
    "frames": 10,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/care-that-counts-onboarding.html"
+    }
+   ],
+   "videos": [
+    "Care That Counts: 30-Day Onboarding"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -400,12 +493,16 @@ window.SHAMMIM_KB = {
     "refresher"
    ],
    "impact": [],
-   "jobaids": [
-    "Excel Formula Quick Reference"
-   ],
-   "screens": 6,
    "frames": 6,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/excel-intermediate-advanced.html"
+    }
+   ],
+   "videos": [
+    "Microsoft Excel: Intermediate to Advanced"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -452,13 +549,16 @@ window.SHAMMIM_KB = {
     "formatting"
    ],
    "impact": [],
-   "jobaids": [
-    "Word job aids 1–5",
-    "Practice file: Quarterly Operations Report"
-   ],
-   "screens": 6,
    "frames": 6,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/word-build-better-documents.html"
+    }
+   ],
+   "videos": [
+    "Microsoft Word: Build Better Documents"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -504,9 +604,13 @@ window.SHAMMIM_KB = {
     "stress"
    ],
    "impact": [],
-   "jobaids": [],
-   "screens": 4,
    "frames": 4,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/report-season.html"
+    }
+   ],
    "videos": [
     "Report Season"
    ],
@@ -563,12 +667,16 @@ window.SHAMMIM_KB = {
      "template behind the whole compliance series"
     ]
    ],
-   "jobaids": [
-    "Field Site Check Card"
-   ],
-   "screens": 8,
    "frames": 7,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/environmental-compliance/index.html"
+    }
+   ],
+   "videos": [
+    "Environmental Compliance and Land Management"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -579,6 +687,215 @@ window.SHAMMIM_KB = {
    },
    "strategy": "An end-to-end process: need, learner analysis, objectives, design, development and evaluation. Bite-sized chunks paired with authentic field scenarios.",
    "interactions": "Image hotspot, flip cards, an AI workplace scenario with a team leader, contextual feedback against every aim, and a five-question knowledge check."
+  },
+  {
+   "slug": "vet-onboarding",
+   "code": "CS-15",
+   "title": "VET Onboarding: Your First 30 Days",
+   "short": "Shows new VET students what their first 30 days look like, from enrolment to their first assessment, who to go to when something goes wrong, and what is expected of them.",
+   "sector": "VET learner onboarding",
+   "sectors": [
+    "vet"
+   ],
+   "facts": {
+    "Audience": "People starting a Certificate or Diploma with an RTO or TAFE, including first-time and returning learners",
+    "Format": "Self-paced onboarding module on the series course template, SCORM 1.2 and 2004",
+    "Structure": "3 modules, a practical scenario and a five-question final quiz, about 25 minutes",
+    "Resources": "Day 1 to Day 30 timeline, 30-day checklist, glossary of VET terms, study habits and wellbeing",
+    "Accessibility": "Voice-over, captions and transcript on every section; keyboard ordering with no dragging; shortcuts"
+   },
+   "keywords": [
+    "vet",
+    "vocational",
+    "rto",
+    "tafe",
+    "student",
+    "students",
+    "learner",
+    "onboarding",
+    "induction",
+    "first 30 days",
+    "30 days",
+    "moodle",
+    "certificate",
+    "diploma",
+    "education",
+    "training"
+   ],
+   "impact": [
+    [
+     "30",
+     "days mapped, Day 1 to Day 30"
+    ],
+    [
+     "8",
+     "journey stages, Enrol to Progress"
+    ],
+    [
+     "4",
+     "support teams, and when to go to each"
+    ]
+   ],
+   "frames": 0,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/vet-onboarding/index.html"
+    }
+   ],
+   "videos": [
+    "VET Onboarding: Your First 30 Days"
+   ],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Learning designer & developer",
+    "What I did": "Learner analysis, outcomes for three modules, the Day 1 to Day 30 timeline and 30-day checklist, support roles, the journey sequencing activity, Sam’s first-fortnight scenario, knowledge checks and final quiz, voice-over scripts, glossary, illustrations and the build on the series course template",
+    "Tools": "HTML, CSS and JavaScript (series course template) · SCORM 1.2 and 2004 · AI voice-over",
+    "Team": "Solo, end to end.",
+    "Timeline": ""
+   },
+   "strategy": "The course is built around the first 30 days: a Day 1 to Day 30 timeline, the eight-stage journey from Enrol to Progress, and the four people and teams who can help. Each module ends with the learner applying it.",
+   "interactions": "A clickable 30-day timeline, support role cards, a put-the-journey-in-order activity using move buttons, two knowledge checks, Sam’s first-fortnight scenario with three moments, a final quiz (80% to pass), a checklist that saves ticks and a “first step” reflection."
+  },
+  {
+   "slug": "html-essentials",
+   "code": "CS-16",
+   "title": "HTML Essentials: Interactive Microlearning",
+   "short": "Teaches content editors, marketers and new developers the core of HTML5, with a live code sandbox and a graded coding task in every unit.",
+   "sector": "Web skills for content teams",
+   "sectors": [
+    "workplace"
+   ],
+   "facts": {
+    "Audience": "Staff who need to read, write or fix web pages at work: content editors, marketers, designers and new developers. No experience needed",
+    "Format": "Rise-style interactive microlearning on a custom course template, SCORM 1.2 and 2004",
+    "Structure": "5 units of 5 to 7 minutes and a final quiz (80% to pass), about 37 minutes",
+    "Resources": "Practice files with starter pages and solutions, a two-page HTML5 quick reference and five job aids",
+    "Accessibility": "Built to WCAG 2.1 AA; unit voice-over with captions and transcript; a code editor where Tab moves on, so keyboard users never get trapped"
+   },
+   "keywords": [
+    "html",
+    "html5",
+    "web",
+    "website",
+    "web page",
+    "coding",
+    "code",
+    "developer",
+    "content editor",
+    "accessibility",
+    "wcag",
+    "alt text",
+    "forms",
+    "tables",
+    "microlearning",
+    "technology",
+    "digital"
+   ],
+   "impact": [
+    [
+     "5",
+     "graded coding tasks with instant feedback"
+    ],
+    [
+     "5",
+     "live code sandboxes"
+    ],
+    [
+     "5",
+     "one-page job aids, plus practice files"
+    ]
+   ],
+   "frames": 0,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/html-essentials/index.html"
+    }
+   ],
+   "videos": [
+    "HTML Essentials"
+   ],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Learning designer & developer",
+    "What I did": "Audience analysis, outcomes for five units, worked examples, live code sandboxes, five graded coding tasks with instant checks, scenario-based checks, Mei’s launch-review scenario, a 10-question final quiz, voice-over scripts, the quick reference guide, five job aids and the practice files, built on a Rise-style course template",
+    "Tools": "HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · PDF job aids",
+    "Team": "Solo, end to end.",
+    "Timeline": ""
+   },
+   "strategy": "Learning HTML is a new alphabet and grammar at once, so each unit teaches one idea: see a worked example, try it in a live sandbox, check your thinking with a workplace scenario, then complete a short coding task.",
+   "interactions": "Live code sandboxes with a preview and a heading outline, five coding tasks that check the learner’s code instantly and say exactly what to fix, flashcards, a sorting activity, Mei’s launch-review branching scenario and a final quiz."
+  },
+  {
+   "slug": "digital-skills-seniors",
+   "code": "CS-17",
+   "title": "Digital Skills for Seniors",
+   "short": "Helps older Australians use a computer, video-call their family and spot scams, with support that fades from guided steps to free practice.",
+   "sector": "Digital inclusion for older Australians",
+   "sectors": [
+    "workplace",
+    "community"
+   ],
+   "facts": {
+    "Audience": "Older Australians who are new to computers or not yet confident online, learning at home or with a community program",
+    "Format": "Self-paced course in a custom player that also runs offline from a single file",
+    "Structure": "A welcome, 4 lessons and a wrap-up, 23 short screens, about 45 minutes",
+    "Resources": "A printable summary card, plus where to get help in Australia: Scamwatch and Be Connected",
+    "Accessibility": "Large text from the start with three text sizes, narration at about 130 words a minute with 0.75× speed, transcript on every screen, no timers and no tests to fail"
+   },
+   "keywords": [
+    "seniors",
+    "older",
+    "older australians",
+    "elderly",
+    "community",
+    "digital inclusion",
+    "digital literacy",
+    "computer",
+    "video call",
+    "scam",
+    "scams",
+    "online safety",
+    "passwords",
+    "retirees",
+    "library",
+    "community centre"
+   ],
+   "impact": [
+    [
+     "4",
+     "lessons, from guided to free choice"
+    ],
+    [
+     "23",
+     "short screens, each with narration"
+    ],
+    [
+     "3",
+     "text sizes, and no timers anywhere"
+    ]
+   ],
+   "frames": 0,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/digital-skills-seniors/index.html"
+    }
+   ],
+   "videos": [
+    "Digital Skills for Seniors"
+   ],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Learning designer & developer",
+    "What I did": "Learner analysis for older adults, outcomes for four lessons, a fading-support sequence from guided to self-directed, practice screens for the computer, video calls and scam spotting, confidence check-ins, narration scripts paced for older learners, the summary card and the build",
+    "Tools": "HTML, CSS and JavaScript (custom course player) · AI voice-over · offline single-file build",
+    "Team": "Solo, end to end.",
+    "Timeline": ""
+   },
+   "strategy": "Support fades as confidence grows. Lessons 1 and 2 are guided, step by step. In Lesson 3 learners choose the order, and Lesson 4 lets them pick their own practice. Every practice screen is safe: no real calls or messages are sent.",
+   "interactions": "A practice desktop, a click target, a simulated video call from start to finish, safe-or-suspicious message sorting, a scam phone call scenario, a keyboard practice, before-and-after confidence check-ins and a personal summary card."
   },
   {
    "slug": "triage-under-pressure",
@@ -615,12 +932,16 @@ window.SHAMMIM_KB = {
     "microlearning"
    ],
    "impact": [],
-   "jobaids": [
-    "Quick card: the first 60 seconds"
-   ],
-   "screens": 6,
    "frames": 6,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/triage-under-pressure.html"
+    }
+   ],
+   "videos": [
+    "Triage Under Pressure"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -668,12 +989,16 @@ window.SHAMMIM_KB = {
     "gradebook"
    ],
    "impact": [],
-   "jobaids": [
-    "30-day supervisor checklist"
-   ],
-   "screens": 7,
    "frames": 7,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/dispatch-triage-pathway.html"
+    }
+   ],
+   "videos": [
+    "Dispatch Triage Pathway"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",
@@ -719,12 +1044,16 @@ window.SHAMMIM_KB = {
     "colour blindness"
    ],
    "impact": [],
-   "jobaids": [
-    "Multi-agency dispatch job aid"
-   ],
-   "screens": 7,
    "frames": 7,
-   "videos": [],
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/four-stages-joint-response.html"
+    }
+   ],
+   "videos": [
+    "Four Stages to a Joint Response"
+   ],
    "ptype": "Workplace project",
    "role": {
     "Role": "Learning designer & developer",

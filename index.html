@@ -1,4 +1,8 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+
+
+
 <title>Shammim · Learning Designer &amp; Developer</title>
 <meta name="description" content="Shammim, learning designer &amp; developer in Melbourne, VIC. Move left or right to open the portfolio.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%230B1522' stroke='%23479fe7' stroke-width='3.5'/%3E%3Cpath d='M26 13.5h-8.2a3.6 3.6 0 0 0 0 7.2h4.4a3.6 3.6 0 0 1 0 7.2H13.6' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='27.4' cy='27.9' r='1.9' fill='%23fb6c1d'/%3E%3C/svg%3E">
@@ -31,6 +35,7 @@ a:hover,a:focus-visible{color:var(--accent)}
 .who b{font:900 28px/1 var(--display);letter-spacing:-.01em;text-transform:var(--case)}
 .meta{display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right}
 .meta strong{font-weight:700}
+.meta .legal{font:400 10px/1.4 "Space Mono",ui-monospace,monospace;letter-spacing:.02em;color:var(--muted);max-width:200px}
 .poster-wrap{position:relative;height:min(calc(100dvh - 170px),118vw);aspect-ratio:736/977;max-width:88vw;perspective:1400px}
 .poster{position:absolute;inset:0;border-radius:calc(var(--radius) * .6);overflow:hidden;box-shadow:var(--shadow);transform:rotateY(calc(var(--cx,0) * -7deg)) rotateX(calc(var(--cy,0) * 3deg));transform-style:preserve-3d;will-change:transform}
 .poster img{width:100%;height:100%;object-fit:cover;display:block}
@@ -72,7 +77,7 @@ a:hover,a:focus-visible{color:var(--accent)}
   <h1 class="sr-only">Shammim, Learning Designer &amp; Developer: portfolio</h1>
   <div class="top">
     <div class="who"><b>Shammim</b><span>Learning Designer &amp; Developer</span></div>
-    <div class="meta"><strong>Portfolio ©2026</strong><a href="contact.html">Contact</a></div>
+    <div class="meta"><strong>Portfolio ©2026</strong><small class="legal">© 2026 Shammim. All rights reserved.<br>Not for reuse without permission.</small><a href="contact.html">Contact</a></div>
   </div>
   <div class="poster-wrap">
     <div class="poster" id="poster"><img src="assets/img/cover-portrait.webp" alt="Illustration of a woman in a white sun hat and a blue striped shirt" width="736" height="977"></div>
@@ -115,4 +120,7 @@ a:hover,a:focus-visible{color:var(--accent)}
   requestAnimationFrame(tick);
 })();
 </script>
+
+
+
 </body></html>

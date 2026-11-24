@@ -1,0 +1,183 @@
+<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="copyright" content="© 2026 Shammim. All rights reserved."><title>HTML Essentials: practice files</title>
+<style>@font-face{font-family:Inter;src:url(../../fonts/inter-latin-400-normal.woff2) format("woff2");font-weight:400}@font-face{font-family:Inter;src:url(../../fonts/inter-latin-700-normal.woff2) format("woff2");font-weight:700 900}
+*{box-sizing:border-box}body{margin:0;background:#F2FAF8;color:#123330;font:400 17px/1.6 Inter,system-ui,sans-serif}main{max-width:860px;margin:0 auto;padding:40px 18px 24px}
+h1{font-size:clamp(28px,5vw,40px);margin:4px 0 8px;line-height:1.15}h2{margin:2px 0 6px;font-size:22px}.k{margin:0;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0F7A6E}
+.unit{background:#fff;border:1px solid #D3E3DF;border-radius:16px;padding:22px;margin:18px 0}ol{margin:6px 0 14px;padding-left:22px}
+.code{border-radius:12px;overflow:hidden;background:#123330;margin:10px 0}.bar{display:flex;gap:10px;align-items:center;padding:8px 12px;background:#0B2321;color:#B9D3CE;font-size:14px}.bar b{color:#7FE0C4}.bar button{margin-left:auto}
+pre{margin:0;padding:14px 16px;color:#EFFAF7;font:14px/1.55 ui-monospace,Menlo,Consolas,monospace;overflow:auto;white-space:pre}
+button{font:700 14px Inter,sans-serif;background:#0F7A6E;color:#fff;border:0;border-radius:999px;padding:7px 14px;cursor:pointer}button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #6CB8F2;outline-offset:2px}
+summary{cursor:pointer;font-weight:700;color:#0C6359;margin-top:6px}a{color:#0C6359}.imgs{display:flex;gap:16px;flex-wrap:wrap}.imgs figure{margin:0;flex:1 1 220px}.imgs img{width:100%;height:auto;border-radius:10px;border:1px solid #D3E3DF;background:#fff}
+.how{background:#E2F1EE;border-radius:12px;padding:14px 18px}footer{text-align:center;font-size:12px;color:#4C6662;padding:20px}</style></head><body><main>
+<p class="k">HTML Essentials · Resources</p><h1>Practice files</h1><p>Starter code and a finished solution for every unit’s coding task.</p>
+<div class="how"><b>How to use them</b><ol><li>Select <b>Copy code</b> and paste it into any plain-text editor, such as Notepad, TextEdit (plain-text mode) or VS Code.</li><li>Save the file with a name ending in <code>.html</code>, make the changes in the steps, then open it in your browser.</li><li>Compare your page with the solution.</li></ol></div>
+<section class="unit"><p class="k">Sample images for Unit 3</p><h2>Images folder</h2><p>Save these into a folder called <code>images</code> next to your page.</p>
+<div class="imgs"><figure><img src="practice-images/team-photo.jpg" alt="Illustration of five members of a web team standing outside the Melbourne office" width="800" height="520"><figcaption><a href="practice-images/team-photo.jpg" download>team-photo.jpg</a></figcaption></figure>
+<figure><img src="practice-images/divider.svg" alt="" width="800" height="12" style="padding:20px 10px"><figcaption><a href="practice-images/divider.svg" download>divider.svg</a> (decorative)</figcaption></figure></div></section>
+<section class="unit"><p class="k">Unit 1 · The anatomy of a web page</p><h2>Build the page skeleton</h2><p>Mia’s page only has body content. Turn it into a complete HTML5 page.</p><ol><li>Start with the doctype</li><li>Wrap everything in &lt;html&gt; with lang=&quot;en-AU&quot;</li><li>Add a &lt;head&gt; with the character set and a title</li><li>Keep one &lt;h1&gt; and the paragraph inside &lt;body&gt;</li></ol>
+<div class="code"><div class="bar"><b>Starter</b> <span>unit1-page-skeleton.html</span><button type="button" data-copy="s1">Copy code</button></div><pre id="s1">&lt;h1&gt;Leave policy update&lt;/h1&gt;
+&lt;p&gt;From 1 July, you can request leave through the staff portal.&lt;/p&gt;</pre></div>
+<details><summary>Show the solution</summary><div class="code"><div class="bar"><b>Solution</b><button type="button" data-copy="o1">Copy code</button></div><pre id="o1">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Leave policy update – Staff portal&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Leave policy update&lt;/h1&gt;
+    &lt;p&gt;From 1 July, you can request leave through the staff portal.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div></details></section><section class="unit"><p class="k">Unit 2 · Headings, text and semantic structure</p><h2>Structure the news page</h2><p>Give this page landmarks and a proper heading outline.</p><ol><li>Put the site title in a &lt;header&gt; as the &lt;h1&gt;</li><li>Put both stories in &lt;main&gt;, each with an &lt;h2&gt;</li><li>Put the copyright line in a &lt;footer&gt;</li><li>Mark “Entries close Friday” as important with &lt;strong&gt;</li></ol>
+<div class="code"><div class="bar"><b>Starter</b> <span>unit2-news-page.html</span><button type="button" data-copy="s2">Copy code</button></div><pre id="s2">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Team news&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;&lt;b&gt;Team news&lt;/b&gt;&lt;/div&gt;
+    &lt;div&gt;
+      &lt;p&gt;&lt;b&gt;New starter: Priya&lt;/b&gt;&lt;/p&gt;
+      &lt;p&gt;Priya joins the web team on Monday.&lt;/p&gt;
+      &lt;p&gt;&lt;b&gt;Photo competition&lt;/b&gt;&lt;/p&gt;
+      &lt;p&gt;Send us your best workplace photo. Entries close Friday.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div&gt;© 2026 Shammim&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+<details><summary>Show the solution</summary><div class="code"><div class="bar"><b>Solution</b><button type="button" data-copy="o2">Copy code</button></div><pre id="o2">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Team news&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Team news&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;h2&gt;New starter: Priya&lt;/h2&gt;
+      &lt;p&gt;Priya joins the web team on Monday.&lt;/p&gt;
+      &lt;h2&gt;Photo competition&lt;/h2&gt;
+      &lt;p&gt;Send us your best workplace photo. &lt;strong&gt;Entries close Friday.&lt;/strong&gt;&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;© 2026 Shammim&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div></details></section><section class="unit"><p class="k">Unit 3 · Links and images</p><h2>Fix the careers page</h2><p>This page has a vague link and two images without alt text. Fix them.</p><ol><li>Change the link text to describe where it goes (not “click here”)</li><li>Make the link go to https://example.com/careers</li><li>Give the team photo a meaningful alt</li><li>The divider line is decorative: give it an empty alt, alt=&quot;&quot;</li><li>Give the photo width and height attributes</li></ol>
+<div class="code"><div class="bar"><b>Starter</b> <span>unit3-careers-page.html</span><button type="button" data-copy="s3">Copy code</button></div><pre id="s3">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Careers – Shammim&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Work with us&lt;/h1&gt;
+    &lt;img src=&quot;images/team-photo.jpg&quot;&gt;
+    &lt;img src=&quot;images/divider.svg&quot;&gt;
+    &lt;p&gt;We’re hiring a content designer. &lt;a href=&quot;&quot;&gt;Click here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+<details><summary>Show the solution</summary><div class="code"><div class="bar"><b>Solution</b><button type="button" data-copy="o3">Copy code</button></div><pre id="o3">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Careers – Shammim&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Work with us&lt;/h1&gt;
+    &lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Five members of the web team standing together&quot; width=&quot;800&quot; height=&quot;533&quot;&gt;
+    &lt;img src=&quot;images/divider.svg&quot; alt=&quot;&quot;&gt;
+    &lt;p&gt;We’re hiring a content designer. &lt;a href=&quot;https://example.com/careers&quot;&gt;See current jobs at Shammim&lt;/a&gt;.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div></details></section><section class="unit"><p class="k">Unit 4 · Lists and tables</p><h2>Make the roster accessible</h2><p>Turn Priya’s roster into an accessible data table.</p><ol><li>Add a &lt;caption&gt; that names the table</li><li>Put the header row in &lt;thead&gt; with &lt;th scope=&quot;col&quot;&gt; cells</li><li>Put the other rows in &lt;tbody&gt;</li><li>Make each day a row header: &lt;th scope=&quot;row&quot;&gt;</li></ol>
+<div class="code"><div class="bar"><b>Starter</b> <span>unit4-roster-table.html</span><button type="button" data-copy="s4">Copy code</button></div><pre id="s4">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Help desk roster&lt;/title&gt;
+    &lt;style&gt;table{border-collapse:collapse}th,td{border:1px solid #6F8C87;padding:6px 10px;text-align:left}caption{font-weight:bold;text-align:left;padding-bottom:6px}&lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Help desk roster&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;tr&gt;&lt;td&gt;Day&lt;/td&gt;&lt;td&gt;Morning&lt;/td&gt;&lt;td&gt;Afternoon&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Monday&lt;/td&gt;&lt;td&gt;Sam&lt;/td&gt;&lt;td&gt;Priya&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Tuesday&lt;/td&gt;&lt;td&gt;Alex&lt;/td&gt;&lt;td&gt;Mei&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Wednesday&lt;/td&gt;&lt;td&gt;Priya&lt;/td&gt;&lt;td&gt;Sam&lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+<details><summary>Show the solution</summary><div class="code"><div class="bar"><b>Solution</b><button type="button" data-copy="o4">Copy code</button></div><pre id="o4">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Help desk roster&lt;/title&gt;
+    &lt;style&gt;table{border-collapse:collapse}th,td{border:1px solid #6F8C87;padding:6px 10px;text-align:left}caption{font-weight:bold;text-align:left;padding-bottom:6px}&lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Help desk roster&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;caption&gt;Help desk roster, this week&lt;/caption&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Day&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Morning&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Afternoon&lt;/th&gt;&lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Monday&lt;/th&gt;&lt;td&gt;Sam&lt;/td&gt;&lt;td&gt;Priya&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Tuesday&lt;/th&gt;&lt;td&gt;Alex&lt;/td&gt;&lt;td&gt;Mei&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Wednesday&lt;/th&gt;&lt;td&gt;Priya&lt;/td&gt;&lt;td&gt;Sam&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div></details></section><section class="unit"><p class="k">Unit 5 · Accessible forms</p><h2>Build an accessible feedback form</h2><p>Fix the event feedback form so every field is labelled and it can be sent with a keyboard.</p><ol><li>Give the name and email fields visible labels linked with for and id</li><li>Make the email field type=&quot;email&quot; and required</li><li>Group the rating radio buttons in a &lt;fieldset&gt; with a &lt;legend&gt;</li><li>Replace the &lt;div&gt; with a &lt;button type=&quot;submit&quot;&gt;</li></ol>
+<div class="code"><div class="bar"><b>Starter</b> <span>unit5-feedback-form.html</span><button type="button" data-copy="s5">Copy code</button></div><pre id="s5">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Event feedback&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Event feedback&lt;/h1&gt;
+    &lt;form&gt;
+      &lt;p&gt;&lt;input type=&quot;text&quot; id=&quot;name&quot; placeholder=&quot;Name&quot; autocomplete=&quot;name&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;input type=&quot;text&quot; id=&quot;email&quot; placeholder=&quot;Email&quot; autocomplete=&quot;email&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;How useful was the event?&lt;/p&gt;
+      &lt;p&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;r1&quot; name=&quot;rating&quot; value=&quot;1&quot;&gt;&lt;label for=&quot;r1&quot;&gt;Not useful&lt;/label&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;r2&quot; name=&quot;rating&quot; value=&quot;2&quot;&gt;&lt;label for=&quot;r2&quot;&gt;Useful&lt;/label&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;r3&quot; name=&quot;rating&quot; value=&quot;3&quot;&gt;&lt;label for=&quot;r3&quot;&gt;Very useful&lt;/label&gt;
+      &lt;/p&gt;
+      &lt;div class=&quot;btn&quot;&gt;Send feedback&lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+<details><summary>Show the solution</summary><div class="code"><div class="bar"><b>Solution</b><button type="button" data-copy="o5">Copy code</button></div><pre id="o5">&lt;!doctype html&gt;
+&lt;html lang=&quot;en-AU&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Event feedback&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Event feedback&lt;/h1&gt;
+    &lt;form&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; autocomplete=&quot;name&quot;&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;email&quot;&gt;Email (required)&lt;/label&gt;
+        &lt;input type=&quot;email&quot; id=&quot;email&quot; autocomplete=&quot;email&quot; required&gt;
+      &lt;/p&gt;
+      &lt;fieldset&gt;
+        &lt;legend&gt;How useful was the event?&lt;/legend&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;r1&quot; name=&quot;rating&quot; value=&quot;1&quot;&gt;&lt;label for=&quot;r1&quot;&gt;Not useful&lt;/label&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;r2&quot; name=&quot;rating&quot; value=&quot;2&quot;&gt;&lt;label for=&quot;r2&quot;&gt;Useful&lt;/label&gt;
+        &lt;input type=&quot;radio&quot; id=&quot;r3&quot; name=&quot;rating&quot; value=&quot;3&quot;&gt;&lt;label for=&quot;r3&quot;&gt;Very useful&lt;/label&gt;
+      &lt;/fieldset&gt;
+      &lt;button type=&quot;submit&quot;&gt;Send feedback&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre></div></details></section></main><footer>© 2026 Shammim. All rights reserved. Not for reuse without permission.</footer>
+<script>document.addEventListener('click',function(ev){var b=ev.target.closest('[data-copy]');if(!b)return;var t=document.getElementById(b.dataset.copy).textContent;
+function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy code'},1600)}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){sel()})}else sel();
+function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.copy));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected: press Ctrl+C'}});</script></body></html>
