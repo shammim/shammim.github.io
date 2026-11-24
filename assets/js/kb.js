@@ -42,15 +42,21 @@ window.SHAMMIM_KB = {
    "hue": "teal",
    "icon": "users",
    "blurb": "Digital inclusion courses that help older Australians get online with confidence."
+  },
+  "frontline": {
+   "label": "Customer service",
+   "hue": "teal",
+   "icon": "users",
+   "blurb": "De-escalation and communication skills for frontline, public-facing staff."
   }
  },
  "home": "home.html",
  "profile": {
   "name": "Shammim",
   "full_name": "",
-  "title": "Learning Designer & Developer",
+  "title": "eLearning Designer & Developer",
   "location": "Melbourne, VIC",
-  "availability": "Available for freelance projects, and open to full-time roles in Melbourne",
+  "availability": "Based in Melbourne, working remotely, and available for the right opportunity",
   "linkedin": "",
   "email": ""
  },
@@ -58,8 +64,8 @@ window.SHAMMIM_KB = {
   {
    "slug": "safeguarding-the-start",
    "code": "CS-01",
-   "title": "Safeguarding the Start",
-   "short": "A 30-day phased induction that gets graduate educators ready for their first day counted in ratio, built around a branching transition scenario in a toddler room.",
+   "title": "Active Supervision: Safeguarding the Start",
+   "short": "A 30-day phased induction that gets graduate educators ready for their first day counted in ratio, built around the Wattle Room Sandbox: choose where educators stand, then watch 60 seconds of room time play out.",
    "sector": "ECEC educator onboarding",
    "sectors": [
     "ecec",
@@ -67,7 +73,7 @@ window.SHAMMIM_KB = {
    ],
    "facts": {
     "Audience": "Graduate early childhood educators",
-    "Format": "Custom HTML5 course with a branching scenario, SCORM-ready",
+    "Format": "Custom HTML5 course with a supervision sandbox simulation, SCORM-ready",
     "Structure": "4 lessons: Context, Challenge, Activity, Results",
     "Standards": "NQS 2.2.1 · National Law s.165 · Reg 123 · Child Safe Principles 5 & 8",
     "Tracking": "SCORM 2004 / xAPI"
@@ -84,7 +90,10 @@ window.SHAMMIM_KB = {
     "child safe",
     "transition",
     "nqs",
-    "graduate"
+    "graduate",
+    "active supervision",
+    "wattle room",
+    "sandbox"
    ],
    "impact": [],
    "frames": 7,
@@ -95,18 +104,35 @@ window.SHAMMIM_KB = {
     }
    ],
    "videos": [
-    "Safeguarding the Start"
+    "Active Supervision: Safeguarding the Start"
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
-    "What I did": "Analysis of the supervision risk, learning objectives, scenario writing, room floor plan and branching logic, course build, job aid design, accessibility and functional testing",
-    "Tools": "HTML, CSS and JavaScript course template · SCORM 2004 / xAPI",
+    "Role": "Instructional designer & developer",
+    "What I did": "Analysis of the supervision risk, learning objectives, scenario writing, room floor plan and line-of-sight simulation, course build, job aid design, accessibility and functional testing",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript course template · SCORM 2004 / xAPI",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
-   "strategy": "Blended learning: short context lessons, a branching scenario simulation and a printable job aid, designed to sit alongside on-shift buddy mentoring across the onboarding milestones.",
-   "interactions": "Hotspot risk scan of the room, then a branching Test Me where every choice plays out in the room. Live \"In sight\" and \"Ratio\" counters, consequence layers and a retry from the start of the transition."
+   "strategy": "Blended learning: short context lessons, the Wattle Room Sandbox simulation and a printable job aid, designed to sit alongside on-shift buddy mentoring across the onboarding milestones.",
+   "interactions": "Hotspot risk scan of the room, then the Wattle Room Sandbox: three rounds where the learner chooses where educators stand, runs 60 seconds of room time and sees which children stayed in sight. Live “In sight” and “Ratio” counters, view cones, a replay slider, unlimited retries and a hint after two tries.",
+   "brief": {
+    "client": "An early childhood education and care provider",
+    "ask": "Get our graduate educators ready to be counted in ratio safely within their first 30 days.",
+    "stakeholders": "Centre leadership, the educational leader and buddy mentors"
+   },
+   "rise": {
+    "blocks": [
+     "Text and Statement",
+     "Labelled graphic: room risk scan",
+     "Process: transition steps",
+     "Knowledge check",
+     "Attachment: Active Supervision job aid"
+    ],
+    "storyline": [
+     "Toddler room transition"
+    ]
+   }
   },
   {
    "slug": "anaphylaxis-asthma-response",
@@ -152,14 +178,31 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Mapping the ASCIA response to decisions, objectives, timed simulation design and variables, course build, quick response card, accessibility and functional testing",
-    "Tools": "HTML, CSS and JavaScript course template · xAPI",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript course template · xAPI",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "Context, then sign recognition, then a timed Test Me. The learner plays the lead educator and first aid officer in a preschool room with 22 children and three ASCIA plans.",
-   "interactions": "Custom variables, timed decision layers and a falling patient stability score. A wrong call opens a feedback layer, and every step is logged as an xAPI statement."
+   "interactions": "Custom variables, timed decision layers and a falling patient stability score. A wrong call opens a feedback layer, and every step is logged as an xAPI statement.",
+   "brief": {
+    "client": "An early childhood education and care provider",
+    "ask": "Make sure every first aid officer acts on anaphylaxis straight away, without hesitating.",
+    "stakeholders": "The service leader and first aid officers"
+   },
+   "rise": {
+    "blocks": [
+     "Text",
+     "Flashcard grid: signs of anaphylaxis",
+     "Sorting activity: mild or severe",
+     "Knowledge check",
+     "Attachment: Quick Response Card"
+    ],
+    "storyline": [
+     "60-second lunch table simulation"
+    ]
+   }
   },
   {
    "slug": "eylf-digital-learning-stories",
@@ -205,14 +248,31 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Objectives, the flawed draft and its three problems, software simulation design (RoomJournal), validation rules, course build, cheat sheet, testing",
-    "Tools": "HTML, CSS and JavaScript course template · xAPI",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript course template · xAPI",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "A 30-minute scaffolded software simulation. Learners first spot what’s wrong with a draft, then fix it unguided in \"RoomJournal\", a simulated portfolio platform.",
-   "interactions": "Text validation against six learning indicators, redaction tools for a background child, EYLF tagging and a privacy breach layer with the steps to take."
+   "interactions": "Text validation against six learning indicators, redaction tools for a background child, EYLF tagging and a privacy breach layer with the steps to take.",
+   "brief": {
+    "client": "An early childhood education and care provider",
+    "ask": "Every learning story we publish needs to meet the EYLF and privacy law at the same time.",
+    "stakeholders": "The educational leader and room leaders"
+   },
+   "rise": {
+    "blocks": [
+     "Text",
+     "Tabs: EYLF V2.0 outcomes",
+     "Accordion: privacy principles",
+     "Knowledge check",
+     "Attachment: documentation cheat sheet"
+    ],
+    "storyline": [
+     "RoomJournal software simulation"
+    ]
+   }
   },
   {
    "slug": "behind-the-behaviour",
@@ -266,14 +326,34 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Performance problem and audience analysis, objectives mapped to the updated VEYLDF and the NQS, scenario and dialogue writing, three branching scenarios, three animated AI scenarios with captions and audio description, voice-over script for every screen, interactions, course build on a Rise-style player, two job aids, keyboard and accessibility testing",
-    "Tools": "HTML, CSS and JavaScript Rise-style player · SCORM 1.2 and 2004 · AI neural voice-over · animated vector scenes",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript Rise-style player · SCORM 1.2 and 2004 · AI neural voice-over · animated vector scenes",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "Every module starts from a real moment in a toddler or kinder room, not from theory. Learners pick a role: educators focus on the in-the-moment response, and graduate teachers also get a “Leading the response” panel in every module. A capstone follows one child, Arjun, from first observation to a family conversation and a two-week review.",
-   "interactions": "An iceberg hotspot graphic, flip cards, two sorting activities (expected or worth a closer look; sort the ABC), a needs detective, step-by-step processes, three branching scenarios including a parent conversation with a trust meter, three animated AI scenarios with a voice per character, and a reflective journal and action plan learners can print."
+   "interactions": "An iceberg hotspot graphic, flip cards, two sorting activities (expected or worth a closer look; sort the ABC), a needs detective, step-by-step processes, three branching scenarios including a parent conversation with a trust meter, three animated AI scenarios with a voice per character, and a reflective journal and action plan learners can print.",
+   "brief": {
+    "client": "An early childhood provider with long day care and kindergarten services in Victoria",
+    "ask": "Help new educators and graduate teachers read behaviour and work with families without blame.",
+    "stakeholders": "The educational leader, inclusion support and kindergarten teachers"
+   },
+   "rise": {
+    "blocks": [
+     "Labelled graphic: behaviour iceberg",
+     "Flashcard grid",
+     "Sorting activity × 2",
+     "Process",
+     "Multimedia: animated scenarios with captions",
+     "Quiz lesson: 10 questions, 80% to pass"
+    ],
+    "storyline": [
+     "Parent conversation",
+     "Needs detective",
+     "Reflective journal"
+    ]
+   }
   },
   {
    "slug": "asthma-management",
@@ -328,14 +408,31 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Analysis, objectives mapped to decisions, five branching scenarios per version, full production storyboards, character voice settings, microlearning video scripts, ten job aids, course build",
-    "Tools": "HTML, CSS and JavaScript · browser speech for character voices · Word (storyboards, scripts, job aids)",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript · browser speech for character voices · Word (storyboards, scripts, job aids)",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "Each lesson shows a situation, asks for one decision (A, B or C), plays the consequence, then gives a debrief and \"On the floor\" actions. Learners can replay the other options.",
-   "interactions": "Fully voiced characters with Pause, Next line and Restart controls, time-of-day scene lighting, A/B/C branching with realistic consequences, and structured debriefs."
+   "interactions": "Fully voiced characters with Pause, Next line and Restart controls, time-of-day scene lighting, A/B/C branching with realistic consequences, and structured debriefs.",
+   "brief": {
+    "client": "A health and community care organisation working across hospital, aged care and NDIS settings",
+    "ask": "Asthma response is inconsistent across our three settings. Staff need to act the right way every time.",
+    "stakeholders": "A clinical nurse educator and service managers"
+   },
+   "rise": {
+    "blocks": [
+     "Text",
+     "Scenario: A, B or C decision with consequences",
+     "Accordion: “On the floor” actions",
+     "Multimedia: microlearning videos",
+     "Attachment: ten job aids"
+    ],
+    "storyline": [
+     "Voiced conversation player"
+    ]
+   }
   },
   {
    "slug": "clinical-handover-isbar",
@@ -382,14 +479,33 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Objectives, one-patient narrative, ISBAR explorer, NEWS2 scenario, drag-and-drop handover builder with keyboard alternative, knowledge check, job aid, course build",
-    "Tools": "HTML, CSS and JavaScript course template · Word (job aid)",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript course template · Word (job aid)",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "One patient, Margaret Hollis, runs through every page so learners hear a full handover build up letter by letter, then practise it under pressure.",
-   "interactions": "Flip cards (unstructured vs ISBAR), an ISBAR explorer, a NEWS2 observation table, drag-and-drop handover builder, recommendation choice and a live AI registrar role-play slot."
+   "interactions": "Flip cards (unstructured vs ISBAR), an ISBAR explorer, a NEWS2 observation table, drag-and-drop handover builder, recommendation choice and a live AI registrar role-play slot.",
+   "brief": {
+    "client": "A health service",
+    "ask": "Stop information getting lost when nurses hand over and escalate deteriorating patients.",
+    "stakeholders": "A nurse educator and nurse unit managers"
+   },
+   "rise": {
+    "blocks": [
+     "Flashcard grid: unstructured vs ISBAR",
+     "Tabs: ISBAR explorer",
+     "Text: NEWS2 observation table",
+     "Knowledge check",
+     "Multimedia: AI registrar role-play embed",
+     "Attachment: ISBAR job aid"
+    ],
+    "storyline": [
+     "Handover builder",
+     "Recommendation choice"
+    ]
+   }
   },
   {
    "slug": "care-that-counts-onboarding",
@@ -451,14 +567,35 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Onboarding plan across 30 days, 20 screens in four stages, objectives, scenarios and dialogue (including dignity and choice in personal care), two image hotspots, sorting, flip cards, branching conversations, rubrics for buddy and supervisor check-ins, quiz and 30-day record, in-course job aids, the Dignity and Choice Card, illustrations and course build on the series template",
-    "Tools": "HTML, CSS and JavaScript course template · browser voice-over with captions and transcripts",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript course template · browser voice-over with captions and transcripts",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "Twenty short screens of five to fifteen minutes, released over 30 days in four stages. Every screen ends with one thing to try on the next shift with a buddy, and three check-ins turn the online work into observed practice.",
-   "interactions": "Tabs, flip cards, accordions, sorting, two image hotspots, step-by-step processes, branching conversations with slots for AI role-play, storyboarded video scenes, buddy and supervisor rubrics, a six-question quiz and a 30-day record. An Author view labels the template block behind every screen."
+   "interactions": "Tabs, flip cards, accordions, sorting, two image hotspots, step-by-step processes, branching conversations with slots for AI role-play, storyboarded video scenes, buddy and supervisor rubrics, a six-question quiz and a 30-day record. An Author view labels the template block behind every screen.",
+   "brief": {
+    "client": "An aged and dementia care provider",
+    "ask": "New care workers are on the floor within days. Onboarding has to change practice, not tick boxes.",
+    "stakeholders": "The clinical care manager, buddy carers and supervisors"
+   },
+   "rise": {
+    "blocks": [
+     "Tabs",
+     "Flashcard stack",
+     "Accordion",
+     "Sorting activity",
+     "Labelled graphic × 2",
+     "Process",
+     "Multimedia: storyboarded video scenes",
+     "Quiz lesson: six questions"
+    ],
+    "storyline": [
+     "Dignity and choice conversations",
+     "30-day record"
+    ]
+   }
   },
   {
    "slug": "excel-intermediate-advanced",
@@ -505,14 +642,31 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Rebuilt an existing Rise 360 module as the Excel Refresher, then designed and built this Intermediate to Advanced follow-on: objectives, live practice grid, step tabs, knowledge checks, final assessment, quick reference job aid",
-    "Tools": "HTML, CSS and JavaScript course template · Rise 360 (source module) · AI voice-over",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript course template · Rise 360 (source module) · AI voice-over",
     "Team": "Solo. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "Every lesson opens with a workplace problem, shows the fix in a live grid, steps through it in tabs and ends with a knowledge check. Lessons unlock in order.",
-   "interactions": "A spreadsheet-style grid with formula bar, step tabs, hints that open on request, and a final assessment with an 80% pass mark."
+   "interactions": "A spreadsheet-style grid with formula bar, step tabs, hints that open on request, and a final assessment with an 80% pass mark.",
+   "brief": {
+    "client": "An organisation’s internal technology training program",
+    "ask": "Learners who finished the Excel Refresher need the next step: data and formulas that stay reliable.",
+    "stakeholders": "The L&D lead and team managers"
+   },
+   "rise": {
+    "blocks": [
+     "Text",
+     "Tabs: step-by-step fixes",
+     "Knowledge check with hints",
+     "Quiz lesson: final assessment, 80% to pass",
+     "Attachment: Formula Quick Reference"
+    ],
+    "storyline": [
+     "Live practice grid"
+    ]
+   }
   },
   {
    "slug": "word-build-better-documents",
@@ -561,14 +715,34 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Objectives, six lessons and a final quiz, a practice report with real formatting faults, labelled graphic, sorting, process steps, flashcards, the Sam Rivera deadline scenario, knowledge checks, voice-over scripts, five job aids, SCORM packaging for the LXP",
-    "Tools": "HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · Word and PDF job aids",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · Word and PDF job aids",
     "Team": "Solo. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "Every lesson works on the same practice report, which has real formatting faults. Content is revealed with Continue, some activities must be finished first, each lesson ends with a knowledge check, and lessons unlock in order.",
-   "interactions": "A labelled graphic of hidden formatting marks, flashcards, sorting, step-by-step processes, tabs, matching and multi-response checks, and a branching scenario with Sam Rivera. AI voice-over with transcript and speed control in every lesson."
+   "interactions": "A labelled graphic of hidden formatting marks, flashcards, sorting, step-by-step processes, tabs, matching and multi-response checks, and a branching scenario with Sam Rivera. AI voice-over with transcript and speed control in every lesson.",
+   "brief": {
+    "client": "An organisation’s internal technology training program",
+    "ask": "Shared reports keep breaking as they pass between authors. Fix the habits behind it.",
+    "stakeholders": "The L&D lead and report owners"
+   },
+   "rise": {
+    "blocks": [
+     "Labelled graphic: hidden formatting marks",
+     "Flashcard grid",
+     "Sorting activity",
+     "Process",
+     "Tabs",
+     "Knowledge check: matching and multiple response",
+     "Continue blocks",
+     "Quiz lesson: 10 questions, 80% to pass"
+    ],
+    "storyline": [
+     "Sam Rivera deadline scenario"
+    ]
+   }
   },
   {
    "slug": "report-season",
@@ -616,14 +790,29 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Scenario and dialogue writing, a 16-step illustrated conversation, three choices with consequences, the debrief and private reflection prompt, optional character voices, and the build on a shared scenario engine as one page that runs offline",
-    "Tools": "HTML, CSS and JavaScript (shared scenario engine) · browser speech for optional voices",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (shared scenario engine) · browser speech for optional voices",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "One short scene instead of a slide on definitions. The learner is Tom, a Year 4 teacher, in the staffroom at 5:40 pm in week 8 of term 2. They watch the conversation with Priya, choose what Tom does, see the consequence and can come back to try every option.",
-   "interactions": "An illustrated chat played line by line with Pause, Next line and Restart, optional character voices, a three-way decision, consequences for each choice, a debrief that explains every option and a private reflection prompt."
+   "interactions": "An illustrated chat played line by line with Pause, Next line and Restart, optional character voices, a three-way decision, consequences for each choice, a debrief that explains every option and a private reflection prompt.",
+   "brief": {
+    "client": "A primary school, as part of a staff wellbeing program",
+    "ask": "Help staff notice and raise workload strain before report season takes its toll.",
+    "stakeholders": "School leadership and team leaders"
+   },
+   "rise": {
+    "blocks": [
+     "Statement",
+     "Scenario: Tom and Priya in the staffroom, three choices",
+     "Accordion: debrief for every option"
+    ],
+    "storyline": [
+     "Illustrated staffroom chat"
+    ]
+   }
   },
   {
    "slug": "environmental-compliance",
@@ -679,14 +868,32 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs and learner analysis, six outcomes, image hotspot, flip cards, Jordan role-play and feedback, knowledge check, reusable course template with 18 content blocks, voice-over scripts, SCORM player, case study carousel",
-    "Tools": "HTML, CSS and JavaScript · SCORM 1.2 and 2004 · AI voice-over",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript · SCORM 1.2 and 2004 · AI voice-over",
     "Team": "Solo, end to end. Course built for the organisation’s internal staff.",
     "Timeline": ""
    },
    "strategy": "An end-to-end process: need, learner analysis, objectives, design, development and evaluation. Bite-sized chunks paired with authentic field scenarios.",
-   "interactions": "Image hotspot, flip cards, an AI workplace scenario with a team leader, contextual feedback against every aim, and a five-question knowledge check."
+   "interactions": "Image hotspot, flip cards, an AI workplace scenario with a team leader, contextual feedback against every aim, and a five-question knowledge check.",
+   "brief": {
+    "client": "A conservation and land management organisation",
+    "ask": "Get trainees safe and site-ready before their first placement, and give our onboarding series one template.",
+    "stakeholders": "Field team leaders and the onboarding coordinator"
+   },
+   "rise": {
+    "blocks": [
+     "Labelled graphic: field site hotspot",
+     "Flashcard grid",
+     "Process: five responsibilities",
+     "Knowledge check: five questions",
+     "Gallery: case study carousel",
+     "Restricted navigation with Continue blocks"
+    ],
+    "storyline": [
+     "Jordan team leader role-play"
+    ]
+   }
   },
   {
    "slug": "vet-onboarding",
@@ -748,14 +955,33 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Learner analysis, outcomes for three modules, the Day 1 to Day 30 timeline and 30-day checklist, support roles, the journey sequencing activity, Sam’s first-fortnight scenario, knowledge checks and final quiz, voice-over scripts, glossary, illustrations and the build on the series course template",
-    "Tools": "HTML, CSS and JavaScript (series course template) · SCORM 1.2 and 2004 · AI voice-over",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (series course template) · SCORM 1.2 and 2004 · AI voice-over",
     "Team": "Solo, end to end.",
     "Timeline": ""
    },
    "strategy": "The course is built around the first 30 days: a Day 1 to Day 30 timeline, the eight-stage journey from Enrol to Progress, and the four people and teams who can help. Each module ends with the learner applying it.",
-   "interactions": "A clickable 30-day timeline, support role cards, a put-the-journey-in-order activity using move buttons, two knowledge checks, Sam’s first-fortnight scenario with three moments, a final quiz (80% to pass), a checklist that saves ticks and a “first step” reflection."
+   "interactions": "A clickable 30-day timeline, support role cards, a put-the-journey-in-order activity using move buttons, two knowledge checks, Sam’s first-fortnight scenario with three moments, a final quiz (80% to pass), a checklist that saves ticks and a “first step” reflection.",
+   "brief": {
+    "client": "A registered training organisation (RTO)",
+    "ask": "Too many new students leave in the first month. Show them what to expect and who to ask.",
+    "stakeholders": "Student support, trainers and the enrolments team"
+   },
+   "rise": {
+    "blocks": [
+     "Timeline: Day 1 to Day 30",
+     "Flashcard grid: support roles",
+     "Accordion: glossary of VET terms",
+     "Knowledge check × 2",
+     "Quiz lesson: five questions, 80% to pass"
+    ],
+    "storyline": [
+     "Put the journey in order",
+     "Sam’s first fortnight",
+     "30-day checklist"
+    ]
+   }
   },
   {
    "slug": "html-essentials",
@@ -818,14 +1044,34 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Audience analysis, outcomes for five units, worked examples, live code sandboxes, five graded coding tasks with instant checks, scenario-based checks, Mei’s launch-review scenario, a 10-question final quiz, voice-over scripts, the quick reference guide, five job aids and the practice files, built on a Rise-style course template",
-    "Tools": "HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · PDF job aids",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004 · AI voice-over · PDF job aids",
     "Team": "Solo, end to end.",
     "Timeline": ""
    },
    "strategy": "Learning HTML is a new alphabet and grammar at once, so each unit teaches one idea: see a worked example, try it in a live sandbox, check your thinking with a workplace scenario, then complete a short coding task.",
-   "interactions": "Live code sandboxes with a preview and a heading outline, five coding tasks that check the learner’s code instantly and say exactly what to fix, flashcards, a sorting activity, Mei’s launch-review branching scenario and a final quiz."
+   "interactions": "Live code sandboxes with a preview and a heading outline, five coding tasks that check the learner’s code instantly and say exactly what to fix, flashcards, a sorting activity, Mei’s launch-review branching scenario and a final quiz.",
+   "brief": {
+    "client": "An organisation’s web content team",
+    "ask": "Our editors publish pages that fail accessibility checks. Teach them the HTML behind it.",
+    "stakeholders": "The digital team lead and web developers"
+   },
+   "rise": {
+    "blocks": [
+     "Text",
+     "Code snippet: worked examples",
+     "Flashcard grid",
+     "Sorting activity",
+     "Scenario: Mei’s launch review",
+     "Quiz lesson: 10 questions, 80% to pass",
+     "Attachment: quick reference and job aids"
+    ],
+    "storyline": [
+     "Live code sandbox",
+     "Graded coding tasks"
+    ]
+   }
   },
   {
    "slug": "digital-skills-seniors",
@@ -888,14 +1134,33 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Learner analysis for older adults, outcomes for four lessons, a fading-support sequence from guided to self-directed, practice screens for the computer, video calls and scam spotting, confidence check-ins, narration scripts paced for older learners, the summary card and the build",
-    "Tools": "HTML, CSS and JavaScript (custom course player) · AI voice-over · offline single-file build",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (custom course player) · AI voice-over · offline single-file build",
     "Team": "Solo, end to end.",
     "Timeline": ""
    },
    "strategy": "Support fades as confidence grows. Lessons 1 and 2 are guided, step by step. In Lesson 3 learners choose the order, and Lesson 4 lets them pick their own practice. Every practice screen is safe: no real calls or messages are sent.",
-   "interactions": "A practice desktop, a click target, a simulated video call from start to finish, safe-or-suspicious message sorting, a scam phone call scenario, a keyboard practice, before-and-after confidence check-ins and a personal summary card."
+   "interactions": "A practice desktop, a click target, a simulated video call from start to finish, safe-or-suspicious message sorting, a scam phone call scenario, a keyboard practice, before-and-after confidence check-ins and a personal summary card.",
+   "brief": {
+    "client": "A community digital inclusion program",
+    "ask": "Help older learners get online with confidence: video calls first, then staying safe from scams.",
+    "stakeholders": "The program coordinator and volunteer tutors"
+   },
+   "rise": {
+    "blocks": [
+     "Text in large type",
+     "Process: guided steps",
+     "Multimedia: narration at about 130 words a minute",
+     "Sorting activity: safe or suspicious",
+     "Scenario: a scam phone call"
+    ],
+    "storyline": [
+     "Practice desktop",
+     "Video call simulation",
+     "Confidence check-ins"
+    ]
+   }
   },
   {
    "slug": "triage-under-pressure",
@@ -944,14 +1209,31 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs analysis and behaviour target, action-mapped objectives, the five-move question sequence, flip cards and sorting, the Kestrel Bay call script and branching logic with a time cost for every choice, caller audio with captions, debrief, final check, quick card, SCORM packaging",
-    "Tools": "HTML, CSS and JavaScript (Rise-style course template) · audio-driven call simulation · SCORM 1.2 and 2004",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (Rise-style course template) · audio-driven call simulation · SCORM 1.2 and 2004",
     "Team": "Solo, end to end. The plan includes SME review with dispatch operations leads and QA auditors.",
     "Timeline": "Five-day delivery plan"
    },
    "strategy": "Action-mapped micro-learning: a baseline instinct check, the five-move question sequence, pressure traps and a sorting activity, then a two-minute live call against the clock and a debrief.",
-   "interactions": "A simulated CAD panel with six fields that fill as the call progresses, caller audio with captions, a call clock and a 20-second decision timer, and branching choices that each add seconds to the call."
+   "interactions": "A simulated CAD panel with six fields that fill as the call progresses, caller audio with captions, a call clock and a 20-second decision timer, and branching choices that each add seconds to the call.",
+   "brief": {
+    "client": "An emergency call-taking service",
+    "ask": "Call-takers misclassify urgent calls under pressure. Fix the first 60 seconds.",
+    "stakeholders": "Dispatch operations leads and QA auditors"
+   },
+   "rise": {
+    "blocks": [
+     "Knowledge check: baseline instinct check",
+     "Process: the five-move question sequence",
+     "Flashcard grid: pressure traps",
+     "Sorting activity",
+     "Quiz lesson: final check, 75% to pass"
+    ],
+    "storyline": [
+     "Live call simulation"
+    ]
+   }
   },
   {
    "slug": "dispatch-triage-pathway",
@@ -1001,14 +1283,32 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs analysis, the six-section Open LMS (Moodle) course blueprint, activity completion and access restrictions, the pre/post assessment model, the Level 3 supervisor checklist, the interactive explainer module and the one-page blueprint PDF",
-    "Tools": "Open LMS (Moodle) blueprint · HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · Open LMS (Moodle) blueprint · HTML, CSS and JavaScript (Rise-style course template) · SCORM 1.2 and 2004",
     "Team": "Solo, end to end. The plan includes SME review with operations, QA and L&D leads.",
     "Timeline": "Five-day delivery plan"
    },
    "strategy": "A blended pathway: baseline checks, a branching SCORM scenario, a peer forum and live debrief, a post-assessment and certificate, then a supervisor checklist at day 30. Moodle completion rules gate each step.",
-   "interactions": "An explorable Moodle course page with trainee and designer views, a certificate-unlock simulator, a pre/post confidence comparison and a working supervisor checklist with a competency verdict."
+   "interactions": "An explorable Moodle course page with trainee and designer views, a certificate-unlock simulator, a pre/post confidence comparison and a working supervisor checklist with a competency verdict.",
+   "brief": {
+    "client": "An emergency dispatch service",
+    "ask": "Show us that training is working on the floor, not just in the LMS.",
+    "stakeholders": "Operations, QA and L&D leads"
+   },
+   "rise": {
+    "blocks": [
+     "Process: the six Moodle sections",
+     "Tabs: trainee and designer views",
+     "Knowledge check",
+     "Attachment: one-page blueprint PDF"
+    ],
+    "storyline": [
+     "Explorable course page",
+     "Certificate-unlock simulator",
+     "Supervisor checklist"
+    ]
+   }
   },
   {
    "slug": "four-stages-joint-response",
@@ -1056,14 +1356,183 @@ window.SHAMMIM_KB = {
    ],
    "ptype": "Workplace project",
    "role": {
-    "Role": "Learning designer & developer",
+    "Role": "Instructional designer & developer",
     "What I did": "Needs analysis across three agencies, the four-stage job aid and its layout, colour-blindness testing of the agency colours, METHANE practice, the Highway 9 scenario and four-frame storyboard, evaluation plan, module build and print-ready PDF",
-    "Tools": "HTML, CSS and JavaScript (Rise-style course template) · job aid designed for A4 print and tablet PDF · SCORM 1.2 and 2004",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (Rise-style course template) · job aid designed for A4 print and tablet PDF · SCORM 1.2 and 2004",
     "Team": "Solo, end to end. The plan includes SME review with police, fire and ambulance dispatch leads and QA.",
     "Timeline": "Five-day delivery plan"
    },
    "strategy": "Performance support for the moment of apply: a one-page job aid in four stages, explored stage by stage, practised with trigger sorting, then used live on a highway collision with the aid one click away.",
-   "interactions": "An interactive job aid, METHANE step-through, trigger sorting, a CAD scenario with trigger selection, agency toggles, a METHANE form and a timed talkgroup patch, and a colour-blindness preview of the agency marks."
+   "interactions": "An interactive job aid, METHANE step-through, trigger sorting, a CAD scenario with trigger selection, agency toggles, a METHANE form and a timed talkgroup patch, and a colour-blindness preview of the agency marks.",
+   "brief": {
+    "client": "A multi-agency emergency dispatch centre",
+    "ask": "Joint responses keep breaking at the handoffs between agencies.",
+    "stakeholders": "Police, fire and ambulance dispatch leads and QA"
+   },
+   "rise": {
+    "blocks": [
+     "Process: four stages and METHANE",
+     "Sorting activity: escalation triggers",
+     "Quiz lesson: 10 questions, 90% to pass",
+     "Attachment: A4 job aid"
+    ],
+    "storyline": [
+     "Highway 9 CAD scenario",
+     "Interactive job aid"
+    ]
+   }
+  },
+  {
+   "slug": "frontline-conflict-de-escalation",
+   "code": "CS-18",
+   "title": "Frontline Workplace Conflict De-Escalation & Resolution Simulation",
+   "short": "A branching simulation that builds practical de-escalation skills for frontline staff. Learners use the CALM model at a council counter, a shop returns desk and a clinic reception, and every choice changes how the customer reacts.",
+   "sector": "Frontline customer service · branching simulation",
+   "sectors": [
+    "frontline"
+   ],
+   "facts": {
+    "Audience": "Frontline staff in local government, retail, and health and community services (Part 1); L&D, WHS and operations leads (Part 2)",
+    "Format": "Rise-style course with three branching scenarios, illustrated scenes and AI voice-over · SCORM 1.2 and 2004",
+    "Structure": "10 lessons and a final check, about 32 minutes · 3 scenarios, 5 decisions each, 10 endings",
+    "Assessment": "Confidence check before and after, scenario endings, 8-question final check (80% to pass), day-30 observation checklist",
+    "Accessibility": "WCAG 2.1 AA and UDL: voice-over with transcript, keys 1–3 to choose, no timers, tension shown in words and icons as well as colour"
+   },
+   "keywords": [
+    "de-escalation",
+    "deescalation",
+    "de-escalate",
+    "conflict",
+    "conflict resolution",
+    "aggression",
+    "aggressive customer",
+    "angry customer",
+    "customer service",
+    "frontline",
+    "front line",
+    "counter",
+    "reception",
+    "council",
+    "retail",
+    "clinic",
+    "calm model",
+    "occupational violence",
+    "duress",
+    "vyond",
+    "articulate",
+    "udl",
+    "branching",
+    "sme"
+   ],
+   "impact": [],
+   "frames": 6,
+   "courses": [
+    {
+     "l": "Course",
+     "h": "courses/frontline-conflict-de-escalation.html"
+    }
+   ],
+   "videos": [],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Instructional designer & developer",
+    "What I did": "Learning needs and behaviour targets, the CALM model, three branching scripts with 5 decisions and 3–4 endings each, plain-English rewrites of SME procedures, illustrated scenes, AI voice-over with transcripts, final check, evaluation plan and observation checklist, pocket guide, SCORM packaging",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS and JavaScript (Rise-style course template) · AI voice-over · SCORM 1.2 and 2004 · production plan for Articulate 360 and Vyond",
+    "Team": "Solo, end to end. The plan includes SME review with a council customer service team leader, a retail store manager and a WHS adviser."
+   },
+   "strategy": "Practice before policy: the escalation curve and a four-step CALM model (Control yourself, Acknowledge the feeling, Look for options, Move forward or move away), then three multi-path scenarios where every choice shows the customer’s reaction first and the coaching second.",
+   "interactions": "A tension meter that rises and falls with each choice, rewind to any decision, a results card across all scenarios, an interactive branching map, a CALM pocket guide and a working observation checklist.",
+   "brief": {
+    "client": "Frontline service teams in council, retail and health reception settings",
+    "ask": "Our staff know the procedures, but conflicts still escalate. Build practical skills, not recall.",
+    "stakeholders": "A council customer service team leader, a retail store manager and a WHS adviser"
+   },
+   "rise": {
+    "blocks": [
+     "Process: escalation curve and the CALM model",
+     "Flashcard grid",
+     "Knowledge check: 8 questions, 80% to pass",
+     "Attachment: CALM Pocket Guide and observation checklist"
+    ],
+    "storyline": [
+     "Three branching scenarios"
+    ]
+   }
+  },
+  {
+   "slug": "shift-under-pressure",
+   "code": "CS-19",
+   "title": "Shift Under Pressure: Cyber Awareness Simulation",
+   "short": "A cyber awareness simulation set at a council customer service counter. Learners must serve 7 residents before handover while a phishing email and an unlocked screen compete with the queue, and every shortcut has a consequence.",
+   "sector": "Local government · cyber awareness simulation",
+   "sectors": [
+    "frontline",
+    "compliance"
+   ],
+   "facts": {
+    "Audience": "Council staff who handle residents’ personal information: customer service, rates, libraries and depots",
+    "Format": "Animated 3D simulation of a council customer service centre, built with HTML, CSS, JavaScript and Three.js, plus a design document",
+    "Structure": "Pilot: one shift with 2 decision points and 3 endings, about 7 minutes",
+    "Assessment": "Shift outcome, warning signs found, and minutes spent on safety compared with minutes lost to incidents; Kirkpatrick plan using phishing report rates and screen-lock spot checks",
+    "Accessibility": "WCAG 2.2 AA: every action has a button, the clock moves only when the learner acts, a text description of each view, reduced motion respected"
+   },
+   "keywords": [
+    "cyber",
+    "cyber security",
+    "cybersecurity",
+    "cyber awareness",
+    "phishing",
+    "password",
+    "passwords",
+    "lock screen",
+    "unlocked computer",
+    "ransomware",
+    "privacy",
+    "council",
+    "local government",
+    "three.js",
+    "3d",
+    "simulation",
+    "ccaf",
+    "shift under pressure",
+    "blue city"
+   ],
+   "impact": [],
+   "frames": 6,
+   "courses": [
+    {
+     "l": "Simulation",
+     "h": "courses/shift-under-pressure.html"
+    }
+   ],
+   "videos": [],
+   "ptype": "Workplace project",
+   "role": {
+    "Role": "Instructional designer & developer",
+    "What I did": "Performance analysis, action mapping, CCAF scenario design, the design document, the simulation build, accessibility and the evaluation plan",
+    "Tools": "Articulate Rise 360 and Storyline (build map) · HTML, CSS, JavaScript and Three.js · Claude Docs for the design document",
+    "Team": "Solo, end to end."
+   },
+   "strategy": "A challenging goal in a believable setting: serve 7 residents by 12:30. Safe habits cost minutes and shortcuts feel faster, so learners weigh the queue against the risk. Built on Michael Allen’s CCAF.",
+   "interactions": "A live shift clock and three meters, a realistic inbox with links to hover over, delayed consequences such as ransomware at 11:40, residents at the counter, and an end-of-shift report.",
+   "brief": {
+    "client": "A local council (anonymised)",
+    "ask": "Our staff need cyber awareness training. The yearly module isn’t changing what they do.",
+    "stakeholders": "Customer service managers and an IT security subject matter expert"
+   },
+   "rise": {
+    "blocks": [
+     "Text",
+     "Process: what to do with a suspicious email",
+     "Sorting activity: safe or suspicious",
+     "Knowledge check",
+     "Attachment: end-of-shift report"
+    ],
+    "storyline": [
+     "Shift simulation"
+    ]
+   }
   }
- ]
+ ],
+ "title": null
 };

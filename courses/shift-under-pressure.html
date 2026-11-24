@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Shift Under Pressure 3D</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@700;900&display=swap">
+<style>
+/* Layout: the 3D council office fills the top of the screen; the shift panel (status, story, choices) is docked along the bottom. On phones it stacks. Shammim tokens for the panel, Blue City blue for the council. */
+:root{
+  --bg:#F8FAFC; --surface:#FFFFFF; --sunk:#EEF2F6; --ink:#0F172A; --muted:#475569; --line:#DCE3EA;
+  --accent:#0E7490; --accent-ink:#FFFFFF; --accent-soft:#E0F2F5;
+  --good:#15803D; --good-soft:#DCFCE7; --warn:#B45309; --warn-soft:#FEF3C7; --bad:#B91C1C; --bad-soft:#FEE2E2;
+  --flag:#FDE68A; --flag-ink:#713F12; --link:#1D4ED8; --tip:#1F2937; --tip-ink:#FFFFFF; --world:#DFE7EC;
+  --display:"Lato","Inter",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B0F14; --surface:#121820; --sunk:#1A222C; --ink:#F1F5F9; --muted:#9AA8BA; --line:#263140;
+  --accent:#22D3EE; --accent-ink:#06222A; --accent-soft:#0F2A31;
+  --good:#4ADE80; --good-soft:#0F2A1A; --warn:#FBBF24; --warn-soft:#2D2208; --bad:#F87171; --bad-soft:#2E1414;
+  --flag:#FCD34D; --flag-ink:#3B2A05; --link:#60A5FA; --tip:#F1F5F9; --tip-ink:#0B0F14; --world:#1A222C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B0F14; --surface:#121820; --sunk:#1A222C; --ink:#F1F5F9; --muted:#9AA8BA; --line:#263140;
+  --accent:#22D3EE; --accent-ink:#06222A; --accent-soft:#0F2A31;
+  --good:#4ADE80; --good-soft:#0F2A1A; --warn:#FBBF24; --warn-soft:#2D2208; --bad:#F87171; --bad-soft:#2E1414;
+  --flag:#FCD34D; --flag-ink:#3B2A05; --link:#60A5FA; --tip:#F1F5F9; --tip-ink:#0B0F14; --world:#1A222C; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--body)}
+h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:1.5rem;font-weight:900}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.app{height:100%;display:flex;flex-direction:column}
+.world{position:relative;flex:1 1 auto;min-height:0;background:var(--world);overflow:hidden}
+.world canvas{display:block;width:100%;height:100%;touch-action:manipulation}
+.chip{position:absolute;left:max(14px,env(safe-area-inset-left,0px));top:14px;background:rgba(15,23,42,.8);color:#F8FAFC;font-size:.84rem;padding:7px 13px;border-radius:999px;max-width:calc(100% - 28px);pointer-events:none}
+.chip:empty{display:none}
+.nogl{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--muted)}
+.dock{flex:0 0 auto;height:min(44vh,460px);min-height:300px;display:grid;grid-template-columns:300px minmax(0,1fr);border-top:1px solid var(--line);background:var(--bg)}
+.side{min-width:0;overflow-y:auto;border-right:1px solid var(--line);padding-block:14px 18px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:16px;display:flex;flex-direction:column;gap:12px}
+.scroll{min-width:0;overflow-y:auto;padding-block:16px 26px;padding-left:22px;padding-right:max(22px,env(safe-area-inset-right,0px))}
+.scroll .stage{max-width:880px}
+.top{display:flex;align-items:center;gap:10px}
+.top svg{width:32px;height:32px;flex:none}
+.top b{display:block;font:900 1.1rem/1.1 var(--display)}
+.top span{font-size:.78rem;color:var(--muted)}
+.hud{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cell{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:0}
+.cell .k{font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:block}
+.cell .v{font:700 1.08rem/1.2 var(--body);font-variant-numeric:tabular-nums}
+.clock .v{font-family:var(--mono);font-weight:600;white-space:nowrap;font-size:1rem}
+.dots{display:flex;gap:4px;margin-top:5px}
+.dots i{width:11px;height:11px;border-radius:50%;border:2px solid var(--line);display:block}
+.dots i.on{background:var(--accent);border-color:var(--accent)}
+.bar{height:5px;border-radius:99px;background:var(--sunk);margin-top:5px;overflow:hidden}
+.bar span{display:block;height:100%;border-radius:inherit;transition:width .5s}
+.lvl{font-size:.72rem;font-weight:600;display:block}
+.s-good{color:var(--good)} .s-warn{color:var(--warn)} .s-bad{color:var(--bad)}
+.b-good{background:var(--good)} .b-warn{background:var(--warn)} .b-bad{background:var(--bad)}
+.tick{position:absolute;top:7px;right:9px;font:600 .74rem var(--mono);color:var(--warn);opacity:0;transition:opacity .2s}
+.tick.show{opacity:1}
+
+.stage{display:flex;flex-direction:column;gap:14px;outline:none}
+.where{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.lead{font-size:1rem}
+.goal{background:var(--accent-soft);border-radius:10px;padding:12px 14px}
+.goal b{font-family:var(--display)}
+.minis{display:grid;gap:8px}
+.mini{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.88rem}
+.mini b{display:block}
+.mini span{color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{border:0;border-radius:10px;padding:11px 18px;font-weight:600;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn:hover{filter:brightness(1.07)}
+.btn .cost{font-weight:500;opacity:.8;margin-left:6px;font-size:.85rem}
+.resident{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;flex:none;background:var(--sunk);font-size:.85rem}
+.av.sm{width:32px;height:32px;font-size:.75rem}
+.resident b{display:block}
+.resident span{color:var(--muted);font-size:.9rem}
+.done{font-size:.9rem;color:var(--good);font-weight:500}
+.dana{display:flex;gap:10px;align-items:flex-start;background:var(--sunk);border-radius:10px;padding:11px 13px;font-size:.92rem}
+.dana .av{background:var(--accent);color:var(--accent-ink)}
+.dana b{display:block;font-size:.8rem}
+
+.mail{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.toolbar{display:flex;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.toolbar button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 12px;cursor:pointer;font-size:.88rem}
+.toolbar .rep{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.email{padding:14px 16px 18px;display:flex;flex-direction:column;gap:10px;font-size:.93rem}
+.subject{font:700 1rem/1.3 var(--body)}
+.meta{display:flex;gap:10px;align-items:flex-start}
+.sender{background:none;border:0;padding:0;font-weight:700;cursor:pointer;border-bottom:1px dashed var(--muted);text-align:left}
+.addr{display:block;font-size:.84rem;color:var(--muted);font-family:var(--mono);word-break:break-all}
+.when{display:block;font-size:.78rem;color:var(--muted)}
+.clue{cursor:pointer;border-radius:4px}
+.clue:hover{background:var(--sunk)}
+.clue.found{background:var(--flag);color:var(--flag-ink)}
+.tipw{position:relative;display:inline-block}
+.cta{display:inline-block;background:var(--link);color:#fff;text-decoration:none;padding:9px 16px;border-radius:6px;font-weight:600}
+.tip{position:absolute;left:0;top:calc(100% + 8px);background:var(--tip);color:var(--tip-ink);font:.78rem var(--mono);padding:6px 10px;border-radius:6px;width:250px;opacity:0;visibility:hidden;transition:opacity .15s;z-index:2;word-break:break-all}
+.tipw:hover .tip,.tipw:focus-within .tip{opacity:1;visibility:visible}
+.status{font:.74rem var(--mono);color:var(--muted);padding:6px 12px;border-top:1px solid var(--line);min-height:26px;word-break:break-all}
+.found-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.84rem}
+.pill{padding:2px 9px;border-radius:999px;background:var(--sunk);color:var(--muted);font-size:.75rem}
+.pill.on{background:var(--flag);color:var(--flag-ink);font-weight:600}
+.choices{display:grid;gap:8px}
+.choice{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px;cursor:pointer}
+.choice:hover{border-color:var(--accent)}
+.keys{display:inline-flex;gap:4px;flex:none}
+kbd{font:600 .78rem var(--mono);border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:2px 7px;background:var(--sunk)}
+.result{border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.result.good{background:var(--good-soft)} .result.warn{background:var(--warn-soft)} .result.bad{background:var(--bad-soft)} .result.neutral{background:var(--sunk)}
+.deltas{display:flex;flex-wrap:wrap;gap:6px}
+.delta{font-size:.8rem;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.outcome{display:inline-flex;font:900 .95rem var(--display);padding:5px 13px;border-radius:999px;align-self:flex-start}
+.outcome.good{background:var(--good-soft);color:var(--good)} .outcome.warn{background:var(--warn-soft);color:var(--warn)} .outcome.bad{background:var(--bad-soft);color:var(--bad)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stats div{border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.stats b{display:block;font:700 1.2rem var(--body);font-variant-numeric:tabular-nums}
+.stats span{font-size:.78rem;color:var(--muted)}
+.dcard{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:5px;font-size:.92rem}
+.dcard .tagline{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
+.habit{font-weight:600}
+.signs{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+.signs li{display:flex;gap:8px}
+.signs .m{flex:none;width:16px;font-weight:700}
+footer{font-size:.76rem;color:var(--muted)}
+
+@media (max-width:860px){
+  html,body{height:auto}
+  .app{display:block;height:auto}
+  .world{height:46vh;min-height:280px}
+  .dock{display:block;height:auto;min-height:0}
+  .side{border-right:0;border-bottom:1px solid var(--line);overflow:visible;padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .scroll{overflow:visible;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="app">
+  <div class="world" id="world">
+    <p class="chip" id="chip"></p>
+  </div>
+  <section class="dock" aria-label="Shift panel">
+    <div class="side" role="region" aria-label="Shift status" tabindex="0">
+      <header class="top">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#1E4E8C"/><path d="M6 25q8-9 15-2t13-2v8H6z" fill="#5FA8E8"/><circle cx="25" cy="13" r="4.5" fill="#F2C230"/></svg>
+        <div><b>Shift Under Pressure</b><span>Blue City Council · Cyber awareness pilot · 3D</span></div>
+      </header>
+      <section class="hud" aria-label="Shift status">
+        <div class="cell clock"><span class="k">Shift clock</span><span class="v" id="clock">9:00 am</span><span class="tick" id="tick" aria-hidden="true"></span></div>
+        <div class="cell"><span class="k">Served</span><span class="v" id="served">0 of 7</span><div class="dots" id="dots" aria-hidden="true"></div></div>
+        <div class="cell"><span class="k">Data safety</span><span class="v" id="safety">100%</span><span class="lvl" id="safetyLvl"></span><div class="bar" aria-hidden="true"><span id="safetyBar"></span></div></div>
+        <div class="cell"><span class="k">Trust</span><span class="v" id="trust">80%</span><span class="lvl" id="trustLvl"></span><div class="bar" aria-hidden="true"><span id="trustBar"></span></div></div>
+      </section>
+      <footer>Portfolio pilot designed by Shammim. Blue City Council, its staff and residents are fictional. The clock moves only when you act, so take your time. 3D view built with Three.js.</footer>
+    </div>
+    <div class="scroll" id="scroll">
+      <main class="stage" id="stage" tabindex="-1"></main>
+      <p class="sr-only" id="announce" aria-live="polite"></p>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* =================== content =================== */
+const RESIDENTS = [
+  { name: 'Mr Okafor', ini: 'JO', req: 'Pays his quarterly rates instalment', done: 'Mr Okafor paid his rates instalment.', shirt: '#2563EB', skin: '#6B4226', hair: '#1F1A17' },
+  { name: 'Ms Tran', ini: 'LT', req: 'Updates the postal address on her rates notice', done: 'Ms Tran’s address is updated.', shirt: '#DB2777', skin: '#E8C4A0', hair: '#141414' },
+  { name: 'Mr Fitzgerald', ini: 'DF', req: 'Asks about a residential parking permit', done: 'Mr Fitzgerald has his parking permit form.', shirt: '#65A30D', skin: '#F1C9A8', hair: '#A3542B' },
+  { name: 'Mr Papadopoulos', ini: 'GP', req: 'Requests a replacement green-waste bin', done: 'Mr Papadopoulos’s new bin is booked.', shirt: '#EA580C', skin: '#D9A77E', hair: '#9CA3AF' },
+  { name: 'Mrs Lin', ini: 'ML', req: 'Applies for a pensioner rates concession', done: 'Mrs Lin’s concession application is lodged.', shirt: '#7C3AED', skin: '#EBC9A4', hair: '#D1D5DB' },
+  { name: 'Mr Harris', ini: 'TH', req: 'Registers his new puppy', done: 'Mr Harris’s puppy is registered.', shirt: '#334155', skin: '#F0C7A5', hair: '#3F2A1D', phone: true },
+  { name: 'Ms Abdi', ini: 'SA', req: 'Books the community hall for a fundraiser', done: 'Ms Abdi’s hall booking is confirmed.', shirt: '#0D9488', skin: '#7A4B2A', hair: '#0F0F0F' }
+];
+const SERVE = 28, END = 210, LOCKOUT = 160;
+const EMAIL = { name: 'Rates System Support', address: 'support@bluecity-ratesportal.com', subject: 'URGENT: Online rates payments failing – log in to restore', url: 'http://bluecity-ratesportal.com/restore', linkText: 'Restore payment portal' };
+const CLUES = {
+  sender:   { label: 'Lookalike sender', coach: 'The address ends in bluecity-ratesportal.com. Council emails come from @bluecity.vic.gov.au.' },
+  link:     { label: 'Link goes elsewhere', coach: 'Hovering showed the button goes to an outside site, not the council’s systems.' },
+  urgency:  { label: 'Pressure to act fast', coach: 'A 30-minute deadline is designed to stop you thinking. Slow down when an email rushes you.' },
+  greeting: { label: 'Generic greeting', coach: 'Council systems address you by name, not “Dear user”.' },
+  login:    { label: 'Asks for your password', coach: 'IT will never ask you to log in through a link in an email.' }
+};
+
+/* =================== state =================== */
+const fresh = () => ({ min: 0, served: 0, safety: 100, trust: 80, email: null, screen: null, clues: [], checked: [], safeMin: 0, lostMin: 0, outage: false });
+let S = fresh(), cur = { name: 'intro', arg: null };
+const $ = s => document.querySelector(s);
+const clamp = v => Math.max(0, Math.min(100, v));
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function time(m) { const t = 9 * 60 + m, h = Math.floor(t / 60), mm = String(t % 60).padStart(2, '0'); return `${h > 12 ? h - 12 : h}:${mm} ${h >= 12 ? 'pm' : 'am'}`; }
+function level(v) { return v >= 75 ? ['Strong', 'good'] : v >= 45 ? ['At risk', 'warn'] : ['Critical', 'bad']; }
+function say(t) { $('#announce').textContent = ''; setTimeout(() => { $('#announce').textContent = t; }, 30); }
+function spend(n, why) {
+  S.min += n; if (why === 'safe') S.safeMin += n; if (why === 'lost') S.lostMin += n;
+  const t = $('#tick'); t.textContent = `+${n} min`; t.classList.add('show'); clearTimeout(spend.h); spend.h = setTimeout(() => t.classList.remove('show'), 1400);
+  hud();
+}
+function change(ds, dt) { S.safety = clamp(S.safety + ds); S.trust = clamp(S.trust + dt); hud(); }
+function hud() {
+  $('#clock').textContent = time(Math.min(S.min, END));
+  $('#served').textContent = `${S.served} of 7`;
+  $('#dots').innerHTML = RESIDENTS.map((_, i) => `<i class="${i < S.served ? 'on' : ''}"></i>`).join('');
+  for (const k of ['safety', 'trust']) {
+    const [w, c] = level(S[k]);
+    $('#' + k).textContent = S[k] + '%';
+    const l = $('#' + k + 'Lvl'); l.textContent = w; l.className = 'lvl s-' + c;
+    const b = $('#' + k + 'Bar'); b.style.width = S[k] + '%'; b.className = 'b-' + c;
+  }
+  W3.wallTime();
+}
+const deltas = list => `<div class="deltas">${list.map(d => `<span class="delta">${d}</span>`).join('')}</div>`;
+const where = place => `<p class="where">${place} · ${time(Math.min(S.min, END))}</p>`;
+const dana = text => `<div class="dana"><span class="av sm" aria-hidden="true">DK</span><div><b>Dana, Team Leader</b>${text}</div></div>`;
+
+/* =================== 3D world =================== */
+const W3 = (() => {
+  const host = $('#world');
+  const api = { ok: false, wallTime() {}, monitor() {}, view() {}, sync() {}, scene() {}, chip(t) { $('#chip').textContent = t || ''; } };
+  if (!window.THREE) { host.insertAdjacentHTML('beforeend', '<p class="nogl">The 3D view couldn’t load here. The full activity still works in the panel.</p>'); return api; }
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ antialias: true }); } catch (e) { host.insertAdjacentHTML('beforeend', '<p class="nogl">Your browser can’t show 3D graphics. The full activity still works in the panel.</p>'); return api; }
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.domElement.setAttribute('role', 'img');
+  host.prepend(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color('#DCE5EB');
+  scene.fog = new THREE.Fog('#DCE5EB', 10, 20);
+  const camera = new THREE.PerspectiveCamera(52, 1, 0.05, 60);
+  const hemi = new THREE.HemisphereLight('#FFFFFF', '#B9C5CD', 0.9); scene.add(hemi);
+  const sun = new THREE.DirectionalLight('#FFFFFF', 0.75); sun.position.set(3, 6, 4); sun.castShadow = true;
+  sun.shadow.mapSize.set(1024, 1024); Object.assign(sun.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7 }); scene.add(sun);
+  const flash = new THREE.PointLight('#FFFFFF', 0, 3); scene.add(flash);
+
+  const M = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.8, metalness: 0 }, o));
+  const box = (w, h, d, c, x, y, z, o) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), typeof c === 'string' ? M(c, o) : c); m.position.set(x, y, z); m.castShadow = m.receiveShadow = true; scene.add(m); return m; };
+  const cyl = (rt, rb, h, c, seg = 16) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, seg), M(c)); m.castShadow = true; return m; };
+  function canvasTex(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4; return { c, g: c.getContext('2d'), t }; }
+  function plane(w, h, tex, x, y, z, ry = 0) { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex, toneMapped: false })); m.position.set(x, y, z); m.rotation.y = ry; scene.add(m); return m; }
+  const F = (w, s) => `${w} ${s}px Inter, system-ui, sans-serif`;
+
+  /* room */
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(14, 14), M('#9BAAB5')); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+  const staffFloor = new THREE.Mesh(new THREE.PlaneGeometry(14, 3.2), M('#C9D3DA')); staffFloor.rotation.x = -Math.PI / 2; staffFloor.position.set(0, 0.002, 2.5); staffFloor.receiveShadow = true; scene.add(staffFloor);
+  box(14, 4, 0.1, '#E9EEF2', 0, 2, -5.05);
+  box(14, 0.5, 0.12, '#1E4E8C', 0, 0.25, -4.99);
+  box(0.1, 4, 14, '#E3E9EE', -6, 2, 0); box(0.1, 4, 14, '#E3E9EE', 6, 2, 0);
+  const ceil = new THREE.Mesh(new THREE.PlaneGeometry(14, 14), M('#F4F6F8')); ceil.rotation.x = Math.PI / 2; ceil.position.y = 3.3; scene.add(ceil);
+  for (const [x, z] of [[-2.5, -2], [2.5, -2], [-2.5, 1.5], [2.5, 1.5]]) { const p = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 0.5), new THREE.MeshBasicMaterial({ color: '#FFFFFF' })); p.rotation.x = Math.PI / 2; p.position.set(x, 3.29, z); scene.add(p); }
+
+  /* counter, glass, desk items */
+  box(3.6, 0.06, 0.82, '#F1F5F9', 0, 1.06, 1.25);
+  box(3.6, 1.03, 0.06, '#1E4E8C', 0, 0.52, 0.86);
+  box(3.6, 0.95, 0.05, '#CBD5DC', 0, 0.5, 1.62);
+  const glass = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 0.75), new THREE.MeshStandardMaterial({ color: '#CFE8EE', transparent: true, opacity: 0.18, roughness: 0.1 }));
+  glass.position.set(0, 1.47, 0.88); glass.raycast = () => {}; scene.add(glass);
+  box(0.42, 0.02, 0.14, '#1F2937', 0.42, 1.1, 1.6);
+  box(0.06, 0.02, 0.1, '#1F2937', 0.74, 1.1, 1.6);
+  box(0.21, 0.005, 0.3, '#FFFFFF', -0.35, 1.093, 1.4).rotation.y = 0.2;
+  const sign = canvasTex(1024, 192);
+  (function () { const { g, c } = sign; g.fillStyle = '#FFFFFF'; g.fillRect(0, 0, c.width, c.height); g.fillStyle = '#1E4E8C'; g.fillRect(0, 0, 16, c.height); g.beginPath(); g.arc(94, 96, 50, 0, 7); g.fill(); g.fillStyle = '#5FA8E8'; g.beginPath(); g.moveTo(52, 112); g.quadraticCurveTo(80, 84, 104, 104); g.quadraticCurveTo(124, 118, 140, 106); g.lineTo(136, 128); g.lineTo(60, 128); g.closePath(); g.fill(); g.fillStyle = '#F2C230'; g.beginPath(); g.arc(108, 76, 13, 0, 7); g.fill(); g.fillStyle = '#0F172A'; g.font = F(800, 64); g.fillText('Customer Service Centre', 170, 96); g.font = F(600, 32); g.fillStyle = '#1E4E8C'; g.fillText('Blue City Council', 172, 146); sign.t.needsUpdate = true; })();
+  plane(3.4, 0.64, sign.t, 0, 2.55, -4.99);
+
+  /* wall clock and now-serving display */
+  const clock = canvasTex(256, 256), serving = canvasTex(512, 224);
+  plane(0.7, 0.7, clock.t, -3.2, 2.5, -4.99);
+  plane(1.2, 0.52, serving.t, 3.2, 2.5, -4.99);
+  const poster = canvasTex(400, 560);
+  (function () { const { g } = poster; g.fillStyle = '#1E4E8C'; g.fillRect(0, 0, 400, 560); g.fillStyle = '#FFFFFF'; g.font = F(800, 46); ['Pay your', 'rates', 'online'].forEach((t, i) => g.fillText(t, 34, 110 + i * 56)); g.font = F(500, 24); g.fillText('bluecity.vic.gov.au', 34, 330); g.fillStyle = '#E0B21B'; g.fillRect(34, 380, 120, 10); poster.t.needsUpdate = true; })();
+  plane(0.8, 1.12, poster.t, -5.94, 1.7, -2.2, Math.PI / 2);
+  for (let i = 0; i < 4; i++) { box(0.5, 0.06, 0.5, '#64748B', -5.4, 0.46, -3.6 + i * 0.65); box(0.5, 0.5, 0.06, '#64748B', -5.62, 0.72, -3.6 + i * 0.65).rotation.y = Math.PI / 2; }
+  for (let i = 0; i < 5; i++) for (const x of [-0.75, 0.75]) { const p = cyl(0.03, 0.03, 0.95, '#94A3B8'); p.position.set(x, 0.48, -0.2 - i * 1.05); scene.add(p); }
+  for (const x of [-0.75, 0.75]) { const r = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.03, 4.2), M('#1E4E8C')); r.position.set(x, 0.88, -2.3); scene.add(r); }
+
+  /* printer */
+  box(0.75, 0.82, 0.55, '#CBD5DC', -2.6, 0.41, 2.5);
+  const printer = box(0.58, 0.3, 0.46, '#E5E7EB', -2.6, 0.97, 2.5);
+  box(0.3, 0.004, 0.36, '#FFFFFF', -2.6, 1.125, 2.32);
+  box(0.06, 0.02, 0.02, '#22C55E', -2.42, 1.1, 2.74, { emissive: '#22C55E', emissiveIntensity: 0.8 });
+
+  /* monitor */
+  const mon = new THREE.Group(); mon.position.set(0.5, 1.09, 1.42); mon.rotation.y = -0.22; scene.add(mon);
+  const base = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.015, 0.16), M('#1F2937')); mon.add(base);
+  const neck = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.2, 0.03), M('#1F2937')); neck.position.set(0, 0.1, -0.03); mon.add(neck);
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(0.64, 0.4, 0.03), M('#111827')); frame.position.set(0, 0.36, 0); frame.castShadow = true; mon.add(frame);
+  const screenTex = canvasTex(1024, 640);
+  const screen = new THREE.Mesh(new THREE.PlaneGeometry(0.6, 0.36), new THREE.MeshBasicMaterial({ map: screenTex.t, toneMapped: false })); screen.position.set(0, 0.36, 0.0165); mon.add(screen);
+  const screenWorld = new THREE.Vector3(); screen.getWorldPosition(screenWorld);
+
+  /* people */
+  function person(o) {
+    const g = new THREE.Group(), s = o.scale || 1;
+    for (const x of [-0.09, 0.09]) { const l = cyl(0.07, 0.065, 0.8, o.pants || '#334155', 10); l.position.set(x, 0.4, 0); g.add(l); }
+    const torso = cyl(0.19, 0.23, 0.62, o.shirt); torso.position.y = 1.11; g.add(torso);
+    const sh = new THREE.Mesh(new THREE.SphereGeometry(0.19, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2), M(o.shirt)); sh.position.y = 1.42; sh.scale.set(1, 0.45, 1); g.add(sh);
+    const arms = [];
+    for (const x of [-0.27, 0.27]) { const pivot = new THREE.Group(); pivot.position.set(x, 1.4, 0); const a = cyl(0.055, 0.05, 0.56, o.shirt, 8); a.position.y = -0.28; pivot.add(a); const hand = new THREE.Mesh(new THREE.SphereGeometry(0.055, 8, 6), M(o.skin)); hand.position.y = -0.58; pivot.add(hand); pivot.rotation.z = x < 0 ? -0.08 : 0.08; g.add(pivot); arms.push(pivot); }
+    const neck = cyl(0.06, 0.06, 0.08, o.skin, 8); neck.position.y = 1.47; g.add(neck);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.135, 20, 14), M(o.skin)); head.position.y = 1.62; head.castShadow = true; g.add(head);
+    const hair = new THREE.Mesh(new THREE.SphereGeometry(0.142, 20, 12, 0, Math.PI * 2, 0, Math.PI / 1.9), M(o.hair)); hair.position.set(0, 1.635, -0.012); g.add(hair);
+    for (const x of [-0.045, 0.045]) { const eye = new THREE.Mesh(new THREE.SphereGeometry(0.016, 8, 6), M('#1F2937')); eye.position.set(x, 1.64, 0.125); g.add(eye); }
+    let phone = null;
+    if (o.phone) { phone = new THREE.Mesh(new THREE.BoxGeometry(0.075, 0.14, 0.012), M('#0F172A', { emissive: '#60A5FA', emissiveIntensity: 0.25 })); phone.position.set(0, -0.63, 0.04); arms[1].add(phone); }
+    if (o.lanyard) { const ly = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.1, 0.01), M('#FFFFFF')); ly.position.set(0, 1.18, 0.23); g.add(ly); }
+    g.scale.setScalar(s); g.userData = { arms, phone, head };
+    scene.add(g); return g;
+  }
+  const people = RESIDENTS.map(r => person({ shirt: r.shirt, skin: r.skin, hair: r.hair, phone: r.phone, scale: 0.96 + (r.ini.charCodeAt(0) % 5) * 0.015 }));
+  people.forEach((p, i) => { p.userData.index = i; });
+  const danaP = person({ shirt: '#0E7490', skin: '#E2B48E', hair: '#5B3A29', pants: '#1E293B', lanyard: true });
+  danaP.position.set(-1.6, 0, 3.35); danaP.rotation.y = 2.2;
+
+  const slot = k => k === 0 ? new THREE.Vector3(0, 0, 0.42) : new THREE.Vector3(k % 2 ? 0.16 : -0.14, 0, 0.3 - 0.95 * k);
+  const EXIT = [new THREE.Vector3(2.4, 0, 0.1), new THREE.Vector3(4.8, 0, -2.5)];
+
+  /* tweens */
+  const tweens = [];
+  const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  function tween(dur, step) { return new Promise(res => { if (REDUCE || dur <= 0) { step(1); res(); return; } tweens.push({ t0: performance.now(), dur: dur * 1000, step, res }); }); }
+  function walk(p, to, dur = 0.9) {
+    const from = p.position.clone(), dir = to.clone().sub(from);
+    if (dir.length() > 0.05) p.rotation.y = Math.atan2(dir.x, dir.z);
+    return tween(dur, k => { p.position.lerpVectors(from, to, ease(k)); p.position.y = REDUCE ? 0 : Math.abs(Math.sin(k * Math.PI * 4)) * 0.03; }).then(() => { p.position.y = 0; });
+  }
+  const camPos = new THREE.Vector3(), camLook = new THREE.Vector3();
+  const VIEWS = { wide: [[3.4, 2.5, 4.9], [0, 1.0, -1.2]], counter: [[0, 1.62, 3.15], [0.15, 1.2, -0.8]], monitor: [[0.36, 1.45, 2.02], [0.5, 1.45, 1.42]], printer: [[-0.2, 1.38, 2.3], [-2.6, 1.0, 2.5]] };
+  let currentView = 'wide';
+  function view(name, dur = 1.1) {
+    currentView = name; const [p, t] = VIEWS[name];
+    const p0 = camPos.clone(), t0 = camLook.clone(), p1 = new THREE.Vector3(...p), t1 = new THREE.Vector3(...t);
+    return tween(dur, k => { const e = ease(k); camPos.lerpVectors(p0, p1, e); camLook.lerpVectors(t0, t1, e); });
+  }
+  camPos.set(...VIEWS.wide[0]); camLook.set(...VIEWS.wide[1]);
+
+  /* screens */
+  function drawScreen(mode) {
+    const { g } = screenTex, W = 1024, H = 640;
+    const bar = (title, col = '#0E7490') => { g.fillStyle = '#F8FAFC'; g.fillRect(0, 0, W, H); g.fillStyle = col; g.fillRect(0, 0, W, 64); g.fillStyle = '#FFFFFF'; g.font = F(700, 28); g.fillText(title, 28, 42); };
+    const txt = (t, x, y, s = 26, w = 400, c = '#0F172A') => { g.fillStyle = c; g.font = F(w, s); g.fillText(t, x, y); };
+    const r = RESIDENTS[Math.min(S.served, 6)];
+    if (mode === 'rates') {
+      bar('Rates & Property · Blue City Council');
+      txt('Customer', 40, 130, 22, 500, '#475569'); txt(r.name, 40, 170, 36, 700);
+      txt(r.req, 40, 214, 24, 400, '#475569');
+      g.fillStyle = '#E2E8F0'; for (let i = 0; i < 5; i++) g.fillRect(40, 270 + i * 58, 944, 40);
+      ['Assessment no.', 'Property', 'Balance', 'Instalment', 'Concession'].forEach((t, i) => txt(t, 56, 298 + i * 58, 22, 500, '#334155'));
+    } else if (mode === 'inbox' || mode === 'reported' || mode === 'deleted') {
+      bar('Mail · Mia Rossi', '#1E3A5F');
+      g.fillStyle = '#EEF2F6'; g.fillRect(0, 64, 330, H - 64);
+      const items = [['Dana Kowalski', 'Roster for next week'], ['Rates Team', 'Q2 instalment reminders'], ['IT Service Desk', 'Planned outage Sunday']];
+      if (mode === 'inbox') items.unshift(['Rates System Support', 'URGENT: Online rates payments…']);
+      items.forEach(([a, b], i) => { if (mode === 'inbox' && i === 0) { g.fillStyle = '#FFFFFF'; g.fillRect(0, 64, 330, 92); g.fillStyle = '#0E7490'; g.fillRect(0, 64, 8, 92); } txt(a, 24, 100 + i * 92, 22, 700); txt(b, 24, 132 + i * 92, 19, 400, '#475569'); });
+      if (mode === 'inbox') {
+        txt('URGENT: Online rates payments failing', 360, 110, 26, 700); txt('Rates System Support', 360, 150, 20, 600, '#475569');
+        ['Dear user,', 'We have detected a fault with the online', 'payment portal. Residents are unable to pay.', 'Log in to restore the portal within 30 minutes.'].forEach((t, i) => txt(t, 360, 210 + i * 38, 22));
+        g.fillStyle = '#1D4ED8'; g.fillRect(360, 380, 300, 56); txt('Restore payment portal', 382, 416, 22, 700, '#FFFFFF');
+      } else if (mode === 'reported') {
+        g.fillStyle = '#DCFCE7'; g.fillRect(360, 100, 620, 120); txt('Reported to IT', 384, 148, 28, 700, '#15803D'); txt('Blocked for all staff and removed.', 384, 190, 22, 400, '#166534');
+      } else { txt('Deleted', 360, 140, 26, 700, '#475569'); txt('1 item moved to Deleted Items.', 360, 180, 22, 400, '#475569'); }
+    } else if (mode === 'portal') {
+      g.fillStyle = '#F1F5F9'; g.fillRect(0, 0, W, H); g.fillStyle = '#FFFFFF'; g.fillRect(272, 120, 480, 400);
+      txt('Blue City Payments', 312, 190, 30, 800); txt('bluecity-ratesportal.com', 312, 230, 20, 400, '#64748B');
+      g.fillStyle = '#DCFCE7'; g.fillRect(312, 280, 400, 90); txt('✓ Payments restored', 340, 336, 30, 700, '#15803D');
+      txt('Thank you, Mia. You may close this page.', 312, 430, 20, 400, '#475569');
+    } else if (mode === 'reset') {
+      g.fillStyle = '#334155'; g.fillRect(0, 0, W, H); txt('IT Service Desk', 80, 220, 30, 700, '#E2E8F0');
+      txt('All accounts are being reset.', 80, 280, 34, 600, '#FFFFFF'); txt('Systems unavailable. Please wait…', 80, 330, 26, 400, '#CBD5E1');
+    } else if (mode === 'lin') {
+      bar('Concession application · Mrs M. Lin');
+      [['Address', '14 Banksia Crescent, Blue City'], ['Date of birth', '03/07/1951'], ['Pension card', 'PCC 4471 ••• 019'], ['Phone', '0491 570 006']].forEach(([a, b], i) => { txt(a, 50, 150 + i * 80, 24, 500, '#475569'); txt(b, 330, 150 + i * 80, 30, 600); });
+      g.fillStyle = '#FEF3C7'; g.fillRect(50, 500, 924, 70); txt('Form sent to printer: Concession declaration', 76, 545, 24, 600, '#92400E');
+    } else if (mode === 'locked') {
+      const gr = g.createLinearGradient(0, 0, W, H); gr.addColorStop(0, '#0E7490'); gr.addColorStop(1, '#1E3A5F'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+      g.fillStyle = 'rgba(255,255,255,.2)'; g.beginPath(); g.arc(512, 250, 70, 0, 7); g.fill();
+      txt('Mia Rossi', 440, 380, 34, 700, '#FFFFFF'); txt('Locked', 470, 425, 24, 400, '#E0F2F5');
+    } else if (mode === 'minimised') {
+      g.fillStyle = '#0F766E'; g.fillRect(0, 0, W, H); g.fillStyle = '#0F172A'; g.fillRect(0, H - 70, W, 70);
+      [['Mail', '#1E3A5F'], ['Rates', '#0E7490'], ['Files', '#475569']].forEach(([t, c], i) => { g.fillStyle = c; g.fillRect(30 + i * 150, H - 58, 130, 46); txt(t, 50 + i * 150, H - 26, 22, 600, '#FFFFFF'); });
+      txt('Signed in: Mia Rossi', 40, 70, 24, 600, '#E0F2F5');
+    } else if (mode === 'ransom') {
+      g.fillStyle = '#450A0A'; g.fillRect(0, 0, W, H); txt('YOUR FILES ARE ENCRYPTED', 120, 250, 50, 800, '#FCA5A5');
+      txt('The rates system is locked.', 120, 320, 30, 500, '#FFFFFF'); txt('Contact IT immediately.', 120, 370, 30, 500, '#FECACA');
+    }
+    screenTex.t.needsUpdate = true;
+  }
+  let monMode = 'rates';
+  api.monitor = m => { monMode = m; drawScreen(m); };
+  api.wallTime = () => {
+    const { g } = clock, m = Math.min(S.min, END), hr = 9 + m / 60;
+    g.clearRect(0, 0, 256, 256); g.fillStyle = '#FFFFFF'; g.beginPath(); g.arc(128, 128, 120, 0, 7); g.fill(); g.lineWidth = 10; g.strokeStyle = '#0F172A'; g.stroke();
+    g.lineCap = 'round';
+    for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; g.lineWidth = 6; g.beginPath(); g.moveTo(128 + Math.sin(a) * 96, 128 - Math.cos(a) * 96); g.lineTo(128 + Math.sin(a) * 108, 128 - Math.cos(a) * 108); g.stroke(); }
+    const ha = (hr % 12) * Math.PI / 6, ma = (m % 60) * Math.PI / 30;
+    g.lineWidth = 12; g.beginPath(); g.moveTo(128, 128); g.lineTo(128 + Math.sin(ha) * 58, 128 - Math.cos(ha) * 58); g.stroke();
+    g.lineWidth = 7; g.strokeStyle = '#0E7490'; g.beginPath(); g.moveTo(128, 128); g.lineTo(128 + Math.sin(ma) * 88, 128 - Math.cos(ma) * 88); g.stroke();
+    clock.t.needsUpdate = true;
+    const sg = serving.g; sg.fillStyle = '#0F172A'; sg.fillRect(0, 0, 512, 224); sg.fillStyle = '#94A3B8'; sg.font = F(600, 30); sg.fillText('NOW SERVING', 40, 66);
+    sg.fillStyle = '#FDE047'; sg.font = '700 96px ui-monospace, Menlo, monospace'; sg.fillText('A0' + Math.min(S.served + 1, 7), 40, 180);
+    serving.t.needsUpdate = true;
+  };
+
+  /* positions from state */
+  api.sync = () => {
+    people.forEach((p, i) => {
+      const k = i - S.served;
+      p.visible = k >= 0;
+      if (k >= 0) { p.position.copy(slot(k)); p.rotation.y = 0; }
+      p.userData.arms[1].rotation.x = 0;
+    });
+  };
+
+  /* lights tint */
+  let tint = 0;
+  const baseHemi = new THREE.Color('#FFFFFF'), redHemi = new THREE.Color('#FCA5A5');
+  const setTint = (to, dur = 1.2) => { const from = tint; return tween(dur, k => { tint = from + (to - from) * k; hemi.color.copy(baseHemi).lerp(redHemi, tint); hemi.intensity = 0.9 - tint * 0.35; sun.intensity = 0.75 - tint * 0.4; }); };
+
+  /* serving animation */
+  api.serveAnim = async (leaverIndex) => {
+    const p = people[leaverIndex];
+    const moves = people.map((q, i) => { const k = i - S.served; return k >= 0 ? walk(q, slot(k), 0.9).then(() => { q.rotation.y = 0; }) : null; }).filter(Boolean);
+    await walk(p, EXIT[0], 0.7); await walk(p, EXIT[1], 0.9); p.visible = false;
+    await Promise.all(moves);
+  };
+
+  /* scene staging */
+  const sleep = s => new Promise(r => setTimeout(r, REDUCE ? 0 : s * 1000));
+  api.scene = async (name, arg) => {
+    const harris = people[5];
+    if (name === 'intro') { setTint(0, 0); api.sync(); api.monitor('rates'); view('wide', 0); api.chip(''); }
+    if (name === 'counter') { view('counter'); api.monitor(S.served === 4 && S.screen ? 'lin' : 'rates'); api.chip('Select the resident at the counter to serve them, or use the button.'); }
+    if (name === 'email') { api.monitor('inbox'); view('monitor'); api.chip('Your screen, close up. Inspect the email in the panel.'); }
+    if (name === 'emailResult') { api.monitor({ open: 'portal', report: 'reported', delete: 'deleted' }[arg]); view('monitor'); api.chip(''); }
+    if (name === 'outage') { api.monitor('reset'); view('counter'); api.chip('Every account is being reset.'); }
+    if (name === 'screen') { api.monitor('lin'); view('counter'); harris.userData.arms[1].rotation.x = -1.1; walk(harris, new THREE.Vector3(0.5, 0, -0.15), 0.8); api.chip('Mr Harris is next, phone in hand.'); }
+    if (name === 'screenResult') {
+      api.chip('Walking to the printer…');
+      api.monitor({ leave: 'lin', minimise: 'minimised', lock: 'locked' }[arg]);
+      await view('printer', 1.0); await sleep(0.7);
+      if (arg === 'leave') { await walk(harris, new THREE.Vector3(0.45, 0, 0.62), 0.6); harris.rotation.y = 0.5; flash.position.set(0.45, 1.5, 0.75); flash.intensity = 4; await sleep(0.12); flash.intensity = 0; }
+      await view('counter', 1.0);
+      if (arg === 'leave') { await sleep(0.4); flash.intensity = 4; await sleep(0.12); flash.intensity = 0; api.chip('Mr Harris photographed your screen.'); }
+      else { if (arg === 'lock') api.monitor('lin'); api.chip(arg === 'lock' ? 'Locked, back and unlocked in two seconds.' : 'Your session stayed open.'); walk(harris, slot(1), 0.6).then(() => { harris.rotation.y = 0; harris.userData.arms[1].rotation.x = 0; }); }
+    }
+    if (name === 'ransom') { api.monitor('ransom'); view('counter'); setTint(1); api.chip('The rates system is locked.'); people.forEach((p, i) => { if (i >= S.served && p.visible) walk(p, EXIT[1], 2).then(() => { p.visible = false; }); }); }
+    if (name === 'timeup') { view('wide'); api.chip('Handover at 12:30.'); }
+    if (name === 'end') { view('wide'); api.chip(''); }
+    const r = RESIDENTS[Math.min(S.served, 6)];
+    renderer.domElement.setAttribute('aria-label', `3D view of Counter 3 at Blue City Council. ${S.served < 7 ? r.name + ' is at the counter.' : 'The queue is empty.'}`);
+  };
+
+  /* picking */
+  const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+  let hovered = null, downAt = null, par = new THREE.Vector2();
+  function pick(e) {
+    const rc = renderer.domElement.getBoundingClientRect();
+    ptr.set(((e.clientX - rc.left) / rc.width) * 2 - 1, -((e.clientY - rc.top) / rc.height) * 2 + 1);
+    ray.setFromCamera(ptr, camera);
+    const hit = ray.intersectObjects([...people, mon, printer], true)[0];
+    if (!hit) return null;
+    let o = hit.object; while (o.parent && o.parent !== scene) o = o.parent;
+    if (o === mon) return { kind: 'monitor', o };
+    if (o === printer) return { kind: 'printer', o };
+    if (o.userData.index === S.served) return { kind: 'resident', o };
+    return null;
+  }
+  function glow(o, on) { o.traverse(m => { if (m.material && m.material.emissive) { if (on) { m.userData.e = m.material.emissive.getHex(); m.userData.ei = m.material.emissiveIntensity; m.material.emissive.set('#1E4E8C'); m.material.emissiveIntensity = 0.35; } else { m.material.emissive.setHex(m.userData.e || 0); m.material.emissiveIntensity = m.userData.ei || 1; } } }); }
+  renderer.domElement.addEventListener('pointermove', e => {
+    const rc = renderer.domElement.getBoundingClientRect(); par.set(((e.clientX - rc.left) / rc.width) - 0.5, ((e.clientY - rc.top) / rc.height) - 0.5);
+    const h = pick(e), o = h ? h.o : null;
+    if (o !== hovered) { if (hovered) glow(hovered, false); if (o) glow(o, true); hovered = o; renderer.domElement.style.cursor = o ? 'pointer' : 'default'; }
+  });
+  renderer.domElement.addEventListener('pointerdown', e => { downAt = [e.clientX, e.clientY]; });
+  renderer.domElement.addEventListener('pointerup', e => {
+    if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 8) return;
+    const h = pick(e); if (!h) return;
+    if (h.kind === 'resident') { const b = document.querySelector('[data-act="serve"]'); if (b) b.click(); }
+    if (h.kind === 'monitor') { if (currentView !== 'monitor') view('monitor'); else if (cur.name === 'counter') view('counter'); }
+    if (h.kind === 'printer') api.chip('The office printer. Forms for residents come out here.');
+  });
+
+  /* loop */
+  function resize() { const w = host.clientWidth, h = host.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w / h < 1 ? 62 : w / h > 2 ? 38 : 52; camera.updateProjectionMatrix(); }
+  new ResizeObserver(resize).observe(host); resize();
+  const clockT = new THREE.Clock();
+  renderer.setAnimationLoop(() => {
+    const now = performance.now(), t = clockT.getElapsedTime();
+    for (let i = tweens.length - 1; i >= 0; i--) { const w = tweens[i], k = Math.min(1, (now - w.t0) / w.dur); w.step(k); if (k >= 1) { tweens.splice(i, 1); w.res(); } }
+    if (!REDUCE) { people.forEach((p, i) => { if (p.visible) p.userData.head.position.y = 1.62 + Math.sin(t * 1.6 + i) * 0.006; }); danaP.userData.head.rotation.y = Math.sin(t * 0.5) * 0.25; }
+    const pp = camPos.clone(); if (!REDUCE && currentView !== 'monitor') { pp.x += par.x * 0.12; pp.y -= par.y * 0.06; }
+    camera.position.copy(pp); camera.lookAt(camLook);
+    renderer.render(scene, camera);
+  });
+  if (document.fonts) document.fonts.ready.then(() => { drawScreen(monMode); api.wallTime(); });
+  api.ok = true; drawScreen('rates');
+  return api;
+})();
+
+/* =================== panel scenes =================== */
+const SCENES = {
+  intro() {
+    return `${where('Customer Service Centre, Counter 3')}
+      <h2>Thursday morning at the counter</h2>
+      <p class="lead">You’re Mia, a Customer Service Officer at Blue City Council. Seven residents are booked in before the 12:30 handover. Each one takes about 28 minutes, which leaves you about 14 spare minutes for anything else.</p>
+      <p class="goal"><b>Your goal:</b> serve all 7 residents by 12:30 and keep every resident’s information safe.</p>
+      <div class="minis">
+        <div class="mini"><b>Residents served</b><span>Miss the 12:30 handover and the last residents go home without help.</span></div>
+        <div class="mini"><b>Data safety</b><span>Falls if passwords are stolen or a resident’s details are exposed.</span></div>
+        <div class="mini"><b>Trust</b><span>How residents and your team see you. Complaints and outages bring it down.</span></div>
+      </div>
+      ${dana('Big queue today, Mia. Let’s get everyone through before handover.')}
+      <div class="actions"><button class="btn" data-go="counter">Start the shift</button></div>`;
+  },
+  counter(arg) {
+    const r = RESIDENTS[S.served], waiting = RESIDENTS.length - S.served - 1;
+    return `${where('Customer Service Centre, Counter 3')}
+      ${arg && arg.done ? `<p class="done">Done: ${arg.done}</p>` : ''}
+      <h2>Next at the counter</h2>
+      <div class="resident"><span class="av" aria-hidden="true">${r.ini}</span><div><b>${r.name}</b><span>${r.req}</span></div></div>
+      <p class="note">${waiting} ${waiting === 1 ? 'resident is' : 'residents are'} waiting behind ${r.name}.</p>
+      <div class="actions"><button class="btn" data-act="serve">Serve ${r.name}<span class="cost">28 min</span></button></div>`;
+  },
+  email() {
+    const c = id => S.clues.includes(id);
+    const clue = (id, text) => `<span class="clue${c(id) ? ' found' : ''}" role="button" tabindex="0" data-clue="${id}" aria-pressed="${c(id)}">${text}</span>`;
+    return `${where('Counter 3, your screen')}
+      <h2>An urgent email lands</h2>
+      ${dana('Residents are saying online payments failed this morning. Can you sort it fast? The queue’s building.')}
+      <p class="note">Check the sender, hover over the link and select anything that looks wrong. Each check takes about a minute of your shift. Then decide.</p>
+      <div class="found-row"><b id="foundCount">Warning signs found: ${S.clues.length} of 5</b>${Object.keys(CLUES).map(k => `<span class="pill${c(k) ? ' on' : ''}">${c(k) ? CLUES[k].label : '?'}</span>`).join('')}</div>
+      <div class="mail">
+        <div class="toolbar" role="toolbar" aria-label="Email actions">
+          <button type="button" data-email="delete">Delete</button>
+          <button type="button" class="rep" data-email="report">Report phishing<span class="cost"> 3 min</span></button>
+        </div>
+        <article class="email">
+          <p class="subject">${EMAIL.subject}</p>
+          <div class="meta"><span class="av sm" aria-hidden="true">RS</span><div>
+            <button type="button" class="sender" id="sender" aria-expanded="${S.checked.includes('sender')}" aria-controls="addr">${EMAIL.name}</button>
+            <span class="addr" id="addr"${S.checked.includes('sender') ? '' : ' hidden'}>&lt;${EMAIL.address}&gt;</span>
+            <span class="when">Today, 9:56 am</span></div></div>
+          <p>${clue('greeting', 'Dear user,')}</p>
+          <p>We have detected a fault with the online payment portal. Residents are currently unable to pay their rates.</p>
+          <p>${clue('urgency', 'If the portal is not restored within 30 minutes, all payments made today will be lost.')}</p>
+          <p>${clue('login', 'Log in with your council username and password to restore the portal.')}</p>
+          <p><span class="tipw"><a class="cta" href="#" id="cta" aria-describedby="tip">${EMAIL.linkText}</a><span class="tip" id="tip" role="tooltip">${EMAIL.url}</span></span></p>
+          <p>Rates System Support Team</p>
+        </article>
+        <div class="status" id="status" aria-hidden="true"></div>
+      </div>`;
+  },
+  emailResult(choice) {
+    const R = {
+      open: { tone: 'neutral', h: 'You restored the portal', p: 'A page that looks like the council login appears. You type your username and password, and it says “Payments restored”. Dana gives you a thumbs up and you get back to the queue.', d: ['No change, for now'] },
+      delete: { tone: 'warn', h: 'You deleted it', p: 'The email disappears. You tell Dana it looked dodgy and go back to the queue. Nobody else knows it was suspicious.', d: ['No change, for now'] },
+      report: { tone: 'good', h: 'You reported it', p: 'IT Service Desk calls back within minutes: “Thanks, Mia. It’s a fake. We’ve blocked it for all 300 staff, and online payments were never down.” Dana passes that on to the residents in the queue.', d: ['3 minutes', 'Trust +10'] }
+    }[choice];
+    return `${where('Counter 3, your screen')}<h2>What happens</h2>
+      <div class="result ${R.tone}"><h3>${R.h}</h3><p>${R.p}</p>${deltas(R.d)}</div>
+      <div class="actions"><button class="btn" data-go="counter">Back to the counter</button></div>`;
+  },
+  outage() {
+    return `${where('Customer Service Centre, Counter 3')}<h2>The systems go down</h2>
+      ${dana('Raj in Finance clicked a link in that “payments” email and logged in. IT is resetting every account. We’re locked out of everything for half an hour.')}
+      <div class="result bad"><h3>30 minutes with no systems</h3><p>Residents wait while the queue grows. One leaves to come back another day.</p>${deltas(['30 minutes lost', 'Data safety −20', 'Trust −10'])}</div>
+      <div class="actions"><button class="btn" data-go="counter">Back to the counter</button></div>`;
+  },
+  screen() {
+    return `${where('Customer Service Centre, Counter 3')}<h2>The form is on the printer</h2>
+      <p class="lead">Mrs Lin’s concession application is open on your screen: her address, date of birth and pension card number. The form she needs to sign is on the printer behind you, about 30 seconds away.</p>
+      <p class="note">Mr Harris, next in the queue, has stepped up to the counter with his phone out.</p>
+      <p class="note"><b>What do you do before you walk to the printer?</b></p>
+      <div class="choices">
+        <button class="choice" data-screen="leave"><span>Go straight to the printer. You’ll only be 30 seconds.</span></button>
+        <button class="choice" data-screen="minimise"><span>Minimise the application window, then go.</span></button>
+        <button class="choice" data-screen="lock"><span>Lock your screen, then go.</span><span class="keys" aria-label="Windows key plus L"><kbd>⊞ Win</kbd><kbd>L</kbd></span></button>
+      </div>`;
+  },
+  screenResult(choice) {
+    const R = {
+      leave: { tone: 'bad', h: 'Mr Harris takes a photo', p: 'When you come back, Mrs Lin is upset: she saw Mr Harris photograph your screen. Dana has to log a privacy incident with the privacy officer and calm both residents down.', d: ['20 minutes lost', 'Data safety −40', 'Trust −40'] },
+      minimise: { tone: 'warn', h: 'Hidden, but still open', p: 'Mrs Lin’s details are out of sight. But your email and the rates system stayed open to anyone at the counter. Dana noticed on her way past and reminds you to lock it.', d: ['Data safety −15', 'Trust −5'] },
+      lock: { tone: 'good', h: 'Two seconds, nothing happens', p: 'Your screen locks. You grab the form, unlock, and Mrs Lin signs. Nothing happened, which is exactly the point.', d: ['No time lost'] }
+    }[choice];
+    return `${where('Customer Service Centre, Counter 3')}<h2>What happens</h2>
+      <div class="result ${R.tone}"><h3>${R.h}</h3><p>${R.p}</p>${deltas(R.d)}</div>
+      <div class="actions"><button class="btn" data-go="counter">Back to the counter</button></div>`;
+  },
+  ransom() {
+    return `${where('Customer Service Centre, Counter 3')}<h2>Every screen goes dark</h2>
+      <div class="result bad"><h3>Ransomware has locked the rates system</h3>
+        <p>At 11:40 every screen at the counter shows the same message: your files have been encrypted. IT traces it to the account that logged in through the “payments” email this morning, and shuts down the network.</p>
+        <p>No more residents can be served today. The people in the queue are sent home.</p>
+        ${deltas(['Counter closed for the rest of the shift', 'Data safety −60', 'Trust −30'])}</div>
+      <div class="actions"><button class="btn" data-go="end">See your shift report</button></div>`;
+  },
+  timeup() {
+    const left = RESIDENTS.slice(S.served).map(r => r.name).join(', ');
+    return `${where('Customer Service Centre, Counter 3')}<h2>It’s handover time</h2>
+      <div class="result warn"><h3>Not everyone was served</h3><p>The afternoon team takes over at 12:30. ${left} ${RESIDENTS.length - S.served === 1 ? 'is' : 'are'} still waiting and will have to come back.</p></div>
+      <div class="actions"><button class="btn" data-go="end">See your shift report</button></div>`;
+  },
+  end() {
+    const major = S.email === 'open' || S.screen === 'leave';
+    const minor = S.email === 'delete' || S.screen === 'minimise' || S.served < 7;
+    const [label, tone, summary] = major ? ['Incident shift', 'bad', 'One shortcut turned into an incident that cost residents, your team and the council.']
+      : minor ? ['Close call', 'warn', 'No major incident, but a gap in your habits cost time or left the door open.']
+      : ['Safe shift', 'good', 'Every resident served and every resident’s information kept safe.'];
+    const E = {
+      open: ['You opened the link and logged in.', 'At 11:40 ransomware locked the rates system and the counter closed.', 'Check the sender and hover before you click. Never log in through a link in an email.', 'bad'],
+      delete: ['You deleted the email.', 'Raj in Finance opened the same email. Every account was reset and the systems were down for 30 minutes.', 'Report it, don’t just delete it. Reporting lets IT protect everyone.', 'warn'],
+      report: ['You reported the email to IT.', 'IT blocked it for all staff within minutes. Payments had never been down.', 'Keep doing this: when an email rushes you, check it and report it.', 'good']
+    }[S.email];
+    const D = {
+      leave: ['You walked away with Mrs Lin’s details on screen.', 'Mr Harris photographed them. She complained, and a privacy incident was logged.', 'Lock your screen every time you step away: Windows + L.', 'bad'],
+      minimise: ['You minimised the window.', 'Her details were hidden, but your email and the rates system stayed open to anyone at the counter.', 'Minimising hides; locking protects. Use Windows + L.', 'warn'],
+      lock: ['You locked your screen with Windows + L.', 'Nothing happened, which is the point. It took two seconds.', 'Keep the habit, even for a 30-second trip to the printer.', 'good']
+    }[S.screen];
+    const card = (title, d) => d ? `<div class="dcard"><span class="tagline s-${d[3]}">${title}</span><p><b>What you did:</b> ${d[0]}</p><p><b>What happened:</b> ${d[1]}</p><p class="habit">${d[2]}</p></div>` : '';
+    const signs = Object.keys(CLUES).map(k => `<li><span class="m ${S.clues.includes(k) ? 's-good' : 's-bad'}" aria-hidden="true">${S.clues.includes(k) ? '✓' : '○'}</span><span><b>${CLUES[k].label}${S.clues.includes(k) ? '' : ' (missed)'}:</b> ${CLUES[k].coach}</span></li>`).join('');
+    return `${where('Shift report')}
+      <span class="outcome ${tone}">${label}</span>
+      <h2>${summary}</h2>
+      <div class="stats">
+        <div><b>${S.served} of 7</b><span>Residents served</span></div>
+        <div><b>${S.safety}%</b><span>Data safety</span></div>
+        <div><b>${S.safeMin} min</b><span>Spent on safety checks</span></div>
+        <div><b>${S.lostMin} min</b><span>Lost to incidents</span></div>
+      </div>
+      ${card('The payments email', E)}
+      ${card('The unlocked screen', D)}
+      <div class="dcard"><span class="tagline">Warning signs in the email: ${S.clues.length} of 5 found</span><ul class="signs">${signs}</ul></div>
+      <p class="note">Safe habits took minutes. Shortcuts that went wrong took far longer. Try another path to see how the shift changes.</p>
+      <div class="actions"><button class="btn" data-act="replay">Replay the shift</button></div>`;
+  }
+};
+
+/* =================== engine =================== */
+function go(name, arg) {
+  cur = { name, arg: arg || null };
+  const st = $('#stage'); st.innerHTML = SCENES[name](arg); hud(); wire(name);
+  $('#scroll').scrollTop = 0; if (window.innerWidth <= 860) window.scrollTo(0, 0); st.focus({ preventScroll: true });
+  const h = st.querySelector('h2'); if (h) say(h.textContent);
+  W3.scene(name, arg);
+}
+function serve() {
+  if (S.served === 2 && !S.email) return go('email');
+  if (S.email === 'delete' && !S.outage) { S.outage = true; spend(30, 'lost'); change(-20, -10); return go('outage'); }
+  if (S.served === 4 && !S.screen) return go('screen');
+  if (S.email === 'open' && S.min + SERVE > LOCKOUT) { S.lostMin += END - LOCKOUT; S.min = LOCKOUT; change(-60, -30); return go('ransom'); }
+  if (S.min + SERVE > END) return go('timeup');
+  const r = RESIDENTS[S.served], leaver = S.served;
+  spend(SERVE); S.served++;
+  say(`${r.done} ${S.served} of 7 served. ${time(S.min)}.`);
+  if (W3.ok) W3.serveAnim(leaver);
+  if (S.served === 7) return go('end');
+  go('counter', { done: r.done });
+}
+function wire(name) {
+  document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => go(b.dataset.go)));
+  const act = document.querySelector('[data-act]');
+  if (act) act.addEventListener('click', () => { if (act.dataset.act === 'serve') serve(); else { S = fresh(); go('intro'); } });
+  if (name === 'email') wireEmail();
+  if (name === 'screen') document.querySelectorAll('[data-screen]').forEach(b => b.addEventListener('click', () => {
+    const c = b.dataset.screen; S.screen = c;
+    if (c === 'leave') { spend(20, 'lost'); change(-40, -40); }
+    if (c === 'minimise') change(-15, -5);
+    go('screenResult', c);
+  }));
+}
+function wireEmail() {
+  const once = (key, fn) => { if (!S.checked.includes(key)) { S.checked.push(key); spend(1, 'safe'); } if (fn) fn(); };
+  const refresh = () => {
+    $('#foundCount').textContent = `Warning signs found: ${S.clues.length} of 5`;
+    const pills = document.querySelectorAll('.found-row .pill');
+    Object.keys(CLUES).forEach((k, i) => { const on = S.clues.includes(k); pills[i].className = 'pill' + (on ? ' on' : ''); pills[i].textContent = on ? CLUES[k].label : '?'; });
+  };
+  const addClue = id => { if (!S.clues.includes(id)) S.clues.push(id); refresh(); };
+  $('#sender').addEventListener('click', () => { const a = $('#addr'), open = a.hidden; a.hidden = !open; $('#sender').setAttribute('aria-expanded', open); if (open) once('sender', () => addClue('sender')); });
+  const cta = $('#cta');
+  const show = () => { $('#status').textContent = EMAIL.url; once('link', () => addClue('link')); };
+  const hide = () => { $('#status').textContent = ''; };
+  cta.addEventListener('mouseenter', show); cta.addEventListener('focus', show);
+  cta.addEventListener('mouseleave', hide); cta.addEventListener('blur', hide);
+  cta.addEventListener('touchstart', show, { passive: true });
+  cta.addEventListener('click', e => { e.preventDefault(); decideEmail('open'); });
+  document.querySelectorAll('.clue').forEach(el => {
+    const t = () => {
+      const id = el.dataset.clue, on = !S.clues.includes(id);
+      if (on) { once('clue-' + id); addClue(id); } else { S.clues = S.clues.filter(x => x !== id); refresh(); }
+      el.classList.toggle('found', on); el.setAttribute('aria-pressed', on);
+    };
+    el.addEventListener('click', t);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
+  });
+  document.querySelectorAll('[data-email]').forEach(b => b.addEventListener('click', () => decideEmail(b.dataset.email)));
+}
+function decideEmail(c) { S.email = c; if (c === 'report') { spend(3, 'safe'); change(0, 10); } go('emailResult', c); }
+
+window.claude?.hot?.snapshot?.(() => ({ S, cur }));
+const start = data => { if (data && data.S && data.cur && SCENES[data.cur.name]) { S = data.S; W3.sync(); go(data.cur.name, data.cur.arg); } else go('intro'); };
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
+
+</body>
+</html>
